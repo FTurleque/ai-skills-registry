@@ -1,0 +1,17 @@
+name: java-code-review
+displayName: Java Code Review
+description: Analyse du code Java afin d'identifier les défauts, risques et améliorations possibles.
+version: 1.0.0
+status: stable
+category: development
+tags:
+  - java
+  - code-review
+  - quality
+compatibility:
+  - generic
+  - github-copilot
+  - claude-code
+authors:
+  - Fabrice Turleque
+license: MIT
