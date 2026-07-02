@@ -1,0 +1,31 @@
+# Éditeurs et IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs et fichiers temporaires
+*.log
+*.tmp
+*.temp
+*.bak
+
+# Variables d'environnement et secrets
+.env
+.env.*
+*.secret
+
+# Dépendances (au cas où un outil serait ajouté plus tard)
+node_modules/
+vendor/
+
+# Artefacts de build
+dist/
+build/
+out/

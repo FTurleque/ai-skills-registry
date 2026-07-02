@@ -1,0 +1,14 @@
+name: skill-template
+displayName: Nom du Skill
+description: Description courte et précise de ce que fait le skill.
+version: 1.0.0
+status: draft
+category: development
+tags:
+  - tag1
+  - tag2
+compatibility:
+  - generic
+authors:
+  - Fabrice Turleque
+license: MIT

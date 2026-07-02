@@ -1,0 +1,22 @@
+# Normalisation des fins de ligne en LF pour tous les fichiers texte
+* text=auto eol=lf
+
+# Forcer LF pour les types de fichiers courants
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
+*.sh text eol=lf
+*.gitignore text eol=lf
+*.editorconfig text eol=lf
+*.gitattributes text eol=lf
+
+# Fichiers binaires — pas de conversion
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
