@@ -7,6 +7,18 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ---
 
+## [Non publié]
+
+### Ajouté
+
+- Skill `generate-windows-exe` (`skills/shared/development/generate-windows-exe/`) :
+  génération d'un executable Windows (`.exe`) via Inno Setup (installateur) ou
+  jpackage (lanceur natif Java), avec un driver PowerShell reproductible
+  (`resources/build-exe.ps1`) et un modèle Inno Setup. Distillé des pipelines
+  réels de `mcp-search-net` et `nexus-context-engine`.
+
+---
+
 ## [0.1.0] - 2026-07-02
 
 ### Ajouté

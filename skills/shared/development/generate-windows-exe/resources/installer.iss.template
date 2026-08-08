@@ -1,0 +1,46 @@
+; ---------------------------------------------------------------------------
+; Modele Inno Setup pour build-exe.ps1.
+; Les jetons @@...@@ sont remplaces par le driver avant l'appel a ISCC.exe.
+; Distille depuis mcp-search-net/packaging/windows/mcp-search-net-installer.iss.template
+; (version sans assistant interactif : empaquete n'importe quel dossier payload).
+; ---------------------------------------------------------------------------
+#define AppName "@@APP_NAME@@"
+#define AppVersion "@@VERSION@@"
+#define AppNumericVersion "@@APP_NUMERIC_VERSION@@"
+#define AppId "@@APP_ID@@"
+#define AppPublisher "@@APP_PUBLISHER@@"
+#define SourceDir "@@SOURCE_DIR@@"
+#define OutputDir "@@OUTPUT_DIR@@"
+#define OutputBaseFilename "@@OUTPUT_BASENAME@@"
+
+[Setup]
+AppId={#AppId}
+AppName={#AppName}
+AppVersion={#AppVersion}
+AppPublisher={#AppPublisher}
+DefaultDirName={localappdata}\Programs\{#AppName}
+DefaultGroupName={#AppName}
+DisableProgramGroupPage=yes
+; PrivilegesRequired=lowest : installe dans %LOCALAPPDATA% sans elevation admin.
+; C'est ce qui rend l'installation silencieuse verifiable sans droits admin.
+PrivilegesRequired=lowest
+ArchitecturesAllowed=x64compatible
+ArchitecturesInstallIn64BitMode=x64compatible
+OutputDir={#OutputDir}
+OutputBaseFilename={#OutputBaseFilename}
+Compression=lzma2/ultra64
+SolidCompression=yes
+WizardStyle=modern
+UninstallDisplayName={#AppName} {#AppVersion}
+VersionInfoVersion={#AppNumericVersion}
+VersionInfoCompany={#AppPublisher}
+VersionInfoDescription={#AppName} Windows installer
+VersionInfoProductName={#AppName}
+VersionInfoProductVersion={#AppNumericVersion}
+VersionInfoProductTextVersion={#AppVersion}
+
+[Files]
+Source: "{#SourceDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+
+[Icons]
+Name: "{userprograms}\{#AppName}\Dossier d'installation {#AppName}"; Filename: "{app}"
