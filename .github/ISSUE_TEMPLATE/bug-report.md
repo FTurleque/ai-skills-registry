@@ -1,17 +1,16 @@
 ---
 name: Rapport de problème
-about: Signaler un problème dans un skill existant
+about: Signaler un problème dans un artefact existant
 title: "[BUG] "
 labels: bug
 assignees: ''
 ---
 
-## Skill concerné
+## Artefact concerné
 
-Indiquer le nom et le chemin du skill concerné :
-
-- **Nom** : `nom-du-skill`
-- **Chemin** : `skills/shared/development/nom-du-skill/`
+- **Nom** : `nom-de-l-artefact`
+- **Type** : skill / plugin / sous-agent / commande / hook / instructions / serveur MCP / style de sortie
+- **Chemin** : `<dossier-du-type>/<nom>/`
 - **Version** : `1.0.0`
 
 ## Description du problème
@@ -20,22 +19,20 @@ Décrire le problème de manière claire et concise.
 
 ## Comportement observé
 
-Décrire ce qui se passe réellement.
+Ce qui se passe réellement.
 
 ## Comportement attendu
 
-Décrire ce qui devrait se passer.
+Ce qui devrait se passer.
 
-## Outil IA utilisé
+## Surface
 
-Indiquer l'outil IA avec lequel le problème a été observé :
+- [ ] `claude-code`
+- [ ] `claude-desktop`
+- [ ] `claude-ai`
+- [ ] `claude-api`
 
-- [ ] generic
-- [ ] GitHub Copilot
-- [ ] Claude Code
-- [ ] ChatGPT
-- [ ] OpenCode
-- [ ] Autre : ___
+Préciser la version de l'outil si elle est pertinente.
 
 ## Étapes pour reproduire
 
@@ -43,8 +40,16 @@ Indiquer l'outil IA avec lequel le problème a été observé :
 2. Étape 2
 3. Étape 3
 
+## Sortie de la validation
+
+Si le problème concerne la structure du dépôt, coller la sortie de :
+
+```bash
+python tools/validate.py
+```
+
 ## Contexte supplémentaire
 
-Ajouter toute information utile : captures d'écran, exemples, version de l'outil, etc.
+Captures, exemples, environnement.
 
 > ⚠️ Ne jamais inclure de secrets, tokens ou données personnelles sensibles dans ce rapport.

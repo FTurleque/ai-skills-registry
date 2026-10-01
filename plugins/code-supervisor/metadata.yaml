@@ -1,0 +1,27 @@
+kind: plugin
+name: code-supervisor
+displayName: Code Supervisor
+description: Supervision automatique du code produit par un agent, avec renvoi en correction sur probleme bloquant.
+version: 1.0.0
+status: experimental
+category: development
+tags:
+  - code-review
+  - quality
+  - security
+  - duplication
+  - complexity
+  - naming
+  - hook
+  - automation
+compatibility:
+  - claude-code
+  - claude-desktop
+requires:
+  - python>=3.8
+  - git
+authors:
+  - Fabrice Turleque
+license: MIT
+replaces:
+  - skills/claude/code-supervisor

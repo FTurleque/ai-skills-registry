@@ -1,35 +1,30 @@
 # Nom du Skill
 
-> Description courte du skill.
+Une phrase qui dit ce que le skill apporte.
 
----
+## Ce que ça change
 
-## Présentation
+Décrire concrètement la différence entre avec et sans. Un exemple vaut mieux qu'une promesse.
 
-Expliquer brièvement l'objectif du skill et dans quel contexte l'utiliser.
+## Installation
 
-## Prérequis
+| Surface | Emplacement |
+|---------|-------------|
+| Claude Code | `~/.claude/skills/<nom>/` ou `<projet>/.claude/skills/<nom>/` |
+| Application de bureau | réglages de l'application, ou via un plugin |
+| claude.ai | téléverser le dossier dans les skills du compte ou du projet |
 
-Lister ce que l'utilisateur doit avoir ou connaître avant d'utiliser ce skill.
+```bash
+cp -r skills/<catégorie>/<nom> ~/.claude/skills/
+```
 
-## Utilisation
+Voir [docs/install.md](../../../docs/install.md) pour le détail par surface.
 
-Décrire comment utiliser ce skill avec un assistant IA.
+## Usage
 
-## Exemples
+Comment on s'en sert, et ce qu'on obtient. Si le déclenchement est automatique, dire à quoi il se
+reconnaît.
 
-Voir le dossier `examples/` pour des cas d'usage illustrés.
+## Limites
 
-## Compatibilité
-
-| Outil            | Statut |
-|------------------|--------|
-| generic          | ✅     |
-
-## Métadonnées
-
-Voir `metadata.yaml` pour les métadonnées complètes.
-
-## Licence
-
-MIT — Fabrice Turleque
+Ce que le skill ne sait pas faire, et les cas où il est moins efficace. Section obligatoire.

@@ -1,0 +1,17 @@
+kind: mcp-server
+name: mcp-template
+displayName: Nom du Serveur
+description: Les outils que ce serveur apporte à Claude et ce qu'ils permettent de faire.
+version: 1.0.0
+status: draft
+category: analysis
+tags:
+  - tag1
+compatibility:
+  - claude-code
+  - claude-desktop
+requires:
+  - node>=20
+authors:
+  - Fabrice Turleque
+license: MIT

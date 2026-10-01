@@ -25,6 +25,11 @@ Desktop.ini
 node_modules/
 vendor/
 
+# Python (moteurs livrés dans les resources/ de certains skills)
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
 # Artefacts de build
 dist/
 build/
