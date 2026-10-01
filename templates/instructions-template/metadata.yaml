@@ -1,0 +1,15 @@
+kind: instructions
+name: instructions-template
+displayName: Nom du Jeu d'Instructions
+description: À quel type de projet ce contexte s'applique et ce qu'il fait gagner.
+version: 1.0.0
+status: draft
+category: development
+tags:
+  - tag1
+compatibility:
+  - claude-code
+  - claude-desktop
+authors:
+  - Fabrice Turleque
+license: MIT

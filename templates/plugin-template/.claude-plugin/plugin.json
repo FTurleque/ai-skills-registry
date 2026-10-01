@@ -1,0 +1,13 @@
+{
+  "name": "plugin-template",
+  "displayName": "Nom du Plugin",
+  "description": "Ce que le plugin branche sur Claude Code et ce que ça change.",
+  "author": {
+    "name": "Fabrice Turleque",
+    "url": "https://github.com/FTurleque"
+  },
+  "homepage": "https://github.com/FTurleque/ai-toolkit-registry/tree/main/plugins/plugin-template",
+  "repository": "https://github.com/FTurleque/ai-toolkit-registry",
+  "license": "MIT",
+  "keywords": ["tag1", "tag2"]
+}

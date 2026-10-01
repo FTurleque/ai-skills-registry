@@ -49,7 +49,7 @@ Indiquer le ou les skills créés ou modifiés :
 
 - [ ] Le champ `compatibility` est renseigné
 - [ ] La compatibilité a été testée ou documentée pour chaque outil déclaré
-- [ ] La matrice dans `docs/compatibility.md` est mise à jour si nécessaire
+- [ ] Les surfaces déclarées sont cohérentes avec `docs/surfaces.md`
 
 ### Sécurité
 

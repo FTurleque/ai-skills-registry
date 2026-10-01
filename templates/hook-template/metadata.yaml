@@ -1,0 +1,16 @@
+kind: hook
+name: hook-template
+displayName: Nom du Hook
+description: L'événement visé et ce que le hook fait quand il se déclenche.
+version: 1.0.0
+status: draft
+category: development
+tags:
+  - tag1
+compatibility:
+  - claude-code
+requires:
+  - python>=3.8
+authors:
+  - Fabrice Turleque
+license: MIT

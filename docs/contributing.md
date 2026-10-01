@@ -1,118 +1,128 @@
 # Processus de contribution
 
-Ce document décrit en détail comment créer et soumettre un nouveau skill dans le dépôt **AI Skills Registry**.
+Comment créer et soumettre un artefact dans **AI Toolkit Registry**.
 
 ---
 
-## Étapes recommandées
+## 1. Choisir le type
 
-### 1. Copier le template
+C'est la seule décision difficile, et elle se prend avant d'écrire une ligne. La règle est dans
+[architecture.md](architecture.md) : *le dossier dit le mécanisme, pas le sujet*.
 
-Copier le dossier `templates/skill-template/` dans la catégorie adaptée :
+| Ce que vous voulez | Type | Dossier |
+|--------------------|------|---------|
+| Que Claude sache faire quelque chose quand la tâche s'y prête | skill | `skills/<catégorie>/` |
+| Que du code s'exécute automatiquement sur un événement | hook, ou plugin si c'est un ensemble | `hooks/` ou `plugins/` |
+| Un assistant spécialisé avec ses propres outils | sous-agent | `agents/` |
+| Un raccourci que vous tapez souvent | commande | `commands/` |
+| Donner son contexte à un dépôt | instructions | `instructions/` |
+| Brancher des outils externes | serveur MCP | `mcp/` |
+| Changer la posture de réponse | style de sortie | `output-styles/` |
+| Distribuer plusieurs de ces composants d'un bloc | plugin | `plugins/` |
+
+En cas d'hésitation entre skill et sous-agent : si le travail doit se faire **à côté**, sans
+encombrer la conversation, c'est un sous-agent. Si Claude doit simplement savoir comment s'y
+prendre, c'est une skill.
+
+---
+
+## 2. Copier le gabarit
 
 ```bash
-cp -r templates/skill-template/ skills/shared/development/mon-skill/
+cp -r templates/skill-template skills/development/mon-skill
+cp -r templates/plugin-template plugins/mon-plugin
+cp templates/agent-template.md agents/mon-agent.md
+cp templates/command-template.md commands/ma-commande.md
+cp templates/output-style-template.md output-styles/mon-style.md
+cp -r templates/hook-template hooks/mon-hook
+cp -r templates/instructions-template instructions/mon-jeu
+cp -r templates/mcp-template mcp/mon-serveur
 ```
 
-Renommer le dossier avec un nom en kebab-case représentant clairement le skill.
+Le nom est en kebab-case et décrit ce que l'artefact fait.
 
-### 2. Choisir une catégorie
-
-Placer le skill dans la catégorie la plus adaptée :
-
-| Catégorie       | Exemples de skills                    |
-|-----------------|---------------------------------------|
-| `development/`  | revue de code, génération de code     |
-| `documentation/`| rédaction de README, commentaires     |
-| `refactoring/`  | extraction de méthodes, simplification|
-| `testing/`      | génération de tests, analyse de couverture |
-| `analysis/`     | audit de dépendances, analyse de logs |
-
-Si aucune catégorie n'est adaptée, créer une nouvelle catégorie dans `skills/shared/` et la documenter dans `docs/architecture.md`.
-
-### 3. Renseigner les métadonnées
-
-Remplir le front matter YAML de `SKILL.md` :
-
-```yaml
 ---
-name: mon-skill
-displayName: Mon Skill
-description: Description courte et précise du skill.
-version: 1.0.0
-status: draft
-category: development
-tags:
-  - exemple
-  - tag
-compatibility:
-  - generic
-authors:
-  - Votre Nom
-license: MIT
+
+## 3. Renseigner les métadonnées
+
+Le jeu complet est décrit dans le [README racine](../README.md#métadonnées--un-seul-schéma) et
+validé par [`schemas/artifact.schema.json`](../schemas/artifact.schema.json).
+
+Trois pièges fréquents :
+
+- **`name` doit être égal au nom du dossier ou du fichier.** Le validateur refuse l'écart.
+- **Pour une skill, `category` doit être égal au dossier parent.** Idem.
+- **`description` décide du déclenchement** d'une skill, d'un sous-agent ou d'une commande. Écrire
+  quand l'utiliser, pas seulement ce que ça fait.
+
+Si l'artefact a un `SKILL.md` **et** un `metadata.yaml`, les deux doivent porter exactement les
+mêmes valeurs. C'est redondant, c'est assumé — le `SKILL.md` sert à l'outil, le `metadata.yaml` à
+l'outillage du dépôt — et le validateur refuse une divergence.
+
 ---
+
+## 4. Rédiger
+
+Le `README.md` répond à quatre questions, dans cet ordre : qu'est-ce que c'est, ce que ça change
+concrètement, comment on l'installe, où sont les limites.
+
+Les limites sont obligatoires. Un artefact dont les angles morts ne sont pas écrits est un piège
+pour celui qui l'installera dans six mois — vous compris.
+
+Ajouter au moins un exemple réel dans `examples/` : une entrée, le résultat, et pourquoi c'est le
+bon résultat. Un exemple inventé ne vaut rien ; un exemple issu d'un vrai usage vaut la
+documentation.
+
+---
+
+## 5. Valider
+
+```bash
+pip install pyyaml jsonschema
+python tools/validate.py
+python tools/generate_index.py
 ```
 
-Remplir également `metadata.yaml` avec les mêmes informations.
+Pour un plugin, en plus :
 
-### 4. Rédiger les instructions
-
-Dans `SKILL.md`, rédiger le corps du skill avec les sections appropriées :
-
-- **Objectif** — ce que fait le skill
-- **Cas d'utilisation** — quand l'utiliser
-- **Entrées attendues** — ce que l'utilisateur doit fournir
-- **Instructions** — les étapes détaillées pour l'assistant IA
-- **Contraintes** — les limites et règles à respecter
-- **Processus d'exécution** — l'ordre des opérations
-- **Format de sortie** — la structure de la réponse attendue
-- **Critères de validation** — comment vérifier que le résultat est correct
-- **Exemples** — références vers `examples/`
-- **Limites** — ce que le skill ne peut pas faire
-
-### 5. Ajouter des exemples
-
-Créer au moins un fichier dans `examples/` décrivant un cas d'usage concret :
-
-- Fournir une entrée représentative
-- Montrer la sortie attendue
-- Illustrer les cas limites si pertinent
-
-### 6. Valider la compatibilité
-
-- Tester le skill avec les outils déclarés dans `compatibility`
-- Mettre à jour la matrice dans `docs/compatibility.md`
-- Documenter les éventuelles limitations dans le `README.md` du skill
-
-### 7. Mettre à jour le changelog
-
-Ajouter une entrée dans `CHANGELOG.md` :
-
-```markdown
-## [Non publié]
-
-### Ajouté
-- Nouveau skill : `mon-skill` — description courte
+```bash
+claude plugin validate ./plugins/mon-plugin --strict
+claude plugin validate .
 ```
 
-### 8. Créer une pull request
-
-- Pousser les modifications sur une branche dédiée
-- Créer une pull request en utilisant le modèle disponible
-- Compléter la checklist fournie dans le modèle
-- Demander une revue si nécessaire
+Et l'essayer pour de vrai avant de le déclarer `stable`. Un artefact jamais exercé est un `draft`,
+quelle que soit la qualité de sa documentation.
 
 ---
 
-## Modifier un skill existant
+## 6. Mettre à jour le dépôt
 
-1. Modifier les fichiers concernés
-2. Incrémenter la version dans `SKILL.md` et `metadata.yaml`
-3. Mettre à jour `CHANGELOG.md`
-4. Créer une pull request
+- `CHANGELOG.md` : une entrée sous `[Non publié]`, section `Ajouté`, `Modifié` ou `Retiré`.
+- `docs/surfaces.md` : une ligne dans la matrice, avec seulement les surfaces que vous avez
+  essayées.
+- `.claude-plugin/marketplace.json` : pour un plugin, l'entrée correspondante.
+- `docs/architecture.md` : si vous créez une catégorie de skill.
 
 ---
 
-## Conventions à respecter
+## 7. Ouvrir la pull request
 
-Voir [conventions.md](conventions.md) pour l'ensemble des règles de nommage, de documentation et de sécurité.
+Remplir la checklist du gabarit de PR. La validation tourne automatiquement ; une PR rouge ne se
+relit pas.
+
+---
+
+## Modifier un artefact existant
+
+1. Incrémenter sa `version` selon SemVer : `PATCH` pour une correction sans changement de
+   comportement, `MINOR` pour un ajout rétrocompatible, `MAJOR` pour un changement qui casse un
+   usage existant.
+2. Reporter la version dans `metadata.yaml` **et** dans le front matter du `SKILL.md`.
+3. Documenter dans `CHANGELOG.md`.
+4. Revalider et régénérer l'index.
+
+## Retirer un artefact
+
+Passer son `status` à `deprecated`, dire dans son `README.md` par quoi le remplacer et à partir de
+quand, et attendre au moins une version du dépôt avant de supprimer les fichiers. Pour un plugin,
+prévenir dans le `CHANGELOG.md` : une désinstallation est une action de l'utilisateur, pas la vôtre.

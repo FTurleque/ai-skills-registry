@@ -1,7 +1,8 @@
 ---
+kind: skill
 name: skill-template
 displayName: Nom du Skill
-description: Description courte et précise de ce que fait le skill.
+description: Ce que fait le skill et dans quelles situations l'utiliser.
 version: 1.0.0
 status: draft
 category: development
@@ -9,7 +10,7 @@ tags:
   - tag1
   - tag2
 compatibility:
-  - generic
+  - claude-code
 authors:
   - Fabrice Turleque
 license: MIT
