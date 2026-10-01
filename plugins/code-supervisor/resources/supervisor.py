@@ -138,8 +138,9 @@ def log_dir_for(project_dir: str, cfg) -> str:
         try:
             with open(ignore, "w", encoding="utf-8") as fh:
                 fh.write("*\n")
-        except OSError:
-            pass
+        except OSError as err:
+            sys.stderr.write("supervisor : %s non ecrit (%s) ; les rapports pourraient etre commites\n"
+                             % (ignore, err))
     return d
 
 
