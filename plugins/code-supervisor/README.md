@@ -224,9 +224,10 @@ blocages de Claude Code (8 par defaut).
 
 ## Rapports
 
-Chaque passage ecrit `<projet>/.claude/supervisor/rapport-<horodatage>.md` : constats par
+Chaque passage ecrit `<projet>/docs/rapport-supervisor/rapport-<horodatage>.md` : constats par
 categorie, fichiers relus, verdict. L'etat anti-boucle de la session est dans
-`state-<session>.json`. Ajouter `.claude/supervisor/` au `.gitignore` des projets supervises.
+`state-<session>.json`. Le dossier contient son propre `.gitignore` (`*`) : les rapports ne sont
+jamais commites et le `.gitignore` du projet supervise reste intact.
 
 ---
 

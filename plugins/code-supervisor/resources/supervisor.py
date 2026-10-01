@@ -124,10 +124,22 @@ def run(project_dir: str, cfg, session_id: str, hints, round_no: int):
     }
 
 
+DEFAULT_LOG_SUBDIR = os.path.join("docs", "rapport-supervisor")
+
+
 def log_dir_for(project_dir: str, cfg) -> str:
     d = cfg.get("log_dir") or os.environ.get("SUPERVISOR_LOG_DIR") \
-        or os.path.join(project_dir, ".claude", "supervisor")
+        or os.path.join(project_dir, DEFAULT_LOG_SUBDIR)
     os.makedirs(d, exist_ok=True)
+    # Un rapport n'a pas vocation a etre commite : le dossier s'ignore lui-meme (le `*` couvre
+    # aussi ce .gitignore), sans toucher au .gitignore du projet supervise.
+    ignore = os.path.join(d, ".gitignore")
+    if not os.path.exists(ignore):
+        try:
+            with open(ignore, "w", encoding="utf-8") as fh:
+                fh.write("*\n")
+        except OSError:
+            pass
     return d
 
 

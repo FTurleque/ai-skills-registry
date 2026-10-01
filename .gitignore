@@ -30,6 +30,9 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 
+# Rapports du superviseur de code : jamais commités
+docs/rapport-supervisor/
+
 # Artefacts de build
 dist/
 build/

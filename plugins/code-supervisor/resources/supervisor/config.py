@@ -36,7 +36,7 @@ DEFAULTS = {
         "**/generated/**", "**/generated-sources/**", "**/*.min.js", "**/*.bundle.js",
         "**/vendor/**", "**/third_party/**", "**/.git/**", "**/*.lock",
         "**/*.g.dart", "**/*_pb2.py", "**/*.pb.go", "**/migrations/**",
-        "**/.claude/**", "**/*.lock.json", "**/package-lock.json",
+        "**/.claude/**", "**/docs/rapport-supervisor/**", "**/*.lock.json", "**/package-lock.json",
     ],
     "excluded_dirs": [
         ".git", "target", "build", "out", "bin", "dist", "node_modules", ".venv",
@@ -59,7 +59,7 @@ DEFAULTS = {
     # Commandes de l'outillage du projet. Vides par defaut : rien n'est lance sans
     # declaration explicite, pour ne jamais declencher de build ou de CI par surprise.
     "external_tools": [],
-    "log_dir": "",          # vide = <projet>/.claude/supervisor
+    "log_dir": "",          # vide = <projet>/docs/rapport-supervisor
     "quiet_paths": [],      # chemins ou le superviseur ne dit rien
 }
 

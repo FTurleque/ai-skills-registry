@@ -76,7 +76,7 @@ SUPERVISEUR DE CODE — correction requise avant de rendre la main.
 4. N'ajoute ni suppression d'avertissement (NOSONAR, @SuppressWarnings, # noqa) ni
    desactivation de test pour faire taire un controle.
 
-Rapport complet : <projet>/.claude/supervisor/rapport-20261001-224500.md
+Rapport complet : <projet>/docs/rapport-supervisor/rapport-20261001-224500.md
 ```
 
 L'agent corrige, puis rend la main. Le superviseur repasse : si les deux `CRITICAL` ont disparu,

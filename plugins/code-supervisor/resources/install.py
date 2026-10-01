@@ -186,7 +186,7 @@ Pour l'utiliser a la main :
   @code-supervisor                                 depuis une session Claude Code
 
 Reglages : %s
-Rapports : <projet>/.claude/supervisor/
+Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)
 """ % (py, script.replace("\\", "/"), py, script.replace("\\", "/"),
        os.path.join(dest, "supervisor.config.json")))
     return 0
