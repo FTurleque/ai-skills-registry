@@ -40,14 +40,14 @@ def copy_tree(dest: str) -> None:
     hooks_dest = os.path.join(dest, "hooks")
     pkg_dest = os.path.join(hooks_dest, "supervisor")
     os.makedirs(pkg_dest, exist_ok=True)
-    shutil.copy2(os.path.join(HERE, "hooks", "supervisor.py"), hooks_dest)
-    src_pkg = os.path.join(HERE, "hooks", "supervisor")
+    shutil.copy2(os.path.join(HERE, "supervisor.py"), hooks_dest)
+    src_pkg = os.path.join(HERE, "supervisor")
     for name in sorted(os.listdir(src_pkg)):
         if name.endswith(".py"):
             shutil.copy2(os.path.join(src_pkg, name), pkg_dest)
     agents_dest = os.path.join(dest, "agents")
     os.makedirs(agents_dest, exist_ok=True)
-    shutil.copy2(os.path.join(HERE, "agents", "code-supervisor.md"), agents_dest)
+    shutil.copy2(os.path.join(HERE, "..", "agents", "code-supervisor.md"), agents_dest)
     fixtures_dest = os.path.join(dest, "hooks", "fixtures")
     os.makedirs(fixtures_dest, exist_ok=True)
     for name in sorted(os.listdir(os.path.join(HERE, "fixtures"))):
@@ -170,7 +170,7 @@ def main(argv) -> int:
     try:
         proc = subprocess.run([sys.executable, script, "--self-test"],
                               stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=180)
-        out = proc.stdout.decode("utf-8", "replace")
+        out = proc.stdout.decode("utf-8", "replace").encode("ascii", "replace").decode("ascii")
         print("\n".join("  " + l for l in out.strip().splitlines()[-4:]))
         if proc.returncode != 0:
             print("  ECHEC de l'auto-test : le superviseur est installe mais a verifier.")
