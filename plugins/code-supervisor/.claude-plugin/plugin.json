@@ -1,0 +1,23 @@
+{
+  "name": "code-supervisor",
+  "version": "1.0.0",
+  "displayName": "Code Supervisor",
+  "description": "Relit automatiquement le code qu'un agent vient d'ecrire et le renvoie corriger si un probleme bloquant est detecte : securite, bug introduit, duplication, complexite, nommage, conventions du projet.",
+  "author": {
+    "name": "Fabrice Turleque",
+    "url": "https://github.com/FTurleque"
+  },
+  "homepage": "https://github.com/FTurleque/ai-toolkit-registry/tree/main/plugins/code-supervisor",
+  "repository": "https://github.com/FTurleque/ai-toolkit-registry",
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "quality",
+    "security",
+    "duplication",
+    "complexity",
+    "naming",
+    "hook",
+    "supervision"
+  ]
+}

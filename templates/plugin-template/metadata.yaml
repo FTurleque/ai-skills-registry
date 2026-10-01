@@ -1,0 +1,15 @@
+kind: plugin
+name: plugin-template
+displayName: Nom du Plugin
+description: Ce que le plugin branche sur Claude Code et ce que ça change.
+version: 1.0.0
+status: draft
+category: development
+tags:
+  - tag1
+  - tag2
+compatibility:
+  - claude-code
+authors:
+  - Fabrice Turleque
+license: MIT

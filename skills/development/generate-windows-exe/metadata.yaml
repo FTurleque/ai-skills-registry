@@ -1,0 +1,27 @@
+kind: skill
+name: generate-windows-exe
+displayName: Generate Windows Executable
+description: Empaquette une application en executable Windows (.exe) via Inno Setup ou jpackage, avec un driver reproductible.
+version: 1.1.0
+status: stable
+category: development
+tags:
+  - packaging
+  - windows
+  - exe
+  - inno-setup
+  - jpackage
+  - release
+  - node
+  - java
+compatibility:
+  - claude-code
+  - claude-desktop
+requires:
+  - PowerShell 5.1+
+  - Inno Setup 6 ou JDK 17+ (jpackage)
+authors:
+  - Fabrice Turleque
+license: MIT
+replaces:
+  - skills/shared/development/generate-windows-exe

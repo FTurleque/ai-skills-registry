@@ -1,0 +1,15 @@
+{
+  "name": "ai-toolkit-registry",
+  "description": "Plugins Claude Code du registre AI Toolkit Registry.",
+  "owner": {
+    "name": "Fabrice Turleque",
+    "url": "https://github.com/FTurleque/ai-toolkit-registry"
+  },
+  "plugins": [
+    {
+      "name": "code-supervisor",
+      "description": "Supervision automatique du code produit par un agent : securite, bugs introduits, duplication, complexite, nommage, conventions. Renvoie l'agent corriger sur un probleme bloquant.",
+      "source": "./plugins/code-supervisor"
+    }
+  ]
+}

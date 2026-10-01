@@ -1,0 +1,17 @@
+{
+  "_doc": "Extrait a fusionner dans ~/.claude/settings.json ou <projet>/.claude/settings.json. Conserver les handlers deja presents sur le meme evenement : la liste peut en contenir plusieurs.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "args": ["python", "~/.claude/hooks/hook-template/hook.py"],
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

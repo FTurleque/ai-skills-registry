@@ -1,0 +1,12 @@
+{
+  "_doc": "Extrait a fusionner dans <projet>/.mcp.json. Aucun secret en valeur litterale : utiliser une variable d'environnement.",
+  "mcpServers": {
+    "mon-serveur": {
+      "command": "npx",
+      "args": ["-y", "@exemple/mon-serveur"],
+      "env": {
+        "MON_SERVEUR_TOKEN": "${MON_SERVEUR_TOKEN}"
+      }
+    }
+  }
+}

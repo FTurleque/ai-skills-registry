@@ -1,0 +1,48 @@
+{
+  "_doc": "Configuration du superviseur de code. Copie ce fichier dans ~/.claude/ pour le global, ou dans <projet>/.claude/ pour surcharger projet par projet. Toute cle absente reprend la valeur par defaut.",
+
+  "enabled": true,
+  "block_on_severity": ["CRITICAL"],
+  "never_block_categories": [],
+  "max_block_rounds": 3,
+  "max_files": 60,
+  "max_findings_in_report": 40,
+  "time_budget_seconds": 45,
+
+  "thresholds": {
+    "complexity_warn": 10,
+    "complexity_critical": 15,
+    "function_lines_warn": 50,
+    "function_lines_critical": 80,
+    "nesting": 4,
+    "params": 5,
+    "boolean_operators": 4,
+    "line_length": 140,
+    "file_lines": 800,
+    "duplication_lines": 6,
+    "duplication_max_reports": 8,
+    "duplication_corpus_files": 400
+  },
+
+  "llm": {
+    "enabled": true,
+    "cli": "claude",
+    "model": "sonnet",
+    "timeout_seconds": 180,
+    "max_diff_chars": 60000,
+    "max_static_findings_in_prompt": 25,
+    "convention_files": ["CLAUDE.md", "CONTRIBUTING.md", "AGENTS.md", ".editorconfig"]
+  },
+
+  "_external_tools_doc": "Outillage du projet. Vide par defaut : rien n'est execute sans declaration explicite, pour ne jamais declencher un build ou une CI par surprise. {files} est remplace par la liste des fichiers modifies.",
+  "external_tools": [],
+
+  "_external_tools_exemples": [
+    { "name": "ruff", "command": "ruff check {files}", "extensions": [".py"], "severity": "MAJOR", "category": "convention", "timeout_seconds": 60 },
+    { "name": "eslint", "command": "npx eslint {files}", "extensions": [".js", ".ts", ".tsx"], "severity": "MAJOR", "category": "convention", "timeout_seconds": 120 },
+    { "name": "checkstyle", "command": "mvn -q -o checkstyle:check -DcheckstyleFiles={files}", "extensions": [".java"], "severity": "MAJOR", "category": "convention", "timeout_seconds": 300 }
+  ],
+
+  "quiet_paths": [],
+  "log_dir": ""
+}

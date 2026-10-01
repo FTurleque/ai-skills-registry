@@ -1,85 +1,149 @@
 # Conventions du dépôt
 
-Ce document définit les règles et conventions à respecter pour maintenir la cohérence du dépôt **AI Skills Registry**.
+Règles à respecter pour maintenir la cohérence de **AI Toolkit Registry**. Celles qui sont
+vérifiables automatiquement le sont par `python tools/validate.py` ; la colonne le précise.
 
 ---
 
 ## Langue
 
-- Les **noms de dossiers et de fichiers** sont en **anglais**
-- La **documentation principale** (README, SKILL.md, exemples) est rédigée en **français**
-- Les **métadonnées** (champs YAML/JSON) sont en **anglais**
+| Règle | Vérifié |
+|-------|---------|
+| Noms de dossiers et de fichiers en **anglais** | non |
+| Documentation (README, SKILL.md, exemples) en **français** | non |
+| Champs de métadonnées en **anglais**, valeurs en anglais sauf `description` et `displayName` | non |
 
 ---
 
-## Nommage des fichiers et dossiers
+## Nommage
 
-- Les noms de skills utilisent le format **kebab-case** : `java-code-review`, `generate-unit-tests`
-- Les noms de dossiers de catégorie sont en minuscules : `development`, `testing`, `analysis`
-- Les fichiers standards d'un skill sont toujours nommés de la même façon : `SKILL.md`, `metadata.yaml`, `README.md`
-- Les fichiers de configuration racine gardent leur nom conventionnel : `.gitignore`, `.editorconfig`, `LICENSE`
+| Règle | Vérifié |
+|-------|---------|
+| Nom d'artefact en **kebab-case** : `java-code-review` | oui |
+| Le champ `name` est égal au nom du dossier, ou du fichier sans extension | oui |
+| Le champ `category` d'une skill est égal au nom de son dossier parent | oui |
+| Le champ `kind` correspond au dossier de premier niveau | oui |
+| Deux artefacts n'ont jamais le même nom, même de types différents | oui |
+| Les fichiers standards gardent leur nom exact : `SKILL.md`, `metadata.yaml`, `README.md`, `plugin.json`, `hooks.json` | oui |
+
+Un nom d'artefact décrit ce qu'il fait, à la façon d'un nom de méthode : `generate-windows-exe` et
+non `windows-helper`, `java-code-review` et non `review-tool`.
 
 ---
 
 ## Identifiants stables
 
-- L'identifiant d'un skill correspond au nom de son dossier (ex. `java-code-review`)
-- Ne pas renommer un skill déjà publié ou référencé sans mise à jour du changelog et des références
-- Les champs `name` dans les métadonnées doivent correspondre exactement au nom du dossier
+Un artefact publié ne se renomme pas sans raison. Quand c'est nécessaire :
+
+1. Renommer le dossier ou le fichier **et** le champ `name`.
+2. Lister l'ancien identifiant ou l'ancien chemin dans le champ `replaces`.
+3. Documenter le changement dans `CHANGELOG.md`.
+4. Incrémenter la version **majeure** si le renommage casse une installation existante — c'est le
+   cas d'un plugin, dont le nom est le suffixe d'installation.
 
 ---
 
-## Documentation lisible
+## Documentation
 
-- Chaque skill doit avoir un `README.md` compréhensible sans lire `SKILL.md`
-- Les instructions dans `SKILL.md` doivent être claires, complètes et testables
-- Les exemples dans `examples/` doivent illustrer un cas d'usage réel ou représentatif
+| Règle | Vérifié |
+|-------|---------|
+| Chaque artefact a un `README.md` compréhensible sans lire le reste | oui (présence) |
+| Chaque artefact en dossier a au moins un exemple dans `examples/` | non |
+| Le `README.md` dit **comment installer** l'artefact, pas seulement ce qu'il fait | non |
+| Les instructions sont explicites et vérifiables : entrées, sorties, critères de validation | non |
 
----
-
-## Instructions explicites et testables
-
-- Les instructions d'un skill doivent décrire le comportement attendu de manière précise
-- Les entrées et sorties doivent être documentées
-- Chaque critère de validation doit être vérifiable (éviter les formulations vagues)
-
----
-
-## Absence de chemins locaux
-
-- Ne jamais inclure de chemins absolus locaux dans les instructions (`/home/user/...`, `C:\Users\...`)
-- Utiliser des chemins relatifs ou des variables conventionnelles (`<project-root>`, `src/`)
+Le `README.md` d'un artefact répond à quatre questions, dans cet ordre : qu'est-ce que c'est, ce que
+ça change concrètement, comment on l'installe, où sont ses limites. Les limites ne sont pas
+facultatives : un artefact dont on ne connaît pas les angles morts est un piège.
 
 ---
 
-## Absence de secrets
+## Métadonnées
 
-- Ne jamais inclure de tokens, clés API, mots de passe ou données personnelles dans les fichiers
-- Ne pas commettre de fichiers `.env` ou de configuration contenant des credentials
-- Vérifier avant chaque commit qu'aucun secret n'est présent
+| Règle | Vérifié |
+|-------|---------|
+| `version` respecte SemVer | oui |
+| `status` vaut `draft`, `experimental`, `stable` ou `deprecated` | oui |
+| `compatibility` ne contient que des surfaces connues | oui |
+| Les tableaux ne contiennent pas de doublon | oui |
+| Un `SKILL.md` et son `metadata.yaml` portent exactement les mêmes valeurs | oui |
+| Aucun champ inconnu : le schéma est fermé | oui |
+
+Le statut est une promesse faite au lecteur. `stable` veut dire que l'artefact a été utilisé pour de
+vrai et que ses limites sont documentées ; `experimental` qu'il fonctionne mais que son
+comportement peut changer ; `draft` qu'il n'est pas prêt à être utilisé.
+
+---
+
+## Aucun chemin absolu local
+
+| Règle | Vérifié |
+|-------|---------|
+| Pas de `C:\Users\...`, `/home/<nom>/`, `/Users/<nom>/`, ni de chemin de poste de travail | oui |
+
+Utiliser des chemins relatifs, ou les variables conventionnelles : `<project-root>`, `~/.claude/`,
+`${CLAUDE_PLUGIN_ROOT}`, `${CLAUDE_PROJECT_DIR}`. Un chemin absolu dans un artefact est une erreur de
+validation, pas un avertissement : il rend l'artefact inutilisable pour quelqu'un d'autre.
+
+---
+
+## Aucun secret
+
+| Règle | Vérifié |
+|-------|---------|
+| Pas de jeton, clé d'API, mot de passe, clé privée ni donnée personnelle | oui (motifs connus) |
+| Pas de `.env` ni de fichier de configuration contenant des identifiants | oui (`.gitignore`) |
+| Les configurations MCP lisent leurs secrets depuis l'environnement | non |
+
+La détection couvre les formats reconnaissables : clés AWS, jetons GitHub et Slack, JWT, clés
+privées. Elle ne remplace pas une relecture : un mot de passe quelconque dans une chaîne de
+connexion passe les motifs.
 
 ---
 
 ## Compatibilité multiplateforme
 
-- Utiliser des fins de ligne LF (configurées dans `.gitattributes` et `.editorconfig`)
-- Éviter les caractères spéciaux dans les noms de fichiers
-- Les chemins référencés dans les exemples doivent être valides sur Linux, macOS et Windows
+| Règle | Vérifié |
+|-------|---------|
+| Fins de ligne LF | oui (avertissement) |
+| Pas de caractère spécial dans les noms de fichiers | non |
+| Les chemins des exemples sont valides sous Linux, macOS et Windows | non |
+| Un script livré précise son interpréteur et ses prérequis dans `requires` | non |
+
+Un artefact qui ne fonctionne que sur une plateforme le dit dans son `README.md` et dans
+`requires` — ce n'est pas un défaut, c'est une information.
 
 ---
 
 ## Versionnement
 
-- Chaque skill a sa propre version dans `metadata.yaml` (format `MAJOR.MINOR.PATCH`)
-- Le dépôt global est versionné dans `CHANGELOG.md`
-- Toute modification significative doit être documentée dans `CHANGELOG.md`
-- Utiliser [Semantic Versioning](https://semver.org/lang/fr/) pour les skills et le dépôt
+| Règle | Vérifié |
+|-------|---------|
+| Chaque artefact porte sa version dans ses métadonnées | oui |
+| Le dépôt est versionné dans `CHANGELOG.md`, au format Keep a Changelog | non |
+| Toute modification d'un artefact publié incrémente sa version | non |
+
+Correction sans changement de comportement : `PATCH`. Ajout rétrocompatible : `MINOR`. Changement
+qui casse un usage existant, renommage inclus : `MAJOR`.
 
 ---
 
-## Format des métadonnées
+## Index et catalogue
 
-- Le champ `name` doit être en kebab-case
-- Le champ `version` doit respecter SemVer (`1.0.0`, `0.2.1`)
-- Le champ `status` doit être l'une des valeurs : `draft`, `experimental`, `stable`, `deprecated`
-- Les tableaux (`tags`, `compatibility`, `authors`) ne doivent pas contenir de doublons
+| Règle | Vérifié |
+|-------|---------|
+| `INDEX.md` est à jour | oui |
+| `INDEX.md` n'est jamais édité à la main | non |
+| Chaque artefact figure dans la matrice de `docs/surfaces.md` | oui (avertissement) |
+
+---
+
+## Ce que le dépôt ne contient pas
+
+- Aucun artefact qui neutralise un contrôle de qualité ou de sécurité pour faire taire un
+  avertissement.
+- Aucun style de sortie ni jeu d'instructions qui demande à Claude de valider sans réserve, de
+  taire un désaccord ou de cesser de vérifier. Un artefact décrit **comment** travailler, jamais
+  **quoi** conclure.
+- Aucun code dont l'effet n'est pas documenté dans son `README.md`. Pour un hook, qui s'exécute
+  sans être appelé, c'est une condition d'entrée.

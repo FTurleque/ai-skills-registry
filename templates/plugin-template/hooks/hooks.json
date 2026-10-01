@@ -1,0 +1,17 @@
+{
+  "_doc": "Supprimer ce fichier si le plugin ne pose aucun hook. Les evenements disponibles sont listes dans hooks/README.md du registre. La forme exec (args) evite les problemes de guillemets sous Windows.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "args": ["python", "${CLAUDE_PLUGIN_ROOT}/resources/mon-script.py"],
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
