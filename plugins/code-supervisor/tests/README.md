@@ -20,17 +20,25 @@ Aucune dépendance en dehors de Python et de `git`. La CI les rejoue sur Linux.
 | Suite | Ce qu'elle exerce | Référence |
 |---|---|---|
 | `hook` | le hook de bout en bout : charge utile sur stdin, sortie sur stdout, dans des dépôts git jetables | `golden/hook_scenarios.json` |
-| `rules` | `check_lines`, `check_blocks` et `check_file` sur `corpus/` | `golden/rules.json` |
+| `rules` | toutes les règles de détection sur `corpus/` : par ligne, par bloc, par fichier, sécurité, nommage, imports, complexité et bugs par fonction, extraction des fonctions, duplication | `golden/rules.json` |
 
 **`hook`** (24 entrées) : tours de blocage puis libération de l'empreinte anti-boucle, autre session,
 événement `SubagentStop`, `stop_hook_active`, `SUPERVISOR_ACTIVE`, agent superviseur, entrée invalide,
 transcript avec lignes corrompues, état corrompu, dossier de journal imposé, chemin accentué, `--check`
 avec ou sans chemin, `--self-test`, et l'état anti-boucle persisté. La revue par modèle est coupée.
 
-**`rules`** (80 entrées) : chaque fichier du corpus est analysé avec deux jeux de seuils (défauts et seuils
-bas) et deux sélections de lignes modifiées (toutes, une sur trois). Le test échoue aussi si le corpus ne
-déclenche plus l'une des 25 règles attendues (`EXPECTED_RULES`) : sans cela, une règle qui cesse de se
-déclencher passerait inaperçue.
+**`rules`** (182 entrées), deux familles :
+
+- `<config>|<sélection>|<fichier>` : `check_lines`, `check_blocks` et `check_file`, avec deux jeux de seuils
+  (défauts et seuils bas) et deux sélections de lignes modifiées (toutes, une sur trois) ;
+- `extra|<config>|<fichier>` et `duplication|<config>` : sécurité, nommage, imports inutilisés, extraction
+  des fonctions (nom, bornes, paramètres, propriétaire, type de retour), complexité et bugs par fonction, et
+  duplication, avec les défauts et des seuils de fonction très bas.
+
+Le test échoue aussi si le corpus ne déclenche pas **toutes les règles que le moteur déclare** (71 aujourd'hui,
+lues dans les modules de règles) : une règle ajoutée sans cas de corpus fait échouer le test, sauf si elle
+figure dans `UNCOVERED_RULES` avec sa raison. Sans cela, une règle qui cesse de se déclencher passerait
+inaperçue.
 
 ## Le corpus
 
@@ -39,6 +47,11 @@ déclencher passerait inaperçue.
 justification), JavaScript, TypeScript, Python (dont des noms de fichiers et de chemins qui changent le
 comportement de certaines règles : `tests/`, `scripts/`, `__main__.py`), des espaces en fin de ligne, plus de
 cinq nombres magiques dans un même fichier, des marqueurs de suppression cités dans des chaînes.
+
+**Secrets.** Les règles de secrets (clé AWS, clé privée, jeton JWT, jeton Slack ou GitHub) reconnaissent des
+formats que le validateur du dépôt et la protection des secrets de GitHub refusent en clair. Leurs valeurs
+sont donc **assemblées à l'exécution** à partir de fragments (`rules_corpus.generated_files`), écrites dans
+un dossier temporaire, et la référence ne conserve qu'une empreinte de l'extrait de ces fichiers.
 
 Le corpus est autonome : pas de fichier de la bibliothèque standard, pas de `node_modules`. Il est
 silencieux pour le superviseur lui-même (`quiet_paths` dans `.claude/supervisor.config.json`), sans quoi
@@ -65,7 +78,10 @@ commentaire de `catch` passait inaperçue tant qu'aucun commentaire ne faisait 2
 
 ## Limites
 
-- Les références figent le comportement actuel, y compris ses défauts éventuels.
-- Seules `check_lines`, `check_blocks` et `check_file` sont couvertes règle par règle ; les règles de
-  sécurité, de nommage, de duplication et de complexité par fonction ne le sont pas encore.
+- Les références figent le comportement actuel, **y compris ses défauts**. Exemple relevé en les écrivant :
+  `BUG.DIV_ZERO` ne signale jamais `/ size()`, parce que son expression se termine par `size\(\)\b` et qu'une
+  borne de mot ne peut pas suivre une parenthèse fermante. Le corpus contient `divisionBySize` pour que la
+  correction de ce défaut se voie dans le diff de la référence.
+- La couverture porte sur le déclenchement des règles et la stabilité de leur sortie, pas sur leur
+  justesse : un faux positif figé dans la référence n'est pas détecté.
 - La revue par modèle (`llm.py`) n'est pas exercée : elle suppose le CLI `claude` authentifié.

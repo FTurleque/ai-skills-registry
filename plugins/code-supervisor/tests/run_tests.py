@@ -6,7 +6,7 @@
   python tests/run_tests.py --only rules     une seule suite : `hook` ou `rules`
   python tests/run_tests.py --script ~/.claude/hooks/supervisor.py    teste un moteur installe
 
-Deux suites : les scenarios de bout en bout du hook, et les regles par ligne, par bloc et par fichier
+Deux suites : les scenarios de bout en bout du hook, et toutes les regles de detection
 sur un corpus statique. Elles servent de filet de securite aux refactorisations : une sortie qui
 change sans qu'on l'ait voulu fait echouer le test."""
 from __future__ import annotations
@@ -81,8 +81,9 @@ def _suite_hook(script: str) -> dict:
 
 
 def _suite_rules(script: str) -> dict:
-    result = rules_corpus.run(os.path.join(os.path.dirname(os.path.abspath(script)), "supervisor"), CORPUS_DIR)
-    missing = rules_corpus.check_coverage(result)
+    engine_dir = os.path.join(os.path.dirname(os.path.abspath(script)), "supervisor")
+    result = rules_corpus.run(engine_dir, CORPUS_DIR)
+    missing = rules_corpus.check_coverage(result, engine_dir)
     if missing:
         raise SystemExit("ECHEC : le corpus ne declenche plus ces regles : %s" % ", ".join(missing))
     return result
