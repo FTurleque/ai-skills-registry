@@ -9,6 +9,25 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — `rules_naming.check_identifiers` découpée (ticket #11)
+
+La fonction faisait 105 lignes pour une complexité de 49. Elle devient une dizaine de fonctions courtes :
+`_check_variables` (une ligne, ses noms déclarés, `_check_variable`), `_check_function_name`,
+`_check_function_contract` (booléen, getter), `_check_function_case` et `_check_parameters`, autour d'un
+`_Collector` qui garde la déduplication par (règle, nom, symbole). **Aucun changement de comportement** :
+l'ordre des constats est conservé, et un bloc conditionnel sans effet (le « setter fluide », qui se terminait
+par `pass`) est supprimé.
+
+Vérifié avec la référence des tests **produite par l'ancien moteur** : 226 entrées identiques, plus l'analyse
+complète du corpus et des fixtures (371 et 38 constats) champ par champ. Huit mutations ciblant la découpe sur
+dix sont détectées ; les deux autres sont équivalentes (l'arrêt après la première abréviation est masqué par
+la déduplication ; la validité d'identifiant d'un paramètre ne change rien sauf pour un nom avec tiret).
+
+Pour y arriver, la première série de mutations n'en détectait que deux sur dix : le corpus a été renforcé
+(abréviation et nom numéroté sur une même variable, noms de fonction composés, getters de longueur 4, 5 et
+6, compteur de boucle jamais vu ailleurs, noms de paquet `util` et `data`) et un groupe `partial` ajouté à
+la suite des règles (sélection d'une ligne sur trois). Un moteur déjà installé doit être réinstallé.
+
 ### Corrigé — `BUG.DIV_ZERO` ne signalait jamais `/ size()`
 
 La règle cherchait `size\(\)\b` : or une borne de mot ne peut pas suivre une parenthèse fermante, donc

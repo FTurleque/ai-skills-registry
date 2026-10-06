@@ -47,6 +47,41 @@ public class Naming {
     public void Calculer_total() {
     }
 
+    public void loops() {
+        for (int zz = 0; zz < 3; zz++) {
+            cnt += zz;
+        }
+        int amt1 = 1;
+        int usrAddr2 = 2;
+    }
+
+    public void handleRequest() {
+    }
+
+    public void processOrder() {
+    }
+
+    public String getShort() {
+        String current = tmp;
+        saveAll(current);
+        return current;
+    }
+
+    public String getEdge() {
+        String current = tmp;
+        saveAll(current);
+        cnt = cnt + 1;
+        return current;
+    }
+
+    public String getBorder() {
+        String current = tmp;
+        saveAll(current);
+        cnt = cnt + 1;
+        usr = usr + 1;
+        return current;
+    }
+
     public void doit() {
     }
 

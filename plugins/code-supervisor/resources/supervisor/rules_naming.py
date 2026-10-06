@@ -80,109 +80,164 @@ def _too_short(name: str) -> bool:
     return len(name.strip("_")) <= 2
 
 
-def check_identifiers(sf: SourceFile, functions: List[Function]) -> List[Finding]:
-    findings: List[Finding] = []
-    seen = set()
+_NOT_NAMES = ("return", "new", "if", "else", "this", "self")
+_GENERIC_VERBS = ("do", "handle", "manage", "process", "traiter", "gerer", "faire")
+_LOOP_START = re.compile(r"^\s*(?:for|while)\b")
+_ENDS_WITH_DIGIT = re.compile(r"[a-zA-Z]\d$")
+_CAMEL_CASE = re.compile(r"^[a-z$_][\w$]*$")
+_PASCAL_CASE = re.compile(r"^[A-Z][\w$]*$")
+_SNAKE_CASE = re.compile(r"^_{0,2}[a-z][a-z0-9_]*_{0,2}$")
+_IDENTIFIER = re.compile(r"^[A-Za-z_$][\w$]*$")
+_SKIPPED_LINE_PREFIXES = ("import", "package", "from ", "@")
 
-    def add(rule, sev, name, line, msg, fix, symbol=None):
+
+class _Collector:
+    """Constats de nommage d'un fichier, sans doublon : une meme regle ne se repete pas pour un meme nom et un
+    meme symbole, qu'il soit rencontre comme variable ou comme fonction."""
+
+    def __init__(self, sf: SourceFile):
+        self.sf = sf
+        self.findings: List[Finding] = []
+        self._seen = set()
+
+    def add(self, rule, sev, name, line, msg, fix, symbol=None):
         key = (rule, name, symbol)
-        if key in seen:
+        if key in self._seen:
             return
-        seen.add(key)
-        findings.append(Finding(
+        self._seen.add(key)
+        self.findings.append(Finding(
             rule=rule, category=CAT_NAMING, severity=sev, message=msg, fix=fix,
-            file=sf.path, line=line, symbol=symbol or name, evidence=sf.snippet(line),
+            file=self.sf.path, line=line, symbol=symbol or name, evidence=self.sf.snippet(line),
         ))
 
-    # ------------------------------------------------- variables locales et champs
+
+# ----------------------------------------------------------------------- variables locales et champs
+
+def _declared_names(sf: SourceFile, clean: str) -> List[str]:
+    if is_python(sf.path):
+        match = _PY_ASSIGN.match(clean)
+        return [match.group(1)] if match else []
+    return list(_IDENT_DECL_C.findall(clean))
+
+
+def _check_abbreviation(out: _Collector, name: str, idx: int) -> None:
+    for word in _split_words(name):
+        if word in ABBREVIATIONS and word not in ABBREV_OK:
+            out.add("NAM.ABBREVIATION", MINOR, name, idx,
+                    "Le nom `%s` utilise l'abreviation `%s`." % (name, word),
+                    "Ecrire le mot en entier (`%s`) pour rester coherent et lisible." % ABBREVIATIONS[word])
+            return
+
+
+def _check_numbered(out: _Collector, name: str, idx: int) -> None:
+    if _ENDS_WITH_DIGIT.search(name) and name.lower() not in ABBREV_OK:
+        out.add("NAM.NUMBERED", MINOR, name, idx,
+                "Le nom `%s` se termine par un chiffre : il distingue mal deux concepts." % name,
+                "Nommer chaque variable d'apres son role (`montantHT` / `montantTTC` plutot que `montant1` / `montant2`).")
+
+
+def _check_variable(out: _Collector, name: str, idx: int, in_loop: bool) -> None:
+    if name in _NOT_NAMES:
+        return
+    if _is_vague(name):
+        out.add("NAM.VAGUE_VARIABLE", MAJOR, name, idx,
+                "La variable `%s` ne dit pas ce qu'elle contient." % name,
+                "La renommer d'apres la donnee qu'elle porte (ce qu'elle est, pas son type) : par exemple `clientsActifs` au lieu de `liste`.")
+    elif _too_short(name) and not in_loop:
+        out.add("NAM.TOO_SHORT", MINOR, name, idx,
+                "Le nom `%s` est trop court pour etre compris hors contexte." % name,
+                "Donner un nom complet ; les noms d'une lettre ne se justifient que pour un compteur de boucle.")
+    else:
+        _check_abbreviation(out, name, idx)
+        _check_numbered(out, name, idx)
+
+
+def _check_variables(sf: SourceFile, out: _Collector) -> None:
     for idx, clean in enumerate(sf.clean_lines, start=1):
         if not sf.is_changed(idx):
             continue
         stripped = clean.strip()
-        if not stripped or stripped.startswith(("import", "package", "from ", "@")):
+        if not stripped or stripped.startswith(_SKIPPED_LINE_PREFIXES):
             continue
-        names = []
-        if is_python(sf.path):
-            m = _PY_ASSIGN.match(clean)
-            if m:
-                names.append(m.group(1))
-        else:
-            names.extend(_IDENT_DECL_C.findall(clean))
-        in_loop = bool(re.match(r"^\s*(?:for|while)\b", stripped))
-        for name in names:
-            if name in ("return", "new", "if", "else", "this", "self"):
-                continue
-            if _is_vague(name):
-                add("NAM.VAGUE_VARIABLE", MAJOR, name, idx,
-                    "La variable `%s` ne dit pas ce qu'elle contient." % name,
-                    "La renommer d'apres la donnee qu'elle porte (ce qu'elle est, pas son type) : par exemple `clientsActifs` au lieu de `liste`.")
-            elif _too_short(name) and not in_loop:
-                add("NAM.TOO_SHORT", MINOR, name, idx,
-                    "Le nom `%s` est trop court pour etre compris hors contexte." % name,
-                    "Donner un nom complet ; les noms d'une lettre ne se justifient que pour un compteur de boucle.")
-            else:
-                words = _split_words(name)
-                for w in words:
-                    if w in ABBREVIATIONS and w not in ABBREV_OK:
-                        add("NAM.ABBREVIATION", MINOR, name, idx,
-                            "Le nom `%s` utilise l'abreviation `%s`." % (name, w),
-                            "Ecrire le mot en entier (`%s`) pour rester coherent et lisible." % ABBREVIATIONS[w])
-                        break
-                if re.search(r"[a-zA-Z]\d$", name) and name.lower() not in ABBREV_OK:
-                    add("NAM.NUMBERED", MINOR, name, idx,
-                        "Le nom `%s` se termine par un chiffre : il distingue mal deux concepts." % name,
-                        "Nommer chaque variable d'apres son role (`montantHT` / `montantTTC` plutot que `montant1` / `montant2`).")
+        in_loop = bool(_LOOP_START.match(stripped))
+        for name in _declared_names(sf, clean):
+            _check_variable(out, name, idx, in_loop)
 
-    # ------------------------------------------------- fonctions
-    for fn in functions:
-        if not sf.range_changed(fn.start, fn.end):
-            continue
-        name = fn.name
-        body = "\n".join(fn.body)
-        if _is_vague(name):
-            add("NAM.VAGUE_METHOD", MAJOR, name, fn.start,
+
+# ----------------------------------------------------------------------- fonctions
+
+def _check_function_name(out: _Collector, fn: Function) -> None:
+    name = fn.name
+    if _is_vague(name):
+        out.add("NAM.VAGUE_METHOD", MAJOR, name, fn.start,
                 "La methode `%s` a un nom qui ne decrit pas son effet." % fn.qualified,
                 "La renommer avec un verbe precis sur un objet precis (`calculerSoldeDisponible`, `envoyerRelanceClient`).", fn.qualified)
-        words = _split_words(name)
-        if words and words[0] in ("do", "handle", "manage", "process", "traiter", "gerer", "faire") and len(words) == 1:
-            add("NAM.VAGUE_VERB", MAJOR, name, fn.start,
+    words = _split_words(name)
+    if words and words[0] in _GENERIC_VERBS and len(words) == 1:
+        out.add("NAM.VAGUE_VERB", MAJOR, name, fn.start,
                 "La methode `%s` utilise un verbe passe-partout." % fn.qualified,
                 "Nommer l'action reellement effectuee ; si aucun verbe precis ne convient, la methode fait probablement plusieurs choses et doit etre decoupee.", fn.qualified)
 
-        return_type = fn.returns.replace("final", "").strip()
-        is_bool = return_type in BOOL_TYPES or fn.returns.strip().endswith("bool")
-        # Un adjectif ou un participe (reusable, windows, startsWith) se lit deja comme une
-        # assertion. Ce qui pose probleme, c'est un verbe d'action qui renvoie un booleen.
-        if is_bool and _split_words(name) and _split_words(name)[0] in ACTION_VERBS:
-            add("NAM.BOOL_PREFIX", MINOR, name, fn.start,
+
+def _check_function_contract(out: _Collector, fn: Function) -> None:
+    """Ce que le nom promet (bool, getter) face a ce que la methode retourne et fait."""
+    name = fn.name
+    return_type = fn.returns.replace("final", "").strip()
+    is_bool = return_type in BOOL_TYPES or fn.returns.strip().endswith("bool")
+    # Un adjectif ou un participe (reusable, windows, startsWith) se lit deja comme une
+    # assertion. Ce qui pose probleme, c'est un verbe d'action qui renvoie un booleen.
+    if is_bool and _split_words(name) and _split_words(name)[0] in ACTION_VERBS:
+        out.add("NAM.BOOL_PREFIX", MINOR, name, fn.start,
                 "La methode `%s` est nommee comme une action mais retourne un booleen." % fn.qualified,
                 "Renommer en question (is/has/can/should/contains) si elle ne fait que repondre oui ou non ; sinon faire retourner le resultat de l'action.", fn.qualified)
-        if name.startswith("get") and return_type == "void":
-            add("NAM.GETTER_VOID", MAJOR, name, fn.start,
+    if not name.startswith("get"):
+        return
+    if return_type == "void":
+        out.add("NAM.GETTER_VOID", MAJOR, name, fn.start,
                 "La methode `%s` commence par get mais ne retourne rien." % fn.qualified,
                 "Renommer d'apres l'action reelle (load, refresh, compute) ou faire retourner la valeur attendue.", fn.qualified)
-        if name.startswith("get") and SIDE_EFFECTS.search(body) and fn.length > 5:
-            add("NAM.GETTER_SIDE_EFFECT", MAJOR, name, fn.start,
+    if SIDE_EFFECTS.search("\n".join(fn.body)) and fn.length > 5:
+        out.add("NAM.GETTER_SIDE_EFFECT", MAJOR, name, fn.start,
                 "La methode `%s` s'annonce comme un accesseur mais modifie l'etat du systeme." % fn.qualified,
                 "Separer la lecture de l'ecriture : un `get*` ne doit pas ecrire ; nommer l'operation d'ecriture explicitement.", fn.qualified)
-        if name.startswith("set") and return_type and return_type not in ("void", "") and fn.length > 3 and not sf.is_test:
-            pass  # setter fluide : acceptable
-        if len(name) > 3 and not is_python(sf.path) and not re.match(r"^[a-z$_][\w$]*$", name) \
-                and not re.match(r"^[A-Z][\w$]*$", name):
-            add("NAM.CASE", MINOR, name, fn.start,
+
+
+def _check_function_case(sf: SourceFile, out: _Collector, fn: Function) -> None:
+    name = fn.name
+    if len(name) > 3 and not is_python(sf.path) and not _CAMEL_CASE.match(name) and not _PASCAL_CASE.match(name):
+        out.add("NAM.CASE", MINOR, name, fn.start,
                 "Le nom `%s` ne suit pas la convention de casse du langage." % name,
                 "Utiliser camelCase pour les methodes et PascalCase pour les types.", fn.qualified)
-        if is_python(sf.path) and not re.match(r"^_{0,2}[a-z][a-z0-9_]*_{0,2}$", name):
-            add("NAM.CASE", MINOR, name, fn.start,
+    if is_python(sf.path) and not _SNAKE_CASE.match(name):
+        out.add("NAM.CASE", MINOR, name, fn.start,
                 "Le nom `%s` ne suit pas la convention snake_case de Python." % name,
                 "Renommer en snake_case.", fn.qualified)
-        # parametres
-        for p in fn.params:
-            pname = p.split("=")[0].split(":")[0].strip().split(" ")[-1].strip("*&")
-            if not re.match(r"^[A-Za-z_$][\w$]*$", pname or ""):
-                continue
-            if _is_vague(pname):
-                add("NAM.VAGUE_PARAM", MINOR, pname, fn.start,
-                    "Le parametre `%s` de `%s` ne dit pas ce qu'il recoit." % (pname, fn.qualified),
+
+
+def _parameter_name(declaration: str) -> str:
+    return declaration.split("=")[0].split(":")[0].strip().split(" ")[-1].strip("*&")
+
+
+def _check_parameters(out: _Collector, fn: Function) -> None:
+    for declaration in fn.params:
+        name = _parameter_name(declaration)
+        if _IDENTIFIER.match(name or "") and _is_vague(name):
+            out.add("NAM.VAGUE_PARAM", MINOR, name, fn.start,
+                    "Le parametre `%s` de `%s` ne dit pas ce qu'il recoit." % (name, fn.qualified),
                     "Nommer le parametre d'apres la donnee attendue.", fn.qualified)
-    return findings
+
+
+def _check_function(sf: SourceFile, out: _Collector, fn: Function) -> None:
+    _check_function_name(out, fn)
+    _check_function_contract(out, fn)
+    _check_function_case(sf, out, fn)
+    _check_parameters(out, fn)
+
+
+def check_identifiers(sf: SourceFile, functions: List[Function]) -> List[Finding]:
+    out = _Collector(sf)
+    _check_variables(sf, out)
+    for fn in functions:
+        if sf.range_changed(fn.start, fn.end):
+            _check_function(sf, out, fn)
+    return out.findings
