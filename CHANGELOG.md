@@ -9,6 +9,20 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — nettoyage des règles du superviseur de code
+
+Aucun changement de comportement : sur un corpus de 129 fichiers (stdlib Python, JavaScript et
+TypeScript réels, Java et Python synthétiques, fixtures) analysés avec deux jeux de seuils et deux
+sélections de lignes modifiées, `check_lines`, `check_blocks` et `check_file` produisent exactement les
+mêmes 32 848 constats qu'avant.
+
+- `rules_bugs.check_lines` : les exceptions propres à chaque règle passent dans une table
+  (`_SKIP_WHEN`) au lieu d'une cascade de `if`.
+- `rules_bugs.check_blocks` : découpée en `_c_family_blocks`, `_catch_findings`,
+  `_resource_leak_finding` et `_python_except_blocks`.
+- `rules_quality.check_file` : découpée en `_file_findings`, `_form_findings` et
+  `_magic_number_finding` ; les seuils en dur deviennent des constantes nommées.
+
 ### Modifié — nettoyage interne du superviseur de code
 
 Aucun changement de comportement : 23 scénarios de bout en bout (payloads du hook, rounds anti-boucle,

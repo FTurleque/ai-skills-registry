@@ -74,46 +74,82 @@ def _is_real_suppression(rx, raw: str, clean: str) -> bool:
     return any(m.start() >= len(clean) or clean[m.start()] != "_" for m in rx.finditer(raw))
 
 
+_RAW_TEXT_RULES = ("BUG.TODO", "BUG.SUPPRESS")                  # marqueurs qui vivent dans les commentaires
+_CONVENTION_RULES = ("BUG.TODO", "BUG.SUPPRESS", "BUG.STDOUT")
+_SEVERE_IN_TESTS = ("BUG.DISABLED_TEST", "BUG.SUPPRESS")         # gardent leur severite dans les tests
+_PYTHON_COMMENT_OR_MAIN = re.compile(r"^\s*(?:#|if\s+__name__)")
+_PYTHON_PRINT = re.compile(r"(?<![\w.])print\s*\(")
+_EMPTY_STRING_COMPARISON = re.compile(r"(?:\"\"|'')\s*[!=]=")
+_ENTRY_POINT_SUFFIXES = ("Main.java", "__main__.py")
+
+
+def _skip_stdout(sf, raw, clean, stripped, rx) -> bool:
+    if sf.is_test or (sf.lang == "python" and _PYTHON_COMMENT_OR_MAIN.match(stripped)):
+        return True
+    if sf.lang == "python" and not _PYTHON_PRINT.search(clean):
+        return True
+    return "/cli/" in sf.path or "/scripts/" in sf.path or sf.path.endswith(_ENTRY_POINT_SUFFIXES)
+
+
+def _skip_suppress(sf, raw, clean, stripped, rx) -> bool:
+    return not (is_structural(sf.path) and _is_real_suppression(rx, raw, clean))
+
+
+def _skip_outside_tests(sf, raw, clean, stripped, rx) -> bool:
+    return not sf.is_test
+
+
+def _skip_in_tests(sf, raw, clean, stripped, rx) -> bool:
+    return sf.is_test
+
+
+def _skip_empty_string_comparison(sf, raw, clean, stripped, rx) -> bool:
+    return bool(_EMPTY_STRING_COMPARISON.search(clean))
+
+
+# Exceptions propres a une regle : si le predicat est vrai, la ligne n'est pas signalee.
+_SKIP_WHEN = {
+    "BUG.STDOUT": _skip_stdout,
+    "BUG.SUPPRESS": _skip_suppress,
+    "BUG.DISABLED_TEST": _skip_outside_tests,
+    "BUG.ASSERT_PROD": _skip_in_tests,
+    "BUG.STRING_IDENTITY": _skip_empty_string_comparison,
+    "BUG.EMPTY_RETURN_NULL": _skip_in_tests,
+}
+
+
+def _line_severity(sf: SourceFile, rule_id: str, severity: str) -> str:
+    if sf.is_test and severity == MAJOR and rule_id not in _SEVERE_IN_TESTS:
+        return MINOR
+    return severity
+
+
+def _line_findings(sf: SourceFile, idx: int, raw: str, clean: str, stripped: str) -> List[Finding]:
+    findings: List[Finding] = []
+    for rule_id, langs, rx, severity, message, fix in LINE_PATTERNS:
+        if langs and sf.lang not in langs:
+            continue
+        if not rx.search(raw if rule_id in _RAW_TEXT_RULES else clean):
+            continue
+        skip = _SKIP_WHEN.get(rule_id)
+        if skip and skip(sf, raw, clean, stripped, rx):
+            continue
+        findings.append(Finding(
+            rule=rule_id, category=CAT_CONVENTION if rule_id in _CONVENTION_RULES else CAT_BUG,
+            severity=_line_severity(sf, rule_id, severity), message=message, fix=fix,
+            file=sf.path, line=idx, evidence=stripped[:200],
+        ))
+    return findings
+
+
 def check_lines(sf: SourceFile) -> List[Finding]:
     findings: List[Finding] = []
     for idx, raw in enumerate(sf.lines, start=1):
-        if not sf.is_changed(idx):
+        stripped = raw.strip()
+        if not stripped or not sf.is_changed(idx):
             continue
         clean = sf.clean_lines[idx - 1] if idx - 1 < len(sf.clean_lines) else ""
-        stripped = raw.strip()
-        if not stripped:
-            continue
-        for rule_id, langs, rx, sev, msg, fix in LINE_PATTERNS:
-            if langs and sf.lang not in langs:
-                continue
-            target = raw if rule_id in ("BUG.TODO", "BUG.SUPPRESS") else clean
-            if not rx.search(target):
-                continue
-            if rule_id == "BUG.STDOUT":
-                if sf.is_test or sf.lang in ("python",) and re.match(r"^\s*(?:#|if\s+__name__)", stripped):
-                    continue
-                if sf.lang == "python" and not re.search(r"(?<![\w.])print\s*\(", clean):
-                    continue
-                if "/cli/" in sf.path or "/scripts/" in sf.path or sf.path.endswith(("Main.java", "__main__.py")):
-                    continue
-            if rule_id == "BUG.SUPPRESS" and not (is_structural(sf.path) and _is_real_suppression(rx, raw, clean)):
-                continue
-            if rule_id == "BUG.DISABLED_TEST" and not sf.is_test:
-                continue
-            if rule_id == "BUG.ASSERT_PROD" and sf.is_test:
-                continue
-            if rule_id == "BUG.STRING_IDENTITY" and re.search(r"(?:\"\"|'')\s*[!=]=", clean):
-                continue
-            if rule_id == "BUG.EMPTY_RETURN_NULL" and sf.is_test:
-                continue
-            severity = sev
-            if sf.is_test and severity == MAJOR and rule_id not in ("BUG.DISABLED_TEST", "BUG.SUPPRESS"):
-                severity = MINOR
-            cat = CAT_CONVENTION if rule_id in ("BUG.TODO", "BUG.SUPPRESS", "BUG.STDOUT") else CAT_BUG
-            findings.append(Finding(
-                rule=rule_id, category=cat, severity=severity, message=msg, fix=fix,
-                file=sf.path, line=idx, evidence=stripped[:200],
-            ))
+        findings.extend(_line_findings(sf, idx, raw, clean, stripped))
     return findings
 
 
@@ -126,78 +162,107 @@ _RESOURCES = re.compile(
     r"newBufferedWriter|lines|walk|list)\s*\(|\.getConnection\s*\(|\.createStatement\s*\(")
 
 
+_DOCUMENTED_MIN_CHARS = 25     # longueur d'un commentaire qui justifie un bloc catch vide
+_SWALLOWING_STATEMENTS = ("pass", "...", "continue")
+
+
+def _catch_findings(sf: SourceFile, clean, i: int, match) -> List[Finding]:
+    body, closing = _brace_body(clean, i, match.end(0) - 1)
+    if _is_empty_body(body):
+        # Un bloc vide mais commente est une decision assumee : on signale sans bloquer.
+        documented = len(_comment_in(sf, i + 1, closing + 1)) >= _DOCUMENTED_MIN_CHARS
+        return [Finding(
+            rule="BUG.CATCH_SWALLOWED", category=CAT_BUG,
+            severity=MINOR if documented else CRITICAL,
+            message=("Exception capturee et ignoree, avec justification en commentaire."
+                     if documented else
+                     "Exception capturee puis ignoree : l'erreur disparait sans trace."),
+            fix=("Verifier que l'absence de journalisation est toujours justifiee."
+                 if documented else
+                 "Journaliser l'exception avec son contexte, ou la propager ; un bloc catch vide n'est acceptable qu'avec un commentaire expliquant pourquoi l'erreur peut etre ignoree."),
+            file=sf.path, line=i + 1, end_line=closing + 1,
+            evidence=sf.snippet(i + 1), symbol=match.group(1).strip()[:60],
+        )]
+    if len(body) <= 2 and any(re.search(r"(?i)^\s*(?:return|break|continue)\b", b) for b in body) \
+            and not any(re.search(r"(?i)log|throw|raise|print", b) for b in body):
+        return [Finding(
+            rule="BUG.CATCH_SILENT_RETURN", category=CAT_BUG, severity=MAJOR,
+            message="Exception capturee et transformee en sortie silencieuse.",
+            fix="Journaliser la cause avant de sortir, ou renvoyer une erreur metier explicite a l'appelant.",
+            file=sf.path, line=i + 1, end_line=closing + 1, evidence=sf.snippet(i + 1),
+        )]
+    return []
+
+
+def _resource_leak_finding(sf: SourceFile, clean, i: int):
+    if not _RESOURCES.search(clean[i]) or sf.is_test:
+        return None
+    window = " ".join(clean[max(0, i - 2):i + 1])
+    if "try" in window or ".close()" in " ".join(clean[i:i + 25]) or "return" in clean[i]:
+        return None
+    return Finding(
+        rule="BUG.RESOURCE_LEAK", category=CAT_BUG, severity=MAJOR,
+        message="Ressource ouverte sans fermeture garantie.",
+        fix="Ouvrir la ressource dans un try-with-resources (Java) ou un bloc equivalent qui ferme meme en cas d'exception.",
+        file=sf.path, line=i + 1, evidence=sf.snippet(i + 1),
+    )
+
+
+def _c_family_blocks(sf: SourceFile) -> List[Finding]:
+    clean = sf.clean_lines
+    findings: List[Finding] = []
+    for i in range(len(clean)):
+        if not sf.is_changed(i + 1):
+            continue
+        match = _CATCH.search(clean[i])
+        if match:
+            findings.extend(_catch_findings(sf, clean, i, match))
+        leak = _resource_leak_finding(sf, clean, i)
+        if leak:
+            findings.append(leak)
+    return findings
+
+
+def _except_body(clean, i: int, indent: int) -> List[str]:
+    """Instructions du bloc `except` ouvert a la ligne i, indentees plus que lui."""
+    body = []
+    for j in range(i + 1, len(clean)):
+        if not clean[j].strip():
+            continue
+        j_indent = len(clean[j][:len(clean[j]) - len(clean[j].lstrip())].expandtabs(4))
+        if j_indent <= indent:
+            break
+        body.append(clean[j].strip())
+    return body
+
+
+def _python_except_blocks(sf: SourceFile) -> List[Finding]:
+    clean = sf.clean_lines
+    findings: List[Finding] = []
+    for i in range(len(clean)):
+        if not sf.is_changed(i + 1):
+            continue
+        match = _PY_EXCEPT.match(clean[i])
+        if not match:
+            continue
+        body = _except_body(clean, i, len(match.group(1).expandtabs(4)))
+        if body and all(b in _SWALLOWING_STATEMENTS or b.startswith("#") for b in body):
+            findings.append(Finding(
+                rule="BUG.CATCH_SWALLOWED", category=CAT_BUG, severity=CRITICAL,
+                message="Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+                fix="Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.",
+                file=sf.path, line=i + 1, evidence=sf.snippet(i + 1),
+            ))
+    return findings
+
+
 def check_blocks(sf: SourceFile) -> List[Finding]:
     """Controles necessitant plusieurs lignes de contexte."""
     findings: List[Finding] = []
-    clean = sf.clean_lines
-    n = len(clean)
-
     if is_c_family(sf.path):
-        for i in range(n):
-            if not sf.is_changed(i + 1):
-                continue
-            m = _CATCH.search(clean[i])
-            if m:
-                body, closing = _brace_body(clean, i, m.end(0) - 1)
-                if _is_empty_body(body):
-                    # Un bloc vide mais commente est une decision assumee : on signale sans bloquer.
-                    justification = _comment_in(sf, i + 1, closing + 1)
-                    documented = len(justification) >= 25
-                    findings.append(Finding(
-                        rule="BUG.CATCH_SWALLOWED", category=CAT_BUG,
-                        severity=MINOR if documented else CRITICAL,
-                        message=("Exception capturee et ignoree, avec justification en commentaire."
-                                 if documented else
-                                 "Exception capturee puis ignoree : l'erreur disparait sans trace."),
-                        fix=("Verifier que l'absence de journalisation est toujours justifiee."
-                             if documented else
-                             "Journaliser l'exception avec son contexte, ou la propager ; un bloc catch vide n'est acceptable qu'avec un commentaire expliquant pourquoi l'erreur peut etre ignoree."),
-                        file=sf.path, line=i + 1, end_line=closing + 1,
-                        evidence=sf.snippet(i + 1), symbol=m.group(1).strip()[:60],
-                    ))
-                elif len(body) <= 2 and any(re.search(r"(?i)^\s*(?:return|break|continue)\b", b) for b in body) \
-                        and not any(re.search(r"(?i)log|throw|raise|print", b) for b in body):
-                    findings.append(Finding(
-                        rule="BUG.CATCH_SILENT_RETURN", category=CAT_BUG, severity=MAJOR,
-                        message="Exception capturee et transformee en sortie silencieuse.",
-                        fix="Journaliser la cause avant de sortir, ou renvoyer une erreur metier explicite a l'appelant.",
-                        file=sf.path, line=i + 1, end_line=closing + 1, evidence=sf.snippet(i + 1),
-                    ))
-            if _RESOURCES.search(clean[i]) and not sf.is_test:
-                window = " ".join(clean[max(0, i - 2):i + 1])
-                if "try" not in window and ".close()" not in " ".join(clean[i:i + 25]) \
-                        and "return" not in clean[i]:
-                    findings.append(Finding(
-                        rule="BUG.RESOURCE_LEAK", category=CAT_BUG, severity=MAJOR,
-                        message="Ressource ouverte sans fermeture garantie.",
-                        fix="Ouvrir la ressource dans un try-with-resources (Java) ou un bloc equivalent qui ferme meme en cas d'exception.",
-                        file=sf.path, line=i + 1, evidence=sf.snippet(i + 1),
-                    ))
-
+        findings.extend(_c_family_blocks(sf))
     if is_python(sf.path):
-        for i in range(n):
-            if not sf.is_changed(i + 1):
-                continue
-            m = _PY_EXCEPT.match(clean[i])
-            if not m:
-                continue
-            indent = len(m.group(1).expandtabs(4))
-            body = []
-            for j in range(i + 1, n):
-                if not clean[j].strip():
-                    continue
-                j_indent = len(clean[j][:len(clean[j]) - len(clean[j].lstrip())].expandtabs(4))
-                if j_indent <= indent:
-                    break
-                body.append(clean[j].strip())
-            if body and all(b in ("pass", "...", "continue") or b.startswith("#") for b in body):
-                findings.append(Finding(
-                    rule="BUG.CATCH_SWALLOWED", category=CAT_BUG, severity=CRITICAL,
-                    message="Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
-                    fix="Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.",
-                    file=sf.path, line=i + 1, evidence=sf.snippet(i + 1),
-                ))
-
+        findings.extend(_python_except_blocks(sf))
     return findings
 
 
