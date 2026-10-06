@@ -56,8 +56,9 @@ def write_state(path: str, state: dict) -> None:
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as fh:
             json.dump(state, fh)
-    except Exception:
-        pass
+    except (OSError, TypeError, ValueError) as exc:
+        # L'etat anti-boucle est un confort : son echec ne doit pas faire echouer le hook.
+        sys.stderr.write("superviseur : etat non ecrit (%s)\n" % exc)
 
 
 # --------------------------------------------------------------------------- transcript
