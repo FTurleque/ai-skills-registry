@@ -9,6 +9,21 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Corrigé — encodage du superviseur de code sous Windows
+
+Quand Claude Code lance le hook, `stdin` et `stdout` sont des tubes : Python y utilise la page de codes
+de Windows (cp1252) au lieu de l'UTF-8 que Claude Code envoie et lit. Trois effets :
+
+- les accents des messages du superviseur arrivaient déformés (`�`) : octets cp1252 lus comme de l'UTF-8 ;
+- la sortie du hook plantait (`UnicodeEncodeError`, code 1) dès qu'elle contenait un caractère absent de
+  cp1252, par exemple une flèche dans la sortie d'un outil externe ; le verdict était alors perdu ;
+- un dépôt dont le chemin contient un accent n'était pas trouvé : le chemin de la charge utile était mal
+  décodé, et le superviseur ne relisait rien, sans le signaler.
+
+Correctif : la charge utile est lue en UTF-8, la sortie du hook est du JSON en ASCII pur (accents
+échappés), et les sorties redirigées du mode manuel (`--check`, `--self-test`) passent en UTF-8. L'auto-test
+échoue si la lecture ou l'encodage régresse. Un moteur déjà installé doit être réinstallé.
+
 ### Sécurité — noms de fichiers dans les commandes `external_tools`
 
 `{files}` était remplacé par les noms des fichiers modifiés, protégés par `shlex.quote`, puis la ligne
