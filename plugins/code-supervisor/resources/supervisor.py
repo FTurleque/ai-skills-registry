@@ -46,8 +46,8 @@ def read_state(path: str) -> dict:
             data.setdefault("rounds_by_signature", {})
             data.setdefault("released_signatures", [])
             return data
-    except Exception:
-        pass
+    except (OSError, ValueError):
+        return default  # etat absent (premier passage) ou JSON corrompu : on repart d'un etat vierge
     return default
 
 
@@ -56,8 +56,9 @@ def write_state(path: str, state: dict) -> None:
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as fh:
             json.dump(state, fh)
-    except Exception:
-        pass
+    except (OSError, TypeError, ValueError) as exc:
+        # L'etat anti-boucle est un confort : son echec ne doit pas faire echouer le hook.
+        sys.stderr.write("superviseur : etat non ecrit (%s)\n" % exc)
 
 
 # --------------------------------------------------------------------------- transcript
@@ -298,10 +299,19 @@ def self_test() -> int:
         "SEC.HARDCODED_SECRET", "SEC.SQL_CONCAT", "SEC.WEAK_HASH", "SEC.TLS_DISABLED",
         "BUG.CATCH_SWALLOWED", "BUG.STRING_IDENTITY", "BUG.STATIC_DATEFORMAT",
         "CPX.CYCLOMATIC_HIGH", "NAM.VAGUE_VARIABLE", "NAM.VAGUE_METHOD", "DUP.BLOCK",
+        "BUG.SUPPRESS",
     }
     missing = sorted(expected - set(by_rule))
     if missing:
         print("\nECHEC — regles attendues non declenchees : %s" % ", ".join(missing))
+        return 1
+    # Les fixtures clean_* citent des marqueurs de suppression ou des nombres sans en etre :
+    # ces regles ne doivent pas s'y declencher (faux positifs).
+    forbidden = {"BUG.SUPPRESS", "CNV.MAGIC_NUMBER"}
+    false_positives = sorted("%s:%d %s" % (f.file, f.line, f.rule) for f in findings
+                             if f.file.startswith("clean_") and f.rule in forbidden)
+    if false_positives:
+        print("\nECHEC — faux positifs sur les fixtures clean_* : %s" % ", ".join(false_positives))
         return 1
     print("\nOK — toutes les regles attendues se declenchent.")
     return 0
