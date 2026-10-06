@@ -9,6 +9,24 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — tests de caractérisation étendus à toutes les règles
+
+La suite `rules` ne couvrait que `check_lines`, `check_blocks` et `check_file` (33 des 71 règles du
+moteur). Elle couvre maintenant **toutes** les règles : sécurité, nommage, imports inutilisés, complexité et
+bugs par fonction, extraction des fonctions, duplication. 182 entrées au lieu de 80 ; les 80 d'origine ne
+changent pas.
+
+- Corpus complété : `Security`, `Naming`, `Complex`, `DuplicateA` et `DuplicateB` (Java), `security.py`,
+  `naming.py` et `tests/test_security.py` (Python), `security.js`.
+- Les valeurs ressemblant à des secrets (clé AWS, clé privée, JWT, jeton Slack et GitHub) sont assemblées à
+  l'exécution : le validateur du dépôt et la protection des secrets de GitHub les refusent en clair.
+- La couverture est calculée à partir des règles que le moteur déclare : ajouter une règle sans cas de
+  corpus fait échouer le test.
+- Validé par dix mutations (au moins une par famille de règles) : toutes détectées. La mutation d'une garde
+  de division a d'abord échappé au test : le corpus ne contenait aucune division protégée. Il en contient
+  maintenant trois, plus une non protégée.
+- Défaut de règle relevé, non corrigé ici : `BUG.DIV_ZERO` ne signale jamais `/ size()`.
+
 ### Modifié — petits points du superviseur de code (suite du ticket #11)
 
 Aucun changement de comportement : l'analyse complète (règles de sécurité, de nommage, de duplication, de
