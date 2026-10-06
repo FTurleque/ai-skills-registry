@@ -9,6 +9,17 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Corrigé — `BUG.DIV_ZERO` ne signalait jamais `/ size()`
+
+La règle cherchait `size\(\)\b` : or une borne de mot ne peut pas suivre une parenthèse fermante, donc
+l'alternative `size()` ne correspondait jamais. Le motif devient `size\(\)|(?:length|count|total|n)\b` :
+`return 100 / size();` est maintenant signalé, comme `/ count` et `/ total` l'étaient déjà.
+
+Seules les écritures `/ size()` changent. `/ liste.size()` n'a jamais été signalé et ne l'est toujours pas :
+élargir la règle aux appels sur un objet changerait sa portée et ferait l'objet d'une décision à part.
+Sur le corpus de tests et les fixtures, l'analyse complète gagne un seul constat (`Complex.divisionBySize`).
+Un moteur déjà installé doit être réinstallé.
+
 ### Modifié — tests de caractérisation étendus à toutes les règles
 
 La suite `rules` ne couvrait que `check_lines`, `check_blocks` et `check_file` (33 des 71 règles du
@@ -25,7 +36,8 @@ changent pas.
 - Validé par dix mutations (au moins une par famille de règles) : toutes détectées. La mutation d'une garde
   de division a d'abord échappé au test : le corpus ne contenait aucune division protégée. Il en contient
   maintenant trois, plus une non protégée.
-- Défaut de règle relevé, non corrigé ici : `BUG.DIV_ZERO` ne signale jamais `/ size()`.
+- Défaut de règle relevé à cette occasion, corrigé dans l'entrée ci-dessus : `BUG.DIV_ZERO` ne signalait
+  jamais `/ size()`.
 
 ### Modifié — petits points du superviseur de code (suite du ticket #11)
 

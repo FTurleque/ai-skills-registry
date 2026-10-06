@@ -332,7 +332,7 @@ def check_function_bugs(sf: SourceFile, functions: List[Function]) -> List[Findi
                     evidence=sf.snippet(fn.start),
                 ))
         # division entiere ou division par une variable sans garde
-        if re.search(r"(?<![/*])/\s*(?:size\(\)|length|count|total|n)\b", body) and \
+        if re.search(r"(?<![/*])/\s*(?:size\(\)|(?:length|count|total|n)\b)", body) and \
                 not re.search(r"(?:==\s*0|!=\s*0|>\s*0|isEmpty|> 0)", body):
             findings.append(Finding(
                 rule="BUG.DIV_ZERO", category=CAT_BUG, severity=MAJOR,
