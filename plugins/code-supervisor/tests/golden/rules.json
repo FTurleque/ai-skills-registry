@@ -4,6 +4,11 @@
   "file": [],
   "lines": []
  },
+ "defaut|tout|generated/tests/test_secrets.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|java/Catches.java": {
   "blocks": [
    [
@@ -158,6 +163,23 @@
    ]
   ],
   "file": [],
+  "lines": []
+ },
+ "defaut|tout|java/CommentedSecurity.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// password = \"commentedsecret1\"",
+    null
+   ]
+  ],
   "lines": []
  },
  "defaut|tout|java/Complex.java": {
@@ -1658,6 +1680,11 @@
    ]
   ]
  },
+ "defaut|tout|js/lang_filters.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|js/security.js": {
   "blocks": [],
   "file": [],
@@ -2077,6 +2104,34 @@
     "Valeur numerique 407 utilisee directement, sans nom.",
     "97a5f3bf",
     "y11 = 407",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|tout|py/long_security.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Ligne de 2139 caracteres (seuil 140).",
+    "b875b8b0",
+    "value = 1                                                                                                               ",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ligne de 2132 caracteres (seuil 140).",
+    "b875b8b0",
+    "password = \"before2000chars\"  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     null
    ]
   ],
@@ -2545,6 +2600,23 @@
    ]
   ]
  },
+ "defaut|tout|py/security_filters.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    5,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# password = \"commentedsecret4\"",
+    null
+   ]
+  ],
+  "lines": []
+ },
  "defaut|tout|py/tests/test_exit.py": {
   "blocks": [],
   "file": [],
@@ -2767,12 +2839,17 @@
   ],
   "lines": []
  },
- "defaut|un_tiers|generated/secrets.py": {
+ "defaut|un_sur_sept|generated/secrets.py": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "defaut|un_tiers|java/Catches.java": {
+ "defaut|un_sur_sept|generated/tests/test_secrets.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|java/Catches.java": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -2804,17 +2881,6 @@
     15,
     "Exception capturee puis ignoree : l'erreur disparait sans trace.",
     "9e6be3e1",
-    "try { run(); } catch (Exception e) {",
-    "Exception e"
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "MINOR",
-    "bug",
-    18,
-    20,
-    "Exception capturee et ignoree, avec justification en commentaire.",
-    "247ed99c",
     "try { run(); } catch (Exception e) {",
     "Exception e"
    ],
@@ -2880,17 +2946,6 @@
     "BUG.CATCH_BROAD",
     "MINOR",
     "bug",
-    18,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "try { run(); } catch (Exception e) {",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
     23,
     0,
     "Capture d'exception trop large.",
@@ -2911,29 +2966,34 @@
    ]
   ]
  },
- "defaut|un_tiers|java/CatchesMultiline.java": {
-  "blocks": [
+ "defaut|un_sur_sept|java/CatchesMultiline.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|java/CommentedSecurity.java": {
+  "blocks": [],
+  "file": [
    [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    5,
-    7,
-    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
-    "9e6be3e1",
-    "} catch (IOException e) {",
-    "IOException e"
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// password = \"commentedsecret1\"",
+    null
    ]
   ],
-  "file": [],
   "lines": []
  },
- "defaut|un_tiers|java/Complex.java": {
+ "defaut|un_sur_sept|java/Complex.java": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "defaut|un_tiers|java/DuplicateA.java": {
+ "defaut|un_sur_sept|java/DuplicateA.java": {
   "blocks": [],
   "file": [],
   "lines": [
@@ -2950,7 +3010,7 @@
    ]
   ]
  },
- "defaut|un_tiers|java/DuplicateB.java": {
+ "defaut|un_sur_sept|java/DuplicateB.java": {
   "blocks": [],
   "file": [],
   "lines": [
@@ -2967,32 +3027,10 @@
    ]
   ]
  },
- "defaut|un_tiers|java/Naming.java": {
+ "defaut|un_sur_sept|java/Naming.java": {
   "blocks": [],
   "file": [],
   "lines": [
-   [
-    "BUG.FLOAT_MONEY",
-    "MAJOR",
-    "bug",
-    11,
-    0,
-    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
-    "ab8dc25d",
-    "private double amount1;",
-    null
-   ],
-   [
-    "BUG.FLOAT_MONEY",
-    "MAJOR",
-    "bug",
-    12,
-    0,
-    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
-    "ab8dc25d",
-    "private double amount2;",
-    null
-   ],
    [
     "BUG.STDOUT",
     "MINOR",
@@ -3006,7 +3044,7 @@
    ]
   ]
  },
- "defaut|un_tiers|java/Security.java": {
+ "defaut|un_sur_sept|java/Security.java": {
   "blocks": [
    [
     "BUG.RESOURCE_LEAK",
@@ -3023,7 +3061,7 @@
   "file": [],
   "lines": []
  },
- "defaut|un_tiers|java/Wildcard.java": {
+ "defaut|un_sur_sept|java/Wildcard.java": {
   "blocks": [],
   "file": [
    [
@@ -3040,7 +3078,7 @@
   ],
   "lines": []
  },
- "defaut|un_tiers|java/src/main/java/demo/Service.java": {
+ "defaut|un_sur_sept|java/src/main/java/demo/Service.java": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -3063,28 +3101,6 @@
     "247ed99c",
     "} catch (RuntimeException e) {",
     "RuntimeException e"
-   ],
-   [
-    "BUG.CATCH_SILENT_RETURN",
-    "MAJOR",
-    "bug",
-    32,
-    34,
-    "Exception capturee et transformee en sortie silencieuse.",
-    "c623e077",
-    "} catch (IOException e) {",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    40,
-    40,
-    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
-    "9e6be3e1",
-    "try { run(); } catch (Exception e) { continue; }",
-    "Exception e"
    ],
    [
     "BUG.RESOURCE_LEAK",
@@ -3133,28 +3149,6 @@
     null
    ],
    [
-    "CNV.WILDCARD_IMPORT",
-    "MINOR",
-    "convention",
-    4,
-    0,
-    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
-    "f7915b59",
-    "import java.util.*;",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
-    47,
-    0,
-    "Valeur numerique 500 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "Thread.sleep(500);",
-    null
-   ],
-   [
     "CNV.MAGIC_NUMBER",
     "MINOR",
     "convention",
@@ -3163,17 +3157,6 @@
     "Valeur numerique 4242 utilisee directement, sans nom.",
     "97a5f3bf",
     "int magic = 4242 + 17;",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
-    61,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "// if (old > 0) {",
     null
    ]
   ],
@@ -3209,17 +3192,6 @@
     "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
     "ab8dc25d",
     "private float totalPrice = 0;",
-    null
-   ],
-   [
-    "BUG.FLOAT_MONEY",
-    "MAJOR",
-    "bug",
-    11,
-    0,
-    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
-    "ab8dc25d",
-    "double montant;",
     null
    ],
    [
@@ -3286,17 +3258,6 @@
     "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
     "fdb40e75",
     "e.printStackTrace();",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    40,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "try { run(); } catch (Exception e) { continue; }",
     null
    ],
    [
@@ -3322,28 +3283,6 @@
     null
    ],
    [
-    "BUG.EMPTY_RETURN_NULL",
-    "MINOR",
-    "bug",
-    46,
-    0,
-    "Retour de null.",
-    "83605cba",
-    "if (id < 0) return null;",
-    null
-   ],
-   [
-    "BUG.THREAD_SLEEP",
-    "MINOR",
-    "bug",
-    47,
-    0,
-    "Attente par pause fixe.",
-    "665ea4cd",
-    "Thread.sleep(500);",
-    null
-   ],
-   [
     "BUG.ASSERT_PROD",
     "MINOR",
     "bug",
@@ -3433,7 +3372,7 @@
    ]
   ]
  },
- "defaut|un_tiers|java/src/main/java/demo/cli/Main.java": {
+ "defaut|un_sur_sept|java/src/main/java/demo/cli/Main.java": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -3456,28 +3395,6 @@
     "247ed99c",
     "} catch (RuntimeException e) {",
     "RuntimeException e"
-   ],
-   [
-    "BUG.CATCH_SILENT_RETURN",
-    "MAJOR",
-    "bug",
-    32,
-    34,
-    "Exception capturee et transformee en sortie silencieuse.",
-    "c623e077",
-    "} catch (IOException e) {",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    40,
-    40,
-    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
-    "9e6be3e1",
-    "try { run(); } catch (Exception e) { continue; }",
-    "Exception e"
    ],
    [
     "BUG.RESOURCE_LEAK",
@@ -3526,28 +3443,6 @@
     null
    ],
    [
-    "CNV.WILDCARD_IMPORT",
-    "MINOR",
-    "convention",
-    4,
-    0,
-    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
-    "f7915b59",
-    "import java.util.*;",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
-    47,
-    0,
-    "Valeur numerique 500 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "Thread.sleep(500);",
-    null
-   ],
-   [
     "CNV.MAGIC_NUMBER",
     "MINOR",
     "convention",
@@ -3556,17 +3451,6 @@
     "Valeur numerique 4242 utilisee directement, sans nom.",
     "97a5f3bf",
     "int magic = 4242 + 17;",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
-    61,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "// if (old > 0) {",
     null
    ]
   ],
@@ -3602,17 +3486,6 @@
     "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
     "ab8dc25d",
     "private float totalPrice = 0;",
-    null
-   ],
-   [
-    "BUG.FLOAT_MONEY",
-    "MAJOR",
-    "bug",
-    11,
-    0,
-    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
-    "ab8dc25d",
-    "double montant;",
     null
    ],
    [
@@ -3679,39 +3552,6 @@
     "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
     "fdb40e75",
     "e.printStackTrace();",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    40,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "try { run(); } catch (Exception e) { continue; }",
-    null
-   ],
-   [
-    "BUG.EMPTY_RETURN_NULL",
-    "MINOR",
-    "bug",
-    46,
-    0,
-    "Retour de null.",
-    "83605cba",
-    "if (id < 0) return null;",
-    null
-   ],
-   [
-    "BUG.THREAD_SLEEP",
-    "MINOR",
-    "bug",
-    47,
-    0,
-    "Attente par pause fixe.",
-    "665ea4cd",
-    "Thread.sleep(500);",
     null
    ],
    [
@@ -3804,7 +3644,7 @@
    ]
   ]
  },
- "defaut|un_tiers|java/src/test/java/demo/ServiceTest.java": {
+ "defaut|un_sur_sept|java/src/test/java/demo/ServiceTest.java": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -3827,28 +3667,6 @@
     "247ed99c",
     "} catch (RuntimeException e) {",
     "RuntimeException e"
-   ],
-   [
-    "BUG.CATCH_SILENT_RETURN",
-    "MAJOR",
-    "bug",
-    32,
-    34,
-    "Exception capturee et transformee en sortie silencieuse.",
-    "c623e077",
-    "} catch (IOException e) {",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    40,
-    40,
-    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
-    "9e6be3e1",
-    "try { run(); } catch (Exception e) { continue; }",
-    "Exception e"
    ]
   ],
   "file": [
@@ -3872,17 +3690,6 @@
     "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
     "f7915b59",
     "import java.io.*;",
-    null
-   ],
-   [
-    "CNV.WILDCARD_IMPORT",
-    "MINOR",
-    "convention",
-    4,
-    0,
-    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
-    "f7915b59",
-    "import java.util.*;",
     null
    ],
    [
@@ -3929,17 +3736,6 @@
     "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
     "ab8dc25d",
     "private float totalPrice = 0;",
-    null
-   ],
-   [
-    "BUG.FLOAT_MONEY",
-    "MINOR",
-    "bug",
-    11,
-    0,
-    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
-    "ab8dc25d",
-    "double montant;",
     null
    ],
    [
@@ -4006,28 +3802,6 @@
     "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
     "fdb40e75",
     "e.printStackTrace();",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    40,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "try { run(); } catch (Exception e) { continue; }",
-    null
-   ],
-   [
-    "BUG.THREAD_SLEEP",
-    "MINOR",
-    "bug",
-    47,
-    0,
-    "Attente par pause fixe.",
-    "665ea4cd",
-    "Thread.sleep(500);",
     null
    ],
    [
@@ -4095,42 +3869,20 @@
     "f763d4be",
     "@Ignore",
     null
-   ],
-   [
-    "BUG.DISABLED_TEST",
-    "MAJOR",
-    "bug",
-    60,
-    0,
-    "Test desactive.",
-    "f763d4be",
-    "@Test(enabled = false)",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    61,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "public void legacy() { // NOSONAR",
-    null
    ]
   ]
  },
- "defaut|un_tiers|java/util/Helper.java": {
+ "defaut|un_sur_sept|java/util/Helper.java": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "defaut|un_tiers|java/util/Holder.java": {
+ "defaut|un_sur_sept|java/util/Holder.java": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "defaut|un_tiers|js/app.js": {
+ "defaut|un_sur_sept|js/app.js": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -4184,28 +3936,6 @@
     "BUG.AWAIT_MISSING",
     "MINOR",
     "bug",
-    4,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "fetch(\"/api\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
-    5,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "axios.get(\"/x\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
     6,
     0,
     "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
@@ -4236,17 +3966,6 @@
     null
    ],
    [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    11,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "// @ts-ignore",
-    null
-   ],
-   [
     "BUG.EMPTY_RETURN_NULL",
     "MINOR",
     "bug",
@@ -4270,7 +3989,7 @@
    ]
   ]
  },
- "defaut|un_tiers|js/app.test.js": {
+ "defaut|un_sur_sept|js/app.test.js": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -4301,28 +4020,6 @@
     "BUG.AWAIT_MISSING",
     "MINOR",
     "bug",
-    4,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "fetch(\"/api\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
-    5,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "axios.get(\"/x\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
     6,
     0,
     "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
@@ -4350,17 +4047,6 @@
     "Avertissement de l'outillage qualite neutralise.",
     "20d1c2eb",
     "// eslint-disable-next-line no-console",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    11,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "// @ts-ignore",
     null
    ],
    [
@@ -4398,7 +4084,7 @@
    ]
   ]
  },
- "defaut|un_tiers|js/exit.test.js": {
+ "defaut|un_sur_sept|js/exit.test.js": {
   "blocks": [],
   "file": [],
   "lines": [
@@ -4412,38 +4098,20 @@
     "f763d4be",
     "xit(\"reste desactive\", () => {});",
     null
-   ],
-   [
-    "BUG.DISABLED_TEST",
-    "MAJOR",
-    "bug",
-    4,
-    0,
-    "Test desactive.",
-    "f763d4be",
-    "xdescribe(\"suite desactivee\", () => {});",
-    null
    ]
   ]
  },
- "defaut|un_tiers|js/security.js": {
+ "defaut|un_sur_sept|js/lang_filters.js": {
   "blocks": [],
   "file": [],
-  "lines": [
-   [
-    "BUG.STDOUT",
-    "MINOR",
-    "convention",
-    12,
-    0,
-    "Ecriture sur la sortie standard dans du code de production.",
-    "ce626c7d",
-    "console.log(\"token\", req.headers.authorization);",
-    null
-   ]
-  ]
+  "lines": []
  },
- "defaut|un_tiers|js/ts/service.ts": {
+ "defaut|un_sur_sept|js/security.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|js/ts/service.ts": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -4497,28 +4165,6 @@
     "BUG.AWAIT_MISSING",
     "MINOR",
     "bug",
-    4,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "fetch(\"/api\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
-    5,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "axios.get(\"/x\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
     6,
     0,
     "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
@@ -4549,17 +4195,6 @@
     null
    ],
    [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    11,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "// @ts-ignore",
-    null
-   ],
-   [
     "BUG.EMPTY_RETURN_NULL",
     "MINOR",
     "bug",
@@ -4583,7 +4218,7 @@
    ]
   ]
  },
- "defaut|un_tiers|misc/conf.yaml": {
+ "defaut|un_sur_sept|misc/conf.yaml": {
   "blocks": [],
   "file": [],
   "lines": [
@@ -4600,12 +4235,12 @@
    ]
   ]
  },
- "defaut|un_tiers|misc/query.sql": {
+ "defaut|un_sur_sept|misc/query.sql": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "defaut|un_tiers|py/__main__.py": {
+ "defaut|un_sur_sept|py/__main__.py": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -4627,17 +4262,6 @@
     "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
     "3bca52b9",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    18,
-    0,
-    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
-    "3bca52b9",
-    "except (ValueError, TypeError):",
     null
    ],
    [
@@ -4679,17 +4303,6 @@
     "CNV.COMMENTED_CODE",
     "MINOR",
     "convention",
-    32,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "# y = compute(x)",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
     34,
     0,
     "Code commente laisse en place.",
@@ -4708,17 +4321,6 @@
     "Avertissement de l'outillage qualite neutralise.",
     "20d1c2eb",
     "import re  # noqa",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    4,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "import json  # type: ignore",
     null
    ],
    [
@@ -4741,17 +4343,6 @@
     "Capture d'exception trop large.",
     "6fc54750",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    26,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "except BaseException:",
     null
    ],
    [
@@ -4778,7 +4369,7 @@
    ]
   ]
  },
- "defaut|un_tiers|py/long_lines.py": {
+ "defaut|un_sur_sept|py/long_lines.py": {
   "blocks": [],
   "file": [
    [
@@ -4807,50 +4398,78 @@
     "CNV.MAGIC_NUMBER",
     "MINOR",
     "convention",
-    4,
-    0,
-    "Valeur numerique 74 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "y2 = 74",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
-    11,
-    0,
-    "Valeur numerique 333 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "y9 = 333",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
-    12,
-    0,
-    "Valeur numerique 370 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "y10 = 370",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
     13,
     0,
     "Valeur numerique 407 utilisee directement, sans nom.",
     "97a5f3bf",
     "y11 = 407",
     null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 444 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y12 = 444",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    15,
+    0,
+    "Valeur numerique 481 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y13 = 481",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    16,
+    0,
+    "Valeur numerique 518 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y14 = 518",
+    null
    ]
   ],
   "lines": []
  },
- "defaut|un_tiers|py/magic.py": {
+ "defaut|un_sur_sept|py/long_security.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Ligne de 2139 caracteres (seuil 140).",
+    "b875b8b0",
+    "value = 1                                                                                                               ",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ligne de 2132 caracteres (seuil 140).",
+    "b875b8b0",
+    "password = \"before2000chars\"  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|un_sur_sept|py/magic.py": {
   "blocks": [],
   "file": [
    [
@@ -4890,28 +4509,28 @@
     "CNV.MAGIC_NUMBER",
     "MINOR",
     "convention",
-    11,
-    0,
-    "Valeur numerique 7919 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "d = total / 7919",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
     13,
     0,
     "Valeur numerique 5678 utilisee directement, sans nom.",
     "97a5f3bf",
     "f = total * 5678",
     null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 9876 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "g = total + 9876",
+    null
    ]
   ],
   "lines": []
  },
- "defaut|un_tiers|py/mod.py": {
+ "defaut|un_sur_sept|py/mod.py": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -4933,17 +4552,6 @@
     "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
     "3bca52b9",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    18,
-    0,
-    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
-    "3bca52b9",
-    "except (ValueError, TypeError):",
     null
    ],
    [
@@ -4985,17 +4593,6 @@
     "CNV.COMMENTED_CODE",
     "MINOR",
     "convention",
-    32,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "# y = compute(x)",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
     34,
     0,
     "Code commente laisse en place.",
@@ -5014,17 +4611,6 @@
     "Avertissement de l'outillage qualite neutralise.",
     "20d1c2eb",
     "import re  # noqa",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    4,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "import json  # type: ignore",
     null
    ],
    [
@@ -5047,17 +4633,6 @@
     "Capture d'exception trop large.",
     "6fc54750",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    26,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "except BaseException:",
     null
    ],
    [
@@ -5106,24 +4681,12 @@
    ]
   ]
  },
- "defaut|un_tiers|py/naming.py": {
+ "defaut|un_sur_sept|py/naming.py": {
   "blocks": [],
   "file": [],
-  "lines": [
-   [
-    "BUG.STDOUT",
-    "MINOR",
-    "convention",
-    25,
-    0,
-    "Ecriture sur la sortie standard dans du code de production.",
-    "ce626c7d",
-    "print(\"x\")",
-    null
-   ]
-  ]
+  "lines": []
  },
- "defaut|un_tiers|py/scripts/run.py": {
+ "defaut|un_sur_sept|py/scripts/run.py": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -5145,17 +4708,6 @@
     "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
     "3bca52b9",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    18,
-    0,
-    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
-    "3bca52b9",
-    "except (ValueError, TypeError):",
     null
    ],
    [
@@ -5197,17 +4749,6 @@
     "CNV.COMMENTED_CODE",
     "MINOR",
     "convention",
-    32,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "# y = compute(x)",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
     34,
     0,
     "Code commente laisse en place.",
@@ -5226,17 +4767,6 @@
     "Avertissement de l'outillage qualite neutralise.",
     "20d1c2eb",
     "import re  # noqa",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    4,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "import json  # type: ignore",
     null
    ],
    [
@@ -5259,17 +4789,6 @@
     "Capture d'exception trop large.",
     "6fc54750",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    26,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "except BaseException:",
     null
    ],
    [
@@ -5296,29 +4815,22 @@
    ]
   ]
  },
- "defaut|un_tiers|py/security.py": {
-  "blocks": [],
-  "file": [],
-  "lines": [
-   [
-    "BUG.STDOUT",
-    "MINOR",
-    "convention",
-    25,
-    0,
-    "Ecriture sur la sortie standard dans du code de production.",
-    "ce626c7d",
-    "print(\"password is\", user.password)",
-    null
-   ]
-  ]
- },
- "defaut|un_tiers|py/tests/test_exit.py": {
+ "defaut|un_sur_sept|py/security.py": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "defaut|un_tiers|py/tests/test_mod.py": {
+ "defaut|un_sur_sept|py/security_filters.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|py/tests/test_exit.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|py/tests/test_mod.py": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -5340,17 +4852,6 @@
     "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
     "3bca52b9",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    18,
-    0,
-    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
-    "3bca52b9",
-    "except (ValueError, TypeError):",
     null
    ],
    [
@@ -5392,17 +4893,6 @@
     "CNV.COMMENTED_CODE",
     "MINOR",
     "convention",
-    32,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "# y = compute(x)",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
     34,
     0,
     "Code commente laisse en place.",
@@ -5421,17 +4911,6 @@
     "Avertissement de l'outillage qualite neutralise.",
     "20d1c2eb",
     "import re  # noqa",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    4,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "import json  # type: ignore",
     null
    ],
    [
@@ -5457,17 +4936,6 @@
     null
    ],
    [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    26,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "except BaseException:",
-    null
-   ],
-   [
     "BUG.THREAD_SLEEP",
     "MINOR",
     "bug",
@@ -5480,12 +4948,12 @@
    ]
   ]
  },
- "defaut|un_tiers|py/tests/test_security.py": {
+ "defaut|un_sur_sept|py/tests/test_security.py": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "defaut|un_tiers|py/whitespace.py": {
+ "defaut|un_sur_sept|py/whitespace.py": {
   "blocks": [],
   "file": [
    [
@@ -5504,28 +4972,6 @@
     "MINOR",
     "convention",
     2,
-    0,
-    "Espaces en fin de ligne.",
-    "f36c016d",
-    "",
-    null
-   ],
-   [
-    "CNV.TRAILING_WS",
-    "MINOR",
-    "convention",
-    4,
-    0,
-    "Espaces en fin de ligne.",
-    "f36c016d",
-    "",
-    null
-   ],
-   [
-    "CNV.TRAILING_WS",
-    "MINOR",
-    "convention",
-    6,
     0,
     "Espaces en fin de ligne.",
     "f36c016d",
@@ -5779,6 +5225,70 @@
    ]
   ]
  },
+ "extra|defaut|generated/tests/test_secrets.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": [
+   [
+    "SEC.AWS_KEY",
+    "CRITICAL",
+    "securite",
+    2,
+    0,
+    "Cle d'acces AWS en clair dans le code.",
+    "ff70824a",
+    "ae312e46",
+    null
+   ],
+   [
+    "SEC.PRIVATE_KEY",
+    "CRITICAL",
+    "securite",
+    3,
+    0,
+    "Cle privee embarquee dans un fichier source.",
+    "5ecfa7d8",
+    "7d697787",
+    null
+   ],
+   [
+    "SEC.JWT",
+    "CRITICAL",
+    "securite",
+    4,
+    0,
+    "Jeton JWT en dur dans le code.",
+    "ea9dd870",
+    "1473be0c",
+    null
+   ],
+   [
+    "SEC.SLACK_GH_TOKEN",
+    "CRITICAL",
+    "securite",
+    5,
+    0,
+    "Jeton d'API (Slack / GitHub) en clair.",
+    "9f5175ea",
+    "be293480",
+    null
+   ],
+   [
+    "SEC.SLACK_GH_TOKEN",
+    "CRITICAL",
+    "securite",
+    6,
+    0,
+    "Jeton d'API (Slack / GitHub) en clair.",
+    "9f5175ea",
+    "f64e4b3d",
+    null
+   ]
+  ]
+ },
  "extra|defaut|java/Catches.java": {
   "function_bugs": [],
   "function_quality": [],
@@ -5856,6 +5366,14 @@
     6
    ]
   ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|java/CommentedSecurity.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
   "imports": [],
   "naming": [],
   "security": []
@@ -7557,6 +7075,14 @@
   "naming": [],
   "security": []
  },
+ "extra|defaut|js/lang_filters.js": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|js/security.js": {
   "function_bugs": [],
   "function_quality": [],
@@ -7898,6 +7424,26 @@
    ]
   ],
   "security": []
+ },
+ "extra|defaut|py/long_security.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": [
+   [
+    "SEC.HARDCODED_SECRET",
+    "CRITICAL",
+    "securite",
+    3,
+    0,
+    "Secret ecrit en dur dans le code.",
+    "64c04d2c",
+    "password = \"before2000chars\"  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    null
+   ]
+  ]
  },
  "extra|defaut|py/magic.py": {
   "function_bugs": [],
@@ -8482,6 +8028,26 @@
    ]
   ]
  },
+ "extra|defaut|py/security_filters.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": [
+   [
+    "SEC.SQL_CONCAT",
+    "CRITICAL",
+    "securite",
+    17,
+    0,
+    "Requete SQL construite par concatenation de chaines : injection SQL possible.",
+    "ec9113a2",
+    "exec(\"x = \" + ast.literal_eval(message))",
+    null
+   ]
+  ]
+ },
  "extra|defaut|py/tests/test_exit.py": {
   "function_bugs": [],
   "function_quality": [],
@@ -8592,6 +8158,17 @@
     "80694e0d",
     "assert hashlib.md5(blob).hexdigest()",
     null
+   ],
+   [
+    "SEC.CONNSTRING",
+    "CRITICAL",
+    "securite",
+    14,
+    0,
+    "Chaine de connexion contenant un mot de passe.",
+    "90df9287",
+    "DB = \"postgres://admin:s3cr3tpass@db.internal/app\"",
+    null
    ]
   ]
  },
@@ -8614,6 +8191,70 @@
   "security": []
  },
  "extra|seuils_fonctions|generated/secrets.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": [
+   [
+    "SEC.AWS_KEY",
+    "CRITICAL",
+    "securite",
+    2,
+    0,
+    "Cle d'acces AWS en clair dans le code.",
+    "ff70824a",
+    "ae312e46",
+    null
+   ],
+   [
+    "SEC.PRIVATE_KEY",
+    "CRITICAL",
+    "securite",
+    3,
+    0,
+    "Cle privee embarquee dans un fichier source.",
+    "5ecfa7d8",
+    "7d697787",
+    null
+   ],
+   [
+    "SEC.JWT",
+    "CRITICAL",
+    "securite",
+    4,
+    0,
+    "Jeton JWT en dur dans le code.",
+    "ea9dd870",
+    "1473be0c",
+    null
+   ],
+   [
+    "SEC.SLACK_GH_TOKEN",
+    "CRITICAL",
+    "securite",
+    5,
+    0,
+    "Jeton d'API (Slack / GitHub) en clair.",
+    "9f5175ea",
+    "be293480",
+    null
+   ],
+   [
+    "SEC.SLACK_GH_TOKEN",
+    "CRITICAL",
+    "securite",
+    6,
+    0,
+    "Jeton d'API (Slack / GitHub) en clair.",
+    "9f5175ea",
+    "f64e4b3d",
+    null
+   ]
+  ]
+ },
+ "extra|seuils_fonctions|generated/tests/test_secrets.py": {
   "function_bugs": [],
   "function_quality": [],
   "functions": [],
@@ -8766,6 +8407,14 @@
     6
    ]
   ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/CommentedSecurity.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
   "imports": [],
   "naming": [],
   "security": []
@@ -11004,6 +10653,14 @@
   "naming": [],
   "security": []
  },
+ "extra|seuils_fonctions|js/lang_filters.js": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|js/security.js": {
   "function_bugs": [],
   "function_quality": [
@@ -11414,6 +11071,26 @@
    ]
   ],
   "security": []
+ },
+ "extra|seuils_fonctions|py/long_security.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": [
+   [
+    "SEC.HARDCODED_SECRET",
+    "CRITICAL",
+    "securite",
+    3,
+    0,
+    "Secret ecrit en dur dans le code.",
+    "64c04d2c",
+    "password = \"before2000chars\"  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    null
+   ]
+  ]
  },
  "extra|seuils_fonctions|py/magic.py": {
   "function_bugs": [],
@@ -12090,6 +11767,26 @@
    ]
   ]
  },
+ "extra|seuils_fonctions|py/security_filters.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": [
+   [
+    "SEC.SQL_CONCAT",
+    "CRITICAL",
+    "securite",
+    17,
+    0,
+    "Requete SQL construite par concatenation de chaines : injection SQL possible.",
+    "ec9113a2",
+    "exec(\"x = \" + ast.literal_eval(message))",
+    null
+   ]
+  ]
+ },
  "extra|seuils_fonctions|py/tests/test_exit.py": {
   "function_bugs": [],
   "function_quality": [],
@@ -12223,6 +11920,17 @@
     "80694e0d",
     "assert hashlib.md5(blob).hexdigest()",
     null
+   ],
+   [
+    "SEC.CONNSTRING",
+    "CRITICAL",
+    "securite",
+    14,
+    0,
+    "Chaine de connexion contenant un mot de passe.",
+    "90df9287",
+    "DB = \"postgres://admin:s3cr3tpass@db.internal/app\"",
+    null
    ]
   ]
  },
@@ -12271,38 +11979,35 @@
     "5ecfa7d8",
     "7d697787",
     null
-   ],
+   ]
+  ]
+ },
+ "partial|seuils_fonctions|generated/tests/test_secrets.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": [
    [
-    "SEC.JWT",
+    "SEC.AWS_KEY",
     "CRITICAL",
     "securite",
-    4,
+    2,
     0,
-    "Jeton JWT en dur dans le code.",
-    "ea9dd870",
-    "1473be0c",
+    "Cle d'acces AWS en clair dans le code.",
+    "ff70824a",
+    "ae312e46",
     null
    ],
    [
-    "SEC.SLACK_GH_TOKEN",
+    "SEC.PRIVATE_KEY",
     "CRITICAL",
     "securite",
-    5,
+    3,
     0,
-    "Jeton d'API (Slack / GitHub) en clair.",
-    "9f5175ea",
-    "be293480",
-    null
-   ],
-   [
-    "SEC.SLACK_GH_TOKEN",
-    "CRITICAL",
-    "securite",
-    6,
-    0,
-    "Jeton d'API (Slack / GitHub) en clair.",
-    "9f5175ea",
-    "f64e4b3d",
+    "Cle privee embarquee dans un fichier source.",
+    "5ecfa7d8",
+    "7d697787",
     null
    ]
   ]
@@ -12333,6 +12038,13 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|java/CommentedSecurity.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|java/Complex.java": {
   "function_bugs": [
    [
@@ -12345,28 +12057,6 @@
     "0e1c79b0",
     "public int average(List<Integer> values) {",
     "Complex.average"
-   ],
-   [
-    "BUG.DIV_ZERO",
-    "MAJOR",
-    "bug",
-    88,
-    91,
-    "Division par une valeur qui peut valoir zero, sans garde.",
-    "0e1c79b0",
-    "public int unguardedTotal(List<Integer> values) {",
-    "Complex.unguardedTotal"
-   ],
-   [
-    "BUG.DIV_ZERO",
-    "MAJOR",
-    "bug",
-    93,
-    95,
-    "Division par une valeur qui peut valoir zero, sans garde.",
-    "0e1c79b0",
-    "public int divisionBySize() {",
-    "Complex.divisionBySize"
    ],
    [
     "BUG.OPTIONAL_GET",
@@ -12457,39 +12147,6 @@
     "38f77482",
     "public int branchy(int v) {",
     "Complex.branchy"
-   ],
-   [
-    "CPX.CYCLOMATIC_HIGH",
-    "MAJOR",
-    "complexite",
-    51,
-    53,
-    "Complex.condition a une complexite cyclomatique de 8 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
-    "2d5a30dc",
-    "public boolean condition(boolean a, boolean b, boolean c, boolean d, boolean e) {",
-    "Complex.condition"
-   ],
-   [
-    "CPX.TOO_MANY_PARAMS",
-    "MINOR",
-    "complexite",
-    51,
-    53,
-    "Complex.condition prend 5 parametres (seuil 2).",
-    "714e54b3",
-    "public boolean condition(boolean a, boolean b, boolean c, boolean d, boolean e) {",
-    "Complex.condition"
-   ],
-   [
-    "CPX.CONDITION",
-    "MINOR",
-    "complexite",
-    52,
-    0,
-    "Condition composee de 7 operateurs booleens dans Complex.condition.",
-    "002d039a",
-    "return (a && b) || (c && d) || (e && a) || (b && c);",
-    "Complex.condition"
    ],
    [
     "CPX.FUNCTION_SIZE",
@@ -12737,30 +12394,7 @@
     "Naming.setCount"
    ]
   ],
-  "imports": [
-   [
-    "CNV.UNUSED_IMPORT",
-    "MINOR",
-    "convention",
-    4,
-    0,
-    "Import java.util.Map inutilise.",
-    "9d523823",
-    "import java.util.Map;",
-    null
-   ],
-   [
-    "CNV.UNUSED_IMPORT",
-    "MINOR",
-    "convention",
-    5,
-    0,
-    "Import java.util.Set inutilise.",
-    "9d523823",
-    "import java.util.Set;",
-    null
-   ]
-  ],
+  "imports": [],
   "naming": [
    [
     "NAM.VAGUE_VARIABLE",
@@ -12818,28 +12452,6 @@
     "data"
    ],
    [
-    "NAM.VAGUE_VARIABLE",
-    "MAJOR",
-    "nommage",
-    18,
-    0,
-    "La variable `list1` ne dit pas ce qu'elle contient.",
-    "2783d328",
-    "List<String> list1 = null;",
-    "list1"
-   ],
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
-    19,
-    0,
-    "Le nom `ab` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "String ab = \"b\";",
-    "ab"
-   ],
-   [
     "NAM.TOO_SHORT",
     "MINOR",
     "nommage",
@@ -12860,17 +12472,6 @@
     "0b794e7a",
     "public boolean computeTotal(int a, int b) {",
     "b"
-   ],
-   [
-    "NAM.NUMBERED",
-    "MINOR",
-    "nommage",
-    54,
-    0,
-    "Le nom `amt1` se termine par un chiffre : il distingue mal deux concepts.",
-    "b598656d",
-    "int amt1 = 1;",
-    "amt1"
    ],
    [
     "NAM.ABBREVIATION",
@@ -12953,34 +12554,12 @@
     "NAM.BOOL_PREFIX",
     "MINOR",
     "nommage",
-    25,
-    0,
-    "La methode `Naming.getValue` est nommee comme une action mais retourne un booleen.",
-    "cce3c68d",
-    "public boolean getValue() {",
-    "Naming.getValue"
-   ],
-   [
-    "NAM.BOOL_PREFIX",
-    "MINOR",
-    "nommage",
     29,
     0,
     "La methode `Naming.computeTotal` est nommee comme une action mais retourne un booleen.",
     "cce3c68d",
     "public boolean computeTotal(int a, int b) {",
     "Naming.computeTotal"
-   ],
-   [
-    "NAM.GETTER_VOID",
-    "MAJOR",
-    "nommage",
-    33,
-    0,
-    "La methode `Naming.getItems` commence par get mais ne retourne rien.",
-    "f6e75eab",
-    "public void getItems() {",
-    "Naming.getItems"
    ],
    [
     "NAM.GETTER_SIDE_EFFECT",
@@ -13014,17 +12593,6 @@
     "f6dd48f9",
     "public void doit() {",
     "Naming.doit"
-   ],
-   [
-    "NAM.VAGUE_VERB",
-    "MAJOR",
-    "nommage",
-    88,
-    0,
-    "La methode `Naming.handle` utilise un verbe passe-partout.",
-    "e7e5486f",
-    "public void handle() {",
-    "Naming.handle"
    ],
    [
     "NAM.VAGUE_METHOD",
@@ -13070,17 +12638,6 @@
   "naming": [],
   "security": [
    [
-    "SEC.HARDCODED_SECRET",
-    "CRITICAL",
-    "securite",
-    12,
-    0,
-    "Secret ecrit en dur dans le code.",
-    "64c04d2c",
-    "private static final String PASSWORD = \"hunter2hunter2\";",
-    null
-   ],
-   [
     "SEC.CONNSTRING",
     "CRITICAL",
     "securite",
@@ -13125,39 +12682,6 @@
     null
    ],
    [
-    "SEC.SQL_CONCAT",
-    "CRITICAL",
-    "securite",
-    18,
-    0,
-    "Requete SQL construite par concatenation de chaines : injection SQL possible.",
-    "ec9113a2",
-    "Runtime.getRuntime().exec(\"ls \" + name);",
-    null
-   ],
-   [
-    "SEC.CMD_INJECTION",
-    "CRITICAL",
-    "securite",
-    18,
-    0,
-    "Commande systeme construite a partir de valeurs dynamiques : injection de commande possible.",
-    "7e5fa2e8",
-    "Runtime.getRuntime().exec(\"ls \" + name);",
-    null
-   ],
-   [
-    "SEC.WEAK_HASH",
-    "MAJOR",
-    "securite",
-    19,
-    0,
-    "Fonction de hachage cassee (MD5/SHA-1).",
-    "80694e0d",
-    "MessageDigest digest = MessageDigest.getInstance(\"MD5\");",
-    null
-   ],
-   [
     "SEC.WEAK_CIPHER",
     "MAJOR",
     "securite",
@@ -13188,28 +12712,6 @@
     "Deserialisation de donnees non fiables : execution de code possible.",
     "b1dc875c",
     "ObjectInputStream in = new ObjectInputStream(System.in);",
-    null
-   ],
-   [
-    "SEC.PATH_TRAVERSAL",
-    "MAJOR",
-    "securite",
-    25,
-    0,
-    "Chemin de fichier construit depuis une entree utilisateur : traversee de repertoire possible.",
-    "470f5abc",
-    "File file = new File(request.getParameter(\"path\"));",
-    null
-   ],
-   [
-    "SEC.LOG_SECRET",
-    "MAJOR",
-    "securite",
-    26,
-    0,
-    "Donnee sensible ecrite dans les journaux.",
-    "e58cfbbc",
-    "logger.info(\"login with password \" + PASSWORD);",
     null
    ],
    [
@@ -13393,17 +12895,6 @@
     "0b794e7a",
     "public boolean same(String a, String b) {",
     "b"
-   ],
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
-    26,
-    0,
-    "Le nom `o` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "Object o = null;",
-    "o"
    ],
    [
     "NAM.TOO_SHORT",
@@ -13595,17 +13086,6 @@
     "NAM.TOO_SHORT",
     "MINOR",
     "nommage",
-    26,
-    0,
-    "Le nom `o` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "Object o = null;",
-    "o"
-   ],
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
     37,
     0,
     "Le nom `t` est trop court pour etre compris hors contexte.",
@@ -13792,17 +13272,6 @@
     "NAM.TOO_SHORT",
     "MINOR",
     "nommage",
-    26,
-    0,
-    "Le nom `o` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "Object o = null;",
-    "o"
-   ],
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
     37,
     0,
     "Le nom `t` est trop court pour etre compris hors contexte.",
@@ -13842,17 +13311,6 @@
     "0b794e7a",
     "Scanner sc = new Scanner(System.in);",
     "sc"
-   ],
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
-    67,
-    0,
-    "Le nom `c` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "Connection c = ds.getConnection();",
-    "c"
    ]
   ],
   "security": []
@@ -13910,19 +13368,7 @@
    ]
   ],
   "imports": [],
-  "naming": [
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
-    12,
-    0,
-    "Le nom `s` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "const s = \"// eslint-disable and @ts-nocheck in a string\";",
-    "s"
-   ]
-  ],
+  "naming": [],
   "security": []
  },
  "partial|seuils_fonctions|js/app.test.js": {
@@ -13952,22 +13398,17 @@
    ]
   ],
   "imports": [],
-  "naming": [
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
-    12,
-    0,
-    "Le nom `s` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "const s = \"// eslint-disable and @ts-nocheck in a string\";",
-    "s"
-   ]
-  ],
+  "naming": [],
   "security": []
  },
  "partial|seuils_fonctions|js/exit.test.js": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|js/lang_filters.js": {
   "function_bugs": [],
   "function_quality": [],
   "imports": [],
@@ -14080,39 +13521,6 @@
     "80694e0d",
     "crypto.createHash(\"md5\").update(userInput);",
     null
-   ],
-   [
-    "SEC.TLS_DISABLED",
-    "CRITICAL",
-    "securite",
-    11,
-    0,
-    "Verification du certificat TLS desactivee.",
-    "53b976ca",
-    "https.get({ host: \"internal\", rejectUnauthorized: false });",
-    null
-   ],
-   [
-    "SEC.LOG_SECRET",
-    "MAJOR",
-    "securite",
-    12,
-    0,
-    "Donnee sensible ecrite dans les journaux.",
-    "e58cfbbc",
-    "console.log(\"token\", req.headers.authorization);",
-    null
-   ],
-   [
-    "SEC.PATH_TRAVERSAL",
-    "MAJOR",
-    "securite",
-    13,
-    0,
-    "Chemin de fichier construit depuis une entree utilisateur : traversee de repertoire possible.",
-    "470f5abc",
-    "return fs.readFileSync(req.query.file);",
-    null
    ]
   ]
  },
@@ -14143,19 +13551,7 @@
    ]
   ],
   "imports": [],
-  "naming": [
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
-    12,
-    0,
-    "Le nom `s` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "const s = \"// eslint-disable and @ts-nocheck in a string\";",
-    "s"
-   ]
-  ],
+  "naming": [],
   "security": []
  },
  "partial|seuils_fonctions|misc/conf.yaml": {
@@ -14233,28 +13629,6 @@
     "NAM.TOO_SHORT",
     "MINOR",
     "nommage",
-    4,
-    0,
-    "Le nom `y2` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "y2 = 74",
-    "y2"
-   ],
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
-    5,
-    0,
-    "Le nom `y3` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "y3 = 111",
-    "y3"
-   ],
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
     6,
     0,
     "Le nom `y4` est trop court pour etre compris hors contexte.",
@@ -14305,20 +13679,28 @@
     "0b794e7a",
     "y8 = 296",
     "y8"
-   ],
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
-    11,
-    0,
-    "Le nom `y9` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "y9 = 333",
-    "y9"
    ]
   ],
   "security": []
+ },
+ "partial|seuils_fonctions|py/long_security.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": [
+   [
+    "SEC.HARDCODED_SECRET",
+    "CRITICAL",
+    "securite",
+    3,
+    0,
+    "Secret ecrit en dur dans le code.",
+    "64c04d2c",
+    "password = \"before2000chars\"  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    null
+   ]
+  ]
  },
  "partial|seuils_fonctions|py/magic.py": {
   "function_bugs": [],
@@ -14369,17 +13751,6 @@
     "0b794e7a",
     "c = total - 86400",
     "c"
-   ],
-   [
-    "NAM.TOO_SHORT",
-    "MINOR",
-    "nommage",
-    11,
-    0,
-    "Le nom `d` est trop court pour etre compris hors contexte.",
-    "0b794e7a",
-    "d = total / 7919",
-    "d"
    ],
    [
     "NAM.TOO_SHORT",
@@ -14564,17 +13935,6 @@
     "process"
    ],
    [
-    "NAM.BOOL_PREFIX",
-    "MINOR",
-    "nommage",
-    16,
-    0,
-    "La methode `get_value` est nommee comme une action mais retourne un booleen.",
-    "cce3c68d",
-    "def get_value() -> bool:",
-    "get_value"
-   ],
-   [
     "NAM.CASE",
     "MINOR",
     "nommage",
@@ -14584,17 +13944,6 @@
     "032809d7",
     "def getName():",
     "getName"
-   ],
-   [
-    "NAM.VAGUE_METHOD",
-    "MAJOR",
-    "nommage",
-    33,
-    0,
-    "La methode `Naming.doit` a un nom qui ne decrit pas son effet.",
-    "f6dd48f9",
-    "def doit(self):",
-    "Naming.doit"
    ],
    [
     "NAM.VAGUE_VERB",
@@ -14682,28 +14031,6 @@
   ],
   "security": [
    [
-    "SEC.HARDCODED_SECRET",
-    "CRITICAL",
-    "securite",
-    11,
-    0,
-    "Secret ecrit en dur dans le code.",
-    "64c04d2c",
-    "api_key = \"k9f3a7c1e5b2d8aa\"",
-    null
-   ],
-   [
-    "SEC.CONNSTRING",
-    "CRITICAL",
-    "securite",
-    12,
-    0,
-    "Chaine de connexion contenant un mot de passe.",
-    "90df9287",
-    "DATABASE_URL = \"mongodb://root:rootpass99@mongo.internal:27017/app\"",
-    null
-   ],
-   [
     "SEC.CMD_INJECTION",
     "CRITICAL",
     "securite",
@@ -14723,28 +14050,6 @@
     "Appel systeme avec shell=True.",
     "fb2e4947",
     "subprocess.run(command, shell=True)",
-    null
-   ],
-   [
-    "SEC.EVAL",
-    "CRITICAL",
-    "securite",
-    18,
-    0,
-    "Evaluation dynamique de code.",
-    "8109c6ac",
-    "eval(user)",
-    null
-   ],
-   [
-    "SEC.DESERIALIZE",
-    "CRITICAL",
-    "securite",
-    19,
-    0,
-    "Deserialisation de donnees non fiables : execution de code possible.",
-    "b1dc875c",
-    "pickle.loads(blob)",
     null
    ],
    [
@@ -14812,27 +14117,24 @@
     "12dee76b",
     "requests.get(\"http://insecure.partner.net/v1\", verify=False)",
     null
-   ],
+   ]
+  ]
+ },
+ "partial|seuils_fonctions|py/security_filters.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": [
    [
-    "SEC.LOG_SECRET",
-    "MAJOR",
+    "SEC.SQL_CONCAT",
+    "CRITICAL",
     "securite",
-    25,
+    17,
     0,
-    "Donnee sensible ecrite dans les journaux.",
-    "e58cfbbc",
-    "print(\"password is\", user.password)",
-    null
-   ],
-   [
-    "SEC.PATH_TRAVERSAL",
-    "MAJOR",
-    "securite",
-    26,
-    0,
-    "Chemin de fichier construit depuis une entree utilisateur : traversee de repertoire possible.",
-    "470f5abc",
-    "return open(request.args[\"path\"])",
+    "Requete SQL construite par concatenation de chaines : injection SQL possible.",
+    "ec9113a2",
+    "exec(\"x = \" + ast.literal_eval(message))",
     null
    ]
   ]
@@ -14890,39 +14192,6 @@
     "64c04d2c",
     "password = \"testpassword123\"",
     null
-   ],
-   [
-    "SEC.SHELL_TRUE",
-    "MAJOR",
-    "securite",
-    11,
-    0,
-    "Appel systeme avec shell=True.",
-    "fb2e4947",
-    "subprocess.run(command, shell=True)",
-    null
-   ],
-   [
-    "SEC.DESERIALIZE",
-    "MAJOR",
-    "securite",
-    12,
-    0,
-    "Deserialisation de donnees non fiables : execution de code possible.",
-    "b1dc875c",
-    "pickle.loads(blob)",
-    null
-   ],
-   [
-    "SEC.WEAK_HASH",
-    "MAJOR",
-    "securite",
-    13,
-    0,
-    "Fonction de hachage cassee (MD5/SHA-1).",
-    "80694e0d",
-    "assert hashlib.md5(blob).hexdigest()",
-    null
    ]
   ]
  },
@@ -14934,6 +14203,34 @@
   "security": []
  },
  "seuils_bas|tout|generated/secrets.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 102 caracteres (seuil 60).",
+    "b875b8b0",
+    "32db664f",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Ligne de 85 caracteres (seuil 60).",
+    "b875b8b0",
+    "1473be0c",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|tout|generated/tests/test_secrets.py": {
   "blocks": [],
   "file": [
    [
@@ -15127,6 +14424,23 @@
    ]
   ],
   "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|java/CommentedSecurity.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// password = \"commentedsecret1\"",
+    null
+   ]
+  ],
   "lines": []
  },
  "seuils_bas|tout|java/Complex.java": {
@@ -16928,6 +16242,11 @@
    ]
   ]
  },
+ "seuils_bas|tout|js/lang_filters.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|js/security.js": {
   "blocks": [],
   "file": [
@@ -17370,6 +16689,45 @@
     "Valeur numerique 407 utilisee directement, sans nom.",
     "97a5f3bf",
     "y11 = 407",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|tout|py/long_security.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 114 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : la ligne est tronquee a 2000 caracteres pour les regles lues sur la ligne brute.\"\"\"",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Ligne de 2139 caracteres (seuil 60).",
+    "b875b8b0",
+    "value = 1                                                                                                               ",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ligne de 2132 caracteres (seuil 60).",
+    "b875b8b0",
+    "password = \"before2000chars\"  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     null
    ]
   ],
@@ -17895,6 +17253,100 @@
    ]
   ]
  },
+ "seuils_bas|tout|py/security_filters.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 80 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : ce que les regles de securite doivent ignorer.\"\"\"",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Ligne de 67 caracteres (seuil 60).",
+    "b875b8b0",
+    "# Commentaire : un secret cite dans un commentaire n'en est pas un.",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    5,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# password = \"commentedsecret4\"",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    7,
+    0,
+    "Ligne de 97 caracteres (seuil 60).",
+    "b875b8b0",
+    "# Litteraux et commentaires de fin de ligne : les regles lues sur la ligne nettoyee les ignorent.",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    8,
+    0,
+    "Ligne de 65 caracteres (seuil 60).",
+    "b875b8b0",
+    "message = \"do not call eval(x), shell=True or os.system(cmd + y)\"",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    11,
+    0,
+    "Ligne de 64 caracteres (seuil 60).",
+    "b875b8b0",
+    "# Valeurs factices ou lues dans l'environnement : pas de secret.",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    16,
+    0,
+    "Ligne de 82 caracteres (seuil 60).",
+    "b875b8b0",
+    "# Evaluation reputee sure : exec avec concatenation, mais passee par literal_eval.",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    22,
+    0,
+    "Ligne de 91 caracteres (seuil 60).",
+    "b875b8b0",
+    "# Ces motifs sont propres a d'autres langages (JavaScript, SQL) : pas de constat en Python.",
+    null
+   ]
+  ],
+  "lines": []
+ },
  "seuils_bas|tout|py/tests/test_exit.py": {
   "blocks": [],
   "file": [],
@@ -18140,7 +17592,7 @@
   ],
   "lines": []
  },
- "seuils_bas|un_tiers|generated/secrets.py": {
+ "seuils_bas|un_sur_sept|generated/secrets.py": {
   "blocks": [],
   "file": [
    [
@@ -18153,22 +17605,28 @@
     "b875b8b0",
     "32db664f",
     null
-   ],
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|generated/tests/test_secrets.py": {
+  "blocks": [],
+  "file": [
    [
     "CNV.LINE_LENGTH",
     "MINOR",
     "convention",
-    4,
+    1,
     0,
-    "Ligne de 85 caracteres (seuil 60).",
+    "Ligne de 102 caracteres (seuil 60).",
     "b875b8b0",
-    "1473be0c",
+    "32db664f",
     null
    ]
   ],
   "lines": []
  },
- "seuils_bas|un_tiers|java/Catches.java": {
+ "seuils_bas|un_sur_sept|java/Catches.java": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -18200,17 +17658,6 @@
     15,
     "Exception capturee puis ignoree : l'erreur disparait sans trace.",
     "9e6be3e1",
-    "try { run(); } catch (Exception e) {",
-    "Exception e"
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "MINOR",
-    "bug",
-    18,
-    20,
-    "Exception capturee et ignoree, avec justification en commentaire.",
-    "247ed99c",
     "try { run(); } catch (Exception e) {",
     "Exception e"
    ],
@@ -18288,17 +17735,6 @@
     "BUG.CATCH_BROAD",
     "MINOR",
     "bug",
-    18,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "try { run(); } catch (Exception e) {",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
     23,
     0,
     "Capture d'exception trop large.",
@@ -18319,24 +17755,29 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|java/CatchesMultiline.java": {
-  "blocks": [
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    5,
-    7,
-    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
-    "9e6be3e1",
-    "} catch (IOException e) {",
-    "IOException e"
-   ]
-  ],
+ "seuils_bas|un_sur_sept|java/CatchesMultiline.java": {
+  "blocks": [],
   "file": [],
   "lines": []
  },
- "seuils_bas|un_tiers|java/Complex.java": {
+ "seuils_bas|un_sur_sept|java/CommentedSecurity.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// password = \"commentedsecret1\"",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|java/Complex.java": {
   "blocks": [],
   "file": [
    [
@@ -18375,7 +17816,7 @@
   ],
   "lines": []
  },
- "seuils_bas|un_tiers|java/DuplicateA.java": {
+ "seuils_bas|un_sur_sept|java/DuplicateA.java": {
   "blocks": [],
   "file": [],
   "lines": [
@@ -18392,7 +17833,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|java/DuplicateB.java": {
+ "seuils_bas|un_sur_sept|java/DuplicateB.java": {
   "blocks": [],
   "file": [],
   "lines": [
@@ -18409,7 +17850,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|java/Naming.java": {
+ "seuils_bas|un_sur_sept|java/Naming.java": {
   "blocks": [],
   "file": [
    [
@@ -18426,28 +17867,6 @@
   ],
   "lines": [
    [
-    "BUG.FLOAT_MONEY",
-    "MAJOR",
-    "bug",
-    11,
-    0,
-    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
-    "ab8dc25d",
-    "private double amount1;",
-    null
-   ],
-   [
-    "BUG.FLOAT_MONEY",
-    "MAJOR",
-    "bug",
-    12,
-    0,
-    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
-    "ab8dc25d",
-    "private double amount2;",
-    null
-   ],
-   [
     "BUG.STDOUT",
     "MINOR",
     "convention",
@@ -18460,7 +17879,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|java/Security.java": {
+ "seuils_bas|un_sur_sept|java/Security.java": {
   "blocks": [
    [
     "BUG.RESOURCE_LEAK",
@@ -18523,17 +17942,6 @@
     "CNV.LINE_LENGTH",
     "MINOR",
     "convention",
-    19,
-    0,
-    "Ligne de 64 caracteres (seuil 60).",
-    "b875b8b0",
-    "MessageDigest digest = MessageDigest.getInstance(\"MD5\");",
-    null
-   ],
-   [
-    "CNV.LINE_LENGTH",
-    "MINOR",
-    "convention",
     20,
     0,
     "Ligne de 67 caracteres (seuil 60).",
@@ -18588,7 +17996,7 @@
   ],
   "lines": []
  },
- "seuils_bas|un_tiers|java/Wildcard.java": {
+ "seuils_bas|un_sur_sept|java/Wildcard.java": {
   "blocks": [],
   "file": [
    [
@@ -18605,7 +18013,7 @@
   ],
   "lines": []
  },
- "seuils_bas|un_tiers|java/src/main/java/demo/Service.java": {
+ "seuils_bas|un_sur_sept|java/src/main/java/demo/Service.java": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -18628,28 +18036,6 @@
     "247ed99c",
     "} catch (RuntimeException e) {",
     "RuntimeException e"
-   ],
-   [
-    "BUG.CATCH_SILENT_RETURN",
-    "MAJOR",
-    "bug",
-    32,
-    34,
-    "Exception capturee et transformee en sortie silencieuse.",
-    "c623e077",
-    "} catch (IOException e) {",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    40,
-    40,
-    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
-    "9e6be3e1",
-    "try { run(); } catch (Exception e) { continue; }",
-    "Exception e"
    ],
    [
     "BUG.RESOURCE_LEAK",
@@ -18698,17 +18084,6 @@
     null
    ],
    [
-    "CNV.WILDCARD_IMPORT",
-    "MINOR",
-    "convention",
-    4,
-    0,
-    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
-    "f7915b59",
-    "import java.util.*;",
-    null
-   ],
-   [
     "CNV.LINE_LENGTH",
     "MINOR",
     "convention",
@@ -18728,17 +18103,6 @@
     "Ligne de 83 caracteres (seuil 60).",
     "b875b8b0",
     "// ignore : le fichier est optionnel au demarrage, on continue sans lui",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
-    47,
-    0,
-    "Valeur numerique 500 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "Thread.sleep(500);",
     null
    ],
    [
@@ -18772,17 +18136,6 @@
     "Ligne de 68 caracteres (seuil 60).",
     "b875b8b0",
     "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
-    61,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "// if (old > 0) {",
     null
    ]
   ],
@@ -18818,17 +18171,6 @@
     "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
     "ab8dc25d",
     "private float totalPrice = 0;",
-    null
-   ],
-   [
-    "BUG.FLOAT_MONEY",
-    "MAJOR",
-    "bug",
-    11,
-    0,
-    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
-    "ab8dc25d",
-    "double montant;",
     null
    ],
    [
@@ -18895,17 +18237,6 @@
     "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
     "fdb40e75",
     "e.printStackTrace();",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    40,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "try { run(); } catch (Exception e) { continue; }",
     null
    ],
    [
@@ -18931,28 +18262,6 @@
     null
    ],
    [
-    "BUG.EMPTY_RETURN_NULL",
-    "MINOR",
-    "bug",
-    46,
-    0,
-    "Retour de null.",
-    "83605cba",
-    "if (id < 0) return null;",
-    null
-   ],
-   [
-    "BUG.THREAD_SLEEP",
-    "MINOR",
-    "bug",
-    47,
-    0,
-    "Attente par pause fixe.",
-    "665ea4cd",
-    "Thread.sleep(500);",
-    null
-   ],
-   [
     "BUG.ASSERT_PROD",
     "MINOR",
     "bug",
@@ -19042,7 +18351,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|java/src/main/java/demo/cli/Main.java": {
+ "seuils_bas|un_sur_sept|java/src/main/java/demo/cli/Main.java": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -19065,28 +18374,6 @@
     "247ed99c",
     "} catch (RuntimeException e) {",
     "RuntimeException e"
-   ],
-   [
-    "BUG.CATCH_SILENT_RETURN",
-    "MAJOR",
-    "bug",
-    32,
-    34,
-    "Exception capturee et transformee en sortie silencieuse.",
-    "c623e077",
-    "} catch (IOException e) {",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    40,
-    40,
-    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
-    "9e6be3e1",
-    "try { run(); } catch (Exception e) { continue; }",
-    "Exception e"
    ],
    [
     "BUG.RESOURCE_LEAK",
@@ -19135,17 +18422,6 @@
     null
    ],
    [
-    "CNV.WILDCARD_IMPORT",
-    "MINOR",
-    "convention",
-    4,
-    0,
-    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
-    "f7915b59",
-    "import java.util.*;",
-    null
-   ],
-   [
     "CNV.LINE_LENGTH",
     "MINOR",
     "convention",
@@ -19165,17 +18441,6 @@
     "Ligne de 83 caracteres (seuil 60).",
     "b875b8b0",
     "// ignore : le fichier est optionnel au demarrage, on continue sans lui",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
-    47,
-    0,
-    "Valeur numerique 500 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "Thread.sleep(500);",
     null
    ],
    [
@@ -19209,17 +18474,6 @@
     "Ligne de 68 caracteres (seuil 60).",
     "b875b8b0",
     "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
-    61,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "// if (old > 0) {",
     null
    ]
   ],
@@ -19255,17 +18509,6 @@
     "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
     "ab8dc25d",
     "private float totalPrice = 0;",
-    null
-   ],
-   [
-    "BUG.FLOAT_MONEY",
-    "MAJOR",
-    "bug",
-    11,
-    0,
-    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
-    "ab8dc25d",
-    "double montant;",
     null
    ],
    [
@@ -19335,39 +18578,6 @@
     null
    ],
    [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    40,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "try { run(); } catch (Exception e) { continue; }",
-    null
-   ],
-   [
-    "BUG.EMPTY_RETURN_NULL",
-    "MINOR",
-    "bug",
-    46,
-    0,
-    "Retour de null.",
-    "83605cba",
-    "if (id < 0) return null;",
-    null
-   ],
-   [
-    "BUG.THREAD_SLEEP",
-    "MINOR",
-    "bug",
-    47,
-    0,
-    "Attente par pause fixe.",
-    "665ea4cd",
-    "Thread.sleep(500);",
-    null
-   ],
-   [
     "BUG.ASSERT_PROD",
     "MINOR",
     "bug",
@@ -19457,7 +18667,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|java/src/test/java/demo/ServiceTest.java": {
+ "seuils_bas|un_sur_sept|java/src/test/java/demo/ServiceTest.java": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -19480,28 +18690,6 @@
     "247ed99c",
     "} catch (RuntimeException e) {",
     "RuntimeException e"
-   ],
-   [
-    "BUG.CATCH_SILENT_RETURN",
-    "MAJOR",
-    "bug",
-    32,
-    34,
-    "Exception capturee et transformee en sortie silencieuse.",
-    "c623e077",
-    "} catch (IOException e) {",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    40,
-    40,
-    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
-    "9e6be3e1",
-    "try { run(); } catch (Exception e) { continue; }",
-    "Exception e"
    ]
   ],
   "file": [
@@ -19525,17 +18713,6 @@
     "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
     "f7915b59",
     "import java.io.*;",
-    null
-   ],
-   [
-    "CNV.WILDCARD_IMPORT",
-    "MINOR",
-    "convention",
-    4,
-    0,
-    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
-    "f7915b59",
-    "import java.util.*;",
     null
    ],
    [
@@ -19629,17 +18806,6 @@
     null
    ],
    [
-    "BUG.FLOAT_MONEY",
-    "MINOR",
-    "bug",
-    11,
-    0,
-    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
-    "ab8dc25d",
-    "double montant;",
-    null
-   ],
-   [
     "BUG.STRING_IDENTITY",
     "MINOR",
     "bug",
@@ -19703,28 +18869,6 @@
     "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
     "fdb40e75",
     "e.printStackTrace();",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    40,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "try { run(); } catch (Exception e) { continue; }",
-    null
-   ],
-   [
-    "BUG.THREAD_SLEEP",
-    "MINOR",
-    "bug",
-    47,
-    0,
-    "Attente par pause fixe.",
-    "665ea4cd",
-    "Thread.sleep(500);",
     null
    ],
    [
@@ -19792,42 +18936,20 @@
     "f763d4be",
     "@Ignore",
     null
-   ],
-   [
-    "BUG.DISABLED_TEST",
-    "MAJOR",
-    "bug",
-    60,
-    0,
-    "Test desactive.",
-    "f763d4be",
-    "@Test(enabled = false)",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    61,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "public void legacy() { // NOSONAR",
-    null
    ]
   ]
  },
- "seuils_bas|un_tiers|java/util/Helper.java": {
+ "seuils_bas|un_sur_sept|java/util/Helper.java": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "seuils_bas|un_tiers|java/util/Holder.java": {
+ "seuils_bas|un_sur_sept|java/util/Holder.java": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "seuils_bas|un_tiers|js/app.js": {
+ "seuils_bas|un_sur_sept|js/app.js": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -19881,28 +19003,6 @@
     "BUG.AWAIT_MISSING",
     "MINOR",
     "bug",
-    4,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "fetch(\"/api\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
-    5,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "axios.get(\"/x\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
     6,
     0,
     "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
@@ -19933,17 +19033,6 @@
     null
    ],
    [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    11,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "// @ts-ignore",
-    null
-   ],
-   [
     "BUG.EMPTY_RETURN_NULL",
     "MINOR",
     "bug",
@@ -19967,7 +19056,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|js/app.test.js": {
+ "seuils_bas|un_sur_sept|js/app.test.js": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -19998,28 +19087,6 @@
     "BUG.AWAIT_MISSING",
     "MINOR",
     "bug",
-    4,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "fetch(\"/api\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
-    5,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "axios.get(\"/x\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
     6,
     0,
     "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
@@ -20047,17 +19114,6 @@
     "Avertissement de l'outillage qualite neutralise.",
     "20d1c2eb",
     "// eslint-disable-next-line no-console",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    11,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "// @ts-ignore",
     null
    ],
    [
@@ -20095,7 +19151,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|js/exit.test.js": {
+ "seuils_bas|un_sur_sept|js/exit.test.js": {
   "blocks": [],
   "file": [
    [
@@ -20121,50 +19177,20 @@
     "f763d4be",
     "xit(\"reste desactive\", () => {});",
     null
-   ],
-   [
-    "BUG.DISABLED_TEST",
-    "MAJOR",
-    "bug",
-    4,
-    0,
-    "Test desactive.",
-    "f763d4be",
-    "xdescribe(\"suite desactivee\", () => {});",
-    null
    ]
   ]
  },
- "seuils_bas|un_tiers|js/security.js": {
+ "seuils_bas|un_sur_sept|js/lang_filters.js": {
   "blocks": [],
-  "file": [
-   [
-    "CNV.LINE_LENGTH",
-    "MINOR",
-    "convention",
-    11,
-    0,
-    "Ligne de 61 caracteres (seuil 60).",
-    "b875b8b0",
-    "https.get({ host: \"internal\", rejectUnauthorized: false });",
-    null
-   ]
-  ],
-  "lines": [
-   [
-    "BUG.STDOUT",
-    "MINOR",
-    "convention",
-    12,
-    0,
-    "Ecriture sur la sortie standard dans du code de production.",
-    "ce626c7d",
-    "console.log(\"token\", req.headers.authorization);",
-    null
-   ]
-  ]
+  "file": [],
+  "lines": []
  },
- "seuils_bas|un_tiers|js/ts/service.ts": {
+ "seuils_bas|un_sur_sept|js/security.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|js/ts/service.ts": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -20218,28 +19244,6 @@
     "BUG.AWAIT_MISSING",
     "MINOR",
     "bug",
-    4,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "fetch(\"/api\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
-    5,
-    0,
-    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
-    "7b63cf2d",
-    "axios.get(\"/x\");",
-    null
-   ],
-   [
-    "BUG.AWAIT_MISSING",
-    "MINOR",
-    "bug",
     6,
     0,
     "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
@@ -20270,17 +19274,6 @@
     null
    ],
    [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    11,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "// @ts-ignore",
-    null
-   ],
-   [
     "BUG.EMPTY_RETURN_NULL",
     "MINOR",
     "bug",
@@ -20304,7 +19297,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|misc/conf.yaml": {
+ "seuils_bas|un_sur_sept|misc/conf.yaml": {
   "blocks": [],
   "file": [],
   "lines": [
@@ -20321,12 +19314,12 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|misc/query.sql": {
+ "seuils_bas|un_sur_sept|misc/query.sql": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "seuils_bas|un_tiers|py/__main__.py": {
+ "seuils_bas|un_sur_sept|py/__main__.py": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -20348,17 +19341,6 @@
     "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
     "3bca52b9",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    18,
-    0,
-    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
-    "3bca52b9",
-    "except (ValueError, TypeError):",
     null
    ],
    [
@@ -20400,17 +19382,6 @@
     "CNV.COMMENTED_CODE",
     "MINOR",
     "convention",
-    32,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "# y = compute(x)",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
     34,
     0,
     "Code commente laisse en place.",
@@ -20429,17 +19400,6 @@
     "Avertissement de l'outillage qualite neutralise.",
     "20d1c2eb",
     "import re  # noqa",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    4,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "import json  # type: ignore",
     null
    ],
    [
@@ -20462,17 +19422,6 @@
     "Capture d'exception trop large.",
     "6fc54750",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    26,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "except BaseException:",
     null
    ],
    [
@@ -20499,7 +19448,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|py/long_lines.py": {
+ "seuils_bas|un_sur_sept|py/long_lines.py": {
   "blocks": [],
   "file": [
    [
@@ -20539,50 +19488,89 @@
     "CNV.MAGIC_NUMBER",
     "MINOR",
     "convention",
-    4,
-    0,
-    "Valeur numerique 74 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "y2 = 74",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
-    11,
-    0,
-    "Valeur numerique 333 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "y9 = 333",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
-    12,
-    0,
-    "Valeur numerique 370 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "y10 = 370",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
     13,
     0,
     "Valeur numerique 407 utilisee directement, sans nom.",
     "97a5f3bf",
     "y11 = 407",
     null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 444 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y12 = 444",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    15,
+    0,
+    "Valeur numerique 481 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y13 = 481",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    16,
+    0,
+    "Valeur numerique 518 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y14 = 518",
+    null
    ]
   ],
   "lines": []
  },
- "seuils_bas|un_tiers|py/magic.py": {
+ "seuils_bas|un_sur_sept|py/long_security.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 114 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : la ligne est tronquee a 2000 caracteres pour les regles lues sur la ligne brute.\"\"\"",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Ligne de 2139 caracteres (seuil 60).",
+    "b875b8b0",
+    "value = 1                                                                                                               ",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ligne de 2132 caracteres (seuil 60).",
+    "b875b8b0",
+    "password = \"before2000chars\"  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|py/magic.py": {
   "blocks": [],
   "file": [
    [
@@ -20633,28 +19621,28 @@
     "CNV.MAGIC_NUMBER",
     "MINOR",
     "convention",
-    11,
-    0,
-    "Valeur numerique 7919 utilisee directement, sans nom.",
-    "97a5f3bf",
-    "d = total / 7919",
-    null
-   ],
-   [
-    "CNV.MAGIC_NUMBER",
-    "MINOR",
-    "convention",
     13,
     0,
     "Valeur numerique 5678 utilisee directement, sans nom.",
     "97a5f3bf",
     "f = total * 5678",
     null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 9876 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "g = total + 9876",
+    null
    ]
   ],
   "lines": []
  },
- "seuils_bas|un_tiers|py/mod.py": {
+ "seuils_bas|un_sur_sept|py/mod.py": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -20676,17 +19664,6 @@
     "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
     "3bca52b9",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    18,
-    0,
-    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
-    "3bca52b9",
-    "except (ValueError, TypeError):",
     null
    ],
    [
@@ -20728,17 +19705,6 @@
     "CNV.COMMENTED_CODE",
     "MINOR",
     "convention",
-    32,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "# y = compute(x)",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
     34,
     0,
     "Code commente laisse en place.",
@@ -20757,17 +19723,6 @@
     "Avertissement de l'outillage qualite neutralise.",
     "20d1c2eb",
     "import re  # noqa",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    4,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "import json  # type: ignore",
     null
    ],
    [
@@ -20790,17 +19745,6 @@
     "Capture d'exception trop large.",
     "6fc54750",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    26,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "except BaseException:",
     null
    ],
    [
@@ -20849,7 +19793,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|py/naming.py": {
+ "seuils_bas|un_sur_sept|py/naming.py": {
   "blocks": [],
   "file": [
    [
@@ -20864,21 +19808,9 @@
     null
    ]
   ],
-  "lines": [
-   [
-    "BUG.STDOUT",
-    "MINOR",
-    "convention",
-    25,
-    0,
-    "Ecriture sur la sortie standard dans du code de production.",
-    "ce626c7d",
-    "print(\"x\")",
-    null
-   ]
-  ]
+  "lines": []
  },
- "seuils_bas|un_tiers|py/scripts/run.py": {
+ "seuils_bas|un_sur_sept|py/scripts/run.py": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -20900,17 +19832,6 @@
     "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
     "3bca52b9",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    18,
-    0,
-    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
-    "3bca52b9",
-    "except (ValueError, TypeError):",
     null
    ],
    [
@@ -20952,17 +19873,6 @@
     "CNV.COMMENTED_CODE",
     "MINOR",
     "convention",
-    32,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "# y = compute(x)",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
     34,
     0,
     "Code commente laisse en place.",
@@ -20981,17 +19891,6 @@
     "Avertissement de l'outillage qualite neutralise.",
     "20d1c2eb",
     "import re  # noqa",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    4,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "import json  # type: ignore",
     null
    ],
    [
@@ -21014,17 +19913,6 @@
     "Capture d'exception trop large.",
     "6fc54750",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    26,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "except BaseException:",
     null
    ],
    [
@@ -21051,7 +19939,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|py/security.py": {
+ "seuils_bas|un_sur_sept|py/security.py": {
   "blocks": [],
   "file": [
    [
@@ -21069,17 +19957,6 @@
     "CNV.LINE_LENGTH",
     "MINOR",
     "convention",
-    12,
-    0,
-    "Ligne de 67 caracteres (seuil 60).",
-    "b875b8b0",
-    "DATABASE_URL = \"mongodb://root:rootpass99@mongo.internal:27017/app\"",
-    null
-   ],
-   [
-    "CNV.LINE_LENGTH",
-    "MINOR",
-    "convention",
     24,
     0,
     "Ligne de 64 caracteres (seuil 60).",
@@ -21088,26 +19965,75 @@
     null
    ]
   ],
-  "lines": [
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|py/security_filters.py": {
+  "blocks": [],
+  "file": [
    [
-    "BUG.STDOUT",
+    "CNV.LINE_LENGTH",
     "MINOR",
     "convention",
-    25,
+    1,
     0,
-    "Ecriture sur la sortie standard dans du code de production.",
-    "ce626c7d",
-    "print(\"password is\", user.password)",
+    "Ligne de 80 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : ce que les regles de securite doivent ignorer.\"\"\"",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    7,
+    0,
+    "Ligne de 97 caracteres (seuil 60).",
+    "b875b8b0",
+    "# Litteraux et commentaires de fin de ligne : les regles lues sur la ligne nettoyee les ignorent.",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    8,
+    0,
+    "Ligne de 65 caracteres (seuil 60).",
+    "b875b8b0",
+    "message = \"do not call eval(x), shell=True or os.system(cmd + y)\"",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    16,
+    0,
+    "Ligne de 82 caracteres (seuil 60).",
+    "b875b8b0",
+    "# Evaluation reputee sure : exec avec concatenation, mais passee par literal_eval.",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    22,
+    0,
+    "Ligne de 91 caracteres (seuil 60).",
+    "b875b8b0",
+    "# Ces motifs sont propres a d'autres langages (JavaScript, SQL) : pas de constat en Python.",
     null
    ]
-  ]
+  ],
+  "lines": []
  },
- "seuils_bas|un_tiers|py/tests/test_exit.py": {
+ "seuils_bas|un_sur_sept|py/tests/test_exit.py": {
   "blocks": [],
   "file": [],
   "lines": []
  },
- "seuils_bas|un_tiers|py/tests/test_mod.py": {
+ "seuils_bas|un_sur_sept|py/tests/test_mod.py": {
   "blocks": [
    [
     "BUG.CATCH_SWALLOWED",
@@ -21129,17 +20055,6 @@
     "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
     "3bca52b9",
     "except Exception:",
-    null
-   ],
-   [
-    "BUG.CATCH_SWALLOWED",
-    "CRITICAL",
-    "bug",
-    18,
-    0,
-    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
-    "3bca52b9",
-    "except (ValueError, TypeError):",
     null
    ],
    [
@@ -21181,17 +20096,6 @@
     "CNV.COMMENTED_CODE",
     "MINOR",
     "convention",
-    32,
-    0,
-    "Code commente laisse en place.",
-    "61ff1a9b",
-    "# y = compute(x)",
-    null
-   ],
-   [
-    "CNV.COMMENTED_CODE",
-    "MINOR",
-    "convention",
     34,
     0,
     "Code commente laisse en place.",
@@ -21210,17 +20114,6 @@
     "Avertissement de l'outillage qualite neutralise.",
     "20d1c2eb",
     "import re  # noqa",
-    null
-   ],
-   [
-    "BUG.SUPPRESS",
-    "MAJOR",
-    "convention",
-    4,
-    0,
-    "Avertissement de l'outillage qualite neutralise.",
-    "20d1c2eb",
-    "import json  # type: ignore",
     null
    ],
    [
@@ -21246,17 +20139,6 @@
     null
    ],
    [
-    "BUG.CATCH_BROAD",
-    "MINOR",
-    "bug",
-    26,
-    0,
-    "Capture d'exception trop large.",
-    "6fc54750",
-    "except BaseException:",
-    null
-   ],
-   [
     "BUG.THREAD_SLEEP",
     "MINOR",
     "bug",
@@ -21269,7 +20151,7 @@
    ]
   ]
  },
- "seuils_bas|un_tiers|py/tests/test_security.py": {
+ "seuils_bas|un_sur_sept|py/tests/test_security.py": {
   "blocks": [],
   "file": [
    [
@@ -21286,7 +20168,7 @@
   ],
   "lines": []
  },
- "seuils_bas|un_tiers|py/whitespace.py": {
+ "seuils_bas|un_sur_sept|py/whitespace.py": {
   "blocks": [],
   "file": [
    [
@@ -21316,28 +20198,6 @@
     "MINOR",
     "convention",
     2,
-    0,
-    "Espaces en fin de ligne.",
-    "f36c016d",
-    "",
-    null
-   ],
-   [
-    "CNV.TRAILING_WS",
-    "MINOR",
-    "convention",
-    4,
-    0,
-    "Espaces en fin de ligne.",
-    "f36c016d",
-    "",
-    null
-   ],
-   [
-    "CNV.TRAILING_WS",
-    "MINOR",
-    "convention",
-    6,
     0,
     "Espaces en fin de ligne.",
     "f36c016d",
