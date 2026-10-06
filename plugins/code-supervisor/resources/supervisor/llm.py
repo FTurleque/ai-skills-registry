@@ -101,24 +101,26 @@ def _conventions(root: str, cfg) -> str:
     return "\n\n".join(blocks) if blocks else "(aucun fichier de conventions trouve : deduis les conventions du code voisin)"
 
 
-def review(root: str, files: List[SourceFile], static_findings: List[Finding], cfg) -> Tuple[List[Finding], str]:
-    exe = available(cfg)
-    if not exe or not files:
-        return [], ""
+def _build_prompt(root: str, files: List[SourceFile], static_findings: List[Finding], cfg) -> str:
+    """Prompt de relecture, ou chaine vide s'il n'y a rien a relire."""
     budget = cfg.llm.get("max_diff_chars", 60000)
     diff = git_diff_text(root, [sf.path for sf in files], budget)
     # Un fichier neuf n'apparait pas dans `git diff` : on fournit son contenu tel quel.
     diff += _new_file_blocks(files, diff, budget - len(diff))
     if not diff.strip():
-        return [], ""
+        return ""
     top = static_findings[: cfg.llm.get("max_static_findings_in_prompt", 25)]
     static_txt = "\n".join("- [%s] %s %s : %s" % (f.severity, f.rule, f.location(), f.message) for f in top) or "(aucun)"
-    prompt = PROMPT.format(
+    return PROMPT.format(
         conventions=_conventions(root, cfg),
         files="\n".join("- %s%s" % (sf.path, " (nouveau)" if sf.is_new else "") for sf in files),
         static=static_txt,
         diff=diff,
     )
+
+
+def _run_reviewer(exe: str, prompt: str, root: str, cfg) -> Tuple[Optional[str], str]:
+    """(sortie du relecteur, message d'erreur) : l'un des deux est vide."""
     cmd = [
         exe, "-p",
         "--model", cfg.llm.get("model", "sonnet"),
@@ -137,28 +139,42 @@ def review(root: str, files: List[SourceFile], static_findings: List[Finding], c
                               stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                               timeout=cfg.llm.get("timeout_seconds", 180), env=env)
     except (OSError, subprocess.SubprocessError) as exc:
-        return [], "revue LLM indisponible (%s)" % exc
-    raw = proc.stdout.decode("utf-8", "replace")
-    payload = _extract_result(raw)
+        return None, "revue LLM indisponible (%s)" % exc
+    return proc.stdout.decode("utf-8", "replace"), ""
+
+
+def _to_finding(item: dict, default_path: str) -> Finding:
+    severity = str(item.get("severity", MAJOR)).upper()
+    if severity not in (CRITICAL, MAJOR, MINOR):
+        severity = MAJOR
+    category = CAT_MAP.get(str(item.get("category", "")).lower(), "convention")
+    path = str(item.get("file") or default_path)
+    return Finding(
+        rule="LLM.%s" % category.upper(), category=category, severity=severity,
+        message=str(item.get("message", "")).strip()[:500],
+        fix=str(item.get("fix", "")).strip()[:800],
+        file=path.replace("\\", "/"),
+        line=_as_int(item.get("line")),
+        symbol=(str(item.get("symbol")) if item.get("symbol") else None),
+        evidence=str(item.get("evidence", ""))[:300],
+        source="llm",
+    )
+
+
+def review(root: str, files: List[SourceFile], static_findings: List[Finding], cfg) -> Tuple[List[Finding], str]:
+    exe = available(cfg)
+    if not exe or not files:
+        return [], ""
+    prompt = _build_prompt(root, files, static_findings, cfg)
+    if not prompt:
+        return [], ""
+    output, error = _run_reviewer(exe, prompt, root, cfg)
+    if output is None:
+        return [], error
+    payload = _extract_result(output)
     if payload is None:
         return [], "revue LLM sans resultat exploitable"
-    findings = []
-    for item in payload.get("findings", [])[:30]:
-        sev = str(item.get("severity", MAJOR)).upper()
-        if sev not in (CRITICAL, MAJOR, MINOR):
-            sev = MAJOR
-        cat = CAT_MAP.get(str(item.get("category", "")).lower(), "convention")
-        path = str(item.get("file") or (files[0].path if files else ""))
-        findings.append(Finding(
-            rule="LLM.%s" % cat.upper(), category=cat, severity=sev,
-            message=str(item.get("message", "")).strip()[:500],
-            fix=str(item.get("fix", "")).strip()[:800],
-            file=path.replace("\\", "/"),
-            line=_as_int(item.get("line")),
-            symbol=(str(item.get("symbol")) if item.get("symbol") else None),
-            evidence=str(item.get("evidence", ""))[:300],
-            source="llm",
-        ))
+    findings = [_to_finding(item, files[0].path) for item in payload.get("findings", [])[:30]]
     return findings, str(payload.get("verdict", ""))[:400]
 
 
@@ -181,7 +197,7 @@ def _new_file_blocks(files: List[SourceFile], diff: str, budget: int) -> str:
 def _as_int(value) -> int:
     try:
         return max(0, int(value))
-    except Exception:
+    except (TypeError, ValueError, OverflowError):
         return 0
 
 

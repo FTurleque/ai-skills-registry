@@ -255,8 +255,9 @@ code-supervisor/
 ├── README.md                    ce fichier
 ├── examples/example.md          un diff fautif, le verdict, le message a l'agent
 └── resources/
-    ├── supervisor.py            point d'entree : hook, mode manuel, auto-test
+    ├── supervisor.py            point d'entree : place le moteur sur le chemin d'import et delegue
     ├── supervisor/              moteur
+    │   ├── runner.py            hook, mode manuel, auto-test, etat anti-boucle
     │   ├── model.py             constat, severites, deduplication
     │   ├── source.py            langages, nettoyage, extraction des fonctions, diff git
     │   ├── rules_security.py    secrets, injections, crypto, configuration dangereuse

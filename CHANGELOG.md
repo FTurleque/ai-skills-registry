@@ -9,6 +9,22 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — nettoyage interne du superviseur de code
+
+Aucun changement de comportement : 23 scénarios de bout en bout (payloads du hook, rounds anti-boucle,
+transcript, état corrompu, `--check`, `--self-test`) donnent la même sortie qu'avant.
+
+- La logique de `resources/supervisor.py` passe dans `resources/supervisor/runner.py`, découpée en
+  petites fonctions (`hook_main`, `touched_files`, `log_dir_for`, `cli_main`, `self_test`).
+  `supervisor.py` ne garde que le point d'entrée, qui place le moteur sur le chemin d'import : les six
+  `# noqa: E402` disparaissent. Un moteur déjà installé doit être réinstallé (le nouveau module
+  `runner.py` est copié par l'installateur).
+- `llm.review` est découpée (`_build_prompt`, `_run_reviewer`, `_to_finding`).
+- Les `except Exception` de `supervisor.py` et de `llm.py` sont restreints aux erreurs attendues ou
+  journalisent sur stderr.
+- L'empreinte anti-boucle passe de SHA-1 à SHA-256 : les états de session existants sont ignorés une
+  fois, sans conséquence.
+
 ### Corrigé — faux positifs du superviseur de code
 
 - `BUG.SUPPRESS` ne se déclenche plus sur un marqueur cité dans une chaîne ou dans un fichier de
