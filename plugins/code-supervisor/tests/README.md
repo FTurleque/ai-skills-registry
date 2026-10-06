@@ -27,7 +27,7 @@ Aucune dépendance en dehors de Python et de `git`. La CI les rejoue sur Linux.
 transcript avec lignes corrompues, état corrompu, dossier de journal imposé, chemin accentué, `--check`
 avec ou sans chemin, `--self-test`, et l'état anti-boucle persisté. La revue par modèle est coupée.
 
-**`rules`** (72 entrées) : chaque fichier du corpus est analysé avec deux jeux de seuils (défauts et seuils
+**`rules`** (80 entrées) : chaque fichier du corpus est analysé avec deux jeux de seuils (défauts et seuils
 bas) et deux sélections de lignes modifiées (toutes, une sur trois). Le test échoue aussi si le corpus ne
 déclenche plus l'une des 25 règles attendues (`EXPECTED_RULES`) : sans cela, une règle qui cesse de se
 déclencher passerait inaperçue.

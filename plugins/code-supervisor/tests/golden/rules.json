@@ -1520,6 +1520,34 @@
    ]
   ]
  },
+ "defaut|tout|js/exit.test.js": {
+  "blocks": [],
+  "file": [],
+  "lines": [
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    3,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xit(\"reste desactive\", () => {});",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    4,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xdescribe(\"suite desactivee\", () => {});",
+    null
+   ]
+  ]
+ },
  "defaut|tout|js/ts/service.ts": {
   "blocks": [
    [
@@ -2355,6 +2383,11 @@
     null
    ]
   ]
+ },
+ "defaut|tout|py/tests/test_exit.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|tout|py/tests/test_mod.py": {
   "blocks": [
@@ -4089,6 +4122,34 @@
    ]
   ]
  },
+ "defaut|un_tiers|js/exit.test.js": {
+  "blocks": [],
+  "file": [],
+  "lines": [
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    3,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xit(\"reste desactive\", () => {});",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    4,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xdescribe(\"suite desactivee\", () => {});",
+    null
+   ]
+  ]
+ },
  "defaut|un_tiers|js/ts/service.ts": {
   "blocks": [
    [
@@ -4924,6 +4985,11 @@
     null
    ]
   ]
+ },
+ "defaut|un_tiers|py/tests/test_exit.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|un_tiers|py/tests/test_mod.py": {
   "blocks": [
@@ -6802,6 +6868,46 @@
    ]
   ]
  },
+ "seuils_bas|tout|js/exit.test.js": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 61 caracteres (seuil 60).",
+    "b875b8b0",
+    "// xit( desactive vraiment un test ; exit( ne desactive rien.",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    3,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xit(\"reste desactive\", () => {});",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    4,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xdescribe(\"suite desactivee\", () => {});",
+    null
+   ]
+  ]
+ },
  "seuils_bas|tout|js/ts/service.ts": {
   "blocks": [
    [
@@ -7659,6 +7765,11 @@
     null
    ]
   ]
+ },
+ "seuils_bas|tout|py/tests/test_exit.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|tout|py/tests/test_mod.py": {
   "blocks": [
@@ -9548,6 +9659,46 @@
    ]
   ]
  },
+ "seuils_bas|un_tiers|js/exit.test.js": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 61 caracteres (seuil 60).",
+    "b875b8b0",
+    "// xit( desactive vraiment un test ; exit( ne desactive rien.",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    3,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xit(\"reste desactive\", () => {});",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    4,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xdescribe(\"suite desactivee\", () => {});",
+    null
+   ]
+  ]
+ },
  "seuils_bas|un_tiers|js/ts/service.ts": {
   "blocks": [
    [
@@ -10405,6 +10556,11 @@
     null
    ]
   ]
+ },
+ "seuils_bas|un_tiers|py/tests/test_exit.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|un_tiers|py/tests/test_mod.py": {
   "blocks": [

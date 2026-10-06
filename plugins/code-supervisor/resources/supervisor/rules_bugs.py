@@ -33,7 +33,7 @@ LINE_PATTERNS = [
      "Avertissement de l'outillage qualite neutralise.",
      "Corriger la cause de l'avertissement ; si la suppression est justifiee, la restreindre a la regle precise et ajouter un commentaire expliquant pourquoi."),
     ("BUG.DISABLED_TEST", None, re.compile(
-        r"(?i)(?:@Disabled|@Ignore|\.skip\s*\(|xit\s*\(|xdescribe\s*\(|@(?:pytest\.mark\.)?skip\b|@Test\s*\(\s*enabled\s*=\s*false)"), MAJOR,
+        r"(?i)(?:@Disabled|@Ignore|\.skip\s*\(|\bxit\s*\(|\bxdescribe\s*\(|@(?:pytest\.mark\.)?skip\b|@Test\s*\(\s*enabled\s*=\s*false)"), MAJOR,
      "Test desactive.",
      "Reactiver le test et corriger le code sous-jacent ; si la desactivation est volontaire, documenter la raison et la date de reactivation."),
     ("BUG.TODO", None, re.compile(r"(?://|#|/\*|\*)\s*(?:TODO|FIXME|XXX|HACK|BUG)\b"), MINOR,
