@@ -31,14 +31,14 @@ def generated_files() -> dict:
     Le validateur du depot et la protection des secrets de GitHub refusent ces motifs ecrits en clair :
     chaque valeur est donc composee de fragments, et la reference n'en garde qu'une empreinte."""
     aws = "AK" + "IA" + "7Q4ZLM2XN9R3T5VB"
-    private_key = "-----BEGIN " + "RSA " + "PRIVATE KEY-----"
+    pem_header = "-----BEGIN " + "RSA " + "PRIVATE KEY-----"
     jwt = ".".join(["eyJ" + "hbGciOiJIUzI1NiJ9", "eyJ" + "zdWIiOiIxMjM0NTY3ODkwIn0", "c2lnbmF0dXJlMTIzNDU2"])
     slack = "xox" + "b-123456789012-abcdefghij"
     github = "gh" + "p_" + "a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8"
     lines = [
         '"""Corpus de caracterisation : secrets assembles a l\'execution (voir rules_corpus.generated_files)."""',
         'AWS_ACCESS = "%s"' % aws,
-        'KEY_HEADER = """%s"""' % private_key,
+        'KEY_HEADER = """%s"""' % pem_header,
         'SESSION_JWT = "%s"' % jwt,
         'SLACK = "%s"' % slack,
         'GITHUB = "%s"' % github,
@@ -73,9 +73,9 @@ def _function_summary(fn):
 
 def _configs(Config, DEFAULTS) -> dict:
     def variant(**thresholds):
-        data = json.loads(json.dumps(DEFAULTS))
-        data["thresholds"].update(thresholds)
-        return Config(data)
+        settings = json.loads(json.dumps(DEFAULTS))
+        settings["thresholds"].update(thresholds)
+        return Config(settings)
     return {
         "defaut": variant(),
         "seuils_bas": variant(line_length=60, file_lines=100),
