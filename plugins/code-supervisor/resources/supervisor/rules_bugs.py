@@ -5,7 +5,7 @@ import re
 from typing import List
 
 from model import CRITICAL, MAJOR, MINOR, CAT_BUG, CAT_CONVENTION, Finding
-from source import SourceFile, Function, is_c_family, is_python
+from source import SourceFile, Function, is_c_family, is_python, is_structural
 
 LINE_PATTERNS = [
     ("BUG.STRING_IDENTITY", ("java", "kotlin", "csharp", "scala"), re.compile(
@@ -66,6 +66,14 @@ LINE_PATTERNS = [
 ]
 
 
+def _is_real_suppression(rx, raw: str, clean: str) -> bool:
+    """Vrai si un marqueur de suppression se trouve dans du code ou un commentaire.
+
+    `clean` neutralise les litteraux (« _ ») en gardant la geometrie de la ligne : un marqueur
+    cite dans une chaine ou dans une regle de documentation n'est pas une suppression."""
+    return any(m.start() >= len(clean) or clean[m.start()] != "_" for m in rx.finditer(raw))
+
+
 def check_lines(sf: SourceFile) -> List[Finding]:
     findings: List[Finding] = []
     for idx, raw in enumerate(sf.lines, start=1):
@@ -88,6 +96,8 @@ def check_lines(sf: SourceFile) -> List[Finding]:
                     continue
                 if "/cli/" in sf.path or "/scripts/" in sf.path or sf.path.endswith(("Main.java", "__main__.py")):
                     continue
+            if rule_id == "BUG.SUPPRESS" and not (is_structural(sf.path) and _is_real_suppression(rx, raw, clean)):
+                continue
             if rule_id == "BUG.DISABLED_TEST" and not sf.is_test:
                 continue
             if rule_id == "BUG.ASSERT_PROD" and sf.is_test:

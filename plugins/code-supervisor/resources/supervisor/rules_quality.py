@@ -5,7 +5,7 @@ import re
 from typing import List
 
 from model import MAJOR, MINOR, CAT_COMPLEXITY, CAT_CONVENTION, Finding
-from source import SourceFile, Function, is_python
+from source import SourceFile, Function, is_python, is_structural
 
 _DECISION = re.compile(
     r"(?<![\w.])(?:if|else\s+if|elif|for|foreach|while|case|catch|except|when|&&|\|\||\?\?|and\b|or\b)"
@@ -186,7 +186,9 @@ def check_file(sf: SourceFile, cfg) -> List[Finding]:
                 fix="Supprimer les espaces de fin (la plupart des formateurs le font automatiquement).",
                 file=sf.path, line=idx,
             ))
-        if magic_count < 5 and not sf.is_test and not _CONST_CTX.search(clean):
+        # Les valeurs d'un fichier de configuration (yaml, json, xml) sont des donnees, pas du code.
+        if (magic_count < 5 and not sf.is_test and is_structural(sf.path)
+                and not _CONST_CTX.search(clean)):
             m = _MAGIC.search(clean)
             if m and m.group(1) not in _POWERS and not re.search(
                     r"(?i)(?:line|version|\.\d|uuid|sql|select)", clean):

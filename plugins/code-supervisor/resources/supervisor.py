@@ -298,10 +298,19 @@ def self_test() -> int:
         "SEC.HARDCODED_SECRET", "SEC.SQL_CONCAT", "SEC.WEAK_HASH", "SEC.TLS_DISABLED",
         "BUG.CATCH_SWALLOWED", "BUG.STRING_IDENTITY", "BUG.STATIC_DATEFORMAT",
         "CPX.CYCLOMATIC_HIGH", "NAM.VAGUE_VARIABLE", "NAM.VAGUE_METHOD", "DUP.BLOCK",
+        "BUG.SUPPRESS",
     }
     missing = sorted(expected - set(by_rule))
     if missing:
         print("\nECHEC — regles attendues non declenchees : %s" % ", ".join(missing))
+        return 1
+    # Les fixtures clean_* citent des marqueurs de suppression ou des nombres sans en etre :
+    # ces regles ne doivent pas s'y declencher (faux positifs).
+    forbidden = {"BUG.SUPPRESS", "CNV.MAGIC_NUMBER"}
+    false_positives = sorted("%s:%d %s" % (f.file, f.line, f.rule) for f in findings
+                             if f.file.startswith("clean_") and f.rule in forbidden)
+    if false_positives:
+        print("\nECHEC — faux positifs sur les fixtures clean_* : %s" % ", ".join(false_positives))
         return 1
     print("\nOK — toutes les regles attendues se declenchent.")
     return 0

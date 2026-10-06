@@ -9,6 +9,16 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Corrigé — faux positifs du superviseur de code
+
+- `BUG.SUPPRESS` ne se déclenche plus sur un marqueur cité dans une chaîne ou dans un fichier de
+  configuration (`# noqa` mentionné par une règle de documentation, par exemple) : il ne vise que les
+  vraies suppressions, dans le code ou ses commentaires.
+- `CNV.MAGIC_NUMBER` ne s'applique plus aux fichiers de configuration (`yaml`, `json`, `xml`) : leurs
+  valeurs sont des données.
+- L'auto-test échoue désormais si ces règles se déclenchent sur les fixtures `clean_*`. Un moteur déjà
+  installé doit être réinstallé pour en profiter.
+
 ### Modifié — rapports du superviseur de code
 
 - Les rapports et l'état anti-boucle s'écrivent désormais dans `<projet>/docs/rapport-supervisor/`
