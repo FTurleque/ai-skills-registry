@@ -1,10 +1,20 @@
 {
+ "defaut|tout|cs/Arrow.cs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|generated/secrets.py": {
   "blocks": [],
   "file": [],
   "lines": []
  },
  "defaut|tout|generated/tests/test_secrets.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|go/main.go": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -260,6 +270,11 @@
    ]
   ]
  },
+ "defaut|tout|java/Nested.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|java/Security.java": {
   "blocks": [
    [
@@ -274,6 +289,45 @@
     null
    ]
   ],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|java/Shapes.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    16,
+    0,
+    "Ligne de 162 caracteres (seuil 140).",
+    "b875b8b0",
+    "public synchronized void guarded() throws java.io.IOException, java.sql.SQLException, java.lang.IllegalStateException, j",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "static Shapes unit() { return null; }",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|java/Unbalanced.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|java/UnclosedParens.java": {
+  "blocks": [],
   "file": [],
   "lines": []
  },
@@ -1384,6 +1438,11 @@
   "file": [],
   "lines": []
  },
+ "defaut|tout|js/Nested.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|js/app.js": {
   "blocks": [
    [
@@ -1841,6 +1900,11 @@
     null
    ]
   ]
+ },
+ "defaut|tout|kt/Funs.kt": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|tout|misc/conf.yaml": {
   "blocks": [],
@@ -2839,12 +2903,27 @@
   ],
   "lines": []
  },
+ "defaut|tout|rs/lib.rs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|cs/Arrow.cs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|un_sur_sept|generated/secrets.py": {
   "blocks": [],
   "file": [],
   "lines": []
  },
  "defaut|un_sur_sept|generated/tests/test_secrets.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|go/main.go": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -3044,6 +3123,11 @@
    ]
   ]
  },
+ "defaut|un_sur_sept|java/Nested.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|un_sur_sept|java/Security.java": {
   "blocks": [
    [
@@ -3058,6 +3142,45 @@
     null
    ]
   ],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|java/Shapes.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    16,
+    0,
+    "Ligne de 162 caracteres (seuil 140).",
+    "b875b8b0",
+    "public synchronized void guarded() throws java.io.IOException, java.sql.SQLException, java.lang.IllegalStateException, j",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "static Shapes unit() { return null; }",
+    null
+   ]
+  ]
+ },
+ "defaut|un_sur_sept|java/Unbalanced.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|java/UnclosedParens.java": {
+  "blocks": [],
   "file": [],
   "lines": []
  },
@@ -3882,6 +4005,11 @@
   "file": [],
   "lines": []
  },
+ "defaut|un_sur_sept|js/Nested.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|un_sur_sept|js/app.js": {
   "blocks": [
    [
@@ -4217,6 +4345,11 @@
     null
    ]
   ]
+ },
+ "defaut|un_sur_sept|kt/Funs.kt": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|un_sur_sept|misc/conf.yaml": {
   "blocks": [],
@@ -4981,6 +5114,11 @@
   ],
   "lines": []
  },
+ "defaut|un_sur_sept|rs/lib.rs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "duplication|defaut": [
   [
    "DUP.BLOCK",
@@ -5161,6 +5299,65 @@
    null
   ]
  ],
+ "extra|defaut|cs/Arrow.cs": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Calc.Twice",
+    2,
+    2,
+    [
+     "int x"
+    ],
+    "Calc",
+    "int",
+    "public",
+    0,
+    "62ab228d"
+   ],
+   [
+    "Calc.Block",
+    3,
+    3,
+    [
+     "int x"
+    ],
+    "Calc",
+    "int",
+    "public",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Calc.Plain",
+    4,
+    4,
+    [
+     "int x"
+    ],
+    "Calc",
+    "int",
+    "",
+    0,
+    "4b139440"
+   ],
+   [
+    "Calc.ToString",
+    6,
+    6,
+    [],
+    "Calc",
+    "string",
+    "public override",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|generated/secrets.py": {
   "function_bugs": [],
   "function_quality": [],
@@ -5289,6 +5486,42 @@
    ]
   ]
  },
+ "extra|defaut|go/main.go": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "add",
+    3,
+    5,
+    [
+     "a int",
+     "b int"
+    ],
+    "",
+    "",
+    "func",
+    2,
+    "80c1b8c6"
+   ],
+   [
+    "func",
+    7,
+    9,
+    [
+     "s *Server"
+    ],
+    "",
+    "",
+    "",
+    2,
+    "db7f681a"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|java/Catches.java": {
   "function_bugs": [],
   "function_quality": [],
@@ -5300,7 +5533,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "1b0d6a86"
    ],
    [
     "C.m23",
@@ -5309,7 +5544,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "64c92b35"
    ],
    [
     "C.m24",
@@ -5318,7 +5555,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "5b32d026"
    ],
    [
     "C.m25",
@@ -5327,7 +5566,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "dfdafd61"
    ],
    [
     "C.m26",
@@ -5336,7 +5577,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "ca82a0cd"
    ],
    [
     "C.m60",
@@ -5345,7 +5588,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "d36cebec"
    ]
   ],
   "imports": [],
@@ -5363,7 +5608,9 @@
     [],
     "D",
     "void",
-    6
+    "",
+    6,
+    "6669f068"
    ]
   ],
   "imports": [],
@@ -5498,7 +5745,9 @@
     ],
     "Complex",
     "int",
-    2
+    "public",
+    2,
+    "228e82e6"
    ],
    [
     "Complex.nested",
@@ -5510,7 +5759,9 @@
     ],
     "Complex",
     "int",
-    17
+    "public",
+    17,
+    "b4093f47"
    ],
    [
     "Complex.branchy",
@@ -5521,7 +5772,9 @@
     ],
     "Complex",
     "int",
-    19
+    "public",
+    19,
+    "52e98ffe"
    ],
    [
     "Complex.condition",
@@ -5536,7 +5789,9 @@
     ],
     "Complex",
     "boolean",
-    2
+    "public",
+    2,
+    "34f934ff"
    ],
    [
     "Complex.average",
@@ -5547,7 +5802,9 @@
     ],
     "Complex",
     "int",
-    7
+    "public",
+    7,
+    "9b4c4490"
    ],
    [
     "Complex.guardedByCompare",
@@ -5558,7 +5815,9 @@
     ],
     "Complex",
     "int",
-    6
+    "public",
+    6,
+    "ac0f8824"
    ],
    [
     "Complex.guardedByDifference",
@@ -5569,7 +5828,9 @@
     ],
     "Complex",
     "int",
-    6
+    "public",
+    6,
+    "dd661c2c"
    ],
    [
     "Complex.guardedByEmptiness",
@@ -5580,7 +5841,9 @@
     ],
     "Complex",
     "int",
-    6
+    "public",
+    6,
+    "e1b7f856"
    ],
    [
     "Complex.unguardedTotal",
@@ -5591,7 +5854,9 @@
     ],
     "Complex",
     "int",
-    3
+    "public",
+    3,
+    "5bf71206"
    ],
    [
     "Complex.divisionBySize",
@@ -5600,7 +5865,9 @@
     [],
     "Complex",
     "int",
-    2
+    "public",
+    2,
+    "1466bf83"
    ],
    [
     "Complex.optional",
@@ -5611,7 +5878,9 @@
     ],
     "Complex",
     "String",
-    3
+    "public",
+    3,
+    "4c761acc"
    ],
    [
     "Complex.concurrent",
@@ -5622,7 +5891,9 @@
     ],
     "Complex",
     "void",
-    4
+    "public",
+    4,
+    "df6dbe4e"
    ],
    [
     "Complex.longMethod",
@@ -5633,7 +5904,9 @@
     ],
     "Complex",
     "int",
-    18
+    "public",
+    18,
+    "78f821b6"
    ]
   ],
   "imports": [],
@@ -5732,7 +6005,9 @@
     ],
     "DuplicateA",
     "double",
-    8
+    "public",
+    8,
+    "70c05d09"
    ]
   ],
   "imports": [],
@@ -5753,7 +6028,9 @@
     ],
     "DuplicateB",
     "double",
-    8
+    "public",
+    8,
+    "70c05d09"
    ]
   ],
   "imports": [],
@@ -5775,7 +6052,9 @@
     ],
     "Naming",
     "void",
-    8
+    "public",
+    8,
+    "8cffc58b"
    ],
    [
     "Naming.getValue",
@@ -5784,7 +6063,9 @@
     [],
     "Naming",
     "boolean",
-    2
+    "public",
+    2,
+    "bc039174"
    ],
    [
     "Naming.computeTotal",
@@ -5796,7 +6077,9 @@
     ],
     "Naming",
     "boolean",
-    2
+    "public",
+    2,
+    "b850c8af"
    ],
    [
     "Naming.getItems",
@@ -5805,7 +6088,9 @@
     [],
     "Naming",
     "void",
-    2
+    "public",
+    2,
+    "783cf1dc"
    ],
    [
     "Naming.getName",
@@ -5814,7 +6099,9 @@
     [],
     "Naming",
     "String",
-    8
+    "public",
+    8,
+    "9b713f88"
    ],
    [
     "Naming.Calculer_total",
@@ -5823,7 +6110,9 @@
     [],
     "Naming",
     "void",
-    1
+    "public",
+    1,
+    "28d86778"
    ],
    [
     "Naming.loops",
@@ -5832,7 +6121,9 @@
     [],
     "Naming",
     "void",
-    6
+    "public",
+    6,
+    "96218420"
    ],
    [
     "Naming.handleRequest",
@@ -5841,7 +6132,9 @@
     [],
     "Naming",
     "void",
-    1
+    "public",
+    1,
+    "28d86778"
    ],
    [
     "Naming.processOrder",
@@ -5850,7 +6143,9 @@
     [],
     "Naming",
     "void",
-    1
+    "public",
+    1,
+    "28d86778"
    ],
    [
     "Naming.getShort",
@@ -5859,7 +6154,9 @@
     [],
     "Naming",
     "String",
-    4
+    "public",
+    4,
+    "c6f72578"
    ],
    [
     "Naming.getEdge",
@@ -5868,7 +6165,9 @@
     [],
     "Naming",
     "String",
-    5
+    "public",
+    5,
+    "cf7e82d5"
    ],
    [
     "Naming.getBorder",
@@ -5877,7 +6176,9 @@
     [],
     "Naming",
     "String",
-    6
+    "public",
+    6,
+    "9ed3ee51"
    ],
    [
     "Naming.doit",
@@ -5886,7 +6187,9 @@
     [],
     "Naming",
     "void",
-    1
+    "public",
+    1,
+    "28d86778"
    ],
    [
     "Naming.handle",
@@ -5895,7 +6198,9 @@
     [],
     "Naming",
     "void",
-    1
+    "public",
+    1,
+    "28d86778"
    ],
    [
     "Naming.calcul1",
@@ -5904,7 +6209,9 @@
     [],
     "Naming",
     "int",
-    2
+    "public",
+    2,
+    "a3693754"
    ],
    [
     "Naming.setCount",
@@ -5915,7 +6222,9 @@
     ],
     "Naming",
     "int",
-    6
+    "public",
+    6,
+    "c67b2c30"
    ]
   ],
   "imports": [
@@ -6221,6 +6530,70 @@
   ],
   "security": []
  },
+ "extra|defaut|java/Nested.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Outer.a",
+    4,
+    4,
+    [],
+    "Outer",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Inner.b",
+    6,
+    6,
+    [],
+    "Inner",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Outer.c",
+    8,
+    8,
+    [],
+    "Outer",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Second.d",
+    12,
+    12,
+    [],
+    "Second",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "top",
+    15,
+    15,
+    [],
+    "",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|java/Security.java": {
   "function_bugs": [],
   "function_quality": [],
@@ -6236,7 +6609,9 @@
     ],
     "Security",
     "void",
-    13
+    "public",
+    13,
+    "d37ffeb9"
    ]
   ],
   "imports": [],
@@ -6420,6 +6795,124 @@
    ]
   ]
  },
+ "extra|defaut|java/Shapes.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Shapes.label",
+    6,
+    6,
+    [],
+    "Shapes",
+    "String",
+    "default",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Shapes.unit",
+    7,
+    7,
+    [],
+    "Shapes",
+    "Shapes",
+    "static",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Point.sum",
+    11,
+    11,
+    [],
+    "Point",
+    "int",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Base.guarded",
+    16,
+    18,
+    [],
+    "Base",
+    "void",
+    "public synchronized",
+    2,
+    "87c3771d"
+   ],
+   [
+    "Base.constant",
+    19,
+    19,
+    [],
+    "Base",
+    "int",
+    "protected static final",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|java/Unbalanced.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Unbalanced.broken",
+    2,
+    2,
+    [],
+    "Unbalanced",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|java/UnclosedParens.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Unclosed.fine",
+    5,
+    7,
+    [
+     "int a"
+    ],
+    "Unclosed",
+    "void",
+    "",
+    2,
+    "5df487e9"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "void missing(int a, int b {",
+    "a"
+   ]
+  ],
+  "security": []
+ },
  "extra|defaut|java/Wildcard.java": {
   "function_bugs": [],
   "function_quality": [],
@@ -6466,7 +6959,9 @@
     ],
     "Service",
     "boolean",
-    4
+    "public",
+    4,
+    "e5a19d31"
    ],
    [
     "Service.load",
@@ -6477,7 +6972,9 @@
     ],
     "Service",
     "void",
-    22
+    "public",
+    22,
+    "3cd51bb8"
    ],
    [
     "Service.find",
@@ -6488,7 +6985,9 @@
     ],
     "Service",
     "Object",
-    10
+    "public",
+    10,
+    "54370702"
    ],
    [
     "Service.legacy",
@@ -6497,7 +6996,9 @@
     [],
     "Service",
     "void",
-    7
+    "public",
+    7,
+    "cf9c018f"
    ],
    [
     "Service.tabs",
@@ -6506,7 +7007,9 @@
     [],
     "Service",
     "void",
-    3
+    "public",
+    3,
+    "2433151a"
    ]
   ],
   "imports": [],
@@ -6628,7 +7131,9 @@
     ],
     "Main",
     "boolean",
-    4
+    "public",
+    4,
+    "e5a19d31"
    ],
    [
     "Main.load",
@@ -6639,7 +7144,9 @@
     ],
     "Main",
     "void",
-    22
+    "public",
+    22,
+    "3cd51bb8"
    ],
    [
     "Main.find",
@@ -6650,7 +7157,9 @@
     ],
     "Main",
     "Object",
-    10
+    "public",
+    10,
+    "54370702"
    ],
    [
     "Main.legacy",
@@ -6659,7 +7168,9 @@
     [],
     "Main",
     "void",
-    7
+    "public",
+    7,
+    "cf9c018f"
    ],
    [
     "Main.tabs",
@@ -6668,7 +7179,9 @@
     [],
     "Main",
     "void",
-    3
+    "public",
+    3,
+    "2433151a"
    ]
   ],
   "imports": [],
@@ -6790,7 +7303,9 @@
     ],
     "ServiceTest",
     "boolean",
-    4
+    "public",
+    4,
+    "e5a19d31"
    ],
    [
     "ServiceTest.load",
@@ -6801,7 +7316,9 @@
     ],
     "ServiceTest",
     "void",
-    22
+    "public",
+    22,
+    "3cd51bb8"
    ],
    [
     "ServiceTest.find",
@@ -6812,7 +7329,9 @@
     ],
     "ServiceTest",
     "Object",
-    10
+    "public",
+    10,
+    "54370702"
    ],
    [
     "ServiceTest.legacy",
@@ -6821,7 +7340,9 @@
     [],
     "ServiceTest",
     "void",
-    7
+    "public",
+    7,
+    "cf9c018f"
    ],
    [
     "ServiceTest.tabs",
@@ -6830,7 +7351,9 @@
     [],
     "ServiceTest",
     "void",
-    3
+    "public",
+    3,
+    "2433151a"
    ]
   ],
   "imports": [],
@@ -6954,6 +7477,65 @@
   "naming": [],
   "security": []
  },
+ "extra|defaut|js/Nested.js": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "outer",
+    1,
+    7,
+    [
+     "a"
+    ],
+    "",
+    "function",
+    "",
+    6,
+    "b61dc361"
+   ],
+   [
+    "inner",
+    2,
+    4,
+    [
+     "b"
+    ],
+    "",
+    "function",
+    "",
+    2,
+    "a15bb346"
+   ],
+   [
+    "Widget.render",
+    10,
+    10,
+    [],
+    "Widget",
+    "",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Widget.make",
+    11,
+    11,
+    [
+     "opts"
+    ],
+    "Widget",
+    "",
+    "static",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|js/app.js": {
   "function_bugs": [],
   "function_quality": [],
@@ -6967,7 +7549,9 @@
     ],
     "",
     "function",
-    13
+    "async",
+    13,
+    "8d4497ed"
    ],
    [
     "xit",
@@ -6979,7 +7563,9 @@
     ],
     "",
     "",
-    0
+    "",
+    0,
+    "e3b0c442"
    ]
   ],
   "imports": [],
@@ -7011,7 +7597,9 @@
     ],
     "",
     "function",
-    13
+    "async",
+    13,
+    "8d4497ed"
    ],
    [
     "xit",
@@ -7023,7 +7611,9 @@
     ],
     "",
     "",
-    0
+    "",
+    0,
+    "e3b0c442"
    ]
   ],
   "imports": [],
@@ -7056,7 +7646,9 @@
     ],
     "",
     "",
-    0
+    "",
+    0,
+    "e3b0c442"
    ],
    [
     "xdescribe",
@@ -7068,7 +7660,9 @@
     ],
     "",
     "",
-    0
+    "",
+    0,
+    "e3b0c442"
    ]
   ],
   "imports": [],
@@ -7098,7 +7692,9 @@
     ],
     "",
     "function",
-    9
+    "",
+    9,
+    "0448fdea"
    ]
   ],
   "imports": [],
@@ -7230,7 +7826,9 @@
     ],
     "",
     "function",
-    13
+    "async",
+    13,
+    "8d4497ed"
    ],
    [
     "xit",
@@ -7242,7 +7840,9 @@
     ],
     "",
     "",
-    0
+    "",
+    0,
+    "e3b0c442"
    ]
   ],
   "imports": [],
@@ -7259,6 +7859,68 @@
     "s"
    ]
   ],
+  "security": []
+ },
+ "extra|defaut|kt/Funs.kt": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Greeter.greet",
+    2,
+    4,
+    [
+     "other: String"
+    ],
+    "Greeter",
+    "",
+    "fun",
+    2,
+    "9f0c1e7b"
+   ],
+   [
+    "Greeter.twice",
+    5,
+    6,
+    [
+     "x: Int"
+    ],
+    "Greeter",
+    "",
+    "private fun",
+    1,
+    "80ef4a81"
+   ],
+   [
+    "Greeter.load",
+    6,
+    6,
+    [
+     "id: Int"
+    ],
+    "Greeter",
+    "",
+    "suspend fun",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "topLevel",
+    9,
+    9,
+    [
+     "a: Int",
+     "b: Int"
+    ],
+    "",
+    "",
+    "fun",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
   "security": []
  },
  "extra|defaut|misc/conf.yaml": {
@@ -7290,7 +7952,9 @@
     ],
     "",
     "",
-    28
+    "",
+    28,
+    "e4c382cf"
    ],
    [
     "g",
@@ -7299,7 +7963,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "760e14b8"
    ]
   ],
   "imports": [],
@@ -7458,7 +8124,9 @@
     ],
     "",
     "",
-    9
+    "",
+    9,
+    "7fb01ae2"
    ]
   ],
   "imports": [],
@@ -7556,7 +8224,9 @@
     ],
     "",
     "",
-    28
+    "",
+    28,
+    "e4c382cf"
    ],
    [
     "g",
@@ -7565,7 +8235,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "760e14b8"
    ]
   ],
   "imports": [],
@@ -7587,7 +8259,9 @@
     ],
     "",
     "",
-    7
+    "",
+    7,
+    "0cb291ed"
    ],
    [
     "get_value",
@@ -7596,7 +8270,9 @@
     [],
     "",
     "bool",
-    1
+    "",
+    1,
+    "264629da"
    ],
    [
     "compute_total",
@@ -7608,7 +8284,9 @@
     ],
     "",
     "bool",
-    1
+    "",
+    1,
+    "85489b55"
    ],
    [
     "get_items",
@@ -7617,7 +8295,9 @@
     [],
     "",
     "None",
-    1
+    "",
+    1,
+    "199cbf77"
    ],
    [
     "getName",
@@ -7626,7 +8306,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "5b4effd4"
    ],
    [
     "Naming.doit",
@@ -7635,7 +8317,9 @@
     [],
     "Naming",
     "",
-    1
+    "",
+    1,
+    "0b35470f"
    ],
    [
     "Naming.handle",
@@ -7644,7 +8328,9 @@
     [],
     "Naming",
     "",
-    1
+    "",
+    1,
+    "0b35470f"
    ]
   ],
   "imports": [],
@@ -7808,7 +8494,9 @@
     ],
     "",
     "",
-    28
+    "",
+    28,
+    "e4c382cf"
    ],
    [
     "g",
@@ -7817,7 +8505,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "760e14b8"
    ]
   ],
   "imports": [],
@@ -7854,7 +8544,9 @@
     ],
     "",
     "",
-    11
+    "",
+    11,
+    "a435180a"
    ]
   ],
   "imports": [],
@@ -8059,7 +8751,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "b79c3d5a"
    ]
   ],
   "imports": [],
@@ -8079,7 +8773,9 @@
     ],
     "",
     "",
-    28
+    "",
+    28,
+    "e4c382cf"
    ],
    [
     "g",
@@ -8088,7 +8784,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "760e14b8"
    ]
   ],
   "imports": [],
@@ -8109,7 +8807,9 @@
     ],
     "",
     "",
-    3
+    "",
+    3,
+    "4f930904"
    ]
   ],
   "imports": [],
@@ -8183,7 +8883,103 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "d287cd89"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|rs/lib.rs": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "double",
+    1,
+    3,
+    [
+     "x: i32"
+    ],
+    "",
+    "pub fn",
+    "",
+    2,
+    "214ca337"
+   ],
+   [
+    "get",
+    6,
+    6,
+    [
+     "&self"
+    ],
+    "",
+    "pub fn",
+    "",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|cs/Arrow.cs": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Calc.Twice",
+    2,
+    2,
+    [
+     "int x"
+    ],
+    "Calc",
+    "int",
+    "public",
+    0,
+    "62ab228d"
+   ],
+   [
+    "Calc.Block",
+    3,
+    3,
+    [
+     "int x"
+    ],
+    "Calc",
+    "int",
+    "public",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Calc.Plain",
+    4,
+    4,
+    [
+     "int x"
+    ],
+    "Calc",
+    "int",
+    "",
+    0,
+    "4b139440"
+   ],
+   [
+    "Calc.ToString",
+    6,
+    6,
+    [],
+    "Calc",
+    "string",
+    "public override",
+    0,
+    "e3b0c442"
    ]
   ],
   "imports": [],
@@ -8318,6 +9114,42 @@
    ]
   ]
  },
+ "extra|seuils_fonctions|go/main.go": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "add",
+    3,
+    5,
+    [
+     "a int",
+     "b int"
+    ],
+    "",
+    "",
+    "func",
+    2,
+    "80c1b8c6"
+   ],
+   [
+    "func",
+    7,
+    9,
+    [
+     "s *Server"
+    ],
+    "",
+    "",
+    "",
+    2,
+    "db7f681a"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|java/Catches.java": {
   "function_bugs": [],
   "function_quality": [],
@@ -8329,7 +9161,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "1b0d6a86"
    ],
    [
     "C.m23",
@@ -8338,7 +9172,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "64c92b35"
    ],
    [
     "C.m24",
@@ -8347,7 +9183,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "5b32d026"
    ],
    [
     "C.m25",
@@ -8356,7 +9194,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "dfdafd61"
    ],
    [
     "C.m26",
@@ -8365,7 +9205,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "ca82a0cd"
    ],
    [
     "C.m60",
@@ -8374,7 +9216,9 @@
     [],
     "C",
     "void",
-    4
+    "",
+    4,
+    "d36cebec"
    ]
   ],
   "imports": [],
@@ -8404,7 +9248,9 @@
     [],
     "D",
     "void",
-    6
+    "",
+    6,
+    "6669f068"
    ]
   ],
   "imports": [],
@@ -8649,7 +9495,9 @@
     ],
     "Complex",
     "int",
-    2
+    "public",
+    2,
+    "228e82e6"
    ],
    [
     "Complex.nested",
@@ -8661,7 +9509,9 @@
     ],
     "Complex",
     "int",
-    17
+    "public",
+    17,
+    "b4093f47"
    ],
    [
     "Complex.branchy",
@@ -8672,7 +9522,9 @@
     ],
     "Complex",
     "int",
-    19
+    "public",
+    19,
+    "52e98ffe"
    ],
    [
     "Complex.condition",
@@ -8687,7 +9539,9 @@
     ],
     "Complex",
     "boolean",
-    2
+    "public",
+    2,
+    "34f934ff"
    ],
    [
     "Complex.average",
@@ -8698,7 +9552,9 @@
     ],
     "Complex",
     "int",
-    7
+    "public",
+    7,
+    "9b4c4490"
    ],
    [
     "Complex.guardedByCompare",
@@ -8709,7 +9565,9 @@
     ],
     "Complex",
     "int",
-    6
+    "public",
+    6,
+    "ac0f8824"
    ],
    [
     "Complex.guardedByDifference",
@@ -8720,7 +9578,9 @@
     ],
     "Complex",
     "int",
-    6
+    "public",
+    6,
+    "dd661c2c"
    ],
    [
     "Complex.guardedByEmptiness",
@@ -8731,7 +9591,9 @@
     ],
     "Complex",
     "int",
-    6
+    "public",
+    6,
+    "e1b7f856"
    ],
    [
     "Complex.unguardedTotal",
@@ -8742,7 +9604,9 @@
     ],
     "Complex",
     "int",
-    3
+    "public",
+    3,
+    "5bf71206"
    ],
    [
     "Complex.divisionBySize",
@@ -8751,7 +9615,9 @@
     [],
     "Complex",
     "int",
-    2
+    "public",
+    2,
+    "1466bf83"
    ],
    [
     "Complex.optional",
@@ -8762,7 +9628,9 @@
     ],
     "Complex",
     "String",
-    3
+    "public",
+    3,
+    "4c761acc"
    ],
    [
     "Complex.concurrent",
@@ -8773,7 +9641,9 @@
     ],
     "Complex",
     "void",
-    4
+    "public",
+    4,
+    "df6dbe4e"
    ],
    [
     "Complex.longMethod",
@@ -8784,7 +9654,9 @@
     ],
     "Complex",
     "int",
-    18
+    "public",
+    18,
+    "78f821b6"
    ]
   ],
   "imports": [],
@@ -8895,7 +9767,9 @@
     ],
     "DuplicateA",
     "double",
-    8
+    "public",
+    8,
+    "70c05d09"
    ]
   ],
   "imports": [],
@@ -8928,7 +9802,9 @@
     ],
     "DuplicateB",
     "double",
-    8
+    "public",
+    8,
+    "70c05d09"
    ]
   ],
   "imports": [],
@@ -9017,7 +9893,9 @@
     ],
     "Naming",
     "void",
-    8
+    "public",
+    8,
+    "8cffc58b"
    ],
    [
     "Naming.getValue",
@@ -9026,7 +9904,9 @@
     [],
     "Naming",
     "boolean",
-    2
+    "public",
+    2,
+    "bc039174"
    ],
    [
     "Naming.computeTotal",
@@ -9038,7 +9918,9 @@
     ],
     "Naming",
     "boolean",
-    2
+    "public",
+    2,
+    "b850c8af"
    ],
    [
     "Naming.getItems",
@@ -9047,7 +9929,9 @@
     [],
     "Naming",
     "void",
-    2
+    "public",
+    2,
+    "783cf1dc"
    ],
    [
     "Naming.getName",
@@ -9056,7 +9940,9 @@
     [],
     "Naming",
     "String",
-    8
+    "public",
+    8,
+    "9b713f88"
    ],
    [
     "Naming.Calculer_total",
@@ -9065,7 +9951,9 @@
     [],
     "Naming",
     "void",
-    1
+    "public",
+    1,
+    "28d86778"
    ],
    [
     "Naming.loops",
@@ -9074,7 +9962,9 @@
     [],
     "Naming",
     "void",
-    6
+    "public",
+    6,
+    "96218420"
    ],
    [
     "Naming.handleRequest",
@@ -9083,7 +9973,9 @@
     [],
     "Naming",
     "void",
-    1
+    "public",
+    1,
+    "28d86778"
    ],
    [
     "Naming.processOrder",
@@ -9092,7 +9984,9 @@
     [],
     "Naming",
     "void",
-    1
+    "public",
+    1,
+    "28d86778"
    ],
    [
     "Naming.getShort",
@@ -9101,7 +9995,9 @@
     [],
     "Naming",
     "String",
-    4
+    "public",
+    4,
+    "c6f72578"
    ],
    [
     "Naming.getEdge",
@@ -9110,7 +10006,9 @@
     [],
     "Naming",
     "String",
-    5
+    "public",
+    5,
+    "cf7e82d5"
    ],
    [
     "Naming.getBorder",
@@ -9119,7 +10017,9 @@
     [],
     "Naming",
     "String",
-    6
+    "public",
+    6,
+    "9ed3ee51"
    ],
    [
     "Naming.doit",
@@ -9128,7 +10028,9 @@
     [],
     "Naming",
     "void",
-    1
+    "public",
+    1,
+    "28d86778"
    ],
    [
     "Naming.handle",
@@ -9137,7 +10039,9 @@
     [],
     "Naming",
     "void",
-    1
+    "public",
+    1,
+    "28d86778"
    ],
    [
     "Naming.calcul1",
@@ -9146,7 +10050,9 @@
     [],
     "Naming",
     "int",
-    2
+    "public",
+    2,
+    "a3693754"
    ],
    [
     "Naming.setCount",
@@ -9157,7 +10063,9 @@
     ],
     "Naming",
     "int",
-    6
+    "public",
+    6,
+    "c67b2c30"
    ]
   ],
   "imports": [
@@ -9463,6 +10371,70 @@
   ],
   "security": []
  },
+ "extra|seuils_fonctions|java/Nested.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Outer.a",
+    4,
+    4,
+    [],
+    "Outer",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Inner.b",
+    6,
+    6,
+    [],
+    "Inner",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Outer.c",
+    8,
+    8,
+    [],
+    "Outer",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Second.d",
+    12,
+    12,
+    [],
+    "Second",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "top",
+    15,
+    15,
+    [],
+    "",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|java/Security.java": {
   "function_bugs": [],
   "function_quality": [
@@ -9501,7 +10473,9 @@
     ],
     "Security",
     "void",
-    13
+    "public",
+    13,
+    "d37ffeb9"
    ]
   ],
   "imports": [],
@@ -9685,6 +10659,124 @@
    ]
   ]
  },
+ "extra|seuils_fonctions|java/Shapes.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Shapes.label",
+    6,
+    6,
+    [],
+    "Shapes",
+    "String",
+    "default",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Shapes.unit",
+    7,
+    7,
+    [],
+    "Shapes",
+    "Shapes",
+    "static",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Point.sum",
+    11,
+    11,
+    [],
+    "Point",
+    "int",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Base.guarded",
+    16,
+    18,
+    [],
+    "Base",
+    "void",
+    "public synchronized",
+    2,
+    "87c3771d"
+   ],
+   [
+    "Base.constant",
+    19,
+    19,
+    [],
+    "Base",
+    "int",
+    "protected static final",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/Unbalanced.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Unbalanced.broken",
+    2,
+    2,
+    [],
+    "Unbalanced",
+    "void",
+    "",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/UnclosedParens.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Unclosed.fine",
+    5,
+    7,
+    [
+     "int a"
+    ],
+    "Unclosed",
+    "void",
+    "",
+    2,
+    "5df487e9"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "void missing(int a, int b {",
+    "a"
+   ]
+  ],
+  "security": []
+ },
  "extra|seuils_fonctions|java/Wildcard.java": {
   "function_bugs": [],
   "function_quality": [],
@@ -9820,7 +10912,9 @@
     ],
     "Service",
     "boolean",
-    4
+    "public",
+    4,
+    "e5a19d31"
    ],
    [
     "Service.load",
@@ -9831,7 +10925,9 @@
     ],
     "Service",
     "void",
-    22
+    "public",
+    22,
+    "3cd51bb8"
    ],
    [
     "Service.find",
@@ -9842,7 +10938,9 @@
     ],
     "Service",
     "Object",
-    10
+    "public",
+    10,
+    "54370702"
    ],
    [
     "Service.legacy",
@@ -9851,7 +10949,9 @@
     [],
     "Service",
     "void",
-    7
+    "public",
+    7,
+    "cf9c018f"
    ],
    [
     "Service.tabs",
@@ -9860,7 +10960,9 @@
     [],
     "Service",
     "void",
-    3
+    "public",
+    3,
+    "2433151a"
    ]
   ],
   "imports": [],
@@ -10071,7 +11173,9 @@
     ],
     "Main",
     "boolean",
-    4
+    "public",
+    4,
+    "e5a19d31"
    ],
    [
     "Main.load",
@@ -10082,7 +11186,9 @@
     ],
     "Main",
     "void",
-    22
+    "public",
+    22,
+    "3cd51bb8"
    ],
    [
     "Main.find",
@@ -10093,7 +11199,9 @@
     ],
     "Main",
     "Object",
-    10
+    "public",
+    10,
+    "54370702"
    ],
    [
     "Main.legacy",
@@ -10102,7 +11210,9 @@
     [],
     "Main",
     "void",
-    7
+    "public",
+    7,
+    "cf9c018f"
    ],
    [
     "Main.tabs",
@@ -10111,7 +11221,9 @@
     [],
     "Main",
     "void",
-    3
+    "public",
+    3,
+    "2433151a"
    ]
   ],
   "imports": [],
@@ -10322,7 +11434,9 @@
     ],
     "ServiceTest",
     "boolean",
-    4
+    "public",
+    4,
+    "e5a19d31"
    ],
    [
     "ServiceTest.load",
@@ -10333,7 +11447,9 @@
     ],
     "ServiceTest",
     "void",
-    22
+    "public",
+    22,
+    "3cd51bb8"
    ],
    [
     "ServiceTest.find",
@@ -10344,7 +11460,9 @@
     ],
     "ServiceTest",
     "Object",
-    10
+    "public",
+    10,
+    "54370702"
    ],
    [
     "ServiceTest.legacy",
@@ -10353,7 +11471,9 @@
     [],
     "ServiceTest",
     "void",
-    7
+    "public",
+    7,
+    "cf9c018f"
    ],
    [
     "ServiceTest.tabs",
@@ -10362,7 +11482,9 @@
     [],
     "ServiceTest",
     "void",
-    3
+    "public",
+    3,
+    "2433151a"
    ]
   ],
   "imports": [],
@@ -10486,6 +11608,77 @@
   "naming": [],
   "security": []
  },
+ "extra|seuils_fonctions|js/Nested.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    1,
+    7,
+    "outer fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function outer(a) {",
+    "outer"
+   ]
+  ],
+  "functions": [
+   [
+    "outer",
+    1,
+    7,
+    [
+     "a"
+    ],
+    "",
+    "function",
+    "",
+    6,
+    "b61dc361"
+   ],
+   [
+    "inner",
+    2,
+    4,
+    [
+     "b"
+    ],
+    "",
+    "function",
+    "",
+    2,
+    "a15bb346"
+   ],
+   [
+    "Widget.render",
+    10,
+    10,
+    [],
+    "Widget",
+    "",
+    "",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "Widget.make",
+    11,
+    11,
+    [
+     "opts"
+    ],
+    "Widget",
+    "",
+    "static",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|js/app.js": {
   "function_bugs": [],
   "function_quality": [
@@ -10522,7 +11715,9 @@
     ],
     "",
     "function",
-    13
+    "async",
+    13,
+    "8d4497ed"
    ],
    [
     "xit",
@@ -10534,7 +11729,9 @@
     ],
     "",
     "",
-    0
+    "",
+    0,
+    "e3b0c442"
    ]
   ],
   "imports": [],
@@ -10589,7 +11786,9 @@
     ],
     "",
     "function",
-    13
+    "async",
+    13,
+    "8d4497ed"
    ],
    [
     "xit",
@@ -10601,7 +11800,9 @@
     ],
     "",
     "",
-    0
+    "",
+    0,
+    "e3b0c442"
    ]
   ],
   "imports": [],
@@ -10634,7 +11835,9 @@
     ],
     "",
     "",
-    0
+    "",
+    0,
+    "e3b0c442"
    ],
    [
     "xdescribe",
@@ -10646,7 +11849,9 @@
     ],
     "",
     "",
-    0
+    "",
+    0,
+    "e3b0c442"
    ]
   ],
   "imports": [],
@@ -10699,7 +11904,9 @@
     ],
     "",
     "function",
-    9
+    "",
+    9,
+    "0448fdea"
    ]
   ],
   "imports": [],
@@ -10854,7 +12061,9 @@
     ],
     "",
     "function",
-    13
+    "async",
+    13,
+    "8d4497ed"
    ],
    [
     "xit",
@@ -10866,7 +12075,9 @@
     ],
     "",
     "",
-    0
+    "",
+    0,
+    "e3b0c442"
    ]
   ],
   "imports": [],
@@ -10883,6 +12094,68 @@
     "s"
    ]
   ],
+  "security": []
+ },
+ "extra|seuils_fonctions|kt/Funs.kt": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Greeter.greet",
+    2,
+    4,
+    [
+     "other: String"
+    ],
+    "Greeter",
+    "",
+    "fun",
+    2,
+    "9f0c1e7b"
+   ],
+   [
+    "Greeter.twice",
+    5,
+    6,
+    [
+     "x: Int"
+    ],
+    "Greeter",
+    "",
+    "private fun",
+    1,
+    "80ef4a81"
+   ],
+   [
+    "Greeter.load",
+    6,
+    6,
+    [
+     "id: Int"
+    ],
+    "Greeter",
+    "",
+    "suspend fun",
+    0,
+    "e3b0c442"
+   ],
+   [
+    "topLevel",
+    9,
+    9,
+    [
+     "a: Int",
+     "b: Int"
+    ],
+    "",
+    "",
+    "fun",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
   "security": []
  },
  "extra|seuils_fonctions|misc/conf.yaml": {
@@ -10937,7 +12210,9 @@
     ],
     "",
     "",
-    28
+    "",
+    28,
+    "e4c382cf"
    ],
    [
     "g",
@@ -10946,7 +12221,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "760e14b8"
    ]
   ],
   "imports": [],
@@ -11117,7 +12394,9 @@
     ],
     "",
     "",
-    9
+    "",
+    9,
+    "7fb01ae2"
    ]
   ],
   "imports": [],
@@ -11238,7 +12517,9 @@
     ],
     "",
     "",
-    28
+    "",
+    28,
+    "e4c382cf"
    ],
    [
     "g",
@@ -11247,7 +12528,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "760e14b8"
    ]
   ],
   "imports": [],
@@ -11292,7 +12575,9 @@
     ],
     "",
     "",
-    7
+    "",
+    7,
+    "0cb291ed"
    ],
    [
     "get_value",
@@ -11301,7 +12586,9 @@
     [],
     "",
     "bool",
-    1
+    "",
+    1,
+    "264629da"
    ],
    [
     "compute_total",
@@ -11313,7 +12600,9 @@
     ],
     "",
     "bool",
-    1
+    "",
+    1,
+    "85489b55"
    ],
    [
     "get_items",
@@ -11322,7 +12611,9 @@
     [],
     "",
     "None",
-    1
+    "",
+    1,
+    "199cbf77"
    ],
    [
     "getName",
@@ -11331,7 +12622,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "5b4effd4"
    ],
    [
     "Naming.doit",
@@ -11340,7 +12633,9 @@
     [],
     "Naming",
     "",
-    1
+    "",
+    1,
+    "0b35470f"
    ],
    [
     "Naming.handle",
@@ -11349,7 +12644,9 @@
     [],
     "Naming",
     "",
-    1
+    "",
+    1,
+    "0b35470f"
    ]
   ],
   "imports": [],
@@ -11536,7 +12833,9 @@
     ],
     "",
     "",
-    28
+    "",
+    28,
+    "e4c382cf"
    ],
    [
     "g",
@@ -11545,7 +12844,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "760e14b8"
    ]
   ],
   "imports": [],
@@ -11593,7 +12894,9 @@
     ],
     "",
     "",
-    11
+    "",
+    11,
+    "a435180a"
    ]
   ],
   "imports": [],
@@ -11798,7 +13101,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "b79c3d5a"
    ]
   ],
   "imports": [],
@@ -11841,7 +13146,9 @@
     ],
     "",
     "",
-    28
+    "",
+    28,
+    "e4c382cf"
    ],
    [
     "g",
@@ -11850,7 +13157,9 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "760e14b8"
    ]
   ],
   "imports": [],
@@ -11871,7 +13180,9 @@
     ],
     "",
     "",
-    3
+    "",
+    3,
+    "4f930904"
    ]
   ],
   "imports": [],
@@ -11945,9 +13256,53 @@
     [],
     "",
     "",
-    1
+    "",
+    1,
+    "d287cd89"
    ]
   ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|rs/lib.rs": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "double",
+    1,
+    3,
+    [
+     "x: i32"
+    ],
+    "",
+    "pub fn",
+    "",
+    2,
+    "214ca337"
+   ],
+   [
+    "get",
+    6,
+    6,
+    [
+     "&self"
+    ],
+    "",
+    "pub fn",
+    "",
+    0,
+    "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|cs/Arrow.cs": {
+  "function_bugs": [],
+  "function_quality": [],
   "imports": [],
   "naming": [],
   "security": []
@@ -12011,6 +13366,13 @@
     null
    ]
   ]
+ },
+ "partial|seuils_fonctions|go/main.go": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
  },
  "partial|seuils_fonctions|java/Catches.java": {
   "function_bugs": [],
@@ -12608,6 +13970,13 @@
   ],
   "security": []
  },
+ "partial|seuils_fonctions|java/Nested.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|java/Security.java": {
   "function_bugs": [],
   "function_quality": [
@@ -12748,6 +14117,39 @@
     null
    ]
   ]
+ },
+ "partial|seuils_fonctions|java/Shapes.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/Unbalanced.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/UnclosedParens.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "void missing(int a, int b {",
+    "a"
+   ]
+  ],
+  "security": []
  },
  "partial|seuils_fonctions|java/Wildcard.java": {
   "function_bugs": [],
@@ -13341,6 +14743,25 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|js/Nested.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    1,
+    7,
+    "outer fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function outer(a) {",
+    "outer"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|js/app.js": {
   "function_bugs": [],
   "function_quality": [
@@ -13550,6 +14971,13 @@
     "go"
    ]
   ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|kt/Funs.kt": {
+  "function_bugs": [],
+  "function_quality": [],
   "imports": [],
   "naming": [],
   "security": []
@@ -14202,6 +15630,18 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|rs/lib.rs": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "seuils_bas|tout|cs/Arrow.cs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|generated/secrets.py": {
   "blocks": [],
   "file": [
@@ -14256,6 +15696,11 @@
     null
    ]
   ],
+  "lines": []
+ },
+ "seuils_bas|tout|go/main.go": {
+  "blocks": [],
+  "file": [],
   "lines": []
  },
  "seuils_bas|tout|java/Catches.java": {
@@ -14567,6 +16012,11 @@
    ]
   ]
  },
+ "seuils_bas|tout|java/Nested.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|java/Security.java": {
   "blocks": [
    [
@@ -14693,6 +16143,45 @@
     null
    ]
   ],
+  "lines": []
+ },
+ "seuils_bas|tout|java/Shapes.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    16,
+    0,
+    "Ligne de 162 caracteres (seuil 60).",
+    "b875b8b0",
+    "public synchronized void guarded() throws java.io.IOException, java.sql.SQLException, java.lang.IllegalStateException, j",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "static Shapes unit() { return null; }",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|java/Unbalanced.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|java/UnclosedParens.java": {
+  "blocks": [],
+  "file": [],
   "lines": []
  },
  "seuils_bas|tout|java/Wildcard.java": {
@@ -15934,6 +17423,11 @@
   "file": [],
   "lines": []
  },
+ "seuils_bas|tout|js/Nested.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|js/app.js": {
   "blocks": [
    [
@@ -16415,6 +17909,11 @@
     null
    ]
   ]
+ },
+ "seuils_bas|tout|kt/Funs.kt": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|tout|misc/conf.yaml": {
   "blocks": [],
@@ -17592,6 +19091,16 @@
   ],
   "lines": []
  },
+ "seuils_bas|tout|rs/lib.rs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|cs/Arrow.cs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|un_sur_sept|generated/secrets.py": {
   "blocks": [],
   "file": [
@@ -17624,6 +19133,11 @@
     null
    ]
   ],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|go/main.go": {
+  "blocks": [],
+  "file": [],
   "lines": []
  },
  "seuils_bas|un_sur_sept|java/Catches.java": {
@@ -17879,6 +19393,11 @@
    ]
   ]
  },
+ "seuils_bas|un_sur_sept|java/Nested.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|un_sur_sept|java/Security.java": {
   "blocks": [
    [
@@ -17994,6 +19513,45 @@
     null
    ]
   ],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|java/Shapes.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    16,
+    0,
+    "Ligne de 162 caracteres (seuil 60).",
+    "b875b8b0",
+    "public synchronized void guarded() throws java.io.IOException, java.sql.SQLException, java.lang.IllegalStateException, j",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "static Shapes unit() { return null; }",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_sur_sept|java/Unbalanced.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|java/UnclosedParens.java": {
+  "blocks": [],
+  "file": [],
   "lines": []
  },
  "seuils_bas|un_sur_sept|java/Wildcard.java": {
@@ -18949,6 +20507,11 @@
   "file": [],
   "lines": []
  },
+ "seuils_bas|un_sur_sept|js/Nested.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|un_sur_sept|js/app.js": {
   "blocks": [
    [
@@ -19296,6 +20859,11 @@
     null
    ]
   ]
+ },
+ "seuils_bas|un_sur_sept|kt/Funs.kt": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|un_sur_sept|misc/conf.yaml": {
   "blocks": [],
@@ -20205,6 +21773,11 @@
     null
    ]
   ],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|rs/lib.rs": {
+  "blocks": [],
+  "file": [],
   "lines": []
  }
 }

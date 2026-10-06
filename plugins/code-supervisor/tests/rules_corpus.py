@@ -76,7 +76,9 @@ def _compact(finding):
 
 
 def _function_summary(fn):
-    return [fn.qualified, fn.start, fn.end, list(fn.params), fn.owner, fn.returns, fn.length]
+    """Tout ce que l'extraction produit pour une fonction : le corps n'est conserve que par son empreinte."""
+    return [fn.qualified, fn.start, fn.end, list(fn.params), fn.owner, fn.returns, fn.modifiers, fn.length,
+            _digest("\n".join(fn.body))]
 
 
 def _configs(Config, DEFAULTS) -> dict:

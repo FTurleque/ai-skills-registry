@@ -9,6 +9,27 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — `source._extract_c` découpée (ticket #11)
+
+Complexité 23 → quatre fonctions courtes : `_extract_c` (parcours des lignes et pile des classes
+englobantes), `_function_on_line` (signature reconnue sur une ligne), `_function_from_signature` (corps entre
+accolades, ou expression après `=>`, ou déclaration sans corps) et `_line_offsets`. La fenêtre de recherche du
+corps devient une constante (`_BODY_SEARCH_WINDOW`). **Aucun changement de comportement** : référence produite
+par l'ancien moteur (324 entrées), 24 scénarios du hook, et analyse complète du corpus et des fixtures (380 et
+38 constats) identiques.
+
+Même méthode que pour `check_identifiers` et `rules_security.check`, avec le même constat : sur le corpus
+précédent, **7 mutations de l'ancien code sur 16 seulement étaient détectées** (classe jamais dépilée,
+fonction fléchée, repli quand l'accolade fermante manque, corps décalé, modificateurs perdus, profondeur
+d'accolade…). Le corpus a reçu des fichiers Java (classes imbriquées, interfaces, record, `throws` long,
+accolades ou parenthèses non refermées), C#, Kotlin, Go, Rust et JavaScript, et le résumé des fonctions
+conserve maintenant aussi les modificateurs et l'empreinte du corps : 16 sur 16 sur l'ancien code, 18 sur 18
+sur le code découpé.
+
+Deux comportements douteux de l'extracteur sont figés par la référence, non corrigés ici : une fonction à
+corps d'expression sans accolades adopte l'accolade de la fonction suivante, et le receveur d'une méthode Go
+est lu comme une fonction nommée `func`. Un moteur déjà installé doit être réinstallé.
+
 ### Modifié — `rules_security.check` découpée (ticket #11)
 
 Complexité 23 → quatre fonctions courtes : `check` (parcours des lignes), `_line_findings` (les motifs d'une
