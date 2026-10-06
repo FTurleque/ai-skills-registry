@@ -9,6 +9,16 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Corrigé — faux positif de `BUG.DISABLED_TEST` sur `exit(`
+
+Dans un fichier de test, la règle « test désactivé » cherchait `xit(` sans borne de mot, en insensible à la
+casse : elle reconnaissait donc le `xit(` de `sys.exit(`, de `SystemExit(`, de `exit(` et de `process.exit(`.
+Un `sys.exit(main())` en fin de script de test valait un MAJOR « test désactivé ». Le motif porte maintenant
+une borne de mot (`\bxit`, `\bxdescribe`) : les vrais `xit(` et `xdescribe(` restent signalés.
+
+Deux fichiers du corpus de tests le couvrent (`py/tests/test_exit.py`, `js/exit.test.js`) ; aucune entrée
+existante de la référence ne change. Un moteur déjà installé doit être réinstallé.
+
 ### Ajouté — tests de caractérisation du superviseur de code
 
 `plugins/code-supervisor/tests/` : un filet de sécurité pour les refactorisations du moteur, rejoué par la
