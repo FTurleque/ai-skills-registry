@@ -3,12 +3,12 @@
 Deux familles d'entrees dans `golden/rules.json` :
 
 - `<config>|<selection>|<fichier>` : `check_lines`, `check_blocks` et `check_file`, avec deux jeux de
-  seuils (defauts et seuils bas) et deux selections de lignes modifiees (toutes, une sur trois) ;
+  seuils (defauts et seuils bas) et deux selections de lignes modifiees (toutes, une sur sept) ;
 - `extra|<config>|<fichier>` et `duplication|<config>` : regles de securite, de nommage, d'imports, de
   complexite par fonction, de bugs par fonction, extraction des fonctions et duplication, avec les
   defauts et des seuils de fonction tres bas ;
 - `partial|seuils_fonctions|<fichier>` : les memes regles (hors extraction et duplication) quand seule une
-  ligne sur trois est modifiee.
+  ligne sur sept est modifiee.
 
 Le test echoue aussi si le corpus ne declenche pas toutes les regles que le moteur declare."""
 from __future__ import annotations
@@ -37,15 +37,21 @@ def generated_files() -> dict:
     jwt = ".".join(["eyJ" + "hbGciOiJIUzI1NiJ9", "eyJ" + "zdWIiOiIxMjM0NTY3ODkwIn0", "c2lnbmF0dXJlMTIzNDU2"])
     slack = "xox" + "b-123456789012-abcdefghij"
     github = "gh" + "p_" + "a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8"
-    lines = [
-        '"""Corpus de caracterisation : secrets assembles a l\'execution (voir rules_corpus.generated_files)."""',
+    # Valeur de la documentation d'AWS : le mot « EXAMPLE » la rend factice, la regle doit l'ignorer.
+    aws_documentation = "AK" + "IA" + "IOSFODNN7" + "EXAMPLE"
+    assignments = [
         'AWS_ACCESS = "%s"' % aws,
         'KEY_HEADER = """%s"""' % pem_header,
         'SESSION_JWT = "%s"' % jwt,
         'SLACK = "%s"' % slack,
         'GITHUB = "%s"' % github,
     ]
-    return {GENERATED_DIR + "/secrets.py": "\n".join(lines) + "\n"}
+    docstring = '"""Corpus de caracterisation : secrets assembles a l\'execution (voir rules_corpus.generated_files)."""'
+    return {
+        GENERATED_DIR + "/secrets.py": "\n".join([docstring] + assignments + ['AWS_DOCUMENTATION = "%s"' % aws_documentation]) + "\n",
+        # En chemin de test, les secrets a format connu restent critiques (les autres sont abaisses).
+        GENERATED_DIR + "/tests/test_secrets.py": "\n".join([docstring] + assignments) + "\n",
+    }
 
 
 def _walk(folder: str):
@@ -91,7 +97,7 @@ def _configs(Config, DEFAULTS) -> dict:
 def _line_block_file_groups(modules, files_for, configs, result):
     rules_bugs, rules_quality = modules["rules_bugs"], modules["rules_quality"]
     for config_name in ("defaut", "seuils_bas"):
-        for selection in ("tout", "un_tiers"):
+        for selection in ("tout", "un_sur_sept"):
             for sf in files_for(selection):
                 result["%s|%s|%s" % (config_name, selection, sf.path)] = {
                     "lines": [_compact(f) for f in rules_bugs.check_lines(sf)],
@@ -116,7 +122,7 @@ def _extra_groups(modules, files, configs, result):
 
 
 def _partial_groups(modules, files, configs, result):
-    """Memes regles, mais seules une ligne sur trois est modifiee : exerce les filtres « ligne modifiee » et
+    """Memes regles, mais seules une ligne sur sept est modifiee : exerce les filtres « ligne modifiee » et
     « plage de fonction modifiee », que la selection complete ne touche jamais."""
     cfg = configs["seuils_fonctions"]
     for sf in files:
@@ -160,14 +166,16 @@ def run(engine_dir: str, corpus: str) -> dict:
             everything = source.load(corpus, rels) + source.load(generated_root, sorted(generated))
             if selection == "tout":
                 return everything
-            third = {sf.path: set(range(1, sf.nb_lines + 1, 3)) for sf in everything}
-            return source.load(corpus, rels, changed_lines=third) + source.load(
-                generated_root, sorted(generated), changed_lines=third)
+            # Une ligne sur sept : `is_changed` accepte une marge de 2 lignes, donc une ligne sur trois les
+            # laisserait toutes passer et le filtre ne serait jamais exerce.
+            sparse = {sf.path: set(range(1, sf.nb_lines + 1, 7)) for sf in everything}
+            return source.load(corpus, rels, changed_lines=sparse) + source.load(
+                generated_root, sorted(generated), changed_lines=sparse)
 
         _line_block_file_groups(modules, files_for, configs, result)
         everything = files_for("tout")
         _extra_groups(modules, everything, configs, result)
-        _partial_groups(modules, files_for("un_tiers"), configs, result)
+        _partial_groups(modules, files_for("un_sur_sept"), configs, result)
         for config_name in ("defaut", "seuils_fonctions"):
             found = rules_duplication.check(source.load(corpus, rels), corpus, configs[config_name])
             result["duplication|" + config_name] = sorted((_compact(f) for f in found), key=repr)

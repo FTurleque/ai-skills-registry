@@ -9,6 +9,27 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — `rules_security.check` découpée (ticket #11)
+
+Complexité 23 → quatre fonctions courtes : `check` (parcours des lignes), `_line_findings` (les motifs d'une
+ligne), `_is_false_match` (exceptions propres à certaines règles : valeur factice, alea sans mot-clé,
+`literal_eval`, URL en test) et `_severity` (abaissement en code de test). Les seuils en dur deviennent des
+constantes nommées (`_MAX_LINE_CHARS`, `_EVIDENCE_WIDTH`, `_COMMENT_PREFIXES`, `_KEEP_SEVERITY_IN_TESTS`).
+**Aucun changement de comportement** : référence produite par l'ancien moteur (261 entrées), analyse complète
+du corpus et des fixtures (378 et 38 constats) et 24 scénarios du hook identiques.
+
+Le filet a dû être renforcé d'abord : 17 mutations de l'ancien code, **4 seulement détectées**. Corpus
+complété (troncature des lignes de plus de 2000 caractères, secrets cités dans des commentaires de chaque
+style, filtres de langue, valeurs factices, `exec` passant par `literal_eval`, exemptions de sévérité en
+test) : 17 sur 17 sur l'ancien code, 19 sur 19 sur le code découpé.
+
+### Corrigé — la sélection « une ligne sur trois » des tests ne filtrait rien
+
+`SourceFile.is_changed` accepte une marge de 2 lignes : avec une ligne modifiée sur trois, chaque ligne est à
+moins de 2 lignes d'une ligne modifiée, donc toutes passaient et les entrées `un_tiers` étaient identiques aux
+entrées `tout`. Depuis la suite introduite plus haut, le filtre « ligne modifiée » n'était donc jamais exercé.
+La sélection devient « une ligne sur sept » (`un_sur_sept`) ; la référence a été régénérée avec l'ancien moteur.
+
 ### Modifié — `rules_naming.check_identifiers` découpée (ticket #11)
 
 La fonction faisait 105 lignes pour une complexité de 49. Elle devient une dizaine de fonctions courtes :

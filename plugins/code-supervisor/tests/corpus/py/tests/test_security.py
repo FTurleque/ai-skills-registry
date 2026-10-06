@@ -11,3 +11,4 @@ def test_security(blob, command):
     subprocess.run(command, shell=True)
     pickle.loads(blob)
     assert hashlib.md5(blob).hexdigest()
+DB = "postgres://admin:s3cr3tpass@db.internal/app"
