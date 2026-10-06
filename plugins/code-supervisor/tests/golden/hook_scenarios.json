@@ -1,0 +1,180 @@
+{
+ "accented_path": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "decision": "block",
+   "reason": "SUPERVISEUR DE CODE — correction requise avant de rendre la main.\n\n1 probleme(s) bloquant(s) detecte(s) dans les fichiers que tu viens de modifier.\n\n## A corriger maintenant\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n\n## Signale sans blocage (a traiter si c'est dans le perimetre de ta tache)\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n## Comment proceder\n1. Corrige chaque point bloquant ci-dessus, dans les fichiers indiques.\n2. Ne touche pas au code hors du perimetre de ta tache et de ces corrections.\n3. Si un point est un faux positif, ne le contourne pas : explique en une ligne pourquoi le code est correct, puis continue.\n4. N'ajoute ni suppression d'avertissement (NOSONAR, @SuppressWarnings, # noqa) ni desactivation de test pour faire taire un controle.\n\nRapport complet : <work>/dépôt/docs/rapport-supervisor/rapport-<ts>.md",
+   "systemMessage": "Superviseur de code : 1 fichier(s) relu(s), 1 critical, 1 minor — agent renvoye en correction."
+  }
+ },
+ "bad_agent_supervisor": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": ""
+ },
+ "bad_other_session": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "decision": "block",
+   "reason": "SUPERVISEUR DE CODE — correction requise avant de rendre la main.\n\n1 probleme(s) bloquant(s) detecte(s) dans les fichiers que tu viens de modifier.\n\n## A corriger maintenant\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n\n## Signale sans blocage (a traiter si c'est dans le perimetre de ta tache)\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n## Comment proceder\n1. Corrige chaque point bloquant ci-dessus, dans les fichiers indiques.\n2. Ne touche pas au code hors du perimetre de ta tache et de ces corrections.\n3. Si un point est un faux positif, ne le contourne pas : explique en une ligne pourquoi le code est correct, puis continue.\n4. N'ajoute ni suppression d'avertissement (NOSONAR, @SuppressWarnings, # noqa) ni desactivation de test pour faire taire un controle.\n\nRapport complet : <work>/bad/docs/rapport-supervisor/rapport-<ts>.md",
+   "systemMessage": "Superviseur de code : 1 fichier(s) relu(s), 1 critical, 1 minor — agent renvoye en correction."
+  }
+ },
+ "bad_round_1": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "decision": "block",
+   "reason": "SUPERVISEUR DE CODE — correction requise avant de rendre la main.\n\n1 probleme(s) bloquant(s) detecte(s) dans les fichiers que tu viens de modifier.\n\n## A corriger maintenant\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n\n## Signale sans blocage (a traiter si c'est dans le perimetre de ta tache)\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n## Comment proceder\n1. Corrige chaque point bloquant ci-dessus, dans les fichiers indiques.\n2. Ne touche pas au code hors du perimetre de ta tache et de ces corrections.\n3. Si un point est un faux positif, ne le contourne pas : explique en une ligne pourquoi le code est correct, puis continue.\n4. N'ajoute ni suppression d'avertissement (NOSONAR, @SuppressWarnings, # noqa) ni desactivation de test pour faire taire un controle.\n\nRapport complet : <work>/bad/docs/rapport-supervisor/rapport-<ts>.md",
+   "systemMessage": "Superviseur de code : 1 fichier(s) relu(s), 1 critical, 1 minor — agent renvoye en correction."
+  }
+ },
+ "bad_round_2": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "decision": "block",
+   "reason": "SUPERVISEUR DE CODE — correction requise avant de rendre la main.\n\n1 probleme(s) bloquant(s) detecte(s) dans les fichiers que tu viens de modifier.\n\n## A corriger maintenant\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n\n## Signale sans blocage (a traiter si c'est dans le perimetre de ta tache)\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n## Comment proceder\n1. Corrige chaque point bloquant ci-dessus, dans les fichiers indiques.\n2. Ne touche pas au code hors du perimetre de ta tache et de ces corrections.\n3. Si un point est un faux positif, ne le contourne pas : explique en une ligne pourquoi le code est correct, puis continue.\n4. N'ajoute ni suppression d'avertissement (NOSONAR, @SuppressWarnings, # noqa) ni desactivation de test pour faire taire un controle.\n\nRapport complet : <work>/bad/docs/rapport-supervisor/rapport-<ts>.md",
+   "systemMessage": "Superviseur de code : 1 fichier(s) relu(s), 1 critical, 1 minor — agent renvoye en correction."
+  }
+ },
+ "bad_round_3": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "decision": "block",
+   "reason": "SUPERVISEUR DE CODE — correction requise avant de rendre la main.\n\n1 probleme(s) bloquant(s) detecte(s) dans les fichiers que tu viens de modifier.\n\n## A corriger maintenant\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n\n## Signale sans blocage (a traiter si c'est dans le perimetre de ta tache)\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n## Comment proceder\n1. Corrige chaque point bloquant ci-dessus, dans les fichiers indiques.\n2. Ne touche pas au code hors du perimetre de ta tache et de ces corrections.\n3. Si un point est un faux positif, ne le contourne pas : explique en une ligne pourquoi le code est correct, puis continue.\n4. N'ajoute ni suppression d'avertissement (NOSONAR, @SuppressWarnings, # noqa) ni desactivation de test pour faire taire un controle.\n\nRapport complet : <work>/bad/docs/rapport-supervisor/rapport-<ts>.md",
+   "systemMessage": "Superviseur de code : 1 fichier(s) relu(s), 1 critical, 1 minor — agent renvoye en correction."
+  }
+ },
+ "bad_round_4": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "hookSpecificOutput": {
+    "additionalContext": "Des problemes bloquants subsistent apres 3 passe(s) de correction : le superviseur rend la main pour eviter une boucle. A arbitrer manuellement.\n\nSUPERVISEUR DE CODE — aucun probleme bloquant. 2 point(s) de qualite releve(s) :\n\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\nRapport complet : <work>/bad/docs/rapport-supervisor/rapport-<ts>.md",
+    "hookEventName": "Stop"
+   },
+   "systemMessage": "Superviseur de code : 1 fichier(s) relu(s), 1 critical, 1 minor — pas de blocage. Blocage leve apres 3 passe(s) : a verifier manuellement."
+  }
+ },
+ "bad_stop_hook_active": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": ""
+ },
+ "bad_subagent_event": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "decision": "block",
+   "reason": "SUPERVISEUR DE CODE — correction requise avant de rendre la main.\n\n1 probleme(s) bloquant(s) detecte(s) dans les fichiers que tu viens de modifier.\n\n## A corriger maintenant\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n\n## Signale sans blocage (a traiter si c'est dans le perimetre de ta tache)\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n## Comment proceder\n1. Corrige chaque point bloquant ci-dessus, dans les fichiers indiques.\n2. Ne touche pas au code hors du perimetre de ta tache et de ces corrections.\n3. Si un point est un faux positif, ne le contourne pas : explique en une ligne pourquoi le code est correct, puis continue.\n4. N'ajoute ni suppression d'avertissement (NOSONAR, @SuppressWarnings, # noqa) ni desactivation de test pour faire taire un controle.\n\nRapport complet : <work>/bad/docs/rapport-supervisor/rapport-<ts>.md",
+   "systemMessage": "Superviseur de code : 1 fichier(s) relu(s), 1 critical, 1 minor — agent renvoye en correction."
+  }
+ },
+ "bad_supervisor_active": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": ""
+ },
+ "clean": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "systemMessage": "Superviseur de code : 1 fichier(s) relu(s), rien a signaler — pas de blocage."
+  }
+ },
+ "cli_check_bad": {
+  "rc": 1,
+  "stderr": "",
+  "stdout": "# Rapport du superviseur de code\n\n- Date : <date>\n- Session : manuel (passe 1)\n- Fichiers relus : 1\n- Verdict : BLOQUANT\n- Comptage : 1 CRITICAL, 0 MAJOR, 1 MINOR\n\n## Fichiers\n\n- `a.py`\n\n## Constats\n\n### Bug (2)\n\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n"
+ },
+ "cli_check_clean": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": "# Rapport du superviseur de code\n\n- Date : <date>\n- Session : manuel (passe 1)\n- Fichiers relus : 1\n- Verdict : non bloquant\n- Comptage : 0 CRITICAL, 0 MAJOR, 0 MINOR\n\n## Fichiers\n\n- `b.py`\n\n## Constats\n\nAucun constat.\n"
+ },
+ "cli_check_diff": {
+  "rc": 1,
+  "stderr": "",
+  "stdout": "# Rapport du superviseur de code\n\n- Date : <date>\n- Session : manuel (passe 1)\n- Fichiers relus : 1\n- Verdict : BLOQUANT\n- Comptage : 1 CRITICAL, 0 MAJOR, 1 MINOR\n\n## Fichiers\n\n- `a.py` (nouveau)\n\n## Constats\n\n### Bug (2)\n\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n"
+ },
+ "invalid_stdin": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": ""
+ },
+ "log_dir_files": [
+  ".gitignore",
+  "rapport-<ts>.md",
+  "state-s9.json"
+ ],
+ "log_gitignore": "*\n",
+ "no_change": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": ""
+ },
+ "non_dict_payload": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": ""
+ },
+ "self_test": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": "Fichiers analyses : 6\nConstats : 38\n  BUG.CATCH_BROAD              2\n  BUG.CATCH_SWALLOWED          2\n  BUG.RESOURCE_LEAK            1\n  BUG.STATIC_DATEFORMAT        1\n  BUG.STRING_IDENTITY          1\n  BUG.SUPPRESS                 1\n  CNV.UNUSED_IMPORT            2\n  CPX.CONDITION                1\n  CPX.CYCLOMATIC_HIGH          1\n  CPX.NESTING                  1\n  CPX.TOO_MANY_PARAMS          2\n  DUP.BLOCK                    1\n  NAM.GETTER_VOID              1\n  NAM.TOO_SHORT                8\n  NAM.VAGUE_METHOD             2\n  NAM.VAGUE_PARAM              1\n  NAM.VAGUE_VARIABLE           4\n  NAM.VAGUE_VERB               1\n  SEC.HARDCODED_SECRET         2\n  SEC.SQL_CONCAT               1\n  SEC.TLS_DISABLED             1\n  SEC.WEAK_HASH                1\n\nOK — toutes les regles attendues se declenchent.\n"
+ },
+ "state_corrupt": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "decision": "block",
+   "reason": "SUPERVISEUR DE CODE — correction requise avant de rendre la main.\n\n1 probleme(s) bloquant(s) detecte(s) dans les fichiers que tu viens de modifier.\n\n## A corriger maintenant\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n\n## Signale sans blocage (a traiter si c'est dans le perimetre de ta tache)\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n## Comment proceder\n1. Corrige chaque point bloquant ci-dessus, dans les fichiers indiques.\n2. Ne touche pas au code hors du perimetre de ta tache et de ces corrections.\n3. Si un point est un faux positif, ne le contourne pas : explique en une ligne pourquoi le code est correct, puis continue.\n4. N'ajoute ni suppression d'avertissement (NOSONAR, @SuppressWarnings, # noqa) ni desactivation de test pour faire taire un controle.\n\nRapport complet : <work>/logs/rapport-<ts>.md",
+   "systemMessage": "Superviseur de code : 1 fichier(s) relu(s), 1 critical, 1 minor — agent renvoye en correction."
+  }
+ },
+ "states": {
+  "state-s1.json": {
+   "released_signatures": 1,
+   "rounds": 4,
+   "rounds_by_signature": [
+    3
+   ]
+  },
+  "state-s2.json": {
+   "released_signatures": 0,
+   "rounds": 1,
+   "rounds_by_signature": [
+    1
+   ]
+  },
+  "state-s3.json": {
+   "released_signatures": 0,
+   "rounds": 1,
+   "rounds_by_signature": [
+    1
+   ]
+  }
+ },
+ "transcript_hint": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "decision": "block",
+   "reason": "SUPERVISEUR DE CODE — correction requise avant de rendre la main.\n\n1 probleme(s) bloquant(s) detecte(s) dans les fichiers que tu viens de modifier.\n\n## A corriger maintenant\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n\n## Signale sans blocage (a traiter si c'est dans le perimetre de ta tache)\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n## Comment proceder\n1. Corrige chaque point bloquant ci-dessus, dans les fichiers indiques.\n2. Ne touche pas au code hors du perimetre de ta tache et de ces corrections.\n3. Si un point est un faux positif, ne le contourne pas : explique en une ligne pourquoi le code est correct, puis continue.\n4. N'ajoute ni suppression d'avertissement (NOSONAR, @SuppressWarnings, # noqa) ni desactivation de test pour faire taire un controle.\n\nRapport complet : <work>/hinted/docs/rapport-supervisor/rapport-<ts>.md",
+   "systemMessage": "Superviseur de code : 2 fichier(s) relu(s), 1 critical, 1 minor — agent renvoye en correction."
+  }
+ },
+ "transcript_missing": {
+  "rc": 0,
+  "stderr": "",
+  "stdout": {
+   "decision": "block",
+   "reason": "SUPERVISEUR DE CODE — correction requise avant de rendre la main.\n\n1 probleme(s) bloquant(s) detecte(s) dans les fichiers que tu viens de modifier.\n\n## A corriger maintenant\n- **CRITICAL / Bug** — a.py:4\n  - Probleme : Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.\n  - A faire : Journaliser l'exception (logger.exception) ou la propager ; preciser aussi le type attendu au lieu d'un except nu.\n  - Code : `except Exception:`\n\n## Signale sans blocage (a traiter si c'est dans le perimetre de ta tache)\n- **MINOR / Bug** — a.py:4\n  - Probleme : Capture d'exception trop large.\n  - A faire : Capturer les types d'exception reellement attendus ; si la capture large est voulue, journaliser et renvoyer une exception metier.\n  - Code : `except Exception:`\n\n## Comment proceder\n1. Corrige chaque point bloquant ci-dessus, dans les fichiers indiques.\n2. Ne touche pas au code hors du perimetre de ta tache et de ces corrections.\n3. Si un point est un faux positif, ne le contourne pas : explique en une ligne pourquoi le code est correct, puis continue.\n4. N'ajoute ni suppression d'avertissement (NOSONAR, @SuppressWarnings, # noqa) ni desactivation de test pour faire taire un controle.\n\nRapport complet : <work>/hinted/docs/rapport-supervisor/rapport-<ts>.md",
+   "systemMessage": "Superviseur de code : 2 fichier(s) relu(s), 1 critical, 1 minor — agent renvoye en correction."
+  }
+ }
+}

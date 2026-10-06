@@ -9,6 +9,23 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Ajouté — tests de caractérisation du superviseur de code
+
+`plugins/code-supervisor/tests/` : un filet de sécurité pour les refactorisations du moteur, rejoué par la
+CI (`python plugins/code-supervisor/tests/run_tests.py`). Il compare la sortie du moteur à des références
+versionnées (`golden/`), sans dépendance au-delà de Python et de `git`.
+
+- **`hook`** : 24 scénarios de bout en bout du hook (tours de blocage et libération anti-boucle, sessions,
+  entrées invalides, transcript, état corrompu, chemin accentué, `--check`, `--self-test`).
+- **`rules`** : `check_lines`, `check_blocks` et `check_file` sur un corpus statique écrit à la main, avec
+  deux jeux de seuils et deux sélections de lignes ; échoue aussi si le corpus ne déclenche plus l'une des
+  25 règles attendues.
+- Validé par mutation : quatre régressions volontaires (seuils, filtre inversé, drapeau ignoré) sont toutes
+  détectées. Les références sont indépendantes de la machine (dossier de travail normalisé, aucun chemin
+  local).
+- `.claude/supervisor.config.json` rend le superviseur silencieux sur le corpus et les fixtures, qui
+  contiennent du code volontairement fautif.
+
 ### Corrigé — encodage du superviseur de code sous Windows
 
 Quand Claude Code lance le hook, `stdin` et `stdout` sont des tubes : Python y utilise la page de codes

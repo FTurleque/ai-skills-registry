@@ -262,6 +262,7 @@ code-supervisor/
 ├── metadata.yaml                metadonnees du registre
 ├── README.md                    ce fichier
 ├── examples/example.md          un diff fautif, le verdict, le message a l'agent
+├── tests/                       tests de caracterisation du moteur (voir tests/README.md)
 └── resources/
     ├── supervisor.py            point d'entree : place le moteur sur le chemin d'import et delegue
     ├── supervisor/              moteur
