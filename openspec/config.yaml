@@ -5,24 +5,42 @@ context: |
   All artifacts must be written in français.
   Keep OpenSpec structural headings and SHALL/MUST keywords in English.
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always state what is out of scope
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+  Projet : AI Toolkit Registry, un registre d'artefacts pour Claude (skills, plugins,
+  sous-agents, commandes, hooks, instructions, serveurs MCP, styles de sortie).
+  Règles complètes dans docs/ (architecture.md, conventions.md, contributing.md).
 
-# Per-operation guidance (optional)
-# Add advisory guidance for how apply and archive work should be conducted.
-# This is separate from artifact rules above.
-# Example:
-#   operations:
-#     apply:
-#       guidance:
-#         - Keep test summaries concise
-#     archive:
-#       guidance:
-#         - Summarize the archive outcome before finishing
+  Conventions du dépôt :
+  - Le dossier dit le mécanisme, pas le sujet. Un artefact par type et par dossier de premier
+    niveau : skills/, plugins/, agents/, commands/, hooks/, instructions/, mcp/, output-styles/.
+    Les composants d'un plugin vivent dans le plugin.
+  - Dossiers et fichiers en anglais, documentation en français.
+  - Noms d'artefacts en kebab-case, décrivant ce qu'ils font (generate-windows-exe).
+    `name` est égal au nom du dossier ; `kind` est égal au dossier de premier niveau.
+  - Fichiers standards à nom exact : SKILL.md, metadata.yaml, README.md, plugin.json, hooks.json.
+  - Un nouvel artefact part du gabarit correspondant dans templates/.
+  - Renommer un artefact publié : renseigner `replaces`, mettre à jour CHANGELOG.md, version
+    majeure si l'installation casse.
+  - Aucun secret en valeur littérale (variable d'environnement), aucun chemin absolu local.
+  - Ne jamais modifier tools/validate.py pour faire passer un artefact : corriger la cause.
+  - Ne jamais ajouter de suppression d'avertissement (# noqa, @SuppressWarnings).
+
+rules:
+  proposal:
+    - Indiquer le type d'artefact concerné et son dossier de premier niveau
+    - Indiquer si un renommage ou un changement d'installation impose une version majeure
+    - Toujours préciser ce qui est hors périmètre
+  design:
+    - Justifier l'emplacement choisi par rapport à docs/architecture.md
+  tasks:
+    - Partir du gabarit correspondant dans templates/ pour tout nouvel artefact
+    - Terminer par python tools/validate.py (doit afficher « Aucun probleme »)
+    - Puis python tools/generate_index.py pour régénérer INDEX.md
+    - Puis mettre à jour CHANGELOG.md
+
+operations:
+  apply:
+    guidance:
+      - Après tout ajout ou modification d'artefact, valider, régénérer INDEX.md et mettre à jour CHANGELOG.md
+  archive:
+    guidance:
+      - Résumer le résultat de l'archivage avant de terminer
