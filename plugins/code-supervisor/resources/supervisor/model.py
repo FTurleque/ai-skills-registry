@@ -38,7 +38,7 @@ class Finding:
     def key(self) -> str:
         """Empreinte stable, utilisee pour la deduplication et l'anti-boucle."""
         raw = "%s|%s|%s|%s" % (self.rule, self.file, self.symbol or "", self.evidence[:120])
-        return hashlib.sha1(raw.encode("utf-8", "replace")).hexdigest()[:12]
+        return hashlib.sha256(raw.encode("utf-8", "replace")).hexdigest()[:12]
 
     def location(self) -> str:
         if self.line and self.end_line and self.end_line != self.line:

@@ -51,7 +51,7 @@ def fingerprints(sf: SourceFile, window: int) -> List[Tuple[str, int, int]]:
     for i in range(0, max(0, len(norm) - window + 1)):
         chunk = norm[i:i + window]
         blob = "\n".join(c[1] for c in chunk)
-        h = hashlib.sha1(blob.encode("utf-8", "replace")).hexdigest()[:16]
+        h = hashlib.sha256(blob.encode("utf-8", "replace")).hexdigest()[:16]
         out.append((h, chunk[0][0], chunk[-1][0]))
     return out
 

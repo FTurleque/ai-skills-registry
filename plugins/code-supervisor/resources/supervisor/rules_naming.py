@@ -149,15 +149,15 @@ def check_identifiers(sf: SourceFile, functions: List[Function]) -> List[Finding
                 "La methode `%s` utilise un verbe passe-partout." % fn.qualified,
                 "Nommer l'action reellement effectuee ; si aucun verbe precis ne convient, la methode fait probablement plusieurs choses et doit etre decoupee.", fn.qualified)
 
-        ret = fn.returns.replace("final", "").strip()
-        is_bool = ret in BOOL_TYPES or fn.returns.strip().endswith("bool")
+        return_type = fn.returns.replace("final", "").strip()
+        is_bool = return_type in BOOL_TYPES or fn.returns.strip().endswith("bool")
         # Un adjectif ou un participe (reusable, windows, startsWith) se lit deja comme une
         # assertion. Ce qui pose probleme, c'est un verbe d'action qui renvoie un booleen.
         if is_bool and _split_words(name) and _split_words(name)[0] in ACTION_VERBS:
             add("NAM.BOOL_PREFIX", MINOR, name, fn.start,
                 "La methode `%s` est nommee comme une action mais retourne un booleen." % fn.qualified,
                 "Renommer en question (is/has/can/should/contains) si elle ne fait que repondre oui ou non ; sinon faire retourner le resultat de l'action.", fn.qualified)
-        if name.startswith("get") and ret == "void":
+        if name.startswith("get") and return_type == "void":
             add("NAM.GETTER_VOID", MAJOR, name, fn.start,
                 "La methode `%s` commence par get mais ne retourne rien." % fn.qualified,
                 "Renommer d'apres l'action reelle (load, refresh, compute) ou faire retourner la valeur attendue.", fn.qualified)
@@ -165,7 +165,7 @@ def check_identifiers(sf: SourceFile, functions: List[Function]) -> List[Finding
             add("NAM.GETTER_SIDE_EFFECT", MAJOR, name, fn.start,
                 "La methode `%s` s'annonce comme un accesseur mais modifie l'etat du systeme." % fn.qualified,
                 "Separer la lecture de l'ecriture : un `get*` ne doit pas ecrire ; nommer l'operation d'ecriture explicitement.", fn.qualified)
-        if name.startswith("set") and ret and ret not in ("void", "") and fn.length > 3 and not sf.is_test:
+        if name.startswith("set") and return_type and return_type not in ("void", "") and fn.length > 3 and not sf.is_test:
             pass  # setter fluide : acceptable
         if len(name) > 3 and not is_python(sf.path) and not re.match(r"^[a-z$_][\w$]*$", name) \
                 and not re.match(r"^[A-Z][\w$]*$", name):

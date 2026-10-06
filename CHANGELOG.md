@@ -9,6 +9,20 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — petits points du superviseur de code (suite du ticket #11)
+
+Aucun changement de comportement : l'analyse complète (règles de sécurité, de nommage, de duplication, de
+complexité) du corpus de tests et des fixtures donne exactement les mêmes 300 constats qu'avant, et les deux
+suites de caractérisation passent.
+
+- `source.load` : un fichier illisible n'est plus ignoré par un `except Exception: continue` muet ;
+  `_read_text` ne capture que `OSError` et le signale sur la sortie d'erreur.
+- Les empreintes de `Finding.key()` (déduplication et anti-boucle) et de la détection de duplication passent
+  de SHA-1 à SHA-256 ; elles ne servent qu'à comparer. Les états de session existants sont ignorés une fois.
+- Variables `ret` renommées `return_type` (`source.py`, `rules_naming.py`).
+- Le constat « commande construite à partir de valeurs dynamiques » sur `run_git` est documenté comme faux
+  positif : liste d'arguments, sans shell, chemins toujours placés après `--`.
+
 ### Corrigé — faux positif de `BUG.DISABLED_TEST` sur `exit(`
 
 Dans un fichier de test, la règle « test désactivé » cherchait `xit(` sans borne de mot, en insensible à la
