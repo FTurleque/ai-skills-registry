@@ -407,59 +407,71 @@ def extract_functions(sf: SourceFile) -> List[Function]:
     return []
 
 
+_BODY_SEARCH_WINDOW = 400   # caracteres examines apres la liste de parametres pour trouver `{`, `;` ou `=>`
+
+
+def _line_offsets(lines: List[str]) -> List[int]:
+    """Position, dans le texte joint par des sauts de ligne, du premier caractere de chaque ligne."""
+    offsets, pos = [], 0
+    for line in lines:
+        offsets.append(pos)
+        pos += len(line) + 1
+    return offsets
+
+
+def _function_from_signature(clean: List[str], text: str, offsets: List[int], i: int, match, owner: str) -> Optional[Function]:
+    """Fonction dont la signature (reconnue par `match`) commence a la ligne i, ou None : declaration sans corps."""
+    after = text[offsets[i] + match.end():]
+    parsed = _match_params(after)
+    if parsed is None:
+        return None
+    params, consumed = parsed
+    tail = after[consumed:consumed + _BODY_SEARCH_WINDOW]
+    # corps = accolade ouvrante avant tout ';'
+    brace, semi, arrow = tail.find("{"), tail.find(";"), tail.find("=>")
+    returns = (match.group("ret") or "").strip()
+    modifiers = (match.group("mods") or "").strip()
+    if brace != -1 and (semi == -1 or brace < semi):
+        end_abs = _match_brace(text, offsets[i] + match.end() + consumed + brace)
+        start_line = i + 1
+        end_line = _line_of(offsets, end_abs) if end_abs else min(len(clean), i + 1)
+        return Function(
+            name=match.group("name"), start=start_line, end=end_line, params=params,
+            body=clean[start_line:end_line], owner=owner, returns=returns, modifiers=modifiers,
+        )
+    if arrow != -1 and (semi == -1 or arrow < semi):
+        return Function(
+            name=match.group("name"), start=i + 1, end=i + 1, params=params,
+            body=[clean[i]], owner=owner, returns=returns, modifiers=modifiers,
+        )
+    return None
+
+
+def _function_on_line(clean: List[str], text: str, offsets: List[int], i: int, owner: str) -> Optional[Function]:
+    match = _C_SIG.match(clean[i])
+    if not match or match.group("name") in _C_KEYWORDS_NOT_FUNC:
+        return None
+    return _function_from_signature(clean, text, offsets, i, match, owner)
+
+
 def _extract_c(sf: SourceFile) -> List[Function]:
     clean = sf.clean_lines
     text = "\n".join(clean)
-    offsets = []
-    pos = 0
-    for line in clean:
-        offsets.append(pos)
-        pos += len(line) + 1
+    offsets = _line_offsets(clean)
     functions: List[Function] = []
-    class_stack: List[Tuple[str, int]] = []   # (nom, profondeur d'accolade)
+    classes: List[Tuple[str, int]] = []   # (nom, profondeur d'accolade)
     depth = 0
-    i = 0
-    n = len(clean)
-    while i < n:
-        line = clean[i]
-        cm = _CLASS_DECL.match(line)
-        if cm:
-            class_stack.append((cm.group(1), depth))
-        m = _C_SIG.match(line)
-        if m and m.group("name") not in _C_KEYWORDS_NOT_FUNC and not cm:
-            after = text[offsets[i] + m.end():]
-            parsed = _match_params(after)
-            if parsed is not None:
-                params, consumed = parsed
-                tail = after[consumed:consumed + 400]
-                # corps = accolade ouvrante avant tout ';'
-                brace = tail.find("{")
-                semi = tail.find(";")
-                arrow = tail.find("=>")
-                if brace != -1 and (semi == -1 or brace < semi):
-                    body_start_abs = offsets[i] + m.end() + consumed + brace
-                    end_abs = _match_brace(text, body_start_abs)
-                    start_line = i + 1
-                    end_line = _line_of(offsets, end_abs) if end_abs else min(n, i + 1)
-                    functions.append(Function(
-                        name=m.group("name"), start=start_line, end=end_line,
-                        params=params, body=clean[start_line:end_line],
-                        owner=class_stack[-1][0] if class_stack else "",
-                        returns=(m.group("ret") or "").strip(),
-                        modifiers=(m.group("mods") or "").strip(),
-                    ))
-                    # on ne saute pas : les fonctions imbriquees restent detectables
-                elif arrow != -1 and (semi == -1 or arrow < semi):
-                    functions.append(Function(
-                        name=m.group("name"), start=i + 1, end=i + 1, params=params,
-                        body=[line], owner=class_stack[-1][0] if class_stack else "",
-                        returns=(m.group("ret") or "").strip(),
-                        modifiers=(m.group("mods") or "").strip(),
-                    ))
+    for i, line in enumerate(clean):
+        class_match = _CLASS_DECL.match(line)
+        if class_match:
+            classes.append((class_match.group(1), depth))
+        else:
+            function = _function_on_line(clean, text, offsets, i, classes[-1][0] if classes else "")
+            if function:
+                functions.append(function)   # on ne saute pas : les fonctions imbriquees restent detectables
         depth += line.count("{") - line.count("}")
-        while class_stack and depth <= class_stack[-1][1]:
-            class_stack.pop()
-        i += 1
+        while classes and depth <= classes[-1][1]:
+            classes.pop()
     return functions
 
 
