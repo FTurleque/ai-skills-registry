@@ -53,6 +53,16 @@ def _relativize(root: str, path: str):
         return None
 
 
+def _duplication_findings(files: List[SourceFile], root: str, cfg) -> List[Finding]:
+    """La duplication est une passe optionnelle : sa panne ne doit pas faire echouer l'analyse,
+    mais elle est signalee au lieu d'etre avalee."""
+    try:
+        return rules_duplication.check(files, root, cfg)
+    except Exception as exc:  # frontiere d'une passe optionnelle
+        sys.stderr.write("superviseur : analyse de duplication abandonnee (%s)\n" % exc)
+        return []
+
+
 def analyze(root: str, files: List[SourceFile], cfg) -> List[Finding]:
     deadline = time.time() + cfg["time_budget_seconds"]
     findings: List[Finding] = []
@@ -70,10 +80,7 @@ def analyze(root: str, files: List[SourceFile], cfg) -> List[Finding]:
             findings.extend(rules_bugs.check_function_bugs(sf, functions))
             findings.extend(rules_naming.check_identifiers(sf, functions))
     if time.time() < deadline:
-        try:
-            findings.extend(rules_duplication.check(files, root, cfg))
-        except Exception:
-            pass
+        findings.extend(_duplication_findings(files, root, cfg))
     findings.extend(run_external_tools(root, files, cfg))
     return sort_findings(dedupe(findings))
 

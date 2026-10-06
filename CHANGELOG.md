@@ -21,6 +21,8 @@ deux arguments.
   `cmd.exe` interprète même entre guillemets (`& | ^ < > % ! "` ou un caractère de contrôle) est écarté,
   avec un avertissement sur la sortie d'erreur. Ailleurs, `shlex.quote` reste le bon quoting.
 - L'auto-test échoue si l'un de ces noms est de nouveau accepté.
+- La passe d'analyse de duplication, optionnelle, signale sa panne sur la sortie d'erreur au lieu de
+  l'avaler (`except Exception: pass`, relevé CRITICAL par le superviseur).
 - Un moteur déjà installé doit être réinstallé pour en profiter. Suite : #11.
 
 ### Sécurité — le superviseur de code n'exécute plus rien venu de la configuration du projet
