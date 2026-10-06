@@ -79,9 +79,10 @@ commentaire de `catch` passait inaperçue tant qu'aucun commentaire ne faisait 2
 ## Limites
 
 - Les références figent le comportement actuel, **y compris ses défauts**. Exemple relevé en les écrivant :
-  `BUG.DIV_ZERO` ne signale jamais `/ size()`, parce que son expression se termine par `size\(\)\b` et qu'une
-  borne de mot ne peut pas suivre une parenthèse fermante. Le corpus contient `divisionBySize` pour que la
-  correction de ce défaut se voie dans le diff de la référence.
+  `BUG.DIV_ZERO` ne signalait jamais `/ size()`, parce que son expression se terminait par `size\(\)\b` et
+  qu'une borne de mot ne peut pas suivre une parenthèse fermante. Le corpus contenait `divisionBySize` : la
+  correction de la règle s'est vue dans le diff de la référence, qui ne gagne que cette ligne. C'est la
+  méthode à suivre pour tout défaut trouvé : un cas de corpus d'abord, la correction ensuite.
 - La couverture porte sur le déclenchement des règles et la stabilité de leur sortie, pas sur leur
   justesse : un faux positif figé dans la référence n'est pas détecté.
 - La revue par modèle (`llm.py`) n'est pas exercée : elle suppose le CLI `claude` authentifié.

@@ -5865,6 +5865,17 @@
     "Complex.unguardedTotal"
    ],
    [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    93,
+    95,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int divisionBySize() {",
+    "Complex.divisionBySize"
+   ],
+   [
     "BUG.OPTIONAL_GET",
     "MAJOR",
     "bug",
@@ -8636,6 +8647,17 @@
     "0e1c79b0",
     "public int unguardedTotal(List<Integer> values) {",
     "Complex.unguardedTotal"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    93,
+    95,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int divisionBySize() {",
+    "Complex.divisionBySize"
    ],
    [
     "BUG.OPTIONAL_GET",
