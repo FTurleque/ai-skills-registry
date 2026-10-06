@@ -155,8 +155,12 @@ def log_dir_for(project_dir: str, cfg) -> str:
 
 def _read_payload():
     """Charge utile du hook sur l'entree standard, ou None si elle est absente ou invalide."""
+    if sys.stdin is None:
+        return None
     try:
-        payload = json.load(sys.stdin)
+        # Claude Code envoie de l'UTF-8 ; `json.load(sys.stdin)` decoderait avec la page de codes de
+        # Windows (cp1252) et deformerait un chemin accentue, rendant le depot introuvable.
+        payload = json.loads(sys.stdin.buffer.read().decode("utf-8", "replace"))
     except (OSError, ValueError, RecursionError):
         return None
     return payload if isinstance(payload, dict) else None
@@ -213,6 +217,11 @@ def _write_report(logs: str, result: dict, blocked: bool, session_id: str, round
         sys.stderr.write("superviseur : rapport non ecrit (%s)\n" % exc)
         return "(rapport non ecrit)"
     return report_file
+
+
+def _encode_hook_output(out: dict) -> str:
+    """ASCII pur (accents echappes en \\uXXXX) : toujours encodable, quel que soit l'encodage de stdout."""
+    return json.dumps(out)
 
 
 def _hook_output(payload: dict, result: dict, blocked: bool, exhausted: bool,
@@ -274,7 +283,7 @@ def hook_main() -> int:
 
     limit = int(cfg["max_findings_in_report"])
     out = _hook_output(payload, result, blocked, exhausted, seen_rounds, report_file, limit)
-    sys.stdout.write(json.dumps(out, ensure_ascii=False))
+    sys.stdout.write(_encode_hook_output(out))
     return 0
 
 
@@ -370,6 +379,24 @@ def _project_config_problems() -> list:
     return problems
 
 
+def _encoding_problems() -> list:
+    """La charge utile est lue en UTF-8 et la sortie du hook reste encodable sur un tube cp1252."""
+    problems = []
+    sent = json.dumps({"cwd": "dépôt →"}, ensure_ascii=False).encode("utf-8")
+    saved = sys.stdin
+    try:
+        sys.stdin = io.TextIOWrapper(io.BytesIO(sent), encoding="cp1252", errors="replace")
+        payload = _read_payload()
+    finally:
+        sys.stdin = saved
+    if not payload or payload.get("cwd") != "dépôt →":
+        problems.append("une charge utile UTF-8 accentuee est deformee a la lecture")
+    encoded = _encode_hook_output({"reason": "problème → échec"})
+    if not encoded.isascii() or json.loads(encoded)["reason"] != "problème → échec":
+        problems.append("la sortie du hook n'est pas de l'ASCII pur ou perd des caracteres")
+    return problems
+
+
 def _quoting_problems() -> list:
     """Un nom de fichier du depot supervise ne doit jamais pouvoir ajouter une commande."""
     problems = []
@@ -405,7 +432,8 @@ def self_test() -> int:
         print("\nECHEC — faux positifs sur les fixtures clean_* : %s" % ", ".join(false_positives))
         return 1
     for label, check in (("configuration de projet", _project_config_problems),
-                         ("quoting des fichiers", _quoting_problems)):
+                         ("quoting des fichiers", _quoting_problems),
+                         ("encodage", _encoding_problems)):
         problems = check()
         if problems:
             print("\nECHEC — %s : %s" % (label, ", ".join(problems)))
@@ -414,7 +442,17 @@ def self_test() -> int:
     return 0
 
 
+def _use_utf8_output() -> None:
+    """Sorties lisibles par Claude Code (UTF-8) meme quand elles sont redirigees : sous Windows,
+    un tube utilise la page de codes (cp1252), ce qui deforme les accents et plante sur les autres
+    caracteres. Une console interactive gere deja l'Unicode."""
+    for stream in (sys.stdout, sys.stderr):
+        if stream is not None and hasattr(stream, "reconfigure") and not stream.isatty():
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
+
 def main(args) -> int:
+    _use_utf8_output()
     if "--self-test" in args:
         return self_test()
     if "--check" in args:
