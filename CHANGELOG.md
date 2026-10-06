@@ -117,6 +117,7 @@ transcript, état corrompu, `--check`, `--self-test`) donnent la même sortie qu
   journalisent sur stderr.
 - L'empreinte anti-boucle passe de SHA-1 à SHA-256 : les états de session existants sont ignorés une
   fois, sans conséquence.
+- `engine.counts` : la variable `res` devient `per_severity` (sans changement de comportement).
 
 ### Corrigé — faux positifs du superviseur de code
 
