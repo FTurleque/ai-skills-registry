@@ -9,6 +9,22 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Sécurité — noms de fichiers dans les commandes `external_tools`
+
+`{files}` était remplacé par les noms des fichiers modifiés, protégés par `shlex.quote`, puis la ligne
+partait à `shell=True`. Or ces noms viennent du dépôt supervisé, et le quoting POSIX ne protège pas
+`cmd.exe` : sous Windows, un fichier nommé `a&commande b.py` (nom valide) séparait la ligne de commande et
+exécutait `commande`, même avec un outil déclaré par l'utilisateur. Un nom avec espace était aussi coupé en
+deux arguments.
+
+- Sous Windows, les noms passent entre guillemets doubles, et un nom qui contient un caractère que
+  `cmd.exe` interprète même entre guillemets (`& | ^ < > % ! "` ou un caractère de contrôle) est écarté,
+  avec un avertissement sur la sortie d'erreur. Ailleurs, `shlex.quote` reste le bon quoting.
+- L'auto-test échoue si l'un de ces noms est de nouveau accepté.
+- La passe d'analyse de duplication, optionnelle, signale sa panne sur la sortie d'erreur au lieu de
+  l'avaler (`except Exception: pass`, relevé CRITICAL par le superviseur).
+- Un moteur déjà installé doit être réinstallé pour en profiter. Suite : #11.
+
 ### Sécurité — le superviseur de code n'exécute plus rien venu de la configuration du projet
 
 Le hook est installé globalement et lisait `<projet>/.claude/supervisor.config.json` et

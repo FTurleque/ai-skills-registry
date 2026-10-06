@@ -370,6 +370,21 @@ def _project_config_problems() -> list:
     return problems
 
 
+def _quoting_problems() -> list:
+    """Un nom de fichier du depot supervise ne doit jamais pouvoir ajouter une commande."""
+    problems = []
+    for name in ('a&b.py', 'a|b.py', 'a^b.py', 'a<b.py', 'a>b.py', 'x%PATH%.py', 'a!b.py', 'a"b.py', "a\nb.py"):
+        if engine.quote_path(name, windows=True) is not None:
+            problems.append("cmd.exe accepte %r" % name)
+    if engine.quote_path("mon fichier.py", windows=True) != '"mon fichier.py"':
+        problems.append("cmd.exe : un nom avec espace n'est pas entre guillemets doubles")
+    if engine.quote_path("mon fichier.py", windows=False) != "'mon fichier.py'":
+        problems.append("POSIX : un nom avec espace n'est pas protege")
+    if engine.quote_path("a&b.py", windows=False) != "'a&b.py'":
+        problems.append("POSIX : un nom avec & n'est pas protege")
+    return problems
+
+
 def self_test() -> int:
     fixtures = _fixtures_dir()
     if not fixtures:
@@ -389,10 +404,12 @@ def self_test() -> int:
     if false_positives:
         print("\nECHEC — faux positifs sur les fixtures clean_* : %s" % ", ".join(false_positives))
         return 1
-    config_problems = _project_config_problems()
-    if config_problems:
-        print("\nECHEC — configuration de projet : %s" % ", ".join(config_problems))
-        return 1
+    for label, check in (("configuration de projet", _project_config_problems),
+                         ("quoting des fichiers", _quoting_problems)):
+        problems = check()
+        if problems:
+            print("\nECHEC — %s : %s" % (label, ", ".join(problems)))
+            return 1
     print("\nOK — toutes les regles attendues se declenchent.")
     return 0
 

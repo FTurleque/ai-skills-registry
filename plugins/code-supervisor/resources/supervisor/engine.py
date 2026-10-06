@@ -4,6 +4,7 @@ from __future__ import annotations
 import os
 import shlex
 import subprocess
+import sys
 import time
 from typing import List, Tuple
 
@@ -52,6 +53,16 @@ def _relativize(root: str, path: str):
         return None
 
 
+def _duplication_findings(files: List[SourceFile], root: str, cfg) -> List[Finding]:
+    """La duplication est une passe optionnelle : sa panne ne doit pas faire echouer l'analyse,
+    mais elle est signalee au lieu d'etre avalee."""
+    try:
+        return rules_duplication.check(files, root, cfg)
+    except Exception as exc:  # frontiere d'une passe optionnelle
+        sys.stderr.write("superviseur : analyse de duplication abandonnee (%s)\n" % exc)
+        return []
+
+
 def analyze(root: str, files: List[SourceFile], cfg) -> List[Finding]:
     deadline = time.time() + cfg["time_budget_seconds"]
     findings: List[Finding] = []
@@ -69,12 +80,40 @@ def analyze(root: str, files: List[SourceFile], cfg) -> List[Finding]:
             findings.extend(rules_bugs.check_function_bugs(sf, functions))
             findings.extend(rules_naming.check_identifiers(sf, functions))
     if time.time() < deadline:
-        try:
-            findings.extend(rules_duplication.check(files, root, cfg))
-        except Exception:
-            pass
+        findings.extend(_duplication_findings(files, root, cfg))
     findings.extend(run_external_tools(root, files, cfg))
     return sort_findings(dedupe(findings))
+
+
+# Caracteres d'un nom de fichier qu'aucun quoting ne neutralise de facon fiable dans cmd.exe :
+# separateurs de commandes, redirections, expansion de variables (`%`) et de `!`.
+_CMD_UNSAFE_CHARS = frozenset('"%^&|<>!')
+
+
+def quote_path(path: str, windows: bool = os.name == "nt"):
+    """Nom de fichier pret a etre insere dans une ligne de commande, ou None s'il ne peut pas l'etre.
+
+    `shlex.quote` produit un quoting POSIX : sous cmd.exe, les guillemets simples ne protegent rien et
+    un nom comme `a&b.py` (valide sous Windows) separerait la commande. Sous Windows on met donc le nom
+    entre guillemets doubles et on refuse ceux qui contiennent un caractere que cmd.exe interprete
+    meme entre guillemets."""
+    if not windows:
+        return shlex.quote(path)
+    if any(c in _CMD_UNSAFE_CHARS or ord(c) < 32 for c in path):
+        return None
+    return '"%s"' % path
+
+
+def _quote_files(tool_name: str, paths: List[str]) -> List[str]:
+    quoted = []
+    for path in paths:
+        q = quote_path(path)
+        if q is None:
+            sys.stderr.write("superviseur : %s ignore par l'outil %s (nom incompatible avec une ligne de commande)\n"
+                             % (path, tool_name))
+        else:
+            quoted.append(q)
+    return quoted
 
 
 def run_external_tools(root: str, files: List[SourceFile], cfg) -> List[Finding]:
@@ -92,9 +131,12 @@ def run_external_tools(root: str, files: List[SourceFile], cfg) -> List[Finding]
             continue
         exts = tool.get("extensions")
         selected = [p for p in paths if (not exts or os.path.splitext(p)[1].lower() in exts)]
-        if not selected:
+        quoted = _quote_files(name, selected)
+        if not quoted:
             continue
-        rendered = cmd.replace("{files}", " ".join(shlex.quote(p) for p in selected))
+        # La commande vient de la configuration de l'utilisateur, donc de confiance ; les noms de
+        # fichiers, eux, viennent du depot supervise : ils ne passent que par _quote_files.
+        rendered = cmd.replace("{files}", " ".join(quoted))
         try:
             proc = subprocess.run(rendered, cwd=root, shell=True, stdout=subprocess.PIPE,
                                   stderr=subprocess.STDOUT, timeout=tool.get("timeout_seconds", 120))
