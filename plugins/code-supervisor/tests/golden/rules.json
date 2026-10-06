@@ -1352,6 +1352,16 @@
    ]
   ]
  },
+ "defaut|tout|java/util/Helper.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|java/util/Holder.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|js/app.js": {
   "blocks": [
    [
@@ -4110,6 +4120,16 @@
    ]
   ]
  },
+ "defaut|un_tiers|java/util/Helper.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_tiers|java/util/Holder.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|un_tiers|js/app.js": {
   "blocks": [
    [
@@ -6288,9 +6308,63 @@
     1
    ],
    [
-    "Naming.doit",
+    "Naming.loops",
     50,
-    51,
+    56,
+    [],
+    "Naming",
+    "void",
+    6
+   ],
+   [
+    "Naming.handleRequest",
+    58,
+    59,
+    [],
+    "Naming",
+    "void",
+    1
+   ],
+   [
+    "Naming.processOrder",
+    61,
+    62,
+    [],
+    "Naming",
+    "void",
+    1
+   ],
+   [
+    "Naming.getShort",
+    64,
+    68,
+    [],
+    "Naming",
+    "String",
+    4
+   ],
+   [
+    "Naming.getEdge",
+    70,
+    75,
+    [],
+    "Naming",
+    "String",
+    5
+   ],
+   [
+    "Naming.getBorder",
+    77,
+    83,
+    [],
+    "Naming",
+    "String",
+    6
+   ],
+   [
+    "Naming.doit",
+    85,
+    86,
     [],
     "Naming",
     "void",
@@ -6298,8 +6372,8 @@
    ],
    [
     "Naming.handle",
-    53,
-    54,
+    88,
+    89,
     [],
     "Naming",
     "void",
@@ -6307,8 +6381,8 @@
    ],
    [
     "Naming.calcul1",
-    56,
-    58,
+    91,
+    93,
     [],
     "Naming",
     "int",
@@ -6316,8 +6390,8 @@
    ],
    [
     "Naming.setCount",
-    60,
-    66,
+    95,
+    101,
     [
      "int total"
     ],
@@ -6451,10 +6525,43 @@
     "b"
    ],
    [
+    "NAM.NUMBERED",
+    "MINOR",
+    "nommage",
+    54,
+    0,
+    "Le nom `amt1` se termine par un chiffre : il distingue mal deux concepts.",
+    "b598656d",
+    "int amt1 = 1;",
+    "amt1"
+   ],
+   [
     "NAM.ABBREVIATION",
     "MINOR",
     "nommage",
-    65,
+    55,
+    0,
+    "Le nom `usrAddr2` utilise l'abreviation `usr`.",
+    "f6d1eecc",
+    "int usrAddr2 = 2;",
+    "usrAddr2"
+   ],
+   [
+    "NAM.NUMBERED",
+    "MINOR",
+    "nommage",
+    55,
+    0,
+    "Le nom `usrAddr2` se termine par un chiffre : il distingue mal deux concepts.",
+    "b598656d",
+    "int usrAddr2 = 2;",
+    "usrAddr2"
+   ],
+   [
+    "NAM.ABBREVIATION",
+    "MINOR",
+    "nommage",
+    100,
     0,
     "Le nom `cnt` utilise l'abreviation `cnt`.",
     "4ece0b1f",
@@ -6550,10 +6657,21 @@
     "Naming.getName"
    ],
    [
+    "NAM.GETTER_SIDE_EFFECT",
+    "MAJOR",
+    "nommage",
+    77,
+    0,
+    "La methode `Naming.getBorder` s'annonce comme un accesseur mais modifie l'etat du systeme.",
+    "26d7ac32",
+    "public String getBorder() {",
+    "Naming.getBorder"
+   ],
+   [
     "NAM.VAGUE_METHOD",
     "MAJOR",
     "nommage",
-    50,
+    85,
     0,
     "La methode `Naming.doit` a un nom qui ne decrit pas son effet.",
     "f6dd48f9",
@@ -6564,7 +6682,7 @@
     "NAM.VAGUE_VERB",
     "MAJOR",
     "nommage",
-    53,
+    88,
     0,
     "La methode `Naming.handle` utilise un verbe passe-partout.",
     "e7e5486f",
@@ -6575,7 +6693,7 @@
     "NAM.VAGUE_METHOD",
     "MAJOR",
     "nommage",
-    56,
+    91,
     0,
     "La methode `Naming.calcul1` a un nom qui ne decrit pas son effet.",
     "f6dd48f9",
@@ -7288,6 +7406,34 @@
     "c"
    ]
   ],
+  "security": []
+ },
+ "extra|defaut|java/util/Helper.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|java/util/Holder.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [
+   [
+    "CNV.UNUSED_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import foo inutilise.",
+    "9d523823",
+    "import foo;",
+    null
+   ]
+  ],
+  "naming": [],
   "security": []
  },
  "extra|defaut|js/app.js": {
@@ -9180,8 +9326,30 @@
     "CPX.FUNCTION_SIZE",
     "MINOR",
     "complexite",
-    60,
-    66,
+    50,
+    56,
+    "Naming.loops fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public void loops() {",
+    "Naming.loops"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    77,
+    83,
+    "Naming.getBorder fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public String getBorder() {",
+    "Naming.getBorder"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    95,
+    101,
     "Naming.setCount fait 6 lignes (seuil souhaite 5).",
     "e293d83e",
     "public int setCount(int total) {",
@@ -9251,9 +9419,63 @@
     1
    ],
    [
-    "Naming.doit",
+    "Naming.loops",
     50,
-    51,
+    56,
+    [],
+    "Naming",
+    "void",
+    6
+   ],
+   [
+    "Naming.handleRequest",
+    58,
+    59,
+    [],
+    "Naming",
+    "void",
+    1
+   ],
+   [
+    "Naming.processOrder",
+    61,
+    62,
+    [],
+    "Naming",
+    "void",
+    1
+   ],
+   [
+    "Naming.getShort",
+    64,
+    68,
+    [],
+    "Naming",
+    "String",
+    4
+   ],
+   [
+    "Naming.getEdge",
+    70,
+    75,
+    [],
+    "Naming",
+    "String",
+    5
+   ],
+   [
+    "Naming.getBorder",
+    77,
+    83,
+    [],
+    "Naming",
+    "String",
+    6
+   ],
+   [
+    "Naming.doit",
+    85,
+    86,
     [],
     "Naming",
     "void",
@@ -9261,8 +9483,8 @@
    ],
    [
     "Naming.handle",
-    53,
-    54,
+    88,
+    89,
     [],
     "Naming",
     "void",
@@ -9270,8 +9492,8 @@
    ],
    [
     "Naming.calcul1",
-    56,
-    58,
+    91,
+    93,
     [],
     "Naming",
     "int",
@@ -9279,8 +9501,8 @@
    ],
    [
     "Naming.setCount",
-    60,
-    66,
+    95,
+    101,
     [
      "int total"
     ],
@@ -9414,10 +9636,43 @@
     "b"
    ],
    [
+    "NAM.NUMBERED",
+    "MINOR",
+    "nommage",
+    54,
+    0,
+    "Le nom `amt1` se termine par un chiffre : il distingue mal deux concepts.",
+    "b598656d",
+    "int amt1 = 1;",
+    "amt1"
+   ],
+   [
     "NAM.ABBREVIATION",
     "MINOR",
     "nommage",
-    65,
+    55,
+    0,
+    "Le nom `usrAddr2` utilise l'abreviation `usr`.",
+    "f6d1eecc",
+    "int usrAddr2 = 2;",
+    "usrAddr2"
+   ],
+   [
+    "NAM.NUMBERED",
+    "MINOR",
+    "nommage",
+    55,
+    0,
+    "Le nom `usrAddr2` se termine par un chiffre : il distingue mal deux concepts.",
+    "b598656d",
+    "int usrAddr2 = 2;",
+    "usrAddr2"
+   ],
+   [
+    "NAM.ABBREVIATION",
+    "MINOR",
+    "nommage",
+    100,
     0,
     "Le nom `cnt` utilise l'abreviation `cnt`.",
     "4ece0b1f",
@@ -9513,10 +9768,21 @@
     "Naming.getName"
    ],
    [
+    "NAM.GETTER_SIDE_EFFECT",
+    "MAJOR",
+    "nommage",
+    77,
+    0,
+    "La methode `Naming.getBorder` s'annonce comme un accesseur mais modifie l'etat du systeme.",
+    "26d7ac32",
+    "public String getBorder() {",
+    "Naming.getBorder"
+   ],
+   [
     "NAM.VAGUE_METHOD",
     "MAJOR",
     "nommage",
-    50,
+    85,
     0,
     "La methode `Naming.doit` a un nom qui ne decrit pas son effet.",
     "f6dd48f9",
@@ -9527,7 +9793,7 @@
     "NAM.VAGUE_VERB",
     "MAJOR",
     "nommage",
-    53,
+    88,
     0,
     "La methode `Naming.handle` utilise un verbe passe-partout.",
     "e7e5486f",
@@ -9538,7 +9804,7 @@
     "NAM.VAGUE_METHOD",
     "MAJOR",
     "nommage",
-    56,
+    91,
     0,
     "La methode `Naming.calcul1` a un nom qui ne decrit pas son effet.",
     "f6dd48f9",
@@ -10541,6 +10807,34 @@
     "c"
    ]
   ],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/util/Helper.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/util/Holder.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [
+   [
+    "CNV.UNUSED_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import foo inutilise.",
+    "9d523823",
+    "import foo;",
+    null
+   ]
+  ],
+  "naming": [],
   "security": []
  },
  "extra|seuils_fonctions|js/app.js": {
@@ -11950,6 +12244,2695 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|generated/secrets.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": [
+   [
+    "SEC.AWS_KEY",
+    "CRITICAL",
+    "securite",
+    2,
+    0,
+    "Cle d'acces AWS en clair dans le code.",
+    "ff70824a",
+    "ae312e46",
+    null
+   ],
+   [
+    "SEC.PRIVATE_KEY",
+    "CRITICAL",
+    "securite",
+    3,
+    0,
+    "Cle privee embarquee dans un fichier source.",
+    "5ecfa7d8",
+    "7d697787",
+    null
+   ],
+   [
+    "SEC.JWT",
+    "CRITICAL",
+    "securite",
+    4,
+    0,
+    "Jeton JWT en dur dans le code.",
+    "ea9dd870",
+    "1473be0c",
+    null
+   ],
+   [
+    "SEC.SLACK_GH_TOKEN",
+    "CRITICAL",
+    "securite",
+    5,
+    0,
+    "Jeton d'API (Slack / GitHub) en clair.",
+    "9f5175ea",
+    "be293480",
+    null
+   ],
+   [
+    "SEC.SLACK_GH_TOKEN",
+    "CRITICAL",
+    "securite",
+    6,
+    0,
+    "Jeton d'API (Slack / GitHub) en clair.",
+    "9f5175ea",
+    "f64e4b3d",
+    null
+   ]
+  ]
+ },
+ "partial|seuils_fonctions|java/Catches.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/CatchesMultiline.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    8,
+    "D.m fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "void m() {",
+    "D.m"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/Complex.java": {
+  "function_bugs": [
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    55,
+    62,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int average(List<Integer> values) {",
+    "Complex.average"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    88,
+    91,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int unguardedTotal(List<Integer> values) {",
+    "Complex.unguardedTotal"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    93,
+    95,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int divisionBySize() {",
+    "Complex.divisionBySize"
+   ],
+   [
+    "BUG.OPTIONAL_GET",
+    "MAJOR",
+    "bug",
+    97,
+    100,
+    "Optional.get() appele sans verifier la presence de valeur.",
+    "fee35b55",
+    "public String optional(String raw) {",
+    "Complex.optional"
+   ],
+   [
+    "BUG.CONCURRENT_MODIFICATION",
+    "CRITICAL",
+    "bug",
+    102,
+    106,
+    "Collection modifiee pendant son parcours : ConcurrentModificationException a l'execution.",
+    "6c02d291",
+    "public void concurrent(List<String> items) {",
+    "Complex.concurrent"
+   ]
+  ],
+  "function_quality": [
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    7,
+    9,
+    "Complex.tooMany prend 7 parametres (seuil 2).",
+    "714e54b3",
+    "public int tooMany(int a, int b, int c, int d, int e, int f, int g) {",
+    "Complex.tooMany"
+   ],
+   [
+    "CPX.CYCLOMATIC_HIGH",
+    "MAJOR",
+    "complexite",
+    11,
+    28,
+    "Complex.nested a une complexite cyclomatique de 6 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
+    "2d5a30dc",
+    "public int nested(int a, int b) {",
+    "Complex.nested"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    11,
+    28,
+    "Complex.nested fait 17 lignes (seuil 10).",
+    "38f77482",
+    "public int nested(int a, int b) {",
+    "Complex.nested"
+   ],
+   [
+    "CPX.NESTING",
+    "MINOR",
+    "complexite",
+    11,
+    28,
+    "Complex.nested imbrique 5 niveaux de blocs (seuil 2).",
+    "98efae43",
+    "public int nested(int a, int b) {",
+    "Complex.nested"
+   ],
+   [
+    "CPX.CYCLOMATIC_HIGH",
+    "MAJOR",
+    "complexite",
+    30,
+    49,
+    "Complex.branchy a une complexite cyclomatique de 18 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
+    "2d5a30dc",
+    "public int branchy(int v) {",
+    "Complex.branchy"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    30,
+    49,
+    "Complex.branchy fait 19 lignes (seuil 10).",
+    "38f77482",
+    "public int branchy(int v) {",
+    "Complex.branchy"
+   ],
+   [
+    "CPX.CYCLOMATIC_HIGH",
+    "MAJOR",
+    "complexite",
+    51,
+    53,
+    "Complex.condition a une complexite cyclomatique de 8 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
+    "2d5a30dc",
+    "public boolean condition(boolean a, boolean b, boolean c, boolean d, boolean e) {",
+    "Complex.condition"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    51,
+    53,
+    "Complex.condition prend 5 parametres (seuil 2).",
+    "714e54b3",
+    "public boolean condition(boolean a, boolean b, boolean c, boolean d, boolean e) {",
+    "Complex.condition"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    52,
+    0,
+    "Condition composee de 7 operateurs booleens dans Complex.condition.",
+    "002d039a",
+    "return (a && b) || (c && d) || (e && a) || (b && c);",
+    "Complex.condition"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    55,
+    62,
+    "Complex.average fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public int average(List<Integer> values) {",
+    "Complex.average"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    64,
+    70,
+    "Complex.guardedByCompare fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public int guardedByCompare(List<Integer> values) {",
+    "Complex.guardedByCompare"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    72,
+    78,
+    "Complex.guardedByDifference fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public int guardedByDifference(List<Integer> values) {",
+    "Complex.guardedByDifference"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    80,
+    86,
+    "Complex.guardedByEmptiness fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public int guardedByEmptiness(List<Integer> values) {",
+    "Complex.guardedByEmptiness"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    108,
+    126,
+    "Complex.longMethod fait 18 lignes (seuil 10).",
+    "38f77482",
+    "public int longMethod(int v) {",
+    "Complex.longMethod"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    7,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public int tooMany(int a, int b, int c, int d, int e, int f, int g) {",
+    "a"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    7,
+    0,
+    "Le nom `b` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public int tooMany(int a, int b, int c, int d, int e, int f, int g) {",
+    "b"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    7,
+    0,
+    "Le nom `c` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public int tooMany(int a, int b, int c, int d, int e, int f, int g) {",
+    "c"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    7,
+    0,
+    "Le nom `d` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public int tooMany(int a, int b, int c, int d, int e, int f, int g) {",
+    "d"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    7,
+    0,
+    "Le nom `f` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public int tooMany(int a, int b, int c, int d, int e, int f, int g) {",
+    "f"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    7,
+    0,
+    "Le nom `g` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public int tooMany(int a, int b, int c, int d, int e, int f, int g) {",
+    "g"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    30,
+    0,
+    "Le nom `v` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public int branchy(int v) {",
+    "v"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/DuplicateA.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    4,
+    12,
+    "DuplicateA.invoiceTotal fait 8 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public double invoiceTotal(double base, double rate) {",
+    "DuplicateA.invoiceTotal"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/DuplicateB.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    4,
+    12,
+    "DuplicateB.quoteTotal fait 8 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public double quoteTotal(double base, double rate) {",
+    "DuplicateB.quoteTotal"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/Naming.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    15,
+    23,
+    "Naming.process fait 8 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public void process(Object obj, String s1, int val) {",
+    "Naming.process"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    15,
+    23,
+    "Naming.process prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "public void process(Object obj, String s1, int val) {",
+    "Naming.process"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    37,
+    45,
+    "Naming.getName fait 8 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public String getName() {",
+    "Naming.getName"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    50,
+    56,
+    "Naming.loops fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public void loops() {",
+    "Naming.loops"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    77,
+    83,
+    "Naming.getBorder fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public String getBorder() {",
+    "Naming.getBorder"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    95,
+    101,
+    "Naming.setCount fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public int setCount(int total) {",
+    "Naming.setCount"
+   ]
+  ],
+  "imports": [
+   [
+    "CNV.UNUSED_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import java.util.Map inutilise.",
+    "9d523823",
+    "import java.util.Map;",
+    null
+   ],
+   [
+    "CNV.UNUSED_IMPORT",
+    "MINOR",
+    "convention",
+    5,
+    0,
+    "Import java.util.Set inutilise.",
+    "9d523823",
+    "import java.util.Set;",
+    null
+   ]
+  ],
+  "naming": [
+   [
+    "NAM.VAGUE_VARIABLE",
+    "MAJOR",
+    "nommage",
+    15,
+    0,
+    "La variable `obj` ne dit pas ce qu'elle contient.",
+    "2783d328",
+    "public void process(Object obj, String s1, int val) {",
+    "obj"
+   ],
+   [
+    "NAM.VAGUE_VARIABLE",
+    "MAJOR",
+    "nommage",
+    15,
+    0,
+    "La variable `s1` ne dit pas ce qu'elle contient.",
+    "2783d328",
+    "public void process(Object obj, String s1, int val) {",
+    "s1"
+   ],
+   [
+    "NAM.VAGUE_VARIABLE",
+    "MAJOR",
+    "nommage",
+    15,
+    0,
+    "La variable `val` ne dit pas ce qu'elle contient.",
+    "2783d328",
+    "public void process(Object obj, String s1, int val) {",
+    "val"
+   ],
+   [
+    "NAM.VAGUE_VARIABLE",
+    "MAJOR",
+    "nommage",
+    16,
+    0,
+    "La variable `x1` ne dit pas ce qu'elle contient.",
+    "2783d328",
+    "int x1 = 1;",
+    "x1"
+   ],
+   [
+    "NAM.VAGUE_VARIABLE",
+    "MAJOR",
+    "nommage",
+    17,
+    0,
+    "La variable `data` ne dit pas ce qu'elle contient.",
+    "2783d328",
+    "String data = \"a\";",
+    "data"
+   ],
+   [
+    "NAM.VAGUE_VARIABLE",
+    "MAJOR",
+    "nommage",
+    18,
+    0,
+    "La variable `list1` ne dit pas ce qu'elle contient.",
+    "2783d328",
+    "List<String> list1 = null;",
+    "list1"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    19,
+    0,
+    "Le nom `ab` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "String ab = \"b\";",
+    "ab"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    29,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public boolean computeTotal(int a, int b) {",
+    "a"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    29,
+    0,
+    "Le nom `b` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public boolean computeTotal(int a, int b) {",
+    "b"
+   ],
+   [
+    "NAM.NUMBERED",
+    "MINOR",
+    "nommage",
+    54,
+    0,
+    "Le nom `amt1` se termine par un chiffre : il distingue mal deux concepts.",
+    "b598656d",
+    "int amt1 = 1;",
+    "amt1"
+   ],
+   [
+    "NAM.ABBREVIATION",
+    "MINOR",
+    "nommage",
+    55,
+    0,
+    "Le nom `usrAddr2` utilise l'abreviation `usr`.",
+    "f6d1eecc",
+    "int usrAddr2 = 2;",
+    "usrAddr2"
+   ],
+   [
+    "NAM.NUMBERED",
+    "MINOR",
+    "nommage",
+    55,
+    0,
+    "Le nom `usrAddr2` se termine par un chiffre : il distingue mal deux concepts.",
+    "b598656d",
+    "int usrAddr2 = 2;",
+    "usrAddr2"
+   ],
+   [
+    "NAM.ABBREVIATION",
+    "MINOR",
+    "nommage",
+    100,
+    0,
+    "Le nom `cnt` utilise l'abreviation `cnt`.",
+    "4ece0b1f",
+    "return cnt;",
+    "cnt"
+   ],
+   [
+    "NAM.VAGUE_VERB",
+    "MAJOR",
+    "nommage",
+    15,
+    0,
+    "La methode `Naming.process` utilise un verbe passe-partout.",
+    "e7e5486f",
+    "public void process(Object obj, String s1, int val) {",
+    "Naming.process"
+   ],
+   [
+    "NAM.VAGUE_PARAM",
+    "MINOR",
+    "nommage",
+    15,
+    0,
+    "Le parametre `obj` de `Naming.process` ne dit pas ce qu'il recoit.",
+    "47fb9a8f",
+    "public void process(Object obj, String s1, int val) {",
+    "Naming.process"
+   ],
+   [
+    "NAM.VAGUE_PARAM",
+    "MINOR",
+    "nommage",
+    15,
+    0,
+    "Le parametre `s1` de `Naming.process` ne dit pas ce qu'il recoit.",
+    "47fb9a8f",
+    "public void process(Object obj, String s1, int val) {",
+    "Naming.process"
+   ],
+   [
+    "NAM.VAGUE_PARAM",
+    "MINOR",
+    "nommage",
+    15,
+    0,
+    "Le parametre `val` de `Naming.process` ne dit pas ce qu'il recoit.",
+    "47fb9a8f",
+    "public void process(Object obj, String s1, int val) {",
+    "Naming.process"
+   ],
+   [
+    "NAM.BOOL_PREFIX",
+    "MINOR",
+    "nommage",
+    25,
+    0,
+    "La methode `Naming.getValue` est nommee comme une action mais retourne un booleen.",
+    "cce3c68d",
+    "public boolean getValue() {",
+    "Naming.getValue"
+   ],
+   [
+    "NAM.BOOL_PREFIX",
+    "MINOR",
+    "nommage",
+    29,
+    0,
+    "La methode `Naming.computeTotal` est nommee comme une action mais retourne un booleen.",
+    "cce3c68d",
+    "public boolean computeTotal(int a, int b) {",
+    "Naming.computeTotal"
+   ],
+   [
+    "NAM.GETTER_VOID",
+    "MAJOR",
+    "nommage",
+    33,
+    0,
+    "La methode `Naming.getItems` commence par get mais ne retourne rien.",
+    "f6e75eab",
+    "public void getItems() {",
+    "Naming.getItems"
+   ],
+   [
+    "NAM.GETTER_SIDE_EFFECT",
+    "MAJOR",
+    "nommage",
+    37,
+    0,
+    "La methode `Naming.getName` s'annonce comme un accesseur mais modifie l'etat du systeme.",
+    "26d7ac32",
+    "public String getName() {",
+    "Naming.getName"
+   ],
+   [
+    "NAM.GETTER_SIDE_EFFECT",
+    "MAJOR",
+    "nommage",
+    77,
+    0,
+    "La methode `Naming.getBorder` s'annonce comme un accesseur mais modifie l'etat du systeme.",
+    "26d7ac32",
+    "public String getBorder() {",
+    "Naming.getBorder"
+   ],
+   [
+    "NAM.VAGUE_METHOD",
+    "MAJOR",
+    "nommage",
+    85,
+    0,
+    "La methode `Naming.doit` a un nom qui ne decrit pas son effet.",
+    "f6dd48f9",
+    "public void doit() {",
+    "Naming.doit"
+   ],
+   [
+    "NAM.VAGUE_VERB",
+    "MAJOR",
+    "nommage",
+    88,
+    0,
+    "La methode `Naming.handle` utilise un verbe passe-partout.",
+    "e7e5486f",
+    "public void handle() {",
+    "Naming.handle"
+   ],
+   [
+    "NAM.VAGUE_METHOD",
+    "MAJOR",
+    "nommage",
+    91,
+    0,
+    "La methode `Naming.calcul1` a un nom qui ne decrit pas son effet.",
+    "f6dd48f9",
+    "public int calcul1() {",
+    "Naming.calcul1"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/Security.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    16,
+    29,
+    "Security.run fait 13 lignes (seuil 10).",
+    "38f77482",
+    "public void run(Statement stmt, String userId, String name) throws Exception {",
+    "Security.run"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    16,
+    29,
+    "Security.run prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "public void run(Statement stmt, String userId, String name) throws Exception {",
+    "Security.run"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": [
+   [
+    "SEC.HARDCODED_SECRET",
+    "CRITICAL",
+    "securite",
+    12,
+    0,
+    "Secret ecrit en dur dans le code.",
+    "64c04d2c",
+    "private static final String PASSWORD = \"hunter2hunter2\";",
+    null
+   ],
+   [
+    "SEC.CONNSTRING",
+    "CRITICAL",
+    "securite",
+    13,
+    0,
+    "Chaine de connexion contenant un mot de passe.",
+    "90df9287",
+    "private static final String DB = \"postgres://admin:s3cr3tpass@db.internal/app\";",
+    null
+   ],
+   [
+    "SEC.HTTP_URL",
+    "MINOR",
+    "securite",
+    14,
+    0,
+    "URL en HTTP non chiffre.",
+    "12dee76b",
+    "private static final String ENDPOINT = \"http://api.partner.net/v1\";",
+    null
+   ],
+   [
+    "SEC.SQL_CONCAT",
+    "CRITICAL",
+    "securite",
+    17,
+    0,
+    "Requete SQL construite par concatenation de chaines : injection SQL possible.",
+    "ec9113a2",
+    "stmt.executeQuery(\"select * from users where id = \" + userId);",
+    null
+   ],
+   [
+    "SEC.SQL_CONCAT",
+    "CRITICAL",
+    "securite",
+    17,
+    0,
+    "Requete SQL assemblee par concatenation de chaines : injection SQL possible.",
+    "73afec40",
+    "stmt.executeQuery(\"select * from users where id = \" + userId);",
+    null
+   ],
+   [
+    "SEC.SQL_CONCAT",
+    "CRITICAL",
+    "securite",
+    18,
+    0,
+    "Requete SQL construite par concatenation de chaines : injection SQL possible.",
+    "ec9113a2",
+    "Runtime.getRuntime().exec(\"ls \" + name);",
+    null
+   ],
+   [
+    "SEC.CMD_INJECTION",
+    "CRITICAL",
+    "securite",
+    18,
+    0,
+    "Commande systeme construite a partir de valeurs dynamiques : injection de commande possible.",
+    "7e5fa2e8",
+    "Runtime.getRuntime().exec(\"ls \" + name);",
+    null
+   ],
+   [
+    "SEC.WEAK_HASH",
+    "MAJOR",
+    "securite",
+    19,
+    0,
+    "Fonction de hachage cassee (MD5/SHA-1).",
+    "80694e0d",
+    "MessageDigest digest = MessageDigest.getInstance(\"MD5\");",
+    null
+   ],
+   [
+    "SEC.WEAK_CIPHER",
+    "MAJOR",
+    "securite",
+    20,
+    0,
+    "Algorithme ou mode de chiffrement faible (DES, RC4, ECB).",
+    "2040f82f",
+    "Cipher cipher = Cipher.getInstance(\"DES/ECB/PKCS5Padding\");",
+    null
+   ],
+   [
+    "SEC.XXE",
+    "MAJOR",
+    "securite",
+    21,
+    0,
+    "Fabrique XML creee sans durcissement : XXE possible.",
+    "ac07f680",
+    "DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();",
+    null
+   ],
+   [
+    "SEC.DESERIALIZE",
+    "CRITICAL",
+    "securite",
+    24,
+    0,
+    "Deserialisation de donnees non fiables : execution de code possible.",
+    "b1dc875c",
+    "ObjectInputStream in = new ObjectInputStream(System.in);",
+    null
+   ],
+   [
+    "SEC.PATH_TRAVERSAL",
+    "MAJOR",
+    "securite",
+    25,
+    0,
+    "Chemin de fichier construit depuis une entree utilisateur : traversee de repertoire possible.",
+    "470f5abc",
+    "File file = new File(request.getParameter(\"path\"));",
+    null
+   ],
+   [
+    "SEC.LOG_SECRET",
+    "MAJOR",
+    "securite",
+    26,
+    0,
+    "Donnee sensible ecrite dans les journaux.",
+    "e58cfbbc",
+    "logger.info(\"login with password \" + PASSWORD);",
+    null
+   ],
+   [
+    "SEC.TLS_DISABLED",
+    "CRITICAL",
+    "securite",
+    27,
+    0,
+    "Verification du certificat TLS desactivee.",
+    "53b976ca",
+    "connection.setHostnameVerifier(ALLOW_ALL_HOSTNAME_VERIFIER);",
+    null
+   ],
+   [
+    "SEC.CSRF_OFF",
+    "MAJOR",
+    "securite",
+    28,
+    0,
+    "Protection CSRF desactivee.",
+    "328f38b3",
+    "http.csrf().disable().authorizeRequests().anyRequest().permitAll();",
+    null
+   ],
+   [
+    "SEC.PERMIT_ALL",
+    "MINOR",
+    "securite",
+    28,
+    0,
+    "Autorisation ou CORS ouverts a tous.",
+    "5bf04363",
+    "http.csrf().disable().authorizeRequests().anyRequest().permitAll();",
+    null
+   ]
+  ]
+ },
+ "partial|seuils_fonctions|java/Wildcard.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [
+   [
+    "CNV.UNUSED_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import java.io.File inutilise.",
+    "9d523823",
+    "import java.io.File;",
+    null
+   ]
+  ],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/src/main/java/demo/Service.java": {
+  "function_bugs": [
+   [
+    "BUG.CONCURRENT_MODIFICATION",
+    "CRITICAL",
+    "bug",
+    58,
+    65,
+    "Collection modifiee pendant son parcours : ConcurrentModificationException a l'execution.",
+    "6c02d291",
+    "public void legacy() { // NOSONAR",
+    "Service.legacy"
+   ]
+  ],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    13,
+    17,
+    "Service.same a une complexite cyclomatique de 4 (seuil souhaite 2).",
+    "3fbcf346",
+    "public boolean same(String a, String b) {",
+    "Service.same"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    14,
+    0,
+    "Condition composee de 1 operateurs booleens dans Service.same.",
+    "002d039a",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    "Service.same"
+   ],
+   [
+    "CPX.CYCLOMATIC_HIGH",
+    "MAJOR",
+    "complexite",
+    19,
+    41,
+    "Service.load a une complexite cyclomatique de 6 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
+    "2d5a30dc",
+    "public void load(String path) {",
+    "Service.load"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    19,
+    41,
+    "Service.load fait 22 lignes (seuil 10).",
+    "38f77482",
+    "public void load(String path) {",
+    "Service.load"
+   ],
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    43,
+    53,
+    "Service.find a une complexite cyclomatique de 4 (seuil souhaite 2).",
+    "3fbcf346",
+    "public Object find(int id) {",
+    "Service.find"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    43,
+    53,
+    "Service.find fait 10 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public Object find(int id) {",
+    "Service.find"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    51,
+    0,
+    "Condition composee de 1 operateurs booleens dans Service.find.",
+    "002d039a",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    "Service.find"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    58,
+    65,
+    "Service.legacy fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public void legacy() { // NOSONAR",
+    "Service.legacy"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    13,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public boolean same(String a, String b) {",
+    "a"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    13,
+    0,
+    "Le nom `b` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public boolean same(String a, String b) {",
+    "b"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    26,
+    0,
+    "Le nom `o` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "Object o = null;",
+    "o"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    37,
+    0,
+    "Le nom `t` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "} catch (Throwable t) {",
+    "t"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    49,
+    0,
+    "Le nom `r` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "double r = 10 / size();",
+    "r"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    59,
+    0,
+    "Le nom `s` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
+    "s"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    63,
+    0,
+    "Le nom `sc` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "Scanner sc = new Scanner(System.in);",
+    "sc"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    64,
+    0,
+    "Le nom `c` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "Connection c = ds.getConnection();",
+    "c"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/src/main/java/demo/cli/Main.java": {
+  "function_bugs": [
+   [
+    "BUG.CONCURRENT_MODIFICATION",
+    "CRITICAL",
+    "bug",
+    58,
+    65,
+    "Collection modifiee pendant son parcours : ConcurrentModificationException a l'execution.",
+    "6c02d291",
+    "public void legacy() { // NOSONAR",
+    "Main.legacy"
+   ]
+  ],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    13,
+    17,
+    "Main.same a une complexite cyclomatique de 4 (seuil souhaite 2).",
+    "3fbcf346",
+    "public boolean same(String a, String b) {",
+    "Main.same"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    14,
+    0,
+    "Condition composee de 1 operateurs booleens dans Main.same.",
+    "002d039a",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    "Main.same"
+   ],
+   [
+    "CPX.CYCLOMATIC_HIGH",
+    "MAJOR",
+    "complexite",
+    19,
+    41,
+    "Main.load a une complexite cyclomatique de 6 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
+    "2d5a30dc",
+    "public void load(String path) {",
+    "Main.load"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    19,
+    41,
+    "Main.load fait 22 lignes (seuil 10).",
+    "38f77482",
+    "public void load(String path) {",
+    "Main.load"
+   ],
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    43,
+    53,
+    "Main.find a une complexite cyclomatique de 4 (seuil souhaite 2).",
+    "3fbcf346",
+    "public Object find(int id) {",
+    "Main.find"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    43,
+    53,
+    "Main.find fait 10 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public Object find(int id) {",
+    "Main.find"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    51,
+    0,
+    "Condition composee de 1 operateurs booleens dans Main.find.",
+    "002d039a",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    "Main.find"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    58,
+    65,
+    "Main.legacy fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public void legacy() { // NOSONAR",
+    "Main.legacy"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    13,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public boolean same(String a, String b) {",
+    "a"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    13,
+    0,
+    "Le nom `b` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public boolean same(String a, String b) {",
+    "b"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    26,
+    0,
+    "Le nom `o` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "Object o = null;",
+    "o"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    37,
+    0,
+    "Le nom `t` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "} catch (Throwable t) {",
+    "t"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    49,
+    0,
+    "Le nom `r` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "double r = 10 / size();",
+    "r"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    59,
+    0,
+    "Le nom `s` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
+    "s"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    63,
+    0,
+    "Le nom `sc` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "Scanner sc = new Scanner(System.in);",
+    "sc"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    64,
+    0,
+    "Le nom `c` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "Connection c = ds.getConnection();",
+    "c"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/src/test/java/demo/ServiceTest.java": {
+  "function_bugs": [
+   [
+    "BUG.CONCURRENT_MODIFICATION",
+    "CRITICAL",
+    "bug",
+    61,
+    68,
+    "Collection modifiee pendant son parcours : ConcurrentModificationException a l'execution.",
+    "6c02d291",
+    "public void legacy() { // NOSONAR",
+    "ServiceTest.legacy"
+   ]
+  ],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    13,
+    17,
+    "ServiceTest.same a une complexite cyclomatique de 4 (seuil souhaite 2).",
+    "3fbcf346",
+    "public boolean same(String a, String b) {",
+    "ServiceTest.same"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    14,
+    0,
+    "Condition composee de 1 operateurs booleens dans ServiceTest.same.",
+    "002d039a",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    "ServiceTest.same"
+   ],
+   [
+    "CPX.CYCLOMATIC_HIGH",
+    "MAJOR",
+    "complexite",
+    19,
+    41,
+    "ServiceTest.load a une complexite cyclomatique de 6 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
+    "2d5a30dc",
+    "public void load(String path) {",
+    "ServiceTest.load"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    19,
+    41,
+    "ServiceTest.load fait 22 lignes (seuil 10).",
+    "38f77482",
+    "public void load(String path) {",
+    "ServiceTest.load"
+   ],
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    43,
+    53,
+    "ServiceTest.find a une complexite cyclomatique de 4 (seuil souhaite 2).",
+    "3fbcf346",
+    "public Object find(int id) {",
+    "ServiceTest.find"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    43,
+    53,
+    "ServiceTest.find fait 10 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public Object find(int id) {",
+    "ServiceTest.find"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    51,
+    0,
+    "Condition composee de 1 operateurs booleens dans ServiceTest.find.",
+    "002d039a",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    "ServiceTest.find"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    61,
+    68,
+    "ServiceTest.legacy fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "public void legacy() { // NOSONAR",
+    "ServiceTest.legacy"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    13,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public boolean same(String a, String b) {",
+    "a"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    13,
+    0,
+    "Le nom `b` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "public boolean same(String a, String b) {",
+    "b"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    26,
+    0,
+    "Le nom `o` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "Object o = null;",
+    "o"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    37,
+    0,
+    "Le nom `t` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "} catch (Throwable t) {",
+    "t"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    49,
+    0,
+    "Le nom `r` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "double r = 10 / size();",
+    "r"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    62,
+    0,
+    "Le nom `s` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
+    "s"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    66,
+    0,
+    "Le nom `sc` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "Scanner sc = new Scanner(System.in);",
+    "sc"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    67,
+    0,
+    "Le nom `c` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "Connection c = ds.getConnection();",
+    "c"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/util/Helper.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/util/Holder.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [
+   [
+    "CNV.UNUSED_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import foo inutilise.",
+    "9d523823",
+    "import foo;",
+    null
+   ]
+  ],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|js/app.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    15,
+    "go a une complexite cyclomatique de 4 (seuil souhaite 2).",
+    "3fbcf346",
+    "async function go(x) {",
+    "go"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    2,
+    15,
+    "go fait 13 lignes (seuil 10).",
+    "38f77482",
+    "async function go(x) {",
+    "go"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    12,
+    0,
+    "Le nom `s` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "const s = \"// eslint-disable and @ts-nocheck in a string\";",
+    "s"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|js/app.test.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    15,
+    "go a une complexite cyclomatique de 4 (seuil souhaite 2).",
+    "3fbcf346",
+    "async function go(x) {",
+    "go"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    2,
+    15,
+    "go fait 13 lignes (seuil 10).",
+    "38f77482",
+    "async function go(x) {",
+    "go"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    12,
+    0,
+    "Le nom `s` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "const s = \"// eslint-disable and @ts-nocheck in a string\";",
+    "s"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|js/exit.test.js": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|js/security.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    5,
+    14,
+    "render fait 9 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function render(req, res, userInput) {",
+    "render"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    5,
+    14,
+    "render prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "function render(req, res, userInput) {",
+    "render"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `cp` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "const cp = require(\"child_process\");",
+    "cp"
+   ],
+   [
+    "NAM.VAGUE_PARAM",
+    "MINOR",
+    "nommage",
+    5,
+    0,
+    "Le parametre `res` de `render` ne dit pas ce qu'il recoit.",
+    "47fb9a8f",
+    "function render(req, res, userInput) {",
+    "render"
+   ]
+  ],
+  "security": [
+   [
+    "SEC.XSS_SINK",
+    "MAJOR",
+    "securite",
+    6,
+    0,
+    "Injection de HTML non echappe : XSS possible.",
+    "ddb47c74",
+    "document.getElementById(\"out\").innerHTML = userInput;",
+    null
+   ],
+   [
+    "SEC.XSS_SINK",
+    "MAJOR",
+    "securite",
+    7,
+    0,
+    "Injection de HTML non echappe : XSS possible.",
+    "ddb47c74",
+    "document.write(userInput);",
+    null
+   ],
+   [
+    "SEC.EVAL",
+    "CRITICAL",
+    "securite",
+    8,
+    0,
+    "Evaluation dynamique de code.",
+    "8109c6ac",
+    "eval(userInput);",
+    null
+   ],
+   [
+    "SEC.SQL_CONCAT",
+    "CRITICAL",
+    "securite",
+    9,
+    0,
+    "Requete SQL construite par concatenation de chaines : injection SQL possible.",
+    "ec9113a2",
+    "cp.exec(\"ls \" + req.query.dir);",
+    null
+   ],
+   [
+    "SEC.WEAK_HASH",
+    "MAJOR",
+    "securite",
+    10,
+    0,
+    "Fonction de hachage cassee (MD5/SHA-1).",
+    "80694e0d",
+    "crypto.createHash(\"md5\").update(userInput);",
+    null
+   ],
+   [
+    "SEC.TLS_DISABLED",
+    "CRITICAL",
+    "securite",
+    11,
+    0,
+    "Verification du certificat TLS desactivee.",
+    "53b976ca",
+    "https.get({ host: \"internal\", rejectUnauthorized: false });",
+    null
+   ],
+   [
+    "SEC.LOG_SECRET",
+    "MAJOR",
+    "securite",
+    12,
+    0,
+    "Donnee sensible ecrite dans les journaux.",
+    "e58cfbbc",
+    "console.log(\"token\", req.headers.authorization);",
+    null
+   ],
+   [
+    "SEC.PATH_TRAVERSAL",
+    "MAJOR",
+    "securite",
+    13,
+    0,
+    "Chemin de fichier construit depuis une entree utilisateur : traversee de repertoire possible.",
+    "470f5abc",
+    "return fs.readFileSync(req.query.file);",
+    null
+   ]
+  ]
+ },
+ "partial|seuils_fonctions|js/ts/service.ts": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    15,
+    "go a une complexite cyclomatique de 4 (seuil souhaite 2).",
+    "3fbcf346",
+    "async function go(x: number) {",
+    "go"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    2,
+    15,
+    "go fait 13 lignes (seuil 10).",
+    "38f77482",
+    "async function go(x: number) {",
+    "go"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    12,
+    0,
+    "Le nom `s` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "const s = \"// eslint-disable and @ts-nocheck in a string\";",
+    "s"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|misc/conf.yaml": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|misc/query.sql": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|py/__main__.py": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC_HIGH",
+    "MAJOR",
+    "complexite",
+    7,
+    35,
+    "f a une complexite cyclomatique de 6 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
+    "2d5a30dc",
+    "def f(x):",
+    "f"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    7,
+    35,
+    "f fait 28 lignes (seuil 10).",
+    "38f77482",
+    "def f(x):",
+    "f"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|py/long_lines.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `y0` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "y0 = 0",
+    "y0"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    3,
+    0,
+    "Le nom `y1` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "y1 = 37",
+    "y1"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    4,
+    0,
+    "Le nom `y2` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "y2 = 74",
+    "y2"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    5,
+    0,
+    "Le nom `y3` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "y3 = 111",
+    "y3"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    6,
+    0,
+    "Le nom `y4` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "y4 = 148",
+    "y4"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    7,
+    0,
+    "Le nom `y5` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "y5 = 185",
+    "y5"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    8,
+    0,
+    "Le nom `y6` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "y6 = 222",
+    "y6"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    9,
+    0,
+    "Le nom `y7` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "y7 = 259",
+    "y7"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    10,
+    0,
+    "Le nom `y8` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "y8 = 296",
+    "y8"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    11,
+    0,
+    "Le nom `y9` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "y9 = 333",
+    "y9"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|py/magic.py": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    7,
+    16,
+    "compute fait 9 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "def compute(total):",
+    "compute"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    8,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "a = total * 4242",
+    "a"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    9,
+    0,
+    "Le nom `b` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "b = total + 31337",
+    "b"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    10,
+    0,
+    "Le nom `c` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "c = total - 86400",
+    "c"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    11,
+    0,
+    "Le nom `d` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "d = total / 7919",
+    "d"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    13,
+    0,
+    "Le nom `f` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "f = total * 5678",
+    "f"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    14,
+    0,
+    "Le nom `g` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "g = total + 9876",
+    "g"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    15,
+    0,
+    "Le nom `h` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "h = total * 1024",
+    "h"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|py/mod.py": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC_HIGH",
+    "MAJOR",
+    "complexite",
+    7,
+    35,
+    "f a une complexite cyclomatique de 6 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
+    "2d5a30dc",
+    "def f(x):",
+    "f"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    7,
+    35,
+    "f fait 28 lignes (seuil 10).",
+    "38f77482",
+    "def f(x):",
+    "f"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|py/naming.py": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    6,
+    13,
+    "process fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "def process(obj, s1, val):",
+    "process"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    6,
+    13,
+    "process prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "def process(obj, s1, val):",
+    "process"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.VAGUE_VARIABLE",
+    "MAJOR",
+    "nommage",
+    7,
+    0,
+    "La variable `tmp` ne dit pas ce qu'elle contient.",
+    "2783d328",
+    "tmp = 1",
+    "tmp"
+   ],
+   [
+    "NAM.ABBREVIATION",
+    "MINOR",
+    "nommage",
+    8,
+    0,
+    "Le nom `cnt` utilise l'abreviation `cnt`.",
+    "4ece0b1f",
+    "cnt = 2",
+    "cnt"
+   ],
+   [
+    "NAM.NUMBERED",
+    "MINOR",
+    "nommage",
+    9,
+    0,
+    "Le nom `amount1` se termine par un chiffre : il distingue mal deux concepts.",
+    "b598656d",
+    "amount1 = 3",
+    "amount1"
+   ],
+   [
+    "NAM.VAGUE_VARIABLE",
+    "MAJOR",
+    "nommage",
+    10,
+    0,
+    "La variable `data` ne dit pas ce qu'elle contient.",
+    "2783d328",
+    "data = [tmp, cnt, amount1]",
+    "data"
+   ],
+   [
+    "NAM.VAGUE_VERB",
+    "MAJOR",
+    "nommage",
+    6,
+    0,
+    "La methode `process` utilise un verbe passe-partout.",
+    "e7e5486f",
+    "def process(obj, s1, val):",
+    "process"
+   ],
+   [
+    "NAM.VAGUE_PARAM",
+    "MINOR",
+    "nommage",
+    6,
+    0,
+    "Le parametre `obj` de `process` ne dit pas ce qu'il recoit.",
+    "47fb9a8f",
+    "def process(obj, s1, val):",
+    "process"
+   ],
+   [
+    "NAM.VAGUE_PARAM",
+    "MINOR",
+    "nommage",
+    6,
+    0,
+    "Le parametre `s1` de `process` ne dit pas ce qu'il recoit.",
+    "47fb9a8f",
+    "def process(obj, s1, val):",
+    "process"
+   ],
+   [
+    "NAM.VAGUE_PARAM",
+    "MINOR",
+    "nommage",
+    6,
+    0,
+    "Le parametre `val` de `process` ne dit pas ce qu'il recoit.",
+    "47fb9a8f",
+    "def process(obj, s1, val):",
+    "process"
+   ],
+   [
+    "NAM.BOOL_PREFIX",
+    "MINOR",
+    "nommage",
+    16,
+    0,
+    "La methode `get_value` est nommee comme une action mais retourne un booleen.",
+    "cce3c68d",
+    "def get_value() -> bool:",
+    "get_value"
+   ],
+   [
+    "NAM.CASE",
+    "MINOR",
+    "nommage",
+    28,
+    0,
+    "Le nom `getName` ne suit pas la convention snake_case de Python.",
+    "032809d7",
+    "def getName():",
+    "getName"
+   ],
+   [
+    "NAM.VAGUE_METHOD",
+    "MAJOR",
+    "nommage",
+    33,
+    0,
+    "La methode `Naming.doit` a un nom qui ne decrit pas son effet.",
+    "f6dd48f9",
+    "def doit(self):",
+    "Naming.doit"
+   ],
+   [
+    "NAM.VAGUE_VERB",
+    "MAJOR",
+    "nommage",
+    36,
+    0,
+    "La methode `Naming.handle` utilise un verbe passe-partout.",
+    "e7e5486f",
+    "def handle(self):",
+    "Naming.handle"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|py/scripts/run.py": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC_HIGH",
+    "MAJOR",
+    "complexite",
+    7,
+    35,
+    "f a une complexite cyclomatique de 6 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
+    "2d5a30dc",
+    "def f(x):",
+    "f"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    7,
+    35,
+    "f fait 28 lignes (seuil 10).",
+    "38f77482",
+    "def f(x):",
+    "f"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|py/security.py": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    15,
+    26,
+    "handle fait 11 lignes (seuil 10).",
+    "38f77482",
+    "def handle(request, cursor, user, command, blob, name):",
+    "handle"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    15,
+    26,
+    "handle prend 6 parametres (seuil 2).",
+    "714e54b3",
+    "def handle(request, cursor, user, command, blob, name):",
+    "handle"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.VAGUE_VERB",
+    "MAJOR",
+    "nommage",
+    15,
+    0,
+    "La methode `handle` utilise un verbe passe-partout.",
+    "e7e5486f",
+    "def handle(request, cursor, user, command, blob, name):",
+    "handle"
+   ]
+  ],
+  "security": [
+   [
+    "SEC.HARDCODED_SECRET",
+    "CRITICAL",
+    "securite",
+    11,
+    0,
+    "Secret ecrit en dur dans le code.",
+    "64c04d2c",
+    "api_key = \"k9f3a7c1e5b2d8aa\"",
+    null
+   ],
+   [
+    "SEC.CONNSTRING",
+    "CRITICAL",
+    "securite",
+    12,
+    0,
+    "Chaine de connexion contenant un mot de passe.",
+    "90df9287",
+    "DATABASE_URL = \"mongodb://root:rootpass99@mongo.internal:27017/app\"",
+    null
+   ],
+   [
+    "SEC.CMD_INJECTION",
+    "CRITICAL",
+    "securite",
+    16,
+    0,
+    "Commande systeme construite a partir de valeurs dynamiques : injection de commande possible.",
+    "7e5fa2e8",
+    "os.system(\"rm -rf \" + name)",
+    null
+   ],
+   [
+    "SEC.SHELL_TRUE",
+    "MAJOR",
+    "securite",
+    17,
+    0,
+    "Appel systeme avec shell=True.",
+    "fb2e4947",
+    "subprocess.run(command, shell=True)",
+    null
+   ],
+   [
+    "SEC.EVAL",
+    "CRITICAL",
+    "securite",
+    18,
+    0,
+    "Evaluation dynamique de code.",
+    "8109c6ac",
+    "eval(user)",
+    null
+   ],
+   [
+    "SEC.DESERIALIZE",
+    "CRITICAL",
+    "securite",
+    19,
+    0,
+    "Deserialisation de donnees non fiables : execution de code possible.",
+    "b1dc875c",
+    "pickle.loads(blob)",
+    null
+   ],
+   [
+    "SEC.DESERIALIZE",
+    "CRITICAL",
+    "securite",
+    20,
+    0,
+    "Deserialisation de donnees non fiables : execution de code possible.",
+    "b1dc875c",
+    "yaml.load(blob)",
+    null
+   ],
+   [
+    "SEC.WEAK_HASH",
+    "MAJOR",
+    "securite",
+    21,
+    0,
+    "Fonction de hachage cassee (MD5/SHA-1).",
+    "80694e0d",
+    "digest = hashlib.md5(blob).hexdigest()",
+    null
+   ],
+   [
+    "SEC.INSECURE_RANDOM",
+    "MINOR",
+    "securite",
+    22,
+    0,
+    "Generateur pseudo-aleatoire non cryptographique.",
+    "ecddb591",
+    "token = random.random()",
+    null
+   ],
+   [
+    "SEC.SQL_FSTRING",
+    "CRITICAL",
+    "securite",
+    23,
+    0,
+    "Requete SQL interpolee (f-string ou %) : injection SQL possible.",
+    "12f1dee0",
+    "cursor.execute(f\"select * from users where id = {user}\")",
+    null
+   ],
+   [
+    "SEC.TLS_DISABLED",
+    "CRITICAL",
+    "securite",
+    24,
+    0,
+    "Verification du certificat TLS desactivee.",
+    "53b976ca",
+    "requests.get(\"http://insecure.partner.net/v1\", verify=False)",
+    null
+   ],
+   [
+    "SEC.HTTP_URL",
+    "MINOR",
+    "securite",
+    24,
+    0,
+    "URL en HTTP non chiffre.",
+    "12dee76b",
+    "requests.get(\"http://insecure.partner.net/v1\", verify=False)",
+    null
+   ],
+   [
+    "SEC.LOG_SECRET",
+    "MAJOR",
+    "securite",
+    25,
+    0,
+    "Donnee sensible ecrite dans les journaux.",
+    "e58cfbbc",
+    "print(\"password is\", user.password)",
+    null
+   ],
+   [
+    "SEC.PATH_TRAVERSAL",
+    "MAJOR",
+    "securite",
+    26,
+    0,
+    "Chemin de fichier construit depuis une entree utilisateur : traversee de repertoire possible.",
+    "470f5abc",
+    "return open(request.args[\"path\"])",
+    null
+   ]
+  ]
+ },
+ "partial|seuils_fonctions|py/tests/test_exit.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|py/tests/test_mod.py": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC_HIGH",
+    "MAJOR",
+    "complexite",
+    7,
+    35,
+    "f a une complexite cyclomatique de 6 (seuil 4) : trop de chemins d'execution pour etre testee et relue surement.",
+    "2d5a30dc",
+    "def f(x):",
+    "f"
+   ],
+   [
+    "CPX.LONG_FUNCTION",
+    "MAJOR",
+    "complexite",
+    7,
+    35,
+    "f fait 28 lignes (seuil 10).",
+    "38f77482",
+    "def f(x):",
+    "f"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|py/tests/test_security.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": [
+   [
+    "SEC.HARDCODED_SECRET",
+    "MAJOR",
+    "securite",
+    6,
+    0,
+    "Secret ecrit en dur dans le code.",
+    "64c04d2c",
+    "password = \"testpassword123\"",
+    null
+   ],
+   [
+    "SEC.SHELL_TRUE",
+    "MAJOR",
+    "securite",
+    11,
+    0,
+    "Appel systeme avec shell=True.",
+    "fb2e4947",
+    "subprocess.run(command, shell=True)",
+    null
+   ],
+   [
+    "SEC.DESERIALIZE",
+    "MAJOR",
+    "securite",
+    12,
+    0,
+    "Deserialisation de donnees non fiables : execution de code possible.",
+    "b1dc875c",
+    "pickle.loads(blob)",
+    null
+   ],
+   [
+    "SEC.WEAK_HASH",
+    "MAJOR",
+    "securite",
+    13,
+    0,
+    "Fonction de hachage cassee (MD5/SHA-1).",
+    "80694e0d",
+    "assert hashlib.md5(blob).hexdigest()",
+    null
+   ]
+  ]
+ },
+ "partial|seuils_fonctions|py/whitespace.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "seuils_bas|tout|generated/secrets.py": {
   "blocks": [],
   "file": [
@@ -12221,7 +15204,19 @@
  },
  "seuils_bas|tout|java/Naming.java": {
   "blocks": [],
-  "file": [],
+  "file": [
+   [
+    "CPX.LARGE_FILE",
+    "MINOR",
+    "complexite",
+    1,
+    0,
+    "java/Naming.java fait 102 lignes (seuil 100) : le fichier porte probablement plusieurs responsabilites.",
+    "128358d4",
+    "",
+    null
+   ]
+  ],
   "lines": [
    [
     "BUG.FLOAT_MONEY",
@@ -13614,6 +16609,16 @@
     null
    ]
   ]
+ },
+ "seuils_bas|tout|java/util/Helper.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|java/util/Holder.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|tout|js/app.js": {
   "blocks": [
@@ -15406,7 +18411,19 @@
  },
  "seuils_bas|un_tiers|java/Naming.java": {
   "blocks": [],
-  "file": [],
+  "file": [
+   [
+    "CPX.LARGE_FILE",
+    "MINOR",
+    "complexite",
+    1,
+    0,
+    "java/Naming.java fait 102 lignes (seuil 100) : le fichier porte probablement plusieurs responsabilites.",
+    "128358d4",
+    "",
+    null
+   ]
+  ],
   "lines": [
    [
     "BUG.FLOAT_MONEY",
@@ -16799,6 +19816,16 @@
     null
    ]
   ]
+ },
+ "seuils_bas|un_tiers|java/util/Helper.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_tiers|java/util/Holder.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|un_tiers|js/app.js": {
   "blocks": [

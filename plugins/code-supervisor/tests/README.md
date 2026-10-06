@@ -27,13 +27,16 @@ Aucune dépendance en dehors de Python et de `git`. La CI les rejoue sur Linux.
 transcript avec lignes corrompues, état corrompu, dossier de journal imposé, chemin accentué, `--check`
 avec ou sans chemin, `--self-test`, et l'état anti-boucle persisté. La revue par modèle est coupée.
 
-**`rules`** (182 entrées), deux familles :
+**`rules`** (226 entrées), trois familles :
 
 - `<config>|<sélection>|<fichier>` : `check_lines`, `check_blocks` et `check_file`, avec deux jeux de seuils
   (défauts et seuils bas) et deux sélections de lignes modifiées (toutes, une sur trois) ;
 - `extra|<config>|<fichier>` et `duplication|<config>` : sécurité, nommage, imports inutilisés, extraction
   des fonctions (nom, bornes, paramètres, propriétaire, type de retour), complexité et bugs par fonction, et
-  duplication, avec les défauts et des seuils de fonction très bas.
+  duplication, avec les défauts et des seuils de fonction très bas ;
+- `partial|seuils_fonctions|<fichier>` : les mêmes règles (hors extraction et duplication) quand seule une
+  ligne sur trois est modifiée. Elle exerce les filtres « ligne modifiée » et « plage de fonction modifiée »,
+  que la sélection complète ne touche jamais.
 
 Le test échoue aussi si le corpus ne déclenche pas **toutes les règles que le moteur déclare** (71 aujourd'hui,
 lues dans les modules de règles) : une règle ajoutée sans cas de corpus fait échouer le test, sauf si elle

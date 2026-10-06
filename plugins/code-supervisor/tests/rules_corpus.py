@@ -6,7 +6,9 @@ Deux familles d'entrees dans `golden/rules.json` :
   seuils (defauts et seuils bas) et deux selections de lignes modifiees (toutes, une sur trois) ;
 - `extra|<config>|<fichier>` et `duplication|<config>` : regles de securite, de nommage, d'imports, de
   complexite par fonction, de bugs par fonction, extraction des fonctions et duplication, avec les
-  defauts et des seuils de fonction tres bas.
+  defauts et des seuils de fonction tres bas ;
+- `partial|seuils_fonctions|<fichier>` : les memes regles (hors extraction et duplication) quand seule une
+  ligne sur trois est modifiee.
 
 Le test echoue aussi si le corpus ne declenche pas toutes les regles que le moteur declare."""
 from __future__ import annotations
@@ -113,6 +115,21 @@ def _extra_groups(modules, files, configs, result):
             }
 
 
+def _partial_groups(modules, files, configs, result):
+    """Memes regles, mais seules une ligne sur trois est modifiee : exerce les filtres « ligne modifiee » et
+    « plage de fonction modifiee », que la selection complete ne touche jamais."""
+    cfg = configs["seuils_fonctions"]
+    for sf in files:
+        functions = modules["source"].extract_functions(sf) if modules["source"].is_structural(sf.path) else []
+        result["partial|seuils_fonctions|%s" % sf.path] = {
+            "security": [_compact(f) for f in modules["rules_security"].check(sf)],
+            "naming": [_compact(f) for f in modules["rules_naming"].check_identifiers(sf, functions)],
+            "imports": [_compact(f) for f in modules["rules_quality"].check_unused_imports(sf)],
+            "function_quality": [_compact(f) for f in modules["rules_quality"].check_functions(sf, functions, cfg)],
+            "function_bugs": [_compact(f) for f in modules["rules_bugs"].check_function_bugs(sf, functions)],
+        }
+
+
 def run(engine_dir: str, corpus: str) -> dict:
     """Constats de toutes les regles du corpus (voir l'en-tete du module)."""
     sys.path.insert(0, engine_dir)
@@ -150,6 +167,7 @@ def run(engine_dir: str, corpus: str) -> dict:
         _line_block_file_groups(modules, files_for, configs, result)
         everything = files_for("tout")
         _extra_groups(modules, everything, configs, result)
+        _partial_groups(modules, files_for("un_tiers"), configs, result)
         for config_name in ("defaut", "seuils_fonctions"):
             found = rules_duplication.check(source.load(corpus, rels), corpus, configs[config_name])
             result["duplication|" + config_name] = sorted((_compact(f) for f in found), key=repr)
