@@ -1,9 +1,15 @@
-"""Lecture du code source : langages, nettoyage, extraction des fonctions, diff git."""
+"""Lecture du code source : langages, nettoyage, extraction des fonctions, diff git.
+
+Appels a git : `run_git` lance `git` avec une liste d'arguments, sans shell, et chaque appelant place
+les chemins apres `--` : un nom de fichier du depot supervise ne peut ni ajouter une commande ni etre
+pris pour une option. Le constat « commande construite a partir de valeurs dynamiques » du superviseur
+sur `run_git` est un faux positif."""
 from __future__ import annotations
 
 import os
 import re
 import subprocess
+import sys
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Set, Tuple
 
@@ -269,6 +275,22 @@ def git_diff_text(root: str, paths: List[str], max_chars: int) -> str:
 
 # --------------------------------------------------------------------------- chargement
 
+def _read_text(abspath: str, max_bytes: int):
+    """Contenu texte d'un fichier, ou None s'il est trop gros, binaire ou illisible."""
+    try:
+        if os.path.getsize(abspath) > max_bytes:
+            return None
+        with open(abspath, "rb") as fh:
+            raw = fh.read()
+    except OSError as err:
+        # Fichier supprime entre-temps ou inaccessible : il n'est pas relu, mais on le dit.
+        sys.stderr.write("superviseur : %s illisible, ignore (%s)\n" % (abspath, err))
+        return None
+    if b"\0" in raw[:4096]:
+        return None
+    return raw.decode("utf-8", "replace")
+
+
 def load(root: str, rel_paths, changed_lines=None, new_files=None, max_bytes=600000) -> List[SourceFile]:
     changed_lines = changed_lines or {}
     new_files = new_files or set()
@@ -278,15 +300,8 @@ def load(root: str, rel_paths, changed_lines=None, new_files=None, max_bytes=600
         abspath = os.path.join(root, rel_norm)
         if not os.path.isfile(abspath):
             continue
-        try:
-            if os.path.getsize(abspath) > max_bytes:
-                continue
-            with open(abspath, "rb") as fh:
-                raw = fh.read()
-            if b"\0" in raw[:4096]:
-                continue
-            text = raw.decode("utf-8", "replace")
-        except Exception:
+        text = _read_text(abspath, max_bytes)
+        if text is None:
             continue
         lang = lang_of(rel_norm)
         if not lang:
@@ -508,12 +523,12 @@ def _extract_python(sf: SourceFile) -> List[Function]:
         for ci, cname in classes:
             if ci < indent:
                 owner = cname
-        ret = ""
+        return_type = ""
         sig_line = line
         if "->" in sig_line:
-            ret = sig_line.split("->")[-1].split(":")[0].strip()
+            return_type = sig_line.split("->")[-1].split(":")[0].strip()
         functions.append(Function(
             name=m.group("name"), start=i + 1, end=end, params=params,
-            body=clean[i + 1:end], owner=owner, returns=ret, modifiers="",
+            body=clean[i + 1:end], owner=owner, returns=return_type, modifiers="",
         ))
     return functions
