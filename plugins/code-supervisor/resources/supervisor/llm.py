@@ -185,22 +185,26 @@ def _as_int(value) -> int:
         return 0
 
 
+def _load_json(text: str):
+    try:
+        return json.loads(text)
+    except (ValueError, RecursionError):
+        return None  # pas du JSON (texte libre autour de la reponse) : l'appelant cherche plus loin
+
+
 def _extract_result(raw: str):
     """La sortie de `claude -p --output-format json` enveloppe la reponse dans .result."""
     text = raw.strip()
     if not text:
         return None
-    try:
-        envelope = json.loads(text)
-        if isinstance(envelope, dict):
-            if "findings" in envelope:
-                return envelope
-            inner = envelope.get("result") or envelope.get("content") or ""
-            if isinstance(inner, list):
-                inner = " ".join(str(x.get("text", "")) if isinstance(x, dict) else str(x) for x in inner)
-            text = str(inner)
-    except Exception:
-        pass
+    envelope = _load_json(text)
+    if isinstance(envelope, dict):
+        if "findings" in envelope:
+            return envelope
+        inner = envelope.get("result") or envelope.get("content") or ""
+        if isinstance(inner, list):
+            inner = " ".join(str(x.get("text", "")) if isinstance(x, dict) else str(x) for x in inner)
+        text = str(inner)
     m = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.S)
     if m:
         text = m.group(1)
@@ -210,8 +214,5 @@ def _extract_result(raw: str):
         if start == -1 or end <= start:
             return None
         text = text[start:end + 1]
-    try:
-        data = json.loads(text)
-        return data if isinstance(data, dict) else None
-    except Exception:
-        return None
+    parsed = _load_json(text)
+    return parsed if isinstance(parsed, dict) else None
