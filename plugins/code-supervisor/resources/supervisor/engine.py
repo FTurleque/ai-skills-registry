@@ -166,7 +166,7 @@ def blocking(findings: List[Finding], cfg) -> List[Finding]:
 
 
 def counts(findings: List[Finding]) -> dict:
-    res = {CRITICAL: 0, MAJOR: 0, MINOR: 0}
-    for f in findings:
-        res[f.severity] = res.get(f.severity, 0) + 1
-    return res
+    per_severity = {CRITICAL: 0, MAJOR: 0, MINOR: 0}
+    for finding in findings:
+        per_severity[finding.severity] = per_severity.get(finding.severity, 0) + 1
+    return per_severity
