@@ -120,15 +120,17 @@ def review(root: str, files: List[SourceFile], static_findings: List[Finding], c
         "--allowedTools", "Read,Grep,Glob",
         "--permission-mode", "dontAsk",
         "--output-format", "json",
-        prompt,
     ]
     env = dict(os.environ)
     env["CLAUDE_CODE_DISABLE_HOOKS"] = "1"       # le relecteur ne doit pas redeclencher le hook
     env["SUPERVISOR_ACTIVE"] = "1"
     try:
-        proc = subprocess.run(cmd, cwd=root, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        # Le prompt passe par l'entree standard : en argument, un diff de quelques dizaines de milliers
+        # de caracteres depasse la limite de ligne de commande de Windows (WinError 206).
+        proc = subprocess.run(cmd, input=prompt.encode("utf-8"), cwd=root,
+                              stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                               timeout=cfg.llm.get("timeout_seconds", 180), env=env)
-    except Exception as exc:
+    except (OSError, subprocess.SubprocessError) as exc:
         return [], "revue LLM indisponible (%s)" % exc
     raw = proc.stdout.decode("utf-8", "replace")
     payload = _extract_result(raw)

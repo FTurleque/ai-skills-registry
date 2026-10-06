@@ -78,6 +78,13 @@ que l'artefact est.
   (version 1.1.0 : métadonnées au nouveau schéma)
 - `skills/claude/code-supervisor/` → `plugins/code-supervisor/`
 
+### Corrigé — revue par modèle du superviseur de code sous Windows
+
+- Le prompt de la revue passe par l'entrée standard de `claude -p` et non plus en argument : un diff
+  de plus de 30 000 caractères dépassait la limite de ligne de commande de Windows
+  (`WinError 206`) et la revue LLM était indisponible. Un moteur déjà installé doit être réinstallé
+  pour en profiter.
+
 ---
 
 ## [0.1.0] - 2026-07-02
