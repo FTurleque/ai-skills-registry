@@ -78,16 +78,22 @@ def available(cfg) -> Optional[str]:
     return shutil.which(cli) or (cli if os.path.isfile(cli) else None)
 
 
+def _read_head(path: str, limit: int) -> Optional[str]:
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as fh:
+            return fh.read(limit)
+    except OSError:
+        return None  # fichier illisible : il est ignore, la revue continue sans lui
+
+
 def _conventions(root: str, cfg) -> str:
     blocks = []
     for name in cfg.llm.get("convention_files", []):
         path = os.path.join(root, name)
         if not os.path.isfile(path):
             continue
-        try:
-            with open(path, "r", encoding="utf-8", errors="replace") as fh:
-                content = fh.read(6000)
-        except Exception:
+        content = _read_head(path, 6000)
+        if content is None:
             continue
         blocks.append("### %s\n%s" % (name, content))
         if len(blocks) >= 3:
