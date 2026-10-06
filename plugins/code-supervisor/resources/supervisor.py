@@ -63,6 +63,13 @@ def write_state(path: str, state: dict) -> None:
 
 # --------------------------------------------------------------------------- transcript
 
+def _parse_json_line(line: str):
+    try:
+        return json.loads(line)
+    except ValueError:
+        return None  # ligne de transcript tronquee ou qui n'est pas du JSON : on l'ignore
+
+
 def touched_files(transcript_path: str, limit_lines: int = 4000):
     """Fichiers ecrits par l'agent pendant la session, lus depuis le transcript."""
     paths = []
@@ -76,9 +83,8 @@ def touched_files(transcript_path: str, limit_lines: int = 4000):
     for line in lines:
         if '"tool_use"' not in line and "file_path" not in line:
             continue
-        try:
-            entry = json.loads(line)
-        except Exception:
+        entry = _parse_json_line(line)
+        if entry is None:
             continue
         for block in _iter_blocks(entry):
             if block.get("type") != "tool_use":
