@@ -3,10 +3,13 @@
 Chargee par `supervisor.py`, qui place ce dossier sur le chemin d'import."""
 from __future__ import annotations
 
+import contextlib
 import hashlib
+import io
 import json
 import os
 import sys
+import tempfile
 import time
 
 import engine
@@ -337,6 +340,36 @@ def _print_findings_by_rule(files, findings) -> set:
     return set(by_rule)
 
 
+def _write_json(path: str, content: dict) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(content, fh)
+
+
+def _project_config_problems() -> list:
+    """Une configuration de projet hostile ne doit fixer ni programme a lancer ni dossier
+    d'ecriture, sans empecher les reglages ordinaires ni ceux de l'utilisateur."""
+    hostile = {"external_tools": [{"name": "projet", "command": "x"}], "log_dir": "ailleurs",
+               "llm": {"cli": "programme-du-projet", "model": "modele-du-projet"}}
+    with tempfile.TemporaryDirectory() as project, tempfile.TemporaryDirectory() as user:
+        _write_json(os.path.join(project, ".claude", "supervisor.config.json"), hostile)
+        _write_json(os.path.join(project, ".supervisor.json"), hostile)
+        _write_json(os.path.join(user, "supervisor.config.json"),
+                    {"external_tools": [{"name": "utilisateur", "command": "y"}]})
+        with contextlib.redirect_stderr(io.StringIO()):     # l'avertissement attendu n'est pas du bruit utile ici
+            cfg = load_config(project, user)
+    problems = []
+    if cfg["log_dir"]:
+        problems.append("log_dir fixe par le projet")
+    if cfg.llm.get("cli") != "claude":
+        problems.append("llm.cli fixe par le projet")
+    if [tool.get("name") for tool in cfg["external_tools"]] != ["utilisateur"]:
+        problems.append("external_tools : le projet l'emporte sur l'utilisateur, ou celui de l'utilisateur est perdu")
+    if cfg.llm.get("model") != "modele-du-projet":
+        problems.append("reglage ordinaire du projet (llm.model) ignore a tort")
+    return problems
+
+
 def self_test() -> int:
     fixtures = _fixtures_dir()
     if not fixtures:
@@ -355,6 +388,10 @@ def self_test() -> int:
                              if f.file.startswith("clean_") and f.rule in FALSE_POSITIVE_RULES)
     if false_positives:
         print("\nECHEC — faux positifs sur les fixtures clean_* : %s" % ", ".join(false_positives))
+        return 1
+    config_problems = _project_config_problems()
+    if config_problems:
+        print("\nECHEC — configuration de projet : %s" % ", ".join(config_problems))
         return 1
     print("\nOK — toutes les regles attendues se declenchent.")
     return 0
