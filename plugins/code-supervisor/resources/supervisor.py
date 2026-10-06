@@ -46,8 +46,8 @@ def read_state(path: str) -> dict:
             data.setdefault("rounds_by_signature", {})
             data.setdefault("released_signatures", [])
             return data
-    except Exception:
-        pass
+    except (OSError, ValueError):
+        return default  # etat absent (premier passage) ou JSON corrompu : on repart d'un etat vierge
     return default
 
 
