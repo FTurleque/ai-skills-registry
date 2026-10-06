@@ -1,0 +1,16 @@
+alpha:
+  command: ["run", "--verbose", "--port", "8080"]
+  environment: ["MODE=prod", "LEVEL=debug", "RETRY=3"]
+  volumes: ["/data:/var/lib/app", "/logs:/var/log/app"]
+  healthcheck: ["curl", "--fail", "http://localhost/health"]
+  deploy: ["replicas", "2", "update_delay", "10s"]
+  labels: ["team=platform", "tier=backend", "owner=ops"]
+  restart: ["on-failure", "max_attempts", "5"]
+beta:
+  command: ["run", "--verbose", "--port", "8080"]
+  environment: ["MODE=prod", "LEVEL=debug", "RETRY=3"]
+  volumes: ["/data:/var/lib/app", "/logs:/var/log/app"]
+  healthcheck: ["curl", "--fail", "http://localhost/health"]
+  deploy: ["replicas", "2", "update_delay", "10s"]
+  labels: ["team=platform", "tier=backend", "owner=ops"]
+  restart: ["on-failure", "max_attempts", "5"]

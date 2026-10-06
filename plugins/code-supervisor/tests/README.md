@@ -27,17 +27,29 @@ Aucune dépendance en dehors de Python et de `git`. La CI les rejoue sur Linux.
 transcript avec lignes corrompues, état corrompu, dossier de journal imposé, chemin accentué, `--check`
 avec ou sans chemin, `--self-test`, et l'état anti-boucle persisté. La revue par modèle est coupée.
 
-**`rules`** (324 entrées), trois familles :
+**`rules`** (526 entrées), trois familles :
 
 - `<config>|<sélection>|<fichier>` : `check_lines`, `check_blocks` et `check_file`, avec deux jeux de seuils
   (défauts et seuils bas) et deux sélections de lignes modifiées (toutes, une sur sept : `is_changed`
   accepte une marge de 2 lignes, donc une sur trois les laisserait toutes passer) ;
-- `extra|<config>|<fichier>` et `duplication|<config>` : sécurité, nommage, imports inutilisés, extraction
+- `extra|<config>|<fichier>` et `duplication|<config>|<scénario>` : sécurité, nommage, imports inutilisés, extraction
   des fonctions (nom, bornes, paramètres, propriétaire, type de retour), complexité et bugs par fonction, et
   duplication, avec les défauts et des seuils de fonction très bas ;
 - `partial|seuils_fonctions|<fichier>` : les mêmes règles (hors extraction et duplication) quand seule une
   ligne sur sept est modifiée. Elle exerce les filtres « ligne modifiée » et « plage de fonction modifiée »,
   que la sélection complète ne touche jamais.
+
+**Duplication : des scénarios, pas un seul jeu de fichiers.** La duplication compare les fichiers modifiés
+entre eux, puis au reste du dossier. Passer tout le corpus comme « modifié » ne lit aucun fichier de
+référence : la recherche dans le reste du dépôt (extensions, dossiers et motifs exclus, taille, nombre de
+fichiers, dossiers de premier niveau) n'est alors jamais exercée. `DUPLICATION_SCENARIOS` couvre donc un
+fichier modifié seul, deux fichiers, un doublon dans le même fichier, un doublon qui n'existe que dans un
+dossier ou un motif exclu, une autre extension, un autre dossier de premier niveau, un fichier à la racine, des
+fichiers de test ou de configuration, et deux scénarios de limite du nombre de fichiers de référence. Les
+configurations `doublons_bas` (plafond d'un constat) et `reference_limitee` (un seul fichier de référence)
+complètent les seuils. Les résultats ne dépendent pas de l'ordre de parcours du système de fichiers :
+`os.walk` rend les fichiers d'un dossier avant ceux de ses sous-dossiers, et les cas de limite s'appuient sur
+cette seule garantie.
 
 Le test échoue aussi si le corpus ne déclenche pas **toutes les règles que le moteur déclare** (71 aujourd'hui,
 lues dans les modules de règles) : une règle ajoutée sans cas de corpus fait échouer le test, sauf si elle

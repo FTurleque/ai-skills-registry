@@ -1,4 +1,14 @@
 {
+ "defaut|tout|a_first/Anchor.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|a_first/Other.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|cs/Arrow.cs": {
   "blocks": [],
   "file": [],
@@ -18,6 +28,35 @@
   "blocks": [],
   "file": [],
   "lines": []
+ },
+ "defaut|tout|java/.gradle/UniqueDirCopy.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "if (total > 500) { total = 500; }",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    5,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double total = base + surcharge;",
+    null
+   ]
+  ]
  },
  "defaut|tout|java/Catches.java": {
   "blocks": [
@@ -197,6 +236,11 @@
   "file": [],
   "lines": []
  },
+ "defaut|tout|java/CrossRoot.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|java/DuplicateA.java": {
   "blocks": [],
   "file": [],
@@ -230,6 +274,11 @@
     null
    ]
   ]
+ },
+ "defaut|tout|java/DuplicateSelf.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|tout|java/Naming.java": {
   "blocks": [],
@@ -327,6 +376,45 @@
   "lines": []
  },
  "defaut|tout|java/UnclosedParens.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|java/UniqueDir.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "if (total > 500) { total = 500; }",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    5,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double total = base + surcharge;",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|java/UniquePlain.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|java/UniquePlainCopy.java": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -1711,6 +1799,26 @@
    ]
   ]
  },
+ "defaut|tout|js/dup/CrossRef.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|js/dup/CrossTarget.ts": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|js/dup/Unique.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|js/dup/Unique.min.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|js/exit.test.js": {
   "blocks": [],
   "file": [],
@@ -1906,6 +2014,50 @@
   "file": [],
   "lines": []
  },
+ "defaut|tout|limitdup/Filler.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|limitdup/Target.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    5,
+    0,
+    "Valeur numerique 99 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "String prefix = count > 99 ? \"____\" : String.valueOf(count);",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|tout|limitdup/sub/Holder.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    5,
+    0,
+    "Valeur numerique 99 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "String prefix = count > 99 ? \"____\" : String.valueOf(count);",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|tout|misc/CrossRootCopy.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|misc/conf.yaml": {
   "blocks": [],
   "file": [],
@@ -1922,6 +2074,11 @@
     null
    ]
   ]
+ },
+ "defaut|tout|misc/duplicated.yaml": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|tout|misc/query.sql": {
   "blocks": [],
@@ -2908,6 +3065,31 @@
   "file": [],
   "lines": []
  },
+ "defaut|tout|top_level.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|z_second/Target.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|z_second/Twin.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|a_first/Anchor.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|a_first/Other.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|un_sur_sept|cs/Arrow.cs": {
   "blocks": [],
   "file": [],
@@ -2926,6 +3108,23 @@
  "defaut|un_sur_sept|go/main.go": {
   "blocks": [],
   "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|java/.gradle/UniqueDirCopy.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "if (total > 500) { total = 500; }",
+    null
+   ]
+  ],
   "lines": []
  },
  "defaut|un_sur_sept|java/Catches.java": {
@@ -3072,6 +3271,11 @@
   "file": [],
   "lines": []
  },
+ "defaut|un_sur_sept|java/CrossRoot.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|un_sur_sept|java/DuplicateA.java": {
   "blocks": [],
   "file": [],
@@ -3105,6 +3309,11 @@
     null
    ]
   ]
+ },
+ "defaut|un_sur_sept|java/DuplicateSelf.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|un_sur_sept|java/Naming.java": {
   "blocks": [],
@@ -3180,6 +3389,33 @@
   "lines": []
  },
  "defaut|un_sur_sept|java/UnclosedParens.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|java/UniqueDir.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "if (total > 500) { total = 500; }",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|un_sur_sept|java/UniquePlain.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|java/UniquePlainCopy.java": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -4212,6 +4448,26 @@
    ]
   ]
  },
+ "defaut|un_sur_sept|js/dup/CrossRef.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|js/dup/CrossTarget.ts": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|js/dup/Unique.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|js/dup/Unique.min.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|un_sur_sept|js/exit.test.js": {
   "blocks": [],
   "file": [],
@@ -4351,6 +4607,26 @@
   "file": [],
   "lines": []
  },
+ "defaut|un_sur_sept|limitdup/Filler.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|limitdup/Target.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|limitdup/sub/Holder.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|misc/CrossRootCopy.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|un_sur_sept|misc/conf.yaml": {
   "blocks": [],
   "file": [],
@@ -4367,6 +4643,11 @@
     null
    ]
   ]
+ },
+ "defaut|un_sur_sept|misc/duplicated.yaml": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|un_sur_sept|misc/query.sql": {
   "blocks": [],
@@ -5119,14 +5400,127 @@
   "file": [],
   "lines": []
  },
- "duplication|defaut": [
+ "defaut|un_sur_sept|top_level.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|z_second/Target.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|z_second/Twin.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "duplication|defaut|autre_racine": [],
+ "duplication|defaut|dossier_exclu": [],
+ "duplication|defaut|dossier_inclus": [
   [
    "DUP.BLOCK",
    "MAJOR",
    "duplication",
-   13,
-   21,
-   "Bloc de 6 lignes duplique : java/src/main/java/demo/Service.java:13-21 reprend java/src/main/java/demo/cli/Main.java:13-21.",
+   1,
+   6,
+   "Bloc de 6 lignes duplique : java/UniquePlain.java:1-6 reprend java/UniquePlainCopy.java:1-6.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|defaut|extension_differente": [],
+ "duplication|defaut|fichier_a_la_racine": [],
+ "duplication|defaut|hors_structure": [],
+ "duplication|defaut|java_a": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   4,
+   9,
+   "Bloc de 6 lignes duplique : java/DuplicateA.java:4-9 reprend java/DuplicateB.java:4-9.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|defaut|java_a_b": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   4,
+   9,
+   "Bloc de 6 lignes duplique : java/DuplicateA.java:4-9 reprend java/DuplicateB.java:4-9.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|defaut|limite_de_fichiers": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   6,
+   "Bloc de 6 lignes duplique : limitdup/Target.java:1-6 reprend limitdup/sub/Holder.java:1-6.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|defaut|limite_entre_racines": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   6,
+   "Bloc de 6 lignes duplique : z_second/Target.java:1-6 reprend z_second/Twin.java:1-6.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|defaut|meme_fichier": [
+  [
+   "DUP.BLOCK",
+   "MINOR",
+   "duplication",
+   2,
+   7,
+   "Bloc de 6 lignes duplique : java/DuplicateSelf.java:2-7 reprend java/DuplicateSelf.java:10-15.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|defaut|motif_exclu": [],
+ "duplication|defaut|plusieurs_racines": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   4,
+   9,
+   "Bloc de 6 lignes duplique : java/DuplicateA.java:4-9 reprend java/DuplicateB.java:4-9.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|defaut|test_uniquement": [],
+ "duplication|defaut|tout": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   6,
+   "Bloc de 6 lignes duplique : java/.gradle/UniqueDirCopy.java:1-6 reprend java/UniqueDir.java:1-6.",
    "8e8b84b0",
    "",
    null
@@ -5135,9 +5529,9 @@
    "DUP.BLOCK",
    "MAJOR",
    "duplication",
-   19,
-   32,
-   "Bloc de 6 lignes duplique : java/src/main/java/demo/Service.java:19-32 reprend java/src/main/java/demo/cli/Main.java:19-32.",
+   1,
+   6,
+   "Bloc de 6 lignes duplique : java/CrossRoot.java:1-6 reprend misc/CrossRootCopy.java:1-6.",
    "8e8b84b0",
    "",
    null
@@ -5146,9 +5540,9 @@
    "DUP.BLOCK",
    "MAJOR",
    "duplication",
-   26,
-   43,
-   "Bloc de 6 lignes duplique : java/src/main/java/demo/Service.java:26-43 reprend java/src/main/java/demo/cli/Main.java:26-43.",
+   1,
+   6,
+   "Bloc de 6 lignes duplique : java/UniquePlain.java:1-6 reprend java/UniquePlainCopy.java:1-6.",
    "8e8b84b0",
    "",
    null
@@ -5160,17 +5554,6 @@
    4,
    9,
    "Bloc de 6 lignes duplique : java/DuplicateA.java:4-9 reprend java/DuplicateB.java:4-9.",
-   "8e8b84b0",
-   "",
-   null
-  ],
-  [
-   "DUP.BLOCK",
-   "MAJOR",
-   "duplication",
-   8,
-   14,
-   "Bloc de 6 lignes duplique : java/src/main/java/demo/Service.java:8-14 reprend java/src/main/java/demo/cli/Main.java:8-14.",
    "8e8b84b0",
    "",
    null
@@ -5201,6 +5584,17 @@
    "DUP.BLOCK",
    "MINOR",
    "duplication",
+   2,
+   7,
+   "Bloc de 6 lignes duplique : java/DuplicateSelf.java:2-7 reprend java/DuplicateSelf.java:10-15.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MINOR",
+   "duplication",
    31,
    36,
    "Bloc de 6 lignes duplique : java/Complex.java:31-36 reprend java/Complex.java:32-37.",
@@ -5209,7 +5603,289 @@
    null
   ]
  ],
- "duplication|seuils_fonctions": [
+ "duplication|defaut|yaml_duplique": [],
+ "duplication|doublons_bas|autre_racine": [],
+ "duplication|doublons_bas|dossier_exclu": [],
+ "duplication|doublons_bas|dossier_inclus": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   3,
+   "Bloc de 3 lignes duplique : java/UniquePlain.java:1-3 reprend java/UniquePlainCopy.java:1-3.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|doublons_bas|extension_differente": [],
+ "duplication|doublons_bas|fichier_a_la_racine": [],
+ "duplication|doublons_bas|hors_structure": [],
+ "duplication|doublons_bas|java_a": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   4,
+   6,
+   "Bloc de 3 lignes duplique : java/DuplicateA.java:4-6 reprend java/DuplicateB.java:4-6.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|doublons_bas|java_a_b": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   4,
+   6,
+   "Bloc de 3 lignes duplique : java/DuplicateA.java:4-6 reprend java/DuplicateB.java:4-6.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|doublons_bas|limite_de_fichiers": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   3,
+   "Bloc de 3 lignes duplique : limitdup/Target.java:1-3 reprend limitdup/sub/Holder.java:1-3.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|doublons_bas|limite_entre_racines": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   3,
+   "Bloc de 3 lignes duplique : a_first/Anchor.java:1-3 reprend a_first/Other.java:1-3.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|doublons_bas|meme_fichier": [
+  [
+   "DUP.BLOCK",
+   "MINOR",
+   "duplication",
+   2,
+   4,
+   "Bloc de 3 lignes duplique : java/DuplicateSelf.java:2-4 reprend java/DuplicateSelf.java:10-12.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|doublons_bas|motif_exclu": [],
+ "duplication|doublons_bas|plusieurs_racines": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   4,
+   6,
+   "Bloc de 3 lignes duplique : java/DuplicateA.java:4-6 reprend java/DuplicateB.java:4-6.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|doublons_bas|test_uniquement": [],
+ "duplication|doublons_bas|tout": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   3,
+   "Bloc de 3 lignes duplique : a_first/Anchor.java:1-3 reprend a_first/Other.java:1-3.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|doublons_bas|yaml_duplique": [],
+ "duplication|reference_limitee|autre_racine": [],
+ "duplication|reference_limitee|dossier_exclu": [],
+ "duplication|reference_limitee|dossier_inclus": [],
+ "duplication|reference_limitee|extension_differente": [],
+ "duplication|reference_limitee|fichier_a_la_racine": [],
+ "duplication|reference_limitee|hors_structure": [],
+ "duplication|reference_limitee|java_a": [],
+ "duplication|reference_limitee|java_a_b": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   4,
+   9,
+   "Bloc de 6 lignes duplique : java/DuplicateA.java:4-9 reprend java/DuplicateB.java:4-9.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|reference_limitee|limite_de_fichiers": [],
+ "duplication|reference_limitee|limite_entre_racines": [],
+ "duplication|reference_limitee|meme_fichier": [
+  [
+   "DUP.BLOCK",
+   "MINOR",
+   "duplication",
+   2,
+   7,
+   "Bloc de 6 lignes duplique : java/DuplicateSelf.java:2-7 reprend java/DuplicateSelf.java:10-15.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|reference_limitee|motif_exclu": [],
+ "duplication|reference_limitee|plusieurs_racines": [],
+ "duplication|reference_limitee|test_uniquement": [],
+ "duplication|reference_limitee|tout": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   6,
+   "Bloc de 6 lignes duplique : java/.gradle/UniqueDirCopy.java:1-6 reprend java/UniqueDir.java:1-6.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   6,
+   "Bloc de 6 lignes duplique : java/CrossRoot.java:1-6 reprend misc/CrossRootCopy.java:1-6.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   6,
+   "Bloc de 6 lignes duplique : java/UniquePlain.java:1-6 reprend java/UniquePlainCopy.java:1-6.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   4,
+   9,
+   "Bloc de 6 lignes duplique : java/DuplicateA.java:4-9 reprend java/DuplicateB.java:4-9.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MINOR",
+   "duplication",
+   111,
+   116,
+   "Bloc de 6 lignes duplique : java/Complex.java:111-116 reprend java/Complex.java:112-117.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MINOR",
+   "duplication",
+   2,
+   13,
+   "Bloc de 6 lignes duplique : java/Catches.java:2-13 reprend java/Catches.java:7-18.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MINOR",
+   "duplication",
+   2,
+   7,
+   "Bloc de 6 lignes duplique : java/DuplicateSelf.java:2-7 reprend java/DuplicateSelf.java:10-15.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MINOR",
+   "duplication",
+   31,
+   36,
+   "Bloc de 6 lignes duplique : java/Complex.java:31-36 reprend java/Complex.java:32-37.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|reference_limitee|yaml_duplique": [],
+ "duplication|seuils_fonctions|autre_racine": [],
+ "duplication|seuils_fonctions|dossier_exclu": [],
+ "duplication|seuils_fonctions|dossier_inclus": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   3,
+   "Bloc de 3 lignes duplique : java/UniquePlain.java:1-3 reprend java/UniquePlainCopy.java:1-3.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   3,
+   5,
+   "Bloc de 3 lignes duplique : java/UniquePlain.java:3-5 reprend java/UniquePlainCopy.java:3-5.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   6,
+   8,
+   "Bloc de 3 lignes duplique : java/UniquePlain.java:6-8 reprend java/UniquePlainCopy.java:6-8.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|seuils_fonctions|extension_differente": [],
+ "duplication|seuils_fonctions|fichier_a_la_racine": [],
+ "duplication|seuils_fonctions|hors_structure": [],
+ "duplication|seuils_fonctions|java_a": [
   [
    "DUP.BLOCK",
    "MAJOR",
@@ -5231,14 +5907,204 @@
    "8e8b84b0",
    "",
    null
+  ]
+ ],
+ "duplication|seuils_fonctions|java_a_b": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   4,
+   6,
+   "Bloc de 3 lignes duplique : java/DuplicateA.java:4-6 reprend java/DuplicateB.java:4-6.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   6,
+   8,
+   "Bloc de 3 lignes duplique : java/DuplicateA.java:6-8 reprend java/DuplicateB.java:6-8.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|seuils_fonctions|limite_de_fichiers": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   3,
+   "Bloc de 3 lignes duplique : limitdup/Target.java:1-3 reprend limitdup/sub/Holder.java:1-3.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   3,
+   5,
+   "Bloc de 3 lignes duplique : limitdup/Target.java:3-5 reprend limitdup/sub/Holder.java:3-5.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   6,
+   8,
+   "Bloc de 3 lignes duplique : limitdup/Target.java:6-8 reprend limitdup/sub/Holder.java:6-8.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|seuils_fonctions|limite_entre_racines": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   3,
+   "Bloc de 3 lignes duplique : a_first/Anchor.java:1-3 reprend a_first/Other.java:1-3.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   3,
+   "Bloc de 3 lignes duplique : z_second/Target.java:1-3 reprend z_second/Twin.java:1-3.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   3,
+   5,
+   "Bloc de 3 lignes duplique : z_second/Target.java:3-5 reprend z_second/Twin.java:3-5.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   6,
+   8,
+   "Bloc de 3 lignes duplique : z_second/Target.java:6-8 reprend z_second/Twin.java:6-8.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|seuils_fonctions|meme_fichier": [
+  [
+   "DUP.BLOCK",
+   "MINOR",
+   "duplication",
+   2,
+   4,
+   "Bloc de 3 lignes duplique : java/DuplicateSelf.java:2-4 reprend java/DuplicateSelf.java:10-12.",
+   "8e8b84b0",
+   "",
+   null
   ],
   [
    "DUP.BLOCK",
    "MINOR",
    "duplication",
-   111,
-   113,
-   "Bloc de 3 lignes duplique : java/Complex.java:111-113 reprend java/Complex.java:112-114.",
+   3,
+   5,
+   "Bloc de 3 lignes duplique : java/DuplicateSelf.java:3-5 reprend java/DuplicateSelf.java:11-13.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|seuils_fonctions|motif_exclu": [],
+ "duplication|seuils_fonctions|plusieurs_racines": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   4,
+   6,
+   "Bloc de 3 lignes duplique : java/DuplicateA.java:4-6 reprend java/DuplicateB.java:4-6.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   6,
+   8,
+   "Bloc de 3 lignes duplique : java/DuplicateA.java:6-8 reprend java/DuplicateB.java:6-8.",
+   "8e8b84b0",
+   "",
+   null
+  ]
+ ],
+ "duplication|seuils_fonctions|test_uniquement": [],
+ "duplication|seuils_fonctions|tout": [
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   3,
+   "Bloc de 3 lignes duplique : a_first/Anchor.java:1-3 reprend a_first/Other.java:1-3.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   1,
+   3,
+   "Bloc de 3 lignes duplique : java/.gradle/UniqueDirCopy.java:1-3 reprend java/UniqueDir.java:1-3.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   3,
+   5,
+   "Bloc de 3 lignes duplique : java/.gradle/UniqueDirCopy.java:3-5 reprend java/UniqueDir.java:3-5.",
+   "8e8b84b0",
+   "",
+   null
+  ],
+  [
+   "DUP.BLOCK",
+   "MAJOR",
+   "duplication",
+   6,
+   8,
+   "Bloc de 3 lignes duplique : java/.gradle/UniqueDirCopy.java:6-8 reprend java/UniqueDir.java:6-8.",
    "8e8b84b0",
    "",
    null
@@ -5286,19 +6152,49 @@
    "8e8b84b0",
    "",
    null
-  ],
-  [
-   "DUP.BLOCK",
-   "MINOR",
-   "duplication",
-   69,
-   73,
-   "Bloc de 3 lignes duplique : java/Complex.java:69-73 reprend java/Complex.java:77-81.",
-   "8e8b84b0",
-   "",
-   null
   ]
  ],
+ "duplication|seuils_fonctions|yaml_duplique": [],
+ "extra|defaut|a_first/Anchor.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "RootsAnchor.one",
+    2,
+    4,
+    [],
+    "RootsAnchor",
+    "int",
+    "",
+    2,
+    "a3693754"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|a_first/Other.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "RootsOther.two",
+    2,
+    4,
+    [],
+    "RootsOther",
+    "int",
+    "",
+    2,
+    "04e845e6"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|cs/Arrow.cs": {
   "function_bugs": [],
   "function_quality": [],
@@ -5516,6 +6412,29 @@
     "",
     2,
     "db7f681a"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|java/.gradle/UniqueDirCopy.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "UniqueDirCopy.shipping",
+    2,
+    9,
+    [
+     "double weight",
+     "double distance"
+    ],
+    "UniqueDirCopy",
+    "double",
+    "",
+    7,
+    "641508eb"
    ]
   ],
   "imports": [],
@@ -5991,6 +6910,30 @@
   ],
   "security": []
  },
+ "extra|defaut|java/CrossRoot.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "CrossRoot.clamp",
+    2,
+    9,
+    [
+     "int value",
+     "int low",
+     "int high"
+    ],
+    "CrossRoot",
+    "int",
+    "",
+    7,
+    "06d89f2c"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|java/DuplicateA.java": {
   "function_bugs": [],
   "function_quality": [],
@@ -6035,6 +6978,88 @@
   ],
   "imports": [],
   "naming": [],
+  "security": []
+ },
+ "extra|defaut|java/DuplicateSelf.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "DuplicateSelf.first",
+    2,
+    8,
+    [
+     "int a",
+     "int b"
+    ],
+    "DuplicateSelf",
+    "int",
+    "",
+    6,
+    "bfad6f0c"
+   ],
+   [
+    "DuplicateSelf.second",
+    10,
+    16,
+    [
+     "int c",
+     "int d"
+    ],
+    "DuplicateSelf",
+    "int",
+    "",
+    6,
+    "a61ebe45"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int first(int a, int b) {",
+    "a"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `b` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int first(int a, int b) {",
+    "b"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    10,
+    0,
+    "Le nom `c` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int second(int c, int d) {",
+    "c"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    10,
+    0,
+    "Le nom `d` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int second(int c, int d) {",
+    "d"
+   ]
+  ],
   "security": []
  },
  "extra|defaut|java/Naming.java": {
@@ -6913,6 +7938,75 @@
   ],
   "security": []
  },
+ "extra|defaut|java/UniqueDir.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "UniqueDir.shipping",
+    2,
+    9,
+    [
+     "double weight",
+     "double distance"
+    ],
+    "UniqueDir",
+    "double",
+    "",
+    7,
+    "641508eb"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|java/UniquePlain.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "UniquePlain.checksum",
+    2,
+    9,
+    [
+     "long seed",
+     "long salt"
+    ],
+    "UniquePlain",
+    "long",
+    "",
+    7,
+    "8a2adf06"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|java/UniquePlainCopy.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "UniquePlainCopy.checksum",
+    2,
+    9,
+    [
+     "long seed",
+     "long salt"
+    ],
+    "UniquePlainCopy",
+    "long",
+    "",
+    7,
+    "8a2adf06"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|java/Wildcard.java": {
   "function_bugs": [],
   "function_quality": [],
@@ -7632,6 +8726,98 @@
   ],
   "security": []
  },
+ "extra|defaut|js/dup/CrossRef.js": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "describe",
+    1,
+    8,
+    [
+     "person",
+     "greeting"
+    ],
+    "",
+    "function",
+    "",
+    7,
+    "e1bf9297"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|js/dup/CrossTarget.ts": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "describe",
+    1,
+    8,
+    [
+     "person",
+     "greeting"
+    ],
+    "",
+    "function",
+    "",
+    7,
+    "e1bf9297"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|js/dup/Unique.js": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "slugify",
+    1,
+    8,
+    [
+     "title",
+     "separator"
+    ],
+    "",
+    "function",
+    "",
+    7,
+    "d4f42f0d"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|js/dup/Unique.min.js": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "slugify",
+    1,
+    8,
+    [
+     "title",
+     "separator"
+    ],
+    "",
+    "function",
+    "",
+    7,
+    "d4f42f0d"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|js/exit.test.js": {
   "function_bugs": [],
   "function_quality": [],
@@ -7923,7 +9109,121 @@
   "naming": [],
   "security": []
  },
+ "extra|defaut|limitdup/Filler.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "LimitFiller.unrelated",
+    2,
+    4,
+    [
+     "int a"
+    ],
+    "LimitFiller",
+    "int",
+    "",
+    2,
+    "7ee1bd69"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int unrelated(int a) {",
+    "a"
+   ]
+  ],
+  "security": []
+ },
+ "extra|defaut|limitdup/Target.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "LimitTarget.describe",
+    2,
+    9,
+    [
+     "String name",
+     "int count",
+     "String unit"
+    ],
+    "LimitTarget",
+    "String",
+    "",
+    7,
+    "4aff84f9"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|limitdup/sub/Holder.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "LimitHolder.describe",
+    2,
+    9,
+    [
+     "String name",
+     "int count",
+     "String unit"
+    ],
+    "LimitHolder",
+    "String",
+    "",
+    7,
+    "4aff84f9"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|misc/CrossRootCopy.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "CrossRootCopy.clamp",
+    2,
+    9,
+    [
+     "int value",
+     "int low",
+     "int high"
+    ],
+    "CrossRootCopy",
+    "int",
+    "",
+    7,
+    "06d89f2c"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|misc/conf.yaml": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|misc/duplicated.yaml": {
   "function_bugs": [],
   "function_quality": [],
   "functions": [],
@@ -8927,6 +10227,117 @@
   "naming": [],
   "security": []
  },
+ "extra|defaut|top_level.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "at_root",
+    4,
+    6,
+    [
+     "first",
+     "second"
+    ],
+    "",
+    "",
+    "",
+    2,
+    "cb6beed1"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|z_second/Target.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "RootsTarget.render",
+    2,
+    9,
+    [
+     "String title",
+     "int level",
+     "String body"
+    ],
+    "RootsTarget",
+    "String",
+    "",
+    7,
+    "03d7b4b7"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|z_second/Twin.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "RootsTwin.render",
+    2,
+    9,
+    [
+     "String title",
+     "int level",
+     "String body"
+    ],
+    "RootsTwin",
+    "String",
+    "",
+    7,
+    "03d7b4b7"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|a_first/Anchor.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "RootsAnchor.one",
+    2,
+    4,
+    [],
+    "RootsAnchor",
+    "int",
+    "",
+    2,
+    "a3693754"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|a_first/Other.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "RootsOther.two",
+    2,
+    4,
+    [],
+    "RootsOther",
+    "int",
+    "",
+    2,
+    "04e845e6"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|cs/Arrow.cs": {
   "function_bugs": [],
   "function_quality": [],
@@ -9144,6 +10555,41 @@
     "",
     2,
     "db7f681a"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/.gradle/UniqueDirCopy.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "UniqueDirCopy.shipping fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "double shipping(double weight, double distance) {",
+    "UniqueDirCopy.shipping"
+   ]
+  ],
+  "functions": [
+   [
+    "UniqueDirCopy.shipping",
+    2,
+    9,
+    [
+     "double weight",
+     "double distance"
+    ],
+    "UniqueDirCopy",
+    "double",
+    "",
+    7,
+    "641508eb"
    ]
   ],
   "imports": [],
@@ -9741,6 +11187,64 @@
   ],
   "security": []
  },
+ "extra|seuils_fonctions|java/CrossRoot.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRoot.clamp a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "int clamp(int value, int low, int high) {",
+    "CrossRoot.clamp"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRoot.clamp fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "int clamp(int value, int low, int high) {",
+    "CrossRoot.clamp"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRoot.clamp prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "int clamp(int value, int low, int high) {",
+    "CrossRoot.clamp"
+   ]
+  ],
+  "functions": [
+   [
+    "CrossRoot.clamp",
+    2,
+    9,
+    [
+     "int value",
+     "int low",
+     "int high"
+    ],
+    "CrossRoot",
+    "int",
+    "",
+    7,
+    "06d89f2c"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|java/DuplicateA.java": {
   "function_bugs": [],
   "function_quality": [
@@ -9809,6 +11313,111 @@
   ],
   "imports": [],
   "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/DuplicateSelf.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    8,
+    "DuplicateSelf.first fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "int first(int a, int b) {",
+    "DuplicateSelf.first"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    10,
+    16,
+    "DuplicateSelf.second fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "int second(int c, int d) {",
+    "DuplicateSelf.second"
+   ]
+  ],
+  "functions": [
+   [
+    "DuplicateSelf.first",
+    2,
+    8,
+    [
+     "int a",
+     "int b"
+    ],
+    "DuplicateSelf",
+    "int",
+    "",
+    6,
+    "bfad6f0c"
+   ],
+   [
+    "DuplicateSelf.second",
+    10,
+    16,
+    [
+     "int c",
+     "int d"
+    ],
+    "DuplicateSelf",
+    "int",
+    "",
+    6,
+    "a61ebe45"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int first(int a, int b) {",
+    "a"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `b` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int first(int a, int b) {",
+    "b"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    10,
+    0,
+    "Le nom `c` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int second(int c, int d) {",
+    "c"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    10,
+    0,
+    "Le nom `d` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int second(int c, int d) {",
+    "d"
+   ]
+  ],
   "security": []
  },
  "extra|seuils_fonctions|java/Naming.java": {
@@ -10775,6 +12384,111 @@
     "a"
    ]
   ],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/UniqueDir.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "UniqueDir.shipping fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "double shipping(double weight, double distance) {",
+    "UniqueDir.shipping"
+   ]
+  ],
+  "functions": [
+   [
+    "UniqueDir.shipping",
+    2,
+    9,
+    [
+     "double weight",
+     "double distance"
+    ],
+    "UniqueDir",
+    "double",
+    "",
+    7,
+    "641508eb"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/UniquePlain.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "UniquePlain.checksum fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "long checksum(long seed, long salt) {",
+    "UniquePlain.checksum"
+   ]
+  ],
+  "functions": [
+   [
+    "UniquePlain.checksum",
+    2,
+    9,
+    [
+     "long seed",
+     "long salt"
+    ],
+    "UniquePlain",
+    "long",
+    "",
+    7,
+    "8a2adf06"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/UniquePlainCopy.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "UniquePlainCopy.checksum fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "long checksum(long seed, long salt) {",
+    "UniquePlainCopy.checksum"
+   ]
+  ],
+  "functions": [
+   [
+    "UniquePlainCopy.checksum",
+    2,
+    9,
+    [
+     "long seed",
+     "long salt"
+    ],
+    "UniquePlainCopy",
+    "long",
+    "",
+    7,
+    "8a2adf06"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
   "security": []
  },
  "extra|seuils_fonctions|java/Wildcard.java": {
@@ -11821,6 +13535,146 @@
   ],
   "security": []
  },
+ "extra|seuils_fonctions|js/dup/CrossRef.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    1,
+    8,
+    "describe fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function describe(person, greeting) {",
+    "describe"
+   ]
+  ],
+  "functions": [
+   [
+    "describe",
+    1,
+    8,
+    [
+     "person",
+     "greeting"
+    ],
+    "",
+    "function",
+    "",
+    7,
+    "e1bf9297"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|js/dup/CrossTarget.ts": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    1,
+    8,
+    "describe fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function describe(person, greeting) {",
+    "describe"
+   ]
+  ],
+  "functions": [
+   [
+    "describe",
+    1,
+    8,
+    [
+     "person",
+     "greeting"
+    ],
+    "",
+    "function",
+    "",
+    7,
+    "e1bf9297"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|js/dup/Unique.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    1,
+    8,
+    "slugify fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function slugify(title, separator) {",
+    "slugify"
+   ]
+  ],
+  "functions": [
+   [
+    "slugify",
+    1,
+    8,
+    [
+     "title",
+     "separator"
+    ],
+    "",
+    "function",
+    "",
+    7,
+    "d4f42f0d"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|js/dup/Unique.min.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    1,
+    8,
+    "slugify fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function slugify(title, separator) {",
+    "slugify"
+   ]
+  ],
+  "functions": [
+   [
+    "slugify",
+    1,
+    8,
+    [
+     "title",
+     "separator"
+    ],
+    "",
+    "function",
+    "",
+    7,
+    "d4f42f0d"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|js/exit.test.js": {
   "function_bugs": [],
   "function_quality": [],
@@ -12158,7 +14012,223 @@
   "naming": [],
   "security": []
  },
+ "extra|seuils_fonctions|limitdup/Filler.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "LimitFiller.unrelated",
+    2,
+    4,
+    [
+     "int a"
+    ],
+    "LimitFiller",
+    "int",
+    "",
+    2,
+    "7ee1bd69"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int unrelated(int a) {",
+    "a"
+   ]
+  ],
+  "security": []
+ },
+ "extra|seuils_fonctions|limitdup/Target.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitTarget.describe a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "String describe(String name, int count, String unit) {",
+    "LimitTarget.describe"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitTarget.describe fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "String describe(String name, int count, String unit) {",
+    "LimitTarget.describe"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitTarget.describe prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "String describe(String name, int count, String unit) {",
+    "LimitTarget.describe"
+   ]
+  ],
+  "functions": [
+   [
+    "LimitTarget.describe",
+    2,
+    9,
+    [
+     "String name",
+     "int count",
+     "String unit"
+    ],
+    "LimitTarget",
+    "String",
+    "",
+    7,
+    "4aff84f9"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|limitdup/sub/Holder.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitHolder.describe a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "String describe(String name, int count, String unit) {",
+    "LimitHolder.describe"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitHolder.describe fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "String describe(String name, int count, String unit) {",
+    "LimitHolder.describe"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitHolder.describe prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "String describe(String name, int count, String unit) {",
+    "LimitHolder.describe"
+   ]
+  ],
+  "functions": [
+   [
+    "LimitHolder.describe",
+    2,
+    9,
+    [
+     "String name",
+     "int count",
+     "String unit"
+    ],
+    "LimitHolder",
+    "String",
+    "",
+    7,
+    "4aff84f9"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|misc/CrossRootCopy.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRootCopy.clamp a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "int clamp(int value, int low, int high) {",
+    "CrossRootCopy.clamp"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRootCopy.clamp fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "int clamp(int value, int low, int high) {",
+    "CrossRootCopy.clamp"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRootCopy.clamp prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "int clamp(int value, int low, int high) {",
+    "CrossRootCopy.clamp"
+   ]
+  ],
+  "functions": [
+   [
+    "CrossRootCopy.clamp",
+    2,
+    9,
+    [
+     "int value",
+     "int low",
+     "int high"
+    ],
+    "CrossRootCopy",
+    "int",
+    "",
+    7,
+    "06d89f2c"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|misc/conf.yaml": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|misc/duplicated.yaml": {
   "function_bugs": [],
   "function_quality": [],
   "functions": [],
@@ -13300,6 +15370,137 @@
   "naming": [],
   "security": []
  },
+ "extra|seuils_fonctions|top_level.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "at_root",
+    4,
+    6,
+    [
+     "first",
+     "second"
+    ],
+    "",
+    "",
+    "",
+    2,
+    "cb6beed1"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|z_second/Target.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "RootsTarget.render fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "String render(String title, int level, String body) {",
+    "RootsTarget.render"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "RootsTarget.render prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "String render(String title, int level, String body) {",
+    "RootsTarget.render"
+   ]
+  ],
+  "functions": [
+   [
+    "RootsTarget.render",
+    2,
+    9,
+    [
+     "String title",
+     "int level",
+     "String body"
+    ],
+    "RootsTarget",
+    "String",
+    "",
+    7,
+    "03d7b4b7"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|z_second/Twin.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "RootsTwin.render fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "String render(String title, int level, String body) {",
+    "RootsTwin.render"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "RootsTwin.render prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "String render(String title, int level, String body) {",
+    "RootsTwin.render"
+   ]
+  ],
+  "functions": [
+   [
+    "RootsTwin.render",
+    2,
+    9,
+    [
+     "String title",
+     "int level",
+     "String body"
+    ],
+    "RootsTwin",
+    "String",
+    "",
+    7,
+    "03d7b4b7"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|a_first/Anchor.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|a_first/Other.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|cs/Arrow.cs": {
   "function_bugs": [],
   "function_quality": [],
@@ -13370,6 +15571,25 @@
  "partial|seuils_fonctions|go/main.go": {
   "function_bugs": [],
   "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/.gradle/UniqueDirCopy.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "UniqueDirCopy.shipping fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "double shipping(double weight, double distance) {",
+    "UniqueDirCopy.shipping"
+   ]
+  ],
   "imports": [],
   "naming": [],
   "security": []
@@ -13648,6 +15868,47 @@
   ],
   "security": []
  },
+ "partial|seuils_fonctions|java/CrossRoot.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRoot.clamp a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "int clamp(int value, int low, int high) {",
+    "CrossRoot.clamp"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRoot.clamp fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "int clamp(int value, int low, int high) {",
+    "CrossRoot.clamp"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRoot.clamp prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "int clamp(int value, int low, int high) {",
+    "CrossRoot.clamp"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|java/DuplicateA.java": {
   "function_bugs": [],
   "function_quality": [
@@ -13684,6 +15945,81 @@
   ],
   "imports": [],
   "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/DuplicateSelf.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    8,
+    "DuplicateSelf.first fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "int first(int a, int b) {",
+    "DuplicateSelf.first"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    10,
+    16,
+    "DuplicateSelf.second fait 6 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "int second(int c, int d) {",
+    "DuplicateSelf.second"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int first(int a, int b) {",
+    "a"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `b` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int first(int a, int b) {",
+    "b"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    10,
+    0,
+    "Le nom `c` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int second(int c, int d) {",
+    "c"
+   ],
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    10,
+    0,
+    "Le nom `d` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int second(int c, int d) {",
+    "d"
+   ]
+  ],
   "security": []
  },
  "partial|seuils_fonctions|java/Naming.java": {
@@ -14149,6 +16485,63 @@
     "a"
    ]
   ],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/UniqueDir.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "UniqueDir.shipping fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "double shipping(double weight, double distance) {",
+    "UniqueDir.shipping"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/UniquePlain.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "UniquePlain.checksum fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "long checksum(long seed, long salt) {",
+    "UniquePlain.checksum"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/UniquePlainCopy.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "UniquePlainCopy.checksum fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "long checksum(long seed, long salt) {",
+    "UniquePlainCopy.checksum"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
   "security": []
  },
  "partial|seuils_fonctions|java/Wildcard.java": {
@@ -14822,6 +17215,82 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|js/dup/CrossRef.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    1,
+    8,
+    "describe fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function describe(person, greeting) {",
+    "describe"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|js/dup/CrossTarget.ts": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    1,
+    8,
+    "describe fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function describe(person, greeting) {",
+    "describe"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|js/dup/Unique.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    1,
+    8,
+    "slugify fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function slugify(title, separator) {",
+    "slugify"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|js/dup/Unique.min.js": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    1,
+    8,
+    "slugify fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "function slugify(title, separator) {",
+    "slugify"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|js/exit.test.js": {
   "function_bugs": [],
   "function_quality": [],
@@ -14982,7 +17451,156 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|limitdup/Filler.java": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.TOO_SHORT",
+    "MINOR",
+    "nommage",
+    2,
+    0,
+    "Le nom `a` est trop court pour etre compris hors contexte.",
+    "0b794e7a",
+    "int unrelated(int a) {",
+    "a"
+   ]
+  ],
+  "security": []
+ },
+ "partial|seuils_fonctions|limitdup/Target.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitTarget.describe a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "String describe(String name, int count, String unit) {",
+    "LimitTarget.describe"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitTarget.describe fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "String describe(String name, int count, String unit) {",
+    "LimitTarget.describe"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitTarget.describe prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "String describe(String name, int count, String unit) {",
+    "LimitTarget.describe"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|limitdup/sub/Holder.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitHolder.describe a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "String describe(String name, int count, String unit) {",
+    "LimitHolder.describe"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitHolder.describe fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "String describe(String name, int count, String unit) {",
+    "LimitHolder.describe"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "LimitHolder.describe prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "String describe(String name, int count, String unit) {",
+    "LimitHolder.describe"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|misc/CrossRootCopy.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRootCopy.clamp a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "int clamp(int value, int low, int high) {",
+    "CrossRootCopy.clamp"
+   ],
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRootCopy.clamp fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "int clamp(int value, int low, int high) {",
+    "CrossRootCopy.clamp"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "CrossRootCopy.clamp prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "int clamp(int value, int low, int high) {",
+    "CrossRootCopy.clamp"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|misc/conf.yaml": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|misc/duplicated.yaml": {
   "function_bugs": [],
   "function_quality": [],
   "imports": [],
@@ -15637,6 +18255,83 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|top_level.py": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|z_second/Target.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "RootsTarget.render fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "String render(String title, int level, String body) {",
+    "RootsTarget.render"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "RootsTarget.render prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "String render(String title, int level, String body) {",
+    "RootsTarget.render"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|z_second/Twin.java": {
+  "function_bugs": [],
+  "function_quality": [
+   [
+    "CPX.FUNCTION_SIZE",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "RootsTwin.render fait 7 lignes (seuil souhaite 5).",
+    "e293d83e",
+    "String render(String title, int level, String body) {",
+    "RootsTwin.render"
+   ],
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    2,
+    9,
+    "RootsTwin.render prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "String render(String title, int level, String body) {",
+    "RootsTwin.render"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "seuils_bas|tout|a_first/Anchor.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|a_first/Other.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|cs/Arrow.cs": {
   "blocks": [],
   "file": [],
@@ -15702,6 +18397,35 @@
   "blocks": [],
   "file": [],
   "lines": []
+ },
+ "seuils_bas|tout|java/.gradle/UniqueDirCopy.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "if (total > 500) { total = 500; }",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    5,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double total = base + surcharge;",
+    null
+   ]
+  ]
  },
  "seuils_bas|tout|java/Catches.java": {
   "blocks": [
@@ -15927,6 +18651,11 @@
   ],
   "lines": []
  },
+ "seuils_bas|tout|java/CrossRoot.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|java/DuplicateA.java": {
   "blocks": [],
   "file": [],
@@ -15960,6 +18689,11 @@
     null
    ]
   ]
+ },
+ "seuils_bas|tout|java/DuplicateSelf.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|tout|java/Naming.java": {
   "blocks": [],
@@ -16180,6 +18914,45 @@
   "lines": []
  },
  "seuils_bas|tout|java/UnclosedParens.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|java/UniqueDir.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "if (total > 500) { total = 500; }",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    5,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double total = base + surcharge;",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|java/UniquePlain.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|java/UniquePlainCopy.java": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -17696,6 +20469,26 @@
    ]
   ]
  },
+ "seuils_bas|tout|js/dup/CrossRef.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|js/dup/CrossTarget.ts": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|js/dup/Unique.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|js/dup/Unique.min.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|js/exit.test.js": {
   "blocks": [],
   "file": [
@@ -17915,6 +20708,72 @@
   "file": [],
   "lines": []
  },
+ "seuils_bas|tout|limitdup/Filler.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|limitdup/Target.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    5,
+    0,
+    "Ligne de 68 caracteres (seuil 60).",
+    "b875b8b0",
+    "String prefix = count > 99 ? \"many\" : String.valueOf(count);",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    5,
+    0,
+    "Valeur numerique 99 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "String prefix = count > 99 ? \"____\" : String.valueOf(count);",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|tout|limitdup/sub/Holder.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    5,
+    0,
+    "Ligne de 68 caracteres (seuil 60).",
+    "b875b8b0",
+    "String prefix = count > 99 ? \"many\" : String.valueOf(count);",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    5,
+    0,
+    "Valeur numerique 99 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "String prefix = count > 99 ? \"____\" : String.valueOf(count);",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|tout|misc/CrossRootCopy.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|misc/conf.yaml": {
   "blocks": [],
   "file": [],
@@ -17931,6 +20790,11 @@
     null
    ]
   ]
+ },
+ "seuils_bas|tout|misc/duplicated.yaml": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|tout|misc/query.sql": {
   "blocks": [],
@@ -19096,6 +21960,111 @@
   "file": [],
   "lines": []
  },
+ "seuils_bas|tout|top_level.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 98 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : fichier a la racine du corpus (aucun dossier de premier niveau).\"\"\"",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|tout|z_second/Target.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ligne de 67 caracteres (seuil 60).",
+    "b875b8b0",
+    "String safeTitle = title.replace(\"<\", \"\").replace(\">\", \"\");",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Ligne de 74 caracteres (seuil 60).",
+    "b875b8b0",
+    "String heading = \"#\".repeat(Math.max(level, 1)) + \" \" + safeTitle;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Ligne de 65 caracteres (seuil 60).",
+    "b875b8b0",
+    "String wrapped = trimmed.isEmpty() ? \"(empty)\" : trimmed;",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|tout|z_second/Twin.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ligne de 67 caracteres (seuil 60).",
+    "b875b8b0",
+    "String safeTitle = title.replace(\"<\", \"\").replace(\">\", \"\");",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Ligne de 74 caracteres (seuil 60).",
+    "b875b8b0",
+    "String heading = \"#\".repeat(Math.max(level, 1)) + \" \" + safeTitle;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Ligne de 65 caracteres (seuil 60).",
+    "b875b8b0",
+    "String wrapped = trimmed.isEmpty() ? \"(empty)\" : trimmed;",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|a_first/Anchor.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|a_first/Other.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|un_sur_sept|cs/Arrow.cs": {
   "blocks": [],
   "file": [],
@@ -19138,6 +22107,23 @@
  "seuils_bas|un_sur_sept|go/main.go": {
   "blocks": [],
   "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|java/.gradle/UniqueDirCopy.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "if (total > 500) { total = 500; }",
+    null
+   ]
+  ],
   "lines": []
  },
  "seuils_bas|un_sur_sept|java/Catches.java": {
@@ -19330,6 +22316,11 @@
   ],
   "lines": []
  },
+ "seuils_bas|un_sur_sept|java/CrossRoot.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|un_sur_sept|java/DuplicateA.java": {
   "blocks": [],
   "file": [],
@@ -19363,6 +22354,11 @@
     null
    ]
   ]
+ },
+ "seuils_bas|un_sur_sept|java/DuplicateSelf.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|un_sur_sept|java/Naming.java": {
   "blocks": [],
@@ -19550,6 +22546,33 @@
   "lines": []
  },
  "seuils_bas|un_sur_sept|java/UnclosedParens.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|java/UniqueDir.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "if (total > 500) { total = 500; }",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|java/UniquePlain.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|java/UniquePlainCopy.java": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -20714,6 +23737,26 @@
    ]
   ]
  },
+ "seuils_bas|un_sur_sept|js/dup/CrossRef.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|js/dup/CrossTarget.ts": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|js/dup/Unique.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|js/dup/Unique.min.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|un_sur_sept|js/exit.test.js": {
   "blocks": [],
   "file": [
@@ -20865,6 +23908,26 @@
   "file": [],
   "lines": []
  },
+ "seuils_bas|un_sur_sept|limitdup/Filler.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|limitdup/Target.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|limitdup/sub/Holder.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|misc/CrossRootCopy.java": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|un_sur_sept|misc/conf.yaml": {
   "blocks": [],
   "file": [],
@@ -20881,6 +23944,11 @@
     null
    ]
   ]
+ },
+ "seuils_bas|un_sur_sept|misc/duplicated.yaml": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|un_sur_sept|misc/query.sql": {
   "blocks": [],
@@ -21778,6 +24846,79 @@
  "seuils_bas|un_sur_sept|rs/lib.rs": {
   "blocks": [],
   "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|top_level.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 98 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : fichier a la racine du corpus (aucun dossier de premier niveau).\"\"\"",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|z_second/Target.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ligne de 67 caracteres (seuil 60).",
+    "b875b8b0",
+    "String safeTitle = title.replace(\"<\", \"\").replace(\">\", \"\");",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Ligne de 65 caracteres (seuil 60).",
+    "b875b8b0",
+    "String wrapped = trimmed.isEmpty() ? \"(empty)\" : trimmed;",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|z_second/Twin.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ligne de 67 caracteres (seuil 60).",
+    "b875b8b0",
+    "String safeTitle = title.replace(\"<\", \"\").replace(\">\", \"\");",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Ligne de 65 caracteres (seuil 60).",
+    "b875b8b0",
+    "String wrapped = trimmed.isEmpty() ? \"(empty)\" : trimmed;",
+    null
+   ]
+  ],
   "lines": []
  }
 }
