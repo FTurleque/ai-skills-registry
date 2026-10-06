@@ -1,5 +1,5 @@
 {
-  "_doc": "Configuration du superviseur de code. Copie ce fichier dans ~/.claude/ pour le global, ou dans <projet>/.claude/ pour surcharger projet par projet. Toute cle absente reprend la valeur par defaut.",
+  "_doc": "Configuration du superviseur de code. Copie ce fichier dans ~/.claude/ pour le global, ou dans <projet>/.claude/ pour surcharger projet par projet. Toute cle absente reprend la valeur par defaut. Securite : un fichier de projet ne peut pas fixer external_tools, llm.cli ni log_dir (ils sont ignores) ; declare-les dans ~/.claude/.",
 
   "enabled": true,
   "block_on_severity": ["CRITICAL"],
@@ -34,7 +34,7 @@
     "convention_files": ["CLAUDE.md", "CONTRIBUTING.md", "AGENTS.md", ".editorconfig"]
   },
 
-  "_external_tools_doc": "Outillage du projet. Vide par defaut : rien n'est execute sans declaration explicite, pour ne jamais declencher un build ou une CI par surprise. {files} est remplace par la liste des fichiers modifies.",
+  "_external_tools_doc": "Outillage a appeler. Vide par defaut : rien n'est execute sans declaration explicite, pour ne jamais declencher un build ou une CI par surprise. Honore uniquement ici ou dans ~/.claude/supervisor.config.json, jamais depuis un fichier de projet. {files} est remplace par la liste des fichiers modifies.",
   "external_tools": [],
 
   "_external_tools_exemples": [

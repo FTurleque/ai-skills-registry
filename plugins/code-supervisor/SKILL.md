@@ -81,8 +81,9 @@ Determiner le perimetre, puis juger uniquement ce qui a change.
 - Ne pas juger du code hors du perimetre, sauf si le diff le casse.
 - Un faux positif coute plus cher qu'un oubli : il envoie l'agent modifier du code correct.
   En cas de doute, classer plus bas plutot que bloquer.
-- Ne lancer aucun build ni aucune CI. Les outils du projet ne sont appeles que s'ils sont
-  declares dans `external_tools`, et cette liste est vide par defaut.
+- Ne lancer aucun build ni aucune CI. Les outils ne sont appeles que s'ils sont declares dans
+  `external_tools`, et cette liste est vide par defaut. Seule la configuration de l'utilisateur ou
+  celle du moteur est honoree : une configuration de projet ne peut pas lancer de programme.
 
 # Processus d'execution
 

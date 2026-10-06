@@ -9,6 +9,27 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Sécurité — le superviseur de code n'exécute plus rien venu de la configuration du projet
+
+Le hook est installé globalement et lisait `<projet>/.claude/supervisor.config.json` et
+`<projet>/.supervisor.json`, c'est-à-dire des fichiers du dépôt supervisé, qui peut être un dépôt tiers.
+Trois clés de cette configuration désignaient un programme à lancer ou un emplacement d'écriture :
+
+- `external_tools` : commandes lancées avec `shell=True` à la fin de chaque réponse d'agent ;
+- `llm.cli` : programme lancé pour la relecture par modèle ;
+- `log_dir` : dossier où le superviseur écrit ses rapports et son état.
+
+Ces trois clés sont désormais ignorées dans une configuration de projet, avec un avertissement sur la
+sortie d'erreur. Elles restent honorées dans `~/.claude/supervisor.config.json` et dans le fichier livré
+avec le moteur. Tous les autres réglages restent surchargeables par projet. Effet de bord corrigé : une
+liste `external_tools` déclarée par l'utilisateur n'est plus écrasée par celle d'un projet.
+
+- **À faire si vous utilisiez `external_tools` dans un projet** : déplacer la déclaration dans
+  `~/.claude/supervisor.config.json`.
+- Un fichier de configuration qui n'est pas un objet JSON est ignoré au lieu de faire échouer le hook.
+- L'auto-test échoue si une configuration de projet hostile parvient à fixer l'une de ces clés.
+- Un moteur déjà installé doit être réinstallé pour en profiter. Suite : #11.
+
 ### Modifié — nettoyage des règles du superviseur de code
 
 Aucun changement de comportement : sur un corpus de 129 fichiers (stdlib Python, JavaScript et

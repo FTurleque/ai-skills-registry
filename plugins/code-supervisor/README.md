@@ -187,7 +187,15 @@ Depuis une session Claude Code :
 ## Reglages
 
 Fusion du plus general au plus specifique : valeurs du code, `supervisor.config.json` livre a cote
-du moteur, `~/.claude/supervisor.config.json`, puis `<projet>/.claude/supervisor.config.json`.
+du moteur, `~/.claude/supervisor.config.json`, puis `<projet>/.claude/supervisor.config.json`
+(ou `<projet>/.supervisor.json`).
+
+> **Securite.** Le depot supervise n'est pas une source de confiance : un projet clone peut ne pas
+> etre le votre. La configuration du **projet** ne peut donc pas fixer `external_tools`, `llm.cli`
+> ni `log_dir` (ils designent un programme a lancer ou un emplacement d'ecriture). Ces cles sont
+> ignorees, avec un avertissement sur la sortie d'erreur ; declarez-les dans
+> `~/.claude/supervisor.config.json` si c'est voulu. Tous les autres reglages restent surchargeables
+> projet par projet.
 
 | Cle | Effet |
 |---|---|
@@ -196,7 +204,7 @@ du moteur, `~/.claude/supervisor.config.json`, puis `<projet>/.claude/supervisor
 | `max_block_rounds` | nombre maximal de renvois pour un **meme** lot de problemes (3). Au-dela, avertissement sans blocage |
 | `thresholds` | tous les seuils : complexite, longueur, parametres, imbrication, taille du bloc duplique |
 | `llm.enabled`, `llm.model` | couche modele : la couper, ou changer de modele |
-| `external_tools` | outils du projet a appeler (ruff, eslint, checkstyle). **Vide par defaut** : rien ne s'execute sans declaration explicite, aucun build ni CI n'est declenche par surprise. Des exemples prets a copier sont dans le fichier |
+| `external_tools` | outils a appeler (ruff, eslint, checkstyle). **Vide par defaut** : rien ne s'execute sans declaration explicite, aucun build ni CI n'est declenche par surprise. **Honore uniquement depuis la configuration utilisateur ou celle du moteur, jamais depuis un projet.** Des exemples prets a copier sont dans le fichier |
 | `quiet_paths` | chemins ou le superviseur se tait |
 | `enabled` | `false` pour tout desactiver sans desinstaller |
 
