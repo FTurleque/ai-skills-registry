@@ -1,0 +1,10632 @@
+{
+ "defaut|tout|java/Catches.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    3,
+    5,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    10,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    13,
+    15,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    18,
+    20,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    23,
+    25,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    28,
+    30,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ]
+  ],
+  "file": [],
+  "lines": [
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    3,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    8,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    18,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|java/CatchesMultiline.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    5,
+    7,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (IOException e) {",
+    "IOException e"
+   ]
+  ],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|java/Wildcard.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|tout|java/src/main/java/demo/Service.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    63,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Scanner sc = new Scanner(System.in);",
+    null
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    64,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Connection c = ds.getConnection();",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    47,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    50,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "int magic = 4242 + 17;",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    61,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MAJOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MAJOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MAJOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    44,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "System.out.println(\"find \" + id);",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    45,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "System.err.print(\"x\");",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    46,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (id < 0) return null;",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    48,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert id > 0;",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    52,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "return null;",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    58,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|java/src/main/java/demo/cli/Main.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    63,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Scanner sc = new Scanner(System.in);",
+    null
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    64,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Connection c = ds.getConnection();",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    47,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    50,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "int magic = 4242 + 17;",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    61,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MAJOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MAJOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MAJOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    46,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (id < 0) return null;",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    48,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert id > 0;",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    52,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "return null;",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    58,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|java/src/test/java/demo/ServiceTest.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    64,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MINOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MINOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MINOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MINOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MINOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    58,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Disabled",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    59,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Ignore",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    60,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Test(enabled = false)",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    61,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|js/app.js": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "return 31337 * 86400;",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "console.log(\"debug\", x);",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|js/app.test.js": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [],
+  "lines": [
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    16,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xit(\"skipped\", () => {});",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    17,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "describe.skip(\"suite\", () => {});",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|js/ts/service.ts": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "return 31337 * 86400;",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "console.log(\"debug\", x);",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|misc/conf.yaml": {
+  "blocks": [],
+  "file": [],
+  "lines": [
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "# TODO",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|misc/query.sql": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|py/__main__.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|py/long_lines.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 651 caracteres (seuil 140).",
+    "b875b8b0",
+    "x = value_0 + value_1 + value_2 + value_3 + value_4 + value_5 + value_6 + value_7 + value_8 + value_9 + value_10 + value",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Valeur numerique 37 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y1 = 37",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Valeur numerique 74 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y2 = 74",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    11,
+    0,
+    "Valeur numerique 333 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y9 = 333",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    12,
+    0,
+    "Valeur numerique 370 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y10 = 370",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    13,
+    0,
+    "Valeur numerique 407 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y11 = 407",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|tout|py/magic.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    8,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "a = total * 4242",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    9,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "b = total + 31337",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    10,
+    0,
+    "Valeur numerique 86400 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "c = total - 86400",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    11,
+    0,
+    "Valeur numerique 7919 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "d = total / 7919",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    13,
+    0,
+    "Valeur numerique 5678 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "f = total * 5678",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|tout|py/mod.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    27,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "print(\"echec\", exc)",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    29,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "print(\"debug\")",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|py/scripts/run.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|py/tests/test_mod.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "defaut|tout|py/whitespace.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|un_tiers|java/Catches.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    3,
+    5,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    10,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    13,
+    15,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    18,
+    20,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    23,
+    25,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    28,
+    30,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ]
+  ],
+  "file": [],
+  "lines": [
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    3,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    8,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    18,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|java/CatchesMultiline.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    5,
+    7,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (IOException e) {",
+    "IOException e"
+   ]
+  ],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_tiers|java/Wildcard.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|un_tiers|java/src/main/java/demo/Service.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    63,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Scanner sc = new Scanner(System.in);",
+    null
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    64,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Connection c = ds.getConnection();",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    47,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    50,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "int magic = 4242 + 17;",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    61,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MAJOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MAJOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MAJOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    44,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "System.out.println(\"find \" + id);",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    45,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "System.err.print(\"x\");",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    46,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (id < 0) return null;",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    48,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert id > 0;",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    52,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "return null;",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    58,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|java/src/main/java/demo/cli/Main.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    63,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Scanner sc = new Scanner(System.in);",
+    null
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    64,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Connection c = ds.getConnection();",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    47,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    50,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "int magic = 4242 + 17;",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    61,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MAJOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MAJOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MAJOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    46,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (id < 0) return null;",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    48,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert id > 0;",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    52,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "return null;",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    58,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|java/src/test/java/demo/ServiceTest.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    64,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MINOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MINOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MINOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MINOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MINOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    58,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Disabled",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    59,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Ignore",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    60,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Test(enabled = false)",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    61,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|js/app.js": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "return 31337 * 86400;",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "console.log(\"debug\", x);",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|js/app.test.js": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [],
+  "lines": [
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    16,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xit(\"skipped\", () => {});",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    17,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "describe.skip(\"suite\", () => {});",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|js/ts/service.ts": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "return 31337 * 86400;",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "console.log(\"debug\", x);",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|misc/conf.yaml": {
+  "blocks": [],
+  "file": [],
+  "lines": [
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "# TODO",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|misc/query.sql": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_tiers|py/__main__.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|py/long_lines.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 651 caracteres (seuil 140).",
+    "b875b8b0",
+    "x = value_0 + value_1 + value_2 + value_3 + value_4 + value_5 + value_6 + value_7 + value_8 + value_9 + value_10 + value",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Valeur numerique 37 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y1 = 37",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Valeur numerique 74 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y2 = 74",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    11,
+    0,
+    "Valeur numerique 333 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y9 = 333",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    12,
+    0,
+    "Valeur numerique 370 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y10 = 370",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    13,
+    0,
+    "Valeur numerique 407 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y11 = 407",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|un_tiers|py/magic.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    8,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "a = total * 4242",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    9,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "b = total + 31337",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    10,
+    0,
+    "Valeur numerique 86400 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "c = total - 86400",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    11,
+    0,
+    "Valeur numerique 7919 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "d = total / 7919",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    13,
+    0,
+    "Valeur numerique 5678 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "f = total * 5678",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "defaut|un_tiers|py/mod.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    27,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "print(\"echec\", exc)",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    29,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "print(\"debug\")",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|py/scripts/run.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|py/tests/test_mod.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "defaut|un_tiers|py/whitespace.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|tout|java/Catches.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    3,
+    5,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    10,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    13,
+    15,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    18,
+    20,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    23,
+    25,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    28,
+    30,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    29,
+    0,
+    "Ligne de 69 caracteres (seuil 60).",
+    "b875b8b0",
+    "// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxy",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    3,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    8,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    18,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|java/CatchesMultiline.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    5,
+    7,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (IOException e) {",
+    "IOException e"
+   ]
+  ],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|java/Wildcard.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|tout|java/src/main/java/demo/Service.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    63,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Scanner sc = new Scanner(System.in);",
+    null
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    64,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Connection c = ds.getConnection();",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    9,
+    0,
+    "Ligne de 72 caracteres (seuil 60).",
+    "b875b8b0",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    28,
+    0,
+    "Ligne de 83 caracteres (seuil 60).",
+    "b875b8b0",
+    "// ignore : le fichier est optionnel au demarrage, on continue sans lui",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    47,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    50,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "int magic = 4242 + 17;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    51,
+    0,
+    "Ligne de 64 caracteres (seuil 60).",
+    "b875b8b0",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    59,
+    0,
+    "Ligne de 68 caracteres (seuil 60).",
+    "b875b8b0",
+    "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    61,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MAJOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MAJOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MAJOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    44,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "System.out.println(\"find \" + id);",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    45,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "System.err.print(\"x\");",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    46,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (id < 0) return null;",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    48,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert id > 0;",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    52,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "return null;",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    58,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|java/src/main/java/demo/cli/Main.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    63,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Scanner sc = new Scanner(System.in);",
+    null
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    64,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Connection c = ds.getConnection();",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    9,
+    0,
+    "Ligne de 72 caracteres (seuil 60).",
+    "b875b8b0",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    28,
+    0,
+    "Ligne de 83 caracteres (seuil 60).",
+    "b875b8b0",
+    "// ignore : le fichier est optionnel au demarrage, on continue sans lui",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    47,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    50,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "int magic = 4242 + 17;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    51,
+    0,
+    "Ligne de 64 caracteres (seuil 60).",
+    "b875b8b0",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    59,
+    0,
+    "Ligne de 68 caracteres (seuil 60).",
+    "b875b8b0",
+    "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    61,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MAJOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MAJOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MAJOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    46,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (id < 0) return null;",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    48,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert id > 0;",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    52,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "return null;",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    58,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|java/src/test/java/demo/ServiceTest.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    9,
+    0,
+    "Ligne de 72 caracteres (seuil 60).",
+    "b875b8b0",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    28,
+    0,
+    "Ligne de 83 caracteres (seuil 60).",
+    "b875b8b0",
+    "// ignore : le fichier est optionnel au demarrage, on continue sans lui",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    51,
+    0,
+    "Ligne de 64 caracteres (seuil 60).",
+    "b875b8b0",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    62,
+    0,
+    "Ligne de 68 caracteres (seuil 60).",
+    "b875b8b0",
+    "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    64,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MINOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MINOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MINOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MINOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MINOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    58,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Disabled",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    59,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Ignore",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    60,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Test(enabled = false)",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    61,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|js/app.js": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "return 31337 * 86400;",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "console.log(\"debug\", x);",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|js/app.test.js": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [],
+  "lines": [
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    16,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xit(\"skipped\", () => {});",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    17,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "describe.skip(\"suite\", () => {});",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|js/ts/service.ts": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "return 31337 * 86400;",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "console.log(\"debug\", x);",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|misc/conf.yaml": {
+  "blocks": [],
+  "file": [],
+  "lines": [
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "# TODO",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|misc/query.sql": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|py/__main__.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|py/long_lines.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CPX.LARGE_FILE",
+    "MINOR",
+    "complexite",
+    1,
+    0,
+    "py/long_lines.py fait 121 lignes (seuil 100) : le fichier porte probablement plusieurs responsabilites.",
+    "128358d4",
+    "",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 651 caracteres (seuil 60).",
+    "b875b8b0",
+    "x = value_0 + value_1 + value_2 + value_3 + value_4 + value_5 + value_6 + value_7 + value_8 + value_9 + value_10 + value",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Valeur numerique 37 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y1 = 37",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Valeur numerique 74 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y2 = 74",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    11,
+    0,
+    "Valeur numerique 333 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y9 = 333",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    12,
+    0,
+    "Valeur numerique 370 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y10 = 370",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    13,
+    0,
+    "Valeur numerique 407 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y11 = 407",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|tout|py/magic.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 111 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : plus de cinq nombres magiques dans un meme fichier (le rapport est plafonne).\"\"\"",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    8,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "a = total * 4242",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    9,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "b = total + 31337",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    10,
+    0,
+    "Valeur numerique 86400 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "c = total - 86400",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    11,
+    0,
+    "Valeur numerique 7919 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "d = total / 7919",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    13,
+    0,
+    "Valeur numerique 5678 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "f = total * 5678",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|tout|py/mod.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    27,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "print(\"echec\", exc)",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    29,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "print(\"debug\")",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|py/scripts/run.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|py/tests/test_mod.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|tout|py/whitespace.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 109 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : espaces en fin de ligne (la ligne 2 ne contient que des espaces : ignoree).\"\"\"",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_tiers|java/Catches.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    3,
+    5,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    10,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    13,
+    15,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    18,
+    20,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    23,
+    25,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    28,
+    30,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "try { run(); } catch (Exception e) {",
+    "Exception e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    29,
+    0,
+    "Ligne de 69 caracteres (seuil 60).",
+    "b875b8b0",
+    "// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxy",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    3,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    8,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    18,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) {",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|java/CatchesMultiline.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    5,
+    7,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (IOException e) {",
+    "IOException e"
+   ]
+  ],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_tiers|java/Wildcard.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_tiers|java/src/main/java/demo/Service.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    63,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Scanner sc = new Scanner(System.in);",
+    null
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    64,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Connection c = ds.getConnection();",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    9,
+    0,
+    "Ligne de 72 caracteres (seuil 60).",
+    "b875b8b0",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    28,
+    0,
+    "Ligne de 83 caracteres (seuil 60).",
+    "b875b8b0",
+    "// ignore : le fichier est optionnel au demarrage, on continue sans lui",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    47,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    50,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "int magic = 4242 + 17;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    51,
+    0,
+    "Ligne de 64 caracteres (seuil 60).",
+    "b875b8b0",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    59,
+    0,
+    "Ligne de 68 caracteres (seuil 60).",
+    "b875b8b0",
+    "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    61,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MAJOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MAJOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MAJOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    44,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "System.out.println(\"find \" + id);",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    45,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "System.err.print(\"x\");",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    46,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (id < 0) return null;",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    48,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert id > 0;",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    52,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "return null;",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    58,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|java/src/main/java/demo/cli/Main.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    63,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Scanner sc = new Scanner(System.in);",
+    null
+   ],
+   [
+    "BUG.RESOURCE_LEAK",
+    "MAJOR",
+    "bug",
+    64,
+    0,
+    "Ressource ouverte sans fermeture garantie.",
+    "24e03846",
+    "Connection c = ds.getConnection();",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    9,
+    0,
+    "Ligne de 72 caracteres (seuil 60).",
+    "b875b8b0",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    28,
+    0,
+    "Ligne de 83 caracteres (seuil 60).",
+    "b875b8b0",
+    "// ignore : le fichier est optionnel au demarrage, on continue sans lui",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    47,
+    0,
+    "Valeur numerique 500 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    50,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "int magic = 4242 + 17;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    51,
+    0,
+    "Ligne de 64 caracteres (seuil 60).",
+    "b875b8b0",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    59,
+    0,
+    "Ligne de 68 caracteres (seuil 60).",
+    "b875b8b0",
+    "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    61,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MAJOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MAJOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MAJOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MAJOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MAJOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    46,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (id < 0) return null;",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    48,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert id > 0;",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    52,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "return null;",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    58,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|java/src/test/java/demo/ServiceTest.java": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    23,
+    24,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "} catch (Exception e) {",
+    "Exception e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "MINOR",
+    "bug",
+    27,
+    29,
+    "Exception capturee et ignoree, avec justification en commentaire.",
+    "247ed99c",
+    "} catch (RuntimeException e) {",
+    "RuntimeException e"
+   ],
+   [
+    "BUG.CATCH_SILENT_RETURN",
+    "MAJOR",
+    "bug",
+    32,
+    34,
+    "Exception capturee et transformee en sortie silencieuse.",
+    "c623e077",
+    "} catch (IOException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    40,
+    40,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { run(); } catch (Exception e) { continue; }",
+    "Exception e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.io.*;",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "import java.util.*;",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    9,
+    0,
+    "Ligne de 72 caracteres (seuil 60).",
+    "b875b8b0",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    28,
+    0,
+    "Ligne de 83 caracteres (seuil 60).",
+    "b875b8b0",
+    "// ignore : le fichier est optionnel au demarrage, on continue sans lui",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    51,
+    0,
+    "Ligne de 64 caracteres (seuil 60).",
+    "b875b8b0",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    62,
+    0,
+    "Ligne de 68 caracteres (seuil 60).",
+    "b875b8b0",
+    "String s = \"ne pas ajouter @SuppressWarnings ni // NOSONAR\";",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    64,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// if (old > 0) {",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.MUTABLE_STATIC",
+    "MINOR",
+    "bug",
+    8,
+    0,
+    "Etat statique mutable expose : source de fuites et de problemes de concurrence.",
+    "6171cb63",
+    "public static List<String> cache = new ArrayList<>();",
+    null
+   ],
+   [
+    "BUG.STATIC_DATEFORMAT",
+    "MINOR",
+    "bug",
+    9,
+    0,
+    "Formateur de date/nombre partage en statique : ces classes ne sont pas thread-safe.",
+    "29ae9ab7",
+    "static final SimpleDateFormat FORMAT = new SimpleDateFormat(\"yyyy\");",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "private float totalPrice = 0;",
+    null
+   ],
+   [
+    "BUG.FLOAT_MONEY",
+    "MINOR",
+    "bug",
+    11,
+    0,
+    "Montant monetaire stocke en float/double : erreurs d'arrondi garanties.",
+    "ab8dc25d",
+    "double montant;",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"x\" || b != \"y\") { return true; }",
+    null
+   ],
+   [
+    "BUG.STRING_IDENTITY",
+    "MINOR",
+    "bug",
+    15,
+    0,
+    "Comparaison de chaines avec == / != : compare les references, pas le contenu.",
+    "923458e8",
+    "if (a == \"\") { return false; }",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    23,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Exception e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    27,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (RuntimeException e) {",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    37,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "} catch (Throwable t) {",
+    null
+   ],
+   [
+    "BUG.PRINT_STACKTRACE",
+    "MINOR",
+    "bug",
+    38,
+    0,
+    "Exception ecrite sur la sortie standard : elle echappe au systeme de journalisation.",
+    "fdb40e75",
+    "e.printStackTrace();",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    40,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "try { run(); } catch (Exception e) { continue; }",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    47,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "Thread.sleep(500);",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MINOR",
+    "bug",
+    51,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (Double.NaN == r || r != Double.NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    55,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "// TODO nettoyer ce code",
+    null
+   ],
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    56,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "/* FIXME */",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    57,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "@SuppressWarnings(\"unchecked\")",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    58,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Disabled",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    59,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Ignore",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    60,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "@Test(enabled = false)",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    61,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "public void legacy() { // NOSONAR",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|js/app.js": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "return 31337 * 86400;",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "console.log(\"debug\", x);",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|js/app.test.js": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [],
+  "lines": [
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    16,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "xit(\"skipped\", () => {});",
+    null
+   ],
+   [
+    "BUG.DISABLED_TEST",
+    "MAJOR",
+    "bug",
+    17,
+    0,
+    "Test desactive.",
+    "f763d4be",
+    "describe.skip(\"suite\", () => {});",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|js/ts/service.ts": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    8,
+    8,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) {}",
+    "e"
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    9,
+    9,
+    "Exception capturee puis ignoree : l'erreur disparait sans trace.",
+    "9e6be3e1",
+    "try { await run(); } catch (e) { return; }",
+    "e"
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    14,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "return 31337 * 86400;",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "console.log(\"debug\", x);",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    4,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "fetch(\"/api\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    5,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "axios.get(\"/x\");",
+    null
+   ],
+   [
+    "BUG.AWAIT_MISSING",
+    "MINOR",
+    "bug",
+    6,
+    0,
+    "Appel asynchrone dont la promesse n'est ni attendue ni chainee : erreurs silencieuses.",
+    "7b63cf2d",
+    "saveAsync(x);",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    7,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "setTimeout(() => done(), 5000);",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    10,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// eslint-disable-next-line no-console",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    11,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "// @ts-ignore",
+    null
+   ],
+   [
+    "BUG.EMPTY_RETURN_NULL",
+    "MINOR",
+    "bug",
+    13,
+    0,
+    "Retour de null.",
+    "83605cba",
+    "if (x == NaN) { return null; }",
+    null
+   ],
+   [
+    "BUG.EQ_NAN",
+    "MAJOR",
+    "bug",
+    13,
+    0,
+    "Comparaison a NaN : toujours fausse.",
+    "963218e3",
+    "if (x == NaN) { return null; }",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|misc/conf.yaml": {
+  "blocks": [],
+  "file": [],
+  "lines": [
+   [
+    "BUG.TODO",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Marqueur TODO/FIXME laisse dans le code.",
+    "83c00e28",
+    "# TODO",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|misc/query.sql": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_tiers|py/__main__.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|py/long_lines.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CPX.LARGE_FILE",
+    "MINOR",
+    "complexite",
+    1,
+    0,
+    "py/long_lines.py fait 121 lignes (seuil 100) : le fichier porte probablement plusieurs responsabilites.",
+    "128358d4",
+    "",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 651 caracteres (seuil 60).",
+    "b875b8b0",
+    "x = value_0 + value_1 + value_2 + value_3 + value_4 + value_5 + value_6 + value_7 + value_8 + value_9 + value_10 + value",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    3,
+    0,
+    "Valeur numerique 37 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y1 = 37",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Valeur numerique 74 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y2 = 74",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    11,
+    0,
+    "Valeur numerique 333 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y9 = 333",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    12,
+    0,
+    "Valeur numerique 370 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y10 = 370",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    13,
+    0,
+    "Valeur numerique 407 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "y11 = 407",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_tiers|py/magic.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 111 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : plus de cinq nombres magiques dans un meme fichier (le rapport est plafonne).\"\"\"",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    8,
+    0,
+    "Valeur numerique 4242 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "a = total * 4242",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    9,
+    0,
+    "Valeur numerique 31337 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "b = total + 31337",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    10,
+    0,
+    "Valeur numerique 86400 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "c = total - 86400",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    11,
+    0,
+    "Valeur numerique 7919 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "d = total / 7919",
+    null
+   ],
+   [
+    "CNV.MAGIC_NUMBER",
+    "MINOR",
+    "convention",
+    13,
+    0,
+    "Valeur numerique 5678 utilisee directement, sans nom.",
+    "97a5f3bf",
+    "f = total * 5678",
+    null
+   ]
+  ],
+  "lines": []
+ },
+ "seuils_bas|un_tiers|py/mod.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    27,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "print(\"echec\", exc)",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.STDOUT",
+    "MINOR",
+    "convention",
+    29,
+    0,
+    "Ecriture sur la sortie standard dans du code de production.",
+    "ce626c7d",
+    "print(\"debug\")",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|py/scripts/run.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.ASSERT_PROD",
+    "MINOR",
+    "bug",
+    28,
+    0,
+    "Validation par assert dans du code de production : les assertions peuvent etre desactivees a l'execution.",
+    "c83d97ab",
+    "assert x > 0",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|py/tests/test_mod.py": {
+  "blocks": [
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    10,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    14,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    18,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except (ValueError, TypeError):",
+    null
+   ],
+   [
+    "BUG.CATCH_SWALLOWED",
+    "CRITICAL",
+    "bug",
+    22,
+    0,
+    "Exception capturee puis ignoree (pass) : l'erreur disparait sans trace.",
+    "3bca52b9",
+    "except Exception as exc:",
+    null
+   ]
+  ],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.WILDCARD_IMPORT",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+    "f7915b59",
+    "from os.path import *",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    32,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# y = compute(x)",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "# return y",
+    null
+   ]
+  ],
+  "lines": [
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    3,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import re  # noqa",
+    null
+   ],
+   [
+    "BUG.SUPPRESS",
+    "MAJOR",
+    "convention",
+    4,
+    0,
+    "Avertissement de l'outillage qualite neutralise.",
+    "20d1c2eb",
+    "import json  # type: ignore",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    10,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    14,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except Exception:",
+    null
+   ],
+   [
+    "BUG.CATCH_BROAD",
+    "MINOR",
+    "bug",
+    26,
+    0,
+    "Capture d'exception trop large.",
+    "6fc54750",
+    "except BaseException:",
+    null
+   ],
+   [
+    "BUG.THREAD_SLEEP",
+    "MINOR",
+    "bug",
+    30,
+    0,
+    "Attente par pause fixe.",
+    "665ea4cd",
+    "time.sleep(3)",
+    null
+   ]
+  ]
+ },
+ "seuils_bas|un_tiers|py/whitespace.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.MIXED_INDENT",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Indentation mixte tabulations / espaces dans le fichier.",
+    "dcb73f10",
+    "",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 109 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : espaces en fin de ligne (la ligne 2 ne contient que des espaces : ignoree).\"\"\"",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    4,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ],
+   [
+    "CNV.TRAILING_WS",
+    "MINOR",
+    "convention",
+    6,
+    0,
+    "Espaces en fin de ligne.",
+    "f36c016d",
+    "",
+    null
+   ]
+  ],
+  "lines": []
+ }
+}

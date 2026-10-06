@@ -1,0 +1,7 @@
+{
+  "_doc": "Configuration du superviseur de code pour ce depot. Le corpus de tests et les fixtures contiennent du code volontairement fautif : le superviseur s'y tait.",
+  "quiet_paths": [
+    "plugins/code-supervisor/tests/corpus/*",
+    "plugins/code-supervisor/resources/fixtures/*"
+  ]
+}

@@ -30,6 +30,9 @@ jobs:
       - name: Verifier que INDEX.md est a jour
         run: python tools/generate_index.py --check
 
+      - name: Tests de caracterisation du superviseur de code
+        run: python plugins/code-supervisor/tests/run_tests.py
+
       - name: Auto-test des moteurs livres dans les artefacts
         run: |
           for selftest in $(git ls-files '*/supervisor.py'); do
