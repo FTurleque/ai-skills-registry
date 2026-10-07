@@ -183,11 +183,12 @@ def uninstall(dest: str) -> int:
 
 def _self_test_report(script: str) -> tuple:
     """(code de retour, fin de la sortie de l'auto-test du moteur installe, en ASCII)."""
-    proc = subprocess.run([sys.executable, script, "--self-test"],
-                          stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=SELF_TEST_TIMEOUT_SECONDS)
+    command = [sys.executable, script, "--self-test"]
+    proc = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=SELF_TEST_TIMEOUT_SECONDS)
     out = proc.stdout.decode("utf-8", "replace").encode("ascii", "replace").decode("ascii")
     tail = out.strip().splitlines()[-SELF_TEST_TAIL_LINES:]
-    return proc.returncode, "\n".join("  " + line for line in tail)
+    indented = ["  " + line for line in tail]
+    return proc.returncode, "\n".join(indented)
 
 
 def _run_self_test(script: str) -> None:
