@@ -4,7 +4,7 @@ Deux familles d'entrees dans `golden/rules.json` :
 
 - `<config>|<selection>|<fichier>` : `check_lines`, `check_blocks` et `check_file`, avec deux jeux de
   seuils (defauts et seuils bas) et deux selections de lignes modifiees (toutes, une sur sept) ;
-- `extra|<config>|<fichier>` et `duplication|<config>` : regles de securite, de nommage, d'imports, de
+- `extra|<config>|<fichier>` et `duplication|<config>|<scenario>` : regles de securite, de nommage, d'imports, de
   complexite par fonction, de bugs par fonction, extraction des fonctions et duplication, avec les
   defauts et des seuils de fonction tres bas ;
 - `partial|seuils_fonctions|<fichier>` : les memes regles (hors extraction et duplication) quand seule une
@@ -93,6 +93,11 @@ def _configs(Config, DEFAULTS) -> dict:
         "seuils_fonctions": variant(complexity_warn=2, complexity_critical=4, function_lines_warn=5,
                                     function_lines_critical=10, nesting=2, params=2, boolean_operators=1,
                                     duplication_lines=3),
+        # Fenetre courte et un seul constat autorise : exerce le plafond de rapports de duplication.
+        "doublons_bas": variant(duplication_lines=3, duplication_max_reports=1),
+        # Un seul fichier de reference lu : `os.walk` rend les fichiers d'un dossier avant ceux de ses
+        # sous-dossiers, ce qui rend le resultat identique d'un systeme a l'autre.
+        "reference_limitee": variant(duplication_corpus_files=1),
     }
 
 
@@ -138,6 +143,39 @@ def _partial_groups(modules, files, configs, result):
         }
 
 
+# Fichiers « modifies » de chaque scenario de duplication (None : tous). La duplication compare ces fichiers
+# entre eux puis au reste du dossier, d'ou la variete des scenarios : un seul jeu de fichiers modifies
+# n'exercerait jamais la recherche dans le reste du depot.
+DUPLICATION_SCENARIOS = {
+    "tout": None,
+    "java_a": ["java/DuplicateA.java"],
+    "java_a_b": ["java/DuplicateA.java", "java/DuplicateB.java"],
+    "meme_fichier": ["java/DuplicateSelf.java"],
+    "dossier_exclu": ["java/UniqueDir.java"],          # son doublon n'existe que dans un dossier exclu
+    "dossier_inclus": ["java/UniquePlain.java"],       # son doublon existe dans un fichier ordinaire
+    "motif_exclu": ["js/dup/Unique.js"],               # son doublon n'existe que dans un *.min.js
+    "plusieurs_racines": ["java/DuplicateA.java", "js/dup/Unique.js"],
+    "fichier_a_la_racine": ["top_level.py"],           # pas de dossier de premier niveau a parcourir
+    "test_uniquement": ["java/src/test/java/demo/ServiceTest.java"],
+    "hors_structure": ["misc/conf.yaml"],
+    "yaml_duplique": ["misc/duplicated.yaml"],          # un bloc repete, mais le YAML n'est pas structurel
+    "extension_differente": ["js/dup/CrossTarget.ts"],  # son doublon est un .js : autre extension, pas compare
+    "autre_racine": ["java/CrossRoot.java"],            # son doublon est dans un autre dossier de premier niveau
+    "limite_de_fichiers": ["limitdup/Target.java"],     # son doublon est dans un sous-dossier, apres un fichier ordinaire
+    # La limite est atteinte dans la premiere racine : la seconde, qui seule contient le doublon, n'est pas lue.
+    "limite_entre_racines": ["a_first/Anchor.java", "z_second/Target.java"],
+}
+
+
+def _duplication_groups(rules_duplication, everything, corpus, configs, result):
+    by_path = {sf.path: sf for sf in everything}
+    for config_name in ("defaut", "seuils_fonctions", "doublons_bas", "reference_limitee"):
+        for scenario, selected in DUPLICATION_SCENARIOS.items():
+            changed = everything if selected is None else [by_path[rel] for rel in selected]
+            found = rules_duplication.check(changed, corpus, configs[config_name])
+            result["duplication|%s|%s" % (config_name, scenario)] = sorted((_compact(f) for f in found), key=repr)
+
+
 def run(engine_dir: str, corpus: str) -> dict:
     """Constats de toutes les regles du corpus (voir l'en-tete du module)."""
     sys.path.insert(0, engine_dir)
@@ -178,9 +216,7 @@ def run(engine_dir: str, corpus: str) -> dict:
         everything = files_for("tout")
         _extra_groups(modules, everything, configs, result)
         _partial_groups(modules, files_for("un_sur_sept"), configs, result)
-        for config_name in ("defaut", "seuils_fonctions"):
-            found = rules_duplication.check(source.load(corpus, rels), corpus, configs[config_name])
-            result["duplication|" + config_name] = sorted((_compact(f) for f in found), key=repr)
+        _duplication_groups(rules_duplication, source.load(corpus, rels), corpus, configs, result)
     return result
 
 

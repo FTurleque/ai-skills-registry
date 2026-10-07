@@ -9,6 +9,27 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — `rules_duplication.check` et `_corpus_files` découpées (ticket #11)
+
+`check` (complexité 22) devient `_target_files`, `_duplicated_pair`, `_duplicate_finding`, `_report` et un
+`check` de quinze lignes ; `_corpus_files` (17) devient `_reference_path`, `_collect_candidates` et un
+`_corpus_files` plus court. Le parcours de `os.walk` et l'ordre des vérifications de limite sont conservés à
+l'identique. **Aucun changement de comportement** : référence produite par l'ancien moteur (526 entrées),
+24 scénarios du hook, analyse complète du corpus et des fixtures (392 et 38 constats) identiques.
+
+Même méthode, même constat : **5 mutations de l'ancien code sur 15 seulement étaient détectées**, et pour une
+raison de fond. La référence appelait `check` en passant tout le corpus comme « modifié » : `_corpus_files`
+n'avait alors rien à lire, et la recherche dans le reste du dépôt n'était jamais exercée. La suite compte
+maintenant 16 scénarios de duplication (fichier seul, deux fichiers, même fichier, dossier exclu, motif exclu,
+autre extension, autre dossier de premier niveau, fichier à la racine, test, YAML, limites du nombre de
+fichiers de référence) sur quatre configurations, et le corpus gagne les fichiers correspondants. Sur le code
+découpé : 14 mutations non équivalentes sur 14 détectées ; les quatre autres sont équivalentes (élagage des
+dossiers exclus déjà couvert par `is_excluded`, comparaison d'un fichier à lui-même, emplacement « hors fichiers
+modifiés », racine absente) ainsi que la normalisation des séparateurs, qui ne change rien sous Windows.
+
+La duplication, comme l'extraction des fonctions, n'était donc couverte qu'en apparence. Un moteur déjà
+installé doit être réinstallé.
+
 ### Modifié — `source._extract_c` découpée (ticket #11)
 
 Complexité 23 → quatre fonctions courtes : `_extract_c` (parcours des lignes et pile des classes
