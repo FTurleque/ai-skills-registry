@@ -9,6 +9,31 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Corrigé — extraction des fonctions Kotlin, Scala et Go, et `BUG.DIV_ZERO` (ticket #28)
+
+- **Corps-expression** (`fun twice(x: Int) = x * 2` en Kotlin, `def inline(x: Int) = x + 1` en Scala) : la
+  fonction adoptait l'accolade de la fonction suivante, donc des bornes, une complexité et une longueur
+  fausses, et une fonction à corps-expression en fin de fichier n'était pas détectée du tout. Elle est
+  maintenant comptée sur sa ligne, comme les fonctions à `=>`. `= {` (corps à bloc, Scala) et les déclarations
+  C++ `= delete;`, `= default;`, `= 0;` ne changent pas.
+- **Méthodes Go** (`func (s *Server) Name()`) : elles étaient lues comme une fonction nommée `func`. Elles
+  prennent leur vrai nom, et le type du receveur (`Server`, `Stack` pour `*Stack[T]`) sert de propriétaire.
+  Conséquence : les règles de nommage s'appliquent enfin à ces méthodes (`Server.Handle` reçoit
+  `NAM.VAGUE_VERB`).
+- **`BUG.DIV_ZERO`** signale maintenant `/ values.size()`, `/ items.length`, `/ text.length()` et
+  `/ stats.summary.count`, pas seulement les diviseurs nus. Pour que l'élargissement ne bloque pas l'agent à
+  tort, un test de valeur sur le diviseur lui-même vaut garde (`if count:`, `if (!items.length) return`,
+  `a / n if n else 0`) : ce faux positif existait déjà pour les diviseurs nus (`if length:` avant `/ length`
+  dans `difflib.py`) et disparaît aussi.
+
+Méthode du ticket : cas de corpus d'abord (Kotlin, Scala, Go, C++, C#, Java, Python et JavaScript), référence
+enregistrée avec l'ancien moteur, correction, puis diff de la référence relu : 20 entrées sur 8 fichiers, rien
+d'autre. Les fixtures sont identiques. Sur 400 fichiers de la bibliothèque standard Python, l'élargissement
+ne produit aucun nouveau constat et en retire un (le faux positif de `difflib.py`). Par mutation, 26
+modifications du nouveau code sur 26 sont détectées ; deux ne l'étaient pas d'abord, faute de cas (`=>` suivi
+d'une accolade sur plusieurs lignes en C#, et `;` sur une ligne ultérieure d'un fichier Kotlin) et ont leur cas
+maintenant. Un moteur déjà installé doit être réinstallé.
+
 ### Modifié — parcours par ligne factorisé entre `rules_bugs` et `rules_security` (ticket #27)
 
 Les deux `_line_findings` partageaient la même structure : filtre de langage, choix de la ligne brute ou
