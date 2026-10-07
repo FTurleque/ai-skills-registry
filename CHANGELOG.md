@@ -14,11 +14,12 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 Les deux `_line_findings` partageaient la même structure : filtre de langage, choix de la ligne brute ou
 nettoyée, exception propre à la règle, construction du constat. Elle vit maintenant dans
 `supervisor/line_rules.py` (`LineRules`, `line_findings`) ; chaque module ne déclare plus que sa catégorie,
-sa gravité et ses exceptions. Le MAJOR « duplication » entre les deux fichiers disparaît, sans toucher au
+sa gravité et ses exceptions. Une ligne voyage dans un objet `Line` (numéro, brut, nettoyé, épuré) plutôt que
+dans quatre paramètres : sans lui, la factorisation ajoutait deux constats « 6 paramètres ». Le MAJOR « duplication » entre les deux fichiers disparaît, sans toucher au
 seuil `duplication_lines`. **Aucun changement de comportement** : 24 scénarios du hook et 526 entrées de
 règles identiques, analyse complète du corpus et des fixtures identique avant/après (396 et 38 constats).
 
-Par mutation, 13 modifications du nouveau code sur 13 sont détectées. Une première série en avait laissé
+Par mutation, 14 modifications du nouveau code sur 14 sont détectées. Une première série en avait laissé
 passer une, **sans rapport avec le découpage** : `_is_false_match` lit la ligne brute (un mot de contexte ou
 `safe_eval` dans un commentaire de fin de ligne compte), et aucun cas du corpus ne le distinguait de la ligne
 nettoyée. Deux lignes de `py/security_filters.py` comblent le trou ; la référence, régénérée avec l'ancien

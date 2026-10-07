@@ -5,7 +5,7 @@ import re
 from typing import List
 
 from model import CRITICAL, MAJOR, MINOR, CAT_SECURITY, Finding
-from line_rules import LineRules, line_findings
+from line_rules import Line, LineRules, line_findings
 from source import SourceFile
 
 PLACEHOLDER = re.compile(
@@ -168,8 +168,8 @@ def _category(rule_id: str) -> str:
     return CAT_SECURITY
 
 
-def _is_excluded(sf: SourceFile, rule_id: str, match, raw: str, clean: str, stripped: str) -> bool:
-    return _is_false_match(sf, rule_id, match, raw)
+def _is_excluded(sf: SourceFile, rule_id: str, match, line: Line) -> bool:
+    return _is_false_match(sf, rule_id, match, line.raw)
 
 
 _LINE_RULES = LineRules(PATTERNS, _RAW_RULES, _category, _severity, _is_excluded)
@@ -185,5 +185,5 @@ def check(sf: SourceFile) -> List[Finding]:
         stripped = raw.strip()
         if not stripped or stripped.startswith(_COMMENT_PREFIXES):
             continue
-        findings.extend(line_findings(_LINE_RULES, sf, idx, raw, clean, stripped))
+        findings.extend(line_findings(_LINE_RULES, sf, Line(idx, raw, clean, stripped)))
     return findings
