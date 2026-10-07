@@ -116,6 +116,8 @@ def _run_step(sandbox: Sandbox, installer: str, args: list, options: dict) -> di
     # Sortie en UTF-8 par defaut : la reference est la meme sous Windows (cp1252 sinon) et sous Linux.
     env = dict(sandbox.env, HOME=home, USERPROFILE=home, PYTHONIOENCODING="utf-8")
     env.update(options.get("env", {}))
+    # Liste d'arguments, sans shell ; `installer` et `args` sont des constantes des scenarios : le constat
+    # « commande construite a partir de valeurs dynamiques » du superviseur sur cet appel est un faux positif.
     proc = subprocess.run([sys.executable, installer] + args, cwd=sandbox.work, env=env,
                           stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=180)
     output = proc.stdout.decode("utf-8", "replace")
