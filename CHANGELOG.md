@@ -43,14 +43,18 @@ défaut confirmé, risque potentiel, amélioration proposée, décision à clari
 du code de production. Conçu pour être distribué à d'autres projets : indépendant du langage, de l'IDE et de
 l'OS, MCP d'IDE facultatif, aucune dépendance au dépôt qui l'héberge.
 
-- Formats OpenSpec vérifiés avec le CLI 1.14.1 (schéma `spec-driven`), dont un changement d'exemple validé par
-  `openspec validate --strict`. Le CLI reste la référence au moment de l'emploi.
+- Formats OpenSpec vérifiés avec le CLI 1.14.1 (schéma `spec-driven`), dont un changement d'exemple dont la
+  structure passe `openspec validate --strict`. Le CLI reste la référence au moment de l'emploi.
 - `resources/audit_tool.py` (Python 3.8+, facultatif) : `check`, `snapshot`, `drift`, `next-id`, contrôles
   déterministes des constats et de la traçabilité. 32 tests (`resources/tests/`) ; une mutation de la logique de contrôle
   a révélé un test dépendant de la plateforme (fins de ligne), corrigé.
-- Exercé par des agents suivant le skill sur quatre projets de test (sans OpenSpec, avec OpenSpec et bug ciblé,
-  monorepo à build bloqué, reprise d'audit), résultats recontrôlés de l'extérieur ; ce qui reste proposé (grand
-  dépôt réel, MCP d'IDE disponible, autres schémas OpenSpec) est listé dans `examples/validation-scenarios.md`. Surfaces déclarées : `claude-code`, `claude-desktop`.
+- **Pas encore utilisé en conditions réelles.** Seulement joué par des agents Claude qui lisaient ses instructions
+  sur quatre petits projets de test (sans OpenSpec, avec OpenSpec et bug ciblé, monorepo à build bloqué, reprise
+  d'audit) ; leurs affirmations ont été recontrôlées de l'extérieur, mais ni le déclenchement par la description ni
+  l'usage par une personne n'ont été observés. Ce qui reste à faire (grand dépôt réel, MCP d'IDE disponible,
+  autres schémas OpenSpec) est listé dans `examples/validation-scenarios.md`.
+- Surfaces déclarées : `claude-code` (essayée sous forme de lecture par des agents dans l'onglet Code de
+  l'application de bureau) et `claude-desktop` (mode Cowork : non essayé).
 
 ### Modifié — `install.py` découpé, testé et corrigé (ticket #29)
 

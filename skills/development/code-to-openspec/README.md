@@ -20,9 +20,10 @@ Le skill est indépendant du langage, du framework, de l'IDE et de l'OS. Le MCP 
 
 | Surface | Emplacement | Vérifié |
 |---------|-------------|---------|
-| Claude Code, portée utilisateur | `~/.claude/skills/code-to-openspec/` | oui (convention documentée par Claude Code ; skill exercé en simulation, voir Limites) |
-| Claude Code, portée projet | `<projet>/.claude/skills/code-to-openspec/` | oui (même convention) |
-| Application de bureau | réglages de l'application, ou via un plugin | non vérifié |
+| Claude Code, portée utilisateur | `~/.claude/skills/code-to-openspec/` | emplacement : oui (convention documentée par Claude Code) ; usage réel : pas encore, voir Limites |
+| Claude Code, portée projet | `<projet>/.claude/skills/code-to-openspec/` | emplacement : oui (même convention) ; usage réel : pas encore |
+| Application de bureau (onglet Code) | mêmes emplacements que Claude Code | emplacement : oui (surface `claude-code`) ; usage réel : pas encore |
+| Application de bureau (mode Cowork, surface `claude-desktop`) | réglages de l'application, ou via un plugin | non vérifié |
 
 ```bash
 cp -r skills/development/code-to-openspec ~/.claude/skills/
@@ -68,4 +69,4 @@ Livrables, dans le dossier d'audit du projet (`docs/audit/<périmètre>/` à dé
 - **Pas d'usage sur claude.ai ni via l'API sans accès au dépôt** : le skill suppose l'accès aux fichiers du projet ; `audit_tool.py` suppose un interpréteur Python. Seules les surfaces `claude-code` et `claude-desktop` sont déclarées.
 - **Front matter du registre** : `SKILL.md` porte des champs propres au registre (`kind`, `displayName`, `tags`, `status`…) en plus de `name` et `description`. Claude Code les tolère ; un autre outil de téléversement plus strict que la spécification Agent Skills pourrait les refuser (non vérifié) — retirer alors ces champs en ne gardant que `name`, `description` et `license`.
 - **`audit_tool.py` n'a été testé qu'avec Python 3.13** ; la compatibilité 3.8+ est visée (bibliothèque standard, pas de syntaxe récente) mais non vérifiée.
-- **Validation par simulation** : le skill a été exercé par des agents suivant ses instructions sur des projets de test, pas sur de grands projets réels. Résultats et ce qui reste proposé : [examples/validation-scenarios.md](examples/validation-scenarios.md).
+- **Pas encore utilisé en conditions réelles.** Le skill n'a été que « joué » par des agents Claude qui lisaient ses instructions sur de petits projets de test construits pour l'occasion. Il n'a pas été déclenché par une vraie demande, ni utilisé par une personne sur son projet : ces essais montrent des lacunes d'instruction, pas la justesse des constats. Ce qui a été joué et ce qui reste à faire : [examples/validation-scenarios.md](examples/validation-scenarios.md).
