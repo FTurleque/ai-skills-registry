@@ -9,6 +9,24 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Ajouté — skill `code-to-openspec` 1.0.0 (expérimental)
+
+Skill de rétro-ingénierie : analyse une application existante à partir de son code et prépare des changements
+OpenSpec traçables (constat → changement → exigence → scénario → tâche → validation). Trois modes (audit global,
+analyse ciblée, reprise), sept qualifications de preuve (comportement observé, exigence documentée ou proposée,
+défaut confirmé, risque potentiel, amélioration proposée, décision à clarifier), par défaut aucune modification
+du code de production. Conçu pour être distribué à d'autres projets : indépendant du langage, de l'IDE et de
+l'OS, MCP d'IDE facultatif, aucune dépendance au dépôt qui l'héberge.
+
+- Formats OpenSpec vérifiés avec le CLI 1.14.1 (schéma `spec-driven`), dont un changement d'exemple validé par
+  `openspec validate --strict`. Le CLI reste la référence au moment de l'emploi.
+- `resources/audit_tool.py` (Python 3.8+, facultatif) : `check`, `snapshot`, `drift`, `next-id`, contrôles
+  déterministes des constats et de la traçabilité. 32 tests (`resources/tests/`) ; une mutation de la logique de contrôle
+  a révélé un test dépendant de la plateforme (fins de ligne), corrigé.
+- Exercé par des agents suivant le skill sur quatre projets de test (sans OpenSpec, avec OpenSpec et bug ciblé,
+  monorepo à build bloqué, reprise d'audit), résultats recontrôlés de l'extérieur ; ce qui reste proposé (grand
+  dépôt réel, MCP d'IDE disponible, autres schémas OpenSpec) est listé dans `examples/validation-scenarios.md`. Surfaces déclarées : `claude-code`, `claude-desktop`.
+
 ### Modifié — `install.py` découpé, testé et corrigé (ticket #29)
 
 `install.py` n'avait aucun test alors qu'il écrit dans le `settings.json` de l'utilisateur. Une suite de 22
