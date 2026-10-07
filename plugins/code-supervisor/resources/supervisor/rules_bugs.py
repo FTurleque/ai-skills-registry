@@ -5,6 +5,7 @@ import re
 from typing import List
 
 from model import CRITICAL, MAJOR, MINOR, CAT_BUG, CAT_CONVENTION, Finding
+from line_rules import LineRules, line_findings
 from source import SourceFile, Function, is_c_family, is_python, is_structural
 
 LINE_PATTERNS = [
@@ -124,22 +125,16 @@ def _line_severity(sf: SourceFile, rule_id: str, severity: str) -> str:
     return severity
 
 
-def _line_findings(sf: SourceFile, idx: int, raw: str, clean: str, stripped: str) -> List[Finding]:
-    findings: List[Finding] = []
-    for rule_id, langs, rx, severity, message, fix in LINE_PATTERNS:
-        if langs and sf.lang not in langs:
-            continue
-        if not rx.search(raw if rule_id in _RAW_TEXT_RULES else clean):
-            continue
-        skip = _SKIP_WHEN.get(rule_id)
-        if skip and skip(sf, raw, clean, stripped, rx):
-            continue
-        findings.append(Finding(
-            rule=rule_id, category=CAT_CONVENTION if rule_id in _CONVENTION_RULES else CAT_BUG,
-            severity=_line_severity(sf, rule_id, severity), message=message, fix=fix,
-            file=sf.path, line=idx, evidence=stripped[:200],
-        ))
-    return findings
+def _line_category(rule_id: str) -> str:
+    return CAT_CONVENTION if rule_id in _CONVENTION_RULES else CAT_BUG
+
+
+def _is_skipped(sf: SourceFile, rule_id: str, match, raw: str, clean: str, stripped: str) -> bool:
+    skip = _SKIP_WHEN.get(rule_id)
+    return bool(skip and skip(sf, raw, clean, stripped, match.re))
+
+
+_LINE_RULES = LineRules(LINE_PATTERNS, _RAW_TEXT_RULES, _line_category, _line_severity, _is_skipped)
 
 
 def check_lines(sf: SourceFile) -> List[Finding]:
@@ -149,7 +144,7 @@ def check_lines(sf: SourceFile) -> List[Finding]:
         if not stripped or not sf.is_changed(idx):
             continue
         clean = sf.clean_lines[idx - 1] if idx - 1 < len(sf.clean_lines) else ""
-        findings.extend(_line_findings(sf, idx, raw, clean, stripped))
+        findings.extend(line_findings(_LINE_RULES, sf, idx, raw, clean, stripped))
     return findings
 
 

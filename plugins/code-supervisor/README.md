@@ -269,6 +269,7 @@ code-supervisor/
     │   ├── runner.py            hook, mode manuel, auto-test, etat anti-boucle
     │   ├── model.py             constat, severites, deduplication
     │   ├── source.py            langages, nettoyage, extraction des fonctions, diff git
+    │   ├── line_rules.py        parcours par ligne commun aux regles de securite et de bugs
     │   ├── rules_security.py    secrets, injections, crypto, configuration dangereuse
     │   ├── rules_bugs.py        bugs probables, par ligne, par bloc, par fonction
     │   ├── rules_quality.py     complexite, taille, imbrication, conventions de forme
