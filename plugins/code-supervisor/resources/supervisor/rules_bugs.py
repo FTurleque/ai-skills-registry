@@ -108,6 +108,23 @@ def _skip_in_tests(sf, line, rx) -> bool:
     return sf.is_test
 
 
+# Boucle bornee par une echeance, dans la fenetre de la ligne : `while (!ready && nanoTime() < deadline)`.
+_BOUNDED_WAIT = re.compile(
+    r"(?i)\b(?:while|for|do)\b.*\b(?:deadline|timeout|nanoTime|currentTimeMillis|monotonic|time\.time|Instant\.now)\b")
+_BOUNDED_WAIT_WINDOW = 4      # la ligne et les trois qui la precedent
+
+
+def _skip_bounded_wait(sf, line, rx) -> bool:
+    """Un sleep dans une boucle bornee par une echeance est le polling avec delai maximum que la regle recommande."""
+    for number in range(line.number, max(0, line.number - _BOUNDED_WAIT_WINDOW), -1):
+        text = sf.clean_lines[number - 1]
+        if _BOUNDED_WAIT.search(text):
+            return True
+        if number != line.number and text.lstrip().startswith("}"):      # fin du bloc precedent : on en sort
+            return False
+    return False
+
+
 def _skip_empty_string_comparison(sf, line, rx) -> bool:
     return bool(_EMPTY_STRING_COMPARISON.search(line.clean))
 
@@ -120,6 +137,7 @@ _SKIP_WHEN = {
     "BUG.ASSERT_PROD": _skip_in_tests,
     "BUG.STRING_IDENTITY": _skip_empty_string_comparison,
     "BUG.EMPTY_RETURN_NULL": _skip_in_tests,
+    "BUG.THREAD_SLEEP": _skip_bounded_wait,
 }
 
 
@@ -165,6 +183,20 @@ _DOCUMENTED_MIN_CHARS = 25     # longueur d'un commentaire qui justifie un bloc 
 _SWALLOWING_STATEMENTS = ("pass", "...", "continue")
 
 
+def _is_silent_exit(sf: SourceFile, i: int, closing: int, body) -> bool:
+    """Un catch qui se contente de sortir (return, break, continue) sans rien dire de la cause.
+
+    Ne le sont pas : un bloc qui fait autre chose que sortir (il enregistre, compte, ou lit la cause), un bloc
+    commente (decision assumee) et un `return` de texte, dont le diagnostic part avec la valeur."""
+    if len(body) != 1 or not re.search(r"(?i)^\s*(?:return|break|continue)\b", body[0]):
+        return False
+    if re.search(r"(?i)log|throw|raise|print", body[0]):
+        return False
+    if len(_comment_in(sf, i + 1, closing + 1)) >= _DOCUMENTED_MIN_CHARS:
+        return False
+    return not re.search(r"\breturn\s+\"", " ".join(sf.lines[i:closing + 1]))
+
+
 def _catch_findings(sf: SourceFile, clean, i: int, match) -> List[Finding]:
     body, closing = _brace_body(clean, i, match.end(0) - 1)
     if _is_empty_body(body):
@@ -182,8 +214,7 @@ def _catch_findings(sf: SourceFile, clean, i: int, match) -> List[Finding]:
             file=sf.path, line=i + 1, end_line=closing + 1,
             evidence=sf.snippet(i + 1), symbol=match.group(1).strip()[:60],
         )]
-    if len(body) <= 2 and any(re.search(r"(?i)^\s*(?:return|break|continue)\b", b) for b in body) \
-            and not any(re.search(r"(?i)log|throw|raise|print", b) for b in body):
+    if _is_silent_exit(sf, i, closing, body):
         return [Finding(
             rule="BUG.CATCH_SILENT_RETURN", category=CAT_BUG, severity=MAJOR,
             message="Exception capturee et transformee en sortie silencieuse.",

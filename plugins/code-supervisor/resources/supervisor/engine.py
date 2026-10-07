@@ -14,25 +14,35 @@ import rules_naming
 import rules_quality
 import rules_security
 from model import CRITICAL, MAJOR, MINOR, SEVERITY_ORDER, Finding, dedupe, sort_findings
-from source import (SourceFile, extract_functions, git_changed_files, git_changed_lines,
-                    is_structural, load)
+from source import (SourceFile, content_fingerprint, extract_functions, git_changed_files, git_changed_lines,
+                    git_files_since, git_root, is_structural, load)
 
 
-def select_files(root: str, cfg, touched_hint=None) -> Tuple[List[SourceFile], List[str]]:
-    """Fichiers a analyser : etat git, croise avec les fichiers touches dans la session."""
+def select_files(root: str, cfg, touched_hint=None, base_ref=None,
+                 reviewed=None) -> Tuple[List[SourceFile], List[str]]:
+    """Fichiers a analyser : l'etat git, plus ce qui a ete commite depuis `base_ref`.
+
+    Les fichiers ecrits pendant la session (transcript) ne comptent que hors d'un depot git. Dans un depot,
+    un fichier deja commite et inchange n'a plus rien a faire relire : le reprendre ici le ferait analyser
+    en entier a chaque passe, avec les memes constats, jusqu'a la fin de la session.
+
+    `reviewed` associe un chemin a l'empreinte de son contenu lors d'une passe precedente sans blocage : un fichier
+    dont le contenu n'a pas change depuis n'est pas relu, qu'il ait ete commite entre-temps ou non."""
     changed, new = git_changed_files(root)
-    if touched_hint:
+    if base_ref:
+        changed |= git_files_since(root, base_ref)
+    if touched_hint and git_root(root) is None:
         for p in touched_hint:
             rel = _relativize(root, p)
             if rel:
                 changed.add(rel)
-                if rel not in changed:
-                    new.add(rel)
     candidates = sorted(p for p in changed if not cfg.is_excluded(p) and not cfg.is_quiet(p))
     candidates = [p for p in candidates if _is_code(p)]
+    if reviewed:
+        candidates = [p for p in candidates if reviewed.get(p) != content_fingerprint(root, p)]
     if len(candidates) > cfg["max_files"]:
         candidates = candidates[: cfg["max_files"]]
-    line_map = git_changed_lines(root, candidates)
+    line_map = git_changed_lines(root, candidates, base_ref)
     files = load(root, candidates, changed_lines=line_map, new_files=new)
     return files, candidates
 

@@ -9,7 +9,7 @@ import shutil
 import subprocess
 from typing import List, Optional, Tuple
 
-from model import CRITICAL, MAJOR, MINOR, Finding
+from model import CRITICAL, LLM_NOTE_PREFIX, MAJOR, MINOR, Finding
 from source import SourceFile, git_diff_text
 
 SYSTEM = """Tu es le superviseur de code d'une equipe. Un agent vient de modifier du code.
@@ -139,8 +139,12 @@ def _run_reviewer(exe: str, prompt: str, root: str, cfg) -> Tuple[Optional[str],
                               stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                               timeout=cfg.llm.get("timeout_seconds", 180), env=env)
     except (OSError, subprocess.SubprocessError) as exc:
-        return None, "revue LLM indisponible (%s)" % exc
-    return proc.stdout.decode("utf-8", "replace"), ""
+        return None, "%s indisponible (%s)" % (LLM_NOTE_PREFIX, exc)
+    output = proc.stdout.decode("utf-8", "replace")
+    if not output.strip():
+        detail = proc.stderr.decode("utf-8", "replace").strip()[:200] or "aucune sortie"
+        return None, "%s en echec (code %d : %s)" % (LLM_NOTE_PREFIX, proc.returncode, detail)
+    return output, ""
 
 
 def _to_finding(item: dict, default_path: str) -> Finding:
@@ -171,9 +175,12 @@ def review(root: str, files: List[SourceFile], static_findings: List[Finding], c
     output, error = _run_reviewer(exe, prompt, root, cfg)
     if output is None:
         return [], error
+    failure = _envelope_error(output)
+    if failure:
+        return [], "%s indisponible (%s)" % (LLM_NOTE_PREFIX, failure)
     payload = _extract_result(output)
     if payload is None:
-        return [], "revue LLM sans resultat exploitable"
+        return [], "%s sans resultat exploitable" % LLM_NOTE_PREFIX
     findings = [_to_finding(item, files[0].path) for item in payload.get("findings", [])[:30]]
     return findings, str(payload.get("verdict", ""))[:400]
 
@@ -206,6 +213,14 @@ def _load_json(text: str):
         return json.loads(text)
     except (ValueError, RecursionError):
         return None  # pas du JSON (texte libre autour de la reponse) : l'appelant cherche plus loin
+
+
+def _envelope_error(raw: str):
+    """Message du CLI quand il repond `is_error` : session expiree, quota, modele refuse..."""
+    envelope = _load_json(raw.strip())
+    if isinstance(envelope, dict) and envelope.get("is_error"):
+        return str(envelope.get("result") or envelope.get("subtype") or "erreur sans detail")[:200]
+    return None
 
 
 def _extract_result(raw: str):

@@ -151,6 +151,7 @@ DUPLICATION_SCENARIOS = {
     "java_a": ["java/DuplicateA.java"],
     "java_a_b": ["java/DuplicateA.java", "java/DuplicateB.java"],
     "meme_fichier": ["java/DuplicateSelf.java"],
+    "champs_seuls": ["java/FieldsA.java", "java/FieldsB.java"],   # sept declarations de champs de meme forme, sans logique commune
     "dossier_exclu": ["java/UniqueDir.java"],          # son doublon n'existe que dans un dossier exclu
     "dossier_inclus": ["java/UniquePlain.java"],       # son doublon existe dans un fichier ordinaire
     "motif_exclu": ["js/dup/Unique.js"],               # son doublon n'existe que dans un *.min.js

@@ -82,7 +82,7 @@ agent termine sa reponse
         v
 hook Stop / SubagentStop  -->  resources/supervisor.py
                                  |
-                                 |- perimetre : git status + fichiers ecrits par l'agent
+                                 |- perimetre : git status + commits depuis la derniere passe de la session
                                  |- lignes modifiees : git diff -U0
                                  |- couche 1 : analyse statique portable, sans dependance
                                  |- couche 2 : relecture par modele (claude -p, hooks desactives)
@@ -229,6 +229,13 @@ blocages de Claude Code (8 par defaut).
 - **Pas de recursion.** Le relecteur est lance avec les hooks desactives et une variable de garde.
 - **Pas de jugement sur du code non touche.** Seules les lignes du diff sont evaluees, plus les
   fonctions qui les contiennent. Un fichier nouveau est lu en entier.
+- **Pas de relecture du deja relu.** Le superviseur retient, par session, le commit de la derniere
+  passe et l'empreinte du contenu des fichiers relus sans blocage : un fichier inchange depuis, commite
+  entre-temps ou non, n'est pas relu. Un fichier qui portait un point bloquant l'est a la passe suivante.
+  A la premiere passe d'une session, la base est le dernier commit anterieur au debut du transcript.
+- **Une revue par modele absente se voit.** Si `claude -p` echoue (session expiree, quota, modele refuse),
+  le message du CLI est repris dans le verdict, qui se dit « analyse statique seule » au lieu d'annoncer
+  une relecture complete. Pour une session expiree : `claude` puis `/login` dans un terminal.
 - **Pas de contournement.** Neutraliser un avertissement ou desactiver un test pour faire taire un
   controle est lui-meme signale comme un defaut.
 - **Budget borne.** 45 s d'analyse statique par defaut, 60 fichiers au plus, corpus de duplication

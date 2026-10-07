@@ -18,7 +18,8 @@ import llm
 import report as report_mod
 from config import DEFAULTS, Config, load_config
 from model import sort_findings
-from source import git_changed_lines, git_root, load, run_git
+from source import (EMPTY_TREE, content_fingerprint, git_changed_lines, git_commit_before, git_head, git_is_ancestor, git_root,
+                    load, run_git)
 
 # Dossier de `supervisor.py` : configuration livree a cote du script et fixtures de l'auto-test.
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,7 +29,9 @@ PATH_KEYS = ("file_path", "path", "notebook_path")
 SUPERVISOR_AGENTS = ("code-supervisor", "supervisor")
 DEFAULT_LOG_SUBDIR = os.path.join("docs", "rapport-supervisor")
 STATE_HISTORY = 30          # empreintes conservees dans l'etat anti-boucle
+REVIEWED_HISTORY = 400      # fichiers dont le contenu relu est retenu
 TRANSCRIPT_TAIL_LINES = 4000
+SESSION_START_SCAN_LINES = 20       # lignes lues en tete du transcript pour dater le debut de session
 
 
 # --------------------------------------------------------------------------- etat
@@ -113,9 +116,36 @@ def touched_files(transcript_path: str, limit_lines: int = TRANSCRIPT_TAIL_LINES
 
 # --------------------------------------------------------------------------- analyse
 
-def run(project_dir: str, cfg, session_id: str, hints, round_no: int):
+def _session_start(transcript_path: str):
+    """Horodatage (ISO 8601) de la premiere entree datee du transcript, ou None."""
+    try:
+        with open(transcript_path, "r", encoding="utf-8", errors="replace") as fh:
+            for _, line in zip(range(SESSION_START_SCAN_LINES), fh):
+                entry = _parse_json_line(line)
+                stamp = entry.get("timestamp") if isinstance(entry, dict) else None
+                if isinstance(stamp, str):
+                    return stamp
+    except OSError:
+        return None
+    return None
+
+
+def _base_ref(root: str, state: dict, transcript_path: str):
+    """Commit a partir duquel relire : celui de la derniere passe de la session, sinon le dernier commit
+    anterieur au debut de la session (l'arbre vide si tous les commits sont posterieurs). Sans transcript date,
+    seul l'etat non commite est relu."""
+    stored = state.get("head")
+    if stored:
+        return stored if git_is_ancestor(root, stored) else None
+    stamp = _session_start(transcript_path) if transcript_path else None
+    if not stamp:
+        return None
+    return git_commit_before(root, stamp) or (EMPTY_TREE if git_head(root) else None)
+
+
+def run(project_dir: str, cfg, hints=None, base_ref=None, reviewed=None):
     root = git_root(project_dir) or project_dir
-    files, candidates = engine.select_files(root, cfg, touched_hint=hints)
+    files, candidates = engine.select_files(root, cfg, touched_hint=hints, base_ref=base_ref, reviewed=reviewed)
     if not files:
         return None
     static = engine.analyze(root, files, cfg)
@@ -177,6 +207,19 @@ def _must_skip(payload: dict) -> bool:
     return (payload.get("agent_type") or "") in SUPERVISOR_AGENTS
 
 
+def _reviewed_contents(root: str, previous: dict, result: dict) -> dict:
+    """Contenus relus sans blocage : un fichier qui porte un point bloquant doit etre relu a la passe suivante."""
+    reviewed = dict(previous)
+    blocked_paths = {finding.file for finding in result["blockers"]}
+    for source_file in result["files"]:
+        fingerprint = None if source_file.path in blocked_paths else content_fingerprint(root, source_file.path)
+        if fingerprint:
+            reviewed[source_file.path] = fingerprint
+        else:
+            reviewed.pop(source_file.path, None)
+    return dict(list(reviewed.items())[-REVIEWED_HISTORY:])
+
+
 def _blockers_signature(blockers) -> str:
     keys = sorted(f.key() for f in blockers)
     return hashlib.sha256("|".join(keys).encode("utf-8")).hexdigest()[:16] if keys else ""
@@ -228,7 +271,7 @@ def _encode_hook_output(out: dict) -> str:
 def _hook_output(payload: dict, result: dict, blocked: bool, exhausted: bool,
                  seen_rounds: int, report_file: str, limit: int) -> dict:
     blockers = result["blockers"]
-    summary = report_mod.user_summary(result["counts"], blocked, len(result["files"]))
+    summary = report_mod.user_summary(result["counts"], blocked, len(result["files"]), result["verdict"])
     if blocked:
         return {
             "decision": "block",
@@ -269,7 +312,9 @@ def hook_main() -> int:
     round_no = int(state.get("rounds", 0)) + 1
 
     started = time.time()
-    result = run(project_dir, cfg, session_id, touched_files(payload.get("transcript_path", "")), round_no)
+    root = git_root(project_dir) or project_dir
+    base_ref = _base_ref(root, state, payload.get("transcript_path", ""))
+    result = run(project_dir, cfg, touched_files(payload.get("transcript_path", "")), base_ref, state.get("reviewed"))
     if result is None:
         return 0
 
@@ -280,6 +325,10 @@ def hook_main() -> int:
 
     report_file = _write_report(logs, result, blocked, session_id, round_no)
     _record_round(state, signature, blocked, seen_rounds, max_rounds, round_no, started)
+    head = git_head(root)
+    if head:
+        state["head"] = head       # prochaine passe : ne relire que ce qui a bouge depuis
+    state["reviewed"] = _reviewed_contents(root, state.get("reviewed") or {}, result)
     write_state(st_path, state)
 
     limit = int(cfg["max_findings_in_report"])
@@ -310,7 +359,7 @@ def cli_main(argv) -> int:
     if explicit:
         files, findings, verdict = _review_explicit(argv, explicit, root, cfg)
     else:
-        result = run(project_dir, cfg, "manuel", None, 1)
+        result = run(project_dir, cfg)
         if result is None:
             print("Aucun fichier modifie a relire.")
             return 0

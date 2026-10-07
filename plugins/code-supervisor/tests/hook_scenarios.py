@@ -5,6 +5,7 @@ rapport, fins de ligne) pour etre identiques d'une machine et d'un systeme a l'a
 fichier de reference `golden/hook_scenarios.json`."""
 from __future__ import annotations
 
+import datetime
 import json
 import os
 import re
@@ -15,6 +16,7 @@ import tempfile
 
 BAD = "def f(x):\n    try:\n        x()\n    except Exception:\n        pass\n"
 CLEAN = "def add(first, second):\n    return first + second\n"
+WARN = "def f():\n    # TODO plus tard\n    return 1\n"      # un constat qui ne bloque pas
 TEMP_PREFIX = "scn_"
 
 
@@ -102,6 +104,38 @@ def _transcript(sandbox: Sandbox, repo: str) -> str:
     return path
 
 
+def _tomorrow() -> str:
+    """Une date de debut de session posterieure a tous les commits du test (git ne date pas l'an 2999)."""
+    return (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
+
+def _commit(sandbox: Sandbox, repo: str, message: str) -> None:
+    sandbox.git(repo, "add", ".")
+    sandbox.git(repo, "commit", "-qm", message)
+
+
+def _timestamped_transcript(sandbox: Sandbox, started: str) -> str:
+    """Transcript dont la premiere entree date le debut de session (ISO 8601)."""
+    path = os.path.join(sandbox.work, "session.jsonl")
+    Sandbox.write(sandbox.work, "session.jsonl", json.dumps({"type": "user", "timestamp": started}) + "\n")
+    return path
+
+
+def _failing_reviewer(sandbox: Sandbox) -> str:
+    """Faux CLI de revue qui repond comme `claude -p` quand sa session est expiree."""
+    script = os.path.join(sandbox.work, "fake_claude.py")
+    Sandbox.write(sandbox.work, "fake_claude.py",
+                  "import json, sys\nsys.stdin.read()\n"
+                  "print(json.dumps({\"is_error\": True, \"result\": \"Failed to authenticate: session expired\"}))\n"
+                  "sys.exit(1)\n")
+    launcher = os.path.join(sandbox.work, "fake_claude.cmd" if os.name == "nt" else "fake_claude")
+    Sandbox.write(sandbox.work, os.path.basename(launcher),
+                  ("@echo off\r\n\"%s\" \"%s\"\r\n" if os.name == "nt" else "#!/bin/sh\nexec \"%s\" \"%s\"\n")
+                  % (sys.executable, script))
+    os.chmod(launcher, 0o755)
+    return launcher
+
+
 def _states(repo: str) -> dict:
     """Etat anti-boucle persiste, sans la duree ni les empreintes (qui dependent du hachage)."""
     folder = os.path.join(repo, "docs", "rapport-supervisor")
@@ -111,6 +145,8 @@ def _states(repo: str) -> dict:
             with open(os.path.join(folder, name), encoding="utf-8") as fh:
                 state = json.load(fh)
             state.pop("duration", None)
+            state["head"] = bool(state.get("head"))         # un SHA depend du depot jetable : sa presence suffit
+            state["reviewed"] = sorted(state.get("reviewed", {}))      # les chemins relus, sans leurs empreintes
             state["rounds_by_signature"] = sorted(state.get("rounds_by_signature", {}).values())
             state["released_signatures"] = len(state.get("released_signatures", []))
             states[name] = state
@@ -143,6 +179,42 @@ def run(script: str) -> dict:
         results["transcript_hint"] = sandbox.run(hinted, {"cwd": hinted, "session_id": "t1", "transcript_path": transcript})
         results["transcript_missing"] = sandbox.run(hinted, {"cwd": hinted, "session_id": "t2",
                                                              "transcript_path": os.path.join(sandbox.work, "absent.jsonl")})
+
+        # Perimetre : un fichier deja commite et inchange n'est plus relu, meme s'il figure dans le transcript.
+        committed = sandbox.make_repo("committed", {"a.py": BAD})
+        _commit(sandbox, committed, "work")
+        committed_hint = os.path.join(sandbox.work, "committed.jsonl")
+        Sandbox.write(sandbox.work, "committed.jsonl", json.dumps({"timestamp": _tomorrow(),
+            "message": {"content": [{"type": "tool_use", "name": "Write",
+                                     "input": {"file_path": os.path.join(committed, "a.py")}}]}}) + "\n")
+        results["scope_committed_unchanged"] = sandbox.run(committed, {"cwd": committed, "session_id": "k1",
+                                                                        "transcript_path": committed_hint})
+        # ... mais ce qui a ete commite depuis le debut de la session (aucun commit avant : arbre vide) est relu.
+        started = sandbox.make_repo("started", {"a.py": BAD})
+        _commit(sandbox, started, "work")
+        results["scope_committed_since_session_start"] = sandbox.run(started, {
+            "cwd": started, "session_id": "k2",
+            "transcript_path": _timestamped_transcript(sandbox, "2000-01-01T00:00:00.000Z")})
+        # Passes successives : le commit de la passe precedente est la base de la suivante.
+        stepwise = sandbox.make_repo("stepwise", {"first.py": WARN})
+        results["scope_pass_1_uncommitted"] = sandbox.run(stepwise, {"cwd": stepwise, "session_id": "k3"})
+        _commit(sandbox, stepwise, "first")
+        results["scope_pass_2_nothing_new"] = sandbox.run(stepwise, {"cwd": stepwise, "session_id": "k3"})
+        Sandbox.write(stepwise, "second.py", BAD)
+        _commit(sandbox, stepwise, "second")
+        results["scope_pass_3_commit_since"] = sandbox.run(stepwise, {"cwd": stepwise, "session_id": "k3"})
+
+        # Revue par modele en echec : le rapport le dit au lieu d'annoncer un verdict complet.
+        reviewed = sandbox.make_repo("reviewed", {"b.py": CLEAN})
+        Sandbox.write(sandbox.config_dir, "supervisor.config.json",
+                      json.dumps({"llm": {"enabled": True, "cli": _failing_reviewer(sandbox), "timeout_seconds": 30}}))
+        no_llm = {key: value for key, value in sandbox.env.items() if key != "SUPERVISOR_NO_LLM"}
+        sandbox.env, previous_env = no_llm, sandbox.env
+        try:
+            results["llm_review_failed"] = sandbox.run(reviewed, {"cwd": reviewed, "session_id": "l1"})
+        finally:
+            sandbox.env = previous_env
+            os.remove(os.path.join(sandbox.config_dir, "supervisor.config.json"))
 
         logs = os.path.join(sandbox.work, "logs")
         os.makedirs(logs)
