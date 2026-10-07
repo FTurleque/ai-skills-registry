@@ -5,6 +5,7 @@ import re
 from typing import List
 
 from model import CRITICAL, MAJOR, MINOR, CAT_BUG, CAT_CONVENTION, Finding
+from line_rules import Line, LineRules, line_findings
 from source import SourceFile, Function, is_c_family, is_python, is_structural
 
 LINE_PATTERNS = [
@@ -83,28 +84,28 @@ _EMPTY_STRING_COMPARISON = re.compile(r"(?:\"\"|'')\s*[!=]=")
 _ENTRY_POINT_SUFFIXES = ("Main.java", "__main__.py")
 
 
-def _skip_stdout(sf, raw, clean, stripped, rx) -> bool:
-    if sf.is_test or (sf.lang == "python" and _PYTHON_COMMENT_OR_MAIN.match(stripped)):
+def _skip_stdout(sf, line, rx) -> bool:
+    if sf.is_test or (sf.lang == "python" and _PYTHON_COMMENT_OR_MAIN.match(line.stripped)):
         return True
-    if sf.lang == "python" and not _PYTHON_PRINT.search(clean):
+    if sf.lang == "python" and not _PYTHON_PRINT.search(line.clean):
         return True
     return "/cli/" in sf.path or "/scripts/" in sf.path or sf.path.endswith(_ENTRY_POINT_SUFFIXES)
 
 
-def _skip_suppress(sf, raw, clean, stripped, rx) -> bool:
-    return not (is_structural(sf.path) and _is_real_suppression(rx, raw, clean))
+def _skip_suppress(sf, line, rx) -> bool:
+    return not (is_structural(sf.path) and _is_real_suppression(rx, line.raw, line.clean))
 
 
-def _skip_outside_tests(sf, raw, clean, stripped, rx) -> bool:
+def _skip_outside_tests(sf, line, rx) -> bool:
     return not sf.is_test
 
 
-def _skip_in_tests(sf, raw, clean, stripped, rx) -> bool:
+def _skip_in_tests(sf, line, rx) -> bool:
     return sf.is_test
 
 
-def _skip_empty_string_comparison(sf, raw, clean, stripped, rx) -> bool:
-    return bool(_EMPTY_STRING_COMPARISON.search(clean))
+def _skip_empty_string_comparison(sf, line, rx) -> bool:
+    return bool(_EMPTY_STRING_COMPARISON.search(line.clean))
 
 
 # Exceptions propres a une regle : si le predicat est vrai, la ligne n'est pas signalee.
@@ -124,22 +125,16 @@ def _line_severity(sf: SourceFile, rule_id: str, severity: str) -> str:
     return severity
 
 
-def _line_findings(sf: SourceFile, idx: int, raw: str, clean: str, stripped: str) -> List[Finding]:
-    findings: List[Finding] = []
-    for rule_id, langs, rx, severity, message, fix in LINE_PATTERNS:
-        if langs and sf.lang not in langs:
-            continue
-        if not rx.search(raw if rule_id in _RAW_TEXT_RULES else clean):
-            continue
-        skip = _SKIP_WHEN.get(rule_id)
-        if skip and skip(sf, raw, clean, stripped, rx):
-            continue
-        findings.append(Finding(
-            rule=rule_id, category=CAT_CONVENTION if rule_id in _CONVENTION_RULES else CAT_BUG,
-            severity=_line_severity(sf, rule_id, severity), message=message, fix=fix,
-            file=sf.path, line=idx, evidence=stripped[:200],
-        ))
-    return findings
+def _line_category(rule_id: str) -> str:
+    return CAT_CONVENTION if rule_id in _CONVENTION_RULES else CAT_BUG
+
+
+def _is_skipped(sf: SourceFile, rule_id: str, match, line: Line) -> bool:
+    skip = _SKIP_WHEN.get(rule_id)
+    return bool(skip and skip(sf, line, match.re))
+
+
+_LINE_RULES = LineRules(LINE_PATTERNS, _RAW_TEXT_RULES, _line_category, _line_severity, _is_skipped)
 
 
 def check_lines(sf: SourceFile) -> List[Finding]:
@@ -149,7 +144,7 @@ def check_lines(sf: SourceFile) -> List[Finding]:
         if not stripped or not sf.is_changed(idx):
             continue
         clean = sf.clean_lines[idx - 1] if idx - 1 < len(sf.clean_lines) else ""
-        findings.extend(_line_findings(sf, idx, raw, clean, stripped))
+        findings.extend(line_findings(_LINE_RULES, sf, Line(idx, raw, clean, stripped)))
     return findings
 
 

@@ -10037,6 +10037,17 @@
     "ec9113a2",
     "exec(\"x = \" + ast.literal_eval(message))",
     null
+   ],
+   [
+    "SEC.INSECURE_RANDOM",
+    "MINOR",
+    "securite",
+    23,
+    0,
+    "Generateur pseudo-aleatoire non cryptographique.",
+    "ecddb591",
+    "pause = random.randint(1, 5)  # token bucket",
+    null
    ]
   ]
  },
@@ -15157,6 +15168,17 @@
     "ec9113a2",
     "exec(\"x = \" + ast.literal_eval(message))",
     null
+   ],
+   [
+    "SEC.INSECURE_RANDOM",
+    "MINOR",
+    "securite",
+    23,
+    0,
+    "Generateur pseudo-aleatoire non cryptographique.",
+    "ecddb591",
+    "pause = random.randint(1, 5)  # token bucket",
+    null
    ]
   ]
  },
@@ -18181,6 +18203,17 @@
     "Requete SQL construite par concatenation de chaines : injection SQL possible.",
     "ec9113a2",
     "exec(\"x = \" + ast.literal_eval(message))",
+    null
+   ],
+   [
+    "SEC.INSECURE_RANDOM",
+    "MINOR",
+    "securite",
+    23,
+    0,
+    "Generateur pseudo-aleatoire non cryptographique.",
+    "ecddb591",
+    "pause = random.randint(1, 5)  # token bucket",
     null
    ]
   ]
@@ -21702,6 +21735,17 @@
     "convention",
     22,
     0,
+    "Ligne de 86 caracteres (seuil 60).",
+    "b875b8b0",
+    "# Le mot qui decide se lit sur la ligne brute : un commentaire de fin de ligne compte.",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    26,
+    0,
     "Ligne de 91 caracteres (seuil 60).",
     "b875b8b0",
     "# Ces motifs sont propres a d'autres langages (JavaScript, SQL) : pas de constat en Python.",
@@ -24656,9 +24700,9 @@
     "convention",
     22,
     0,
-    "Ligne de 91 caracteres (seuil 60).",
+    "Ligne de 86 caracteres (seuil 60).",
     "b875b8b0",
-    "# Ces motifs sont propres a d'autres langages (JavaScript, SQL) : pas de constat en Python.",
+    "# Le mot qui decide se lit sur la ligne brute : un commentaire de fin de ligne compte.",
     null
    ]
   ],

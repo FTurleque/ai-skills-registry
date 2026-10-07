@@ -5,6 +5,7 @@ import re
 from typing import List
 
 from model import CRITICAL, MAJOR, MINOR, CAT_SECURITY, Finding
+from line_rules import Line, LineRules, line_findings
 from source import SourceFile
 
 PLACEHOLDER = re.compile(
@@ -139,7 +140,6 @@ _SECRET_RULES = {
 _KEEP_SEVERITY_IN_TESTS = ("SEC.AWS_KEY", "SEC.PRIVATE_KEY", "SEC.JWT", "SEC.SLACK_GH_TOKEN", "SEC.CONNSTRING")
 _COMMENT_PREFIXES = ("//", "#", "*", "/*")
 _MAX_LINE_CHARS = 2000        # au-dela, la ligne brute est tronquee (fichier minifie, donnees embarquees)
-_EVIDENCE_WIDTH = 200
 # Un generateur pseudo-aleatoire ne pose probleme que s'il produit un secret : il lui faut un mot-cle voisin.
 _RANDOM_CONTEXT = re.compile(r"(?i)(token|secret|password|passwd|salt|nonce|otp|session|key|iv|uuid|id\b)")
 _SAFE_EVAL = re.compile(r"(?i)\b(?:safe_?eval|ast\.literal_eval)\b")
@@ -164,21 +164,15 @@ def _severity(sf: SourceFile, rule_id: str, severity: str) -> str:
     return severity
 
 
-def _line_findings(sf: SourceFile, idx: int, raw: str, clean: str, stripped: str) -> List[Finding]:
-    findings: List[Finding] = []
-    for rule_id, langs, rx, severity, message, fix in PATTERNS:
-        if langs and sf.lang not in langs:
-            continue
-        # Les regles "secret" se lisent sur la ligne brute (le litteral compte),
-        # les autres sur la ligne nettoyee (pour ignorer commentaires et chaines).
-        match = rx.search(raw if rule_id in _RAW_RULES else clean)
-        if not match or _is_false_match(sf, rule_id, match, raw):
-            continue
-        findings.append(Finding(
-            rule=rule_id, category=CAT_SECURITY, severity=_severity(sf, rule_id, severity), message=message, fix=fix,
-            file=sf.path, line=idx, evidence=stripped[:_EVIDENCE_WIDTH],
-        ))
-    return findings
+def _category(rule_id: str) -> str:
+    return CAT_SECURITY
+
+
+def _is_excluded(sf: SourceFile, rule_id: str, match, line: Line) -> bool:
+    return _is_false_match(sf, rule_id, match, line.raw)
+
+
+_LINE_RULES = LineRules(PATTERNS, _RAW_RULES, _category, _severity, _is_excluded)
 
 
 def check(sf: SourceFile) -> List[Finding]:
@@ -191,5 +185,5 @@ def check(sf: SourceFile) -> List[Finding]:
         stripped = raw.strip()
         if not stripped or stripped.startswith(_COMMENT_PREFIXES):
             continue
-        findings.extend(_line_findings(sf, idx, raw, clean, stripped))
+        findings.extend(line_findings(_LINE_RULES, sf, Line(idx, raw, clean, stripped)))
     return findings
