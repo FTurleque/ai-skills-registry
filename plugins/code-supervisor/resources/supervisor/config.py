@@ -4,6 +4,10 @@ from __future__ import annotations
 import fnmatch
 import json
 import os
+import sys
+
+# Cles de premier niveau qu'une configuration de projet ne peut pas fixer (voir _drop_untrusted_keys).
+PROJECT_FORBIDDEN_KEYS = ("external_tools", "log_dir")
 
 DEFAULTS = {
     "enabled": True,
@@ -107,25 +111,51 @@ def _deep_merge(base: dict, override: dict) -> dict:
 def _read_json(path: str) -> dict:
     try:
         with open(path, "r", encoding="utf-8") as fh:
-            return json.load(fh)
-    except Exception:
+            loaded = json.load(fh)
+    except (OSError, ValueError):
         return {}
+    return loaded if isinstance(loaded, dict) else {}
+
+
+def _drop_untrusted_keys(config: dict):
+    """Retire d'une configuration de projet les cles qui designent un programme a lancer
+    (`external_tools`, `llm.cli`) ou un emplacement d'ecriture (`log_dir`).
+
+    Le depot supervise est une source non fiable (depot tiers clone) : seules la configuration
+    livree avec le plugin et celle de l'utilisateur honorent ces cles. Retourne la configuration
+    nettoyee et la liste des cles retirees."""
+    cleaned = {k: v for k, v in config.items() if k not in PROJECT_FORBIDDEN_KEYS}
+    dropped = [k for k in PROJECT_FORBIDDEN_KEYS if k in config]
+    llm = cleaned.get("llm")
+    if isinstance(llm, dict) and "cli" in llm:
+        cleaned["llm"] = {k: v for k, v in llm.items() if k != "cli"}
+        dropped.append("llm.cli")
+    return cleaned, dropped
+
+
+def _merge_project_config(data: dict, path: str, user_dir: str) -> dict:
+    cleaned, dropped = _drop_untrusted_keys(_read_json(path))
+    if dropped:
+        sys.stderr.write(
+            "superviseur : %s declare %s : ignore, une configuration de projet ne peut pas lancer "
+            "de programme ni choisir ou ecrire les rapports. A declarer dans %s si c'est voulu.\n"
+            % (path, ", ".join(dropped), os.path.join(user_dir, "supervisor.config.json")))
+    return _deep_merge(data, cleaned)
 
 
 def load_config(project_dir: str, user_dir: str, script_dir: str = "") -> Config:
     """Fusionne, du plus general au plus specifique :
     valeurs par defaut du code, configuration livree a cote du script (installation
-    plugin), configuration utilisateur, configuration du projet."""
-    data = DEFAULTS
-    candidates = []
+    plugin), configuration utilisateur, configuration du projet (privee de ses cles sensibles)."""
+    merged = DEFAULTS
+    trusted = [os.path.join(user_dir, "supervisor.config.json")]
     if script_dir:
-        candidates.append(os.path.join(script_dir, "supervisor.config.json"))
-    candidates += [
-        os.path.join(user_dir, "supervisor.config.json"),
-        os.path.join(project_dir, ".claude", "supervisor.config.json"),
-        os.path.join(project_dir, ".supervisor.json"),
-    ]
-    for candidate in candidates:
-        if os.path.isfile(candidate):
-            data = _deep_merge(data, _read_json(candidate))
-    return Config(data)
+        trusted.insert(0, os.path.join(script_dir, "supervisor.config.json"))
+    for path in trusted:
+        if os.path.isfile(path):
+            merged = _deep_merge(merged, _read_json(path))
+    for path in (os.path.join(project_dir, ".claude", "supervisor.config.json"),
+                 os.path.join(project_dir, ".supervisor.json")):
+        if os.path.isfile(path):
+            merged = _merge_project_config(merged, path, user_dir)
+    return Config(merged)

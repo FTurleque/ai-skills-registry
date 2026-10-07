@@ -5,7 +5,7 @@ import re
 from typing import List
 
 from model import MAJOR, MINOR, CAT_COMPLEXITY, CAT_CONVENTION, Finding
-from source import SourceFile, Function, is_python
+from source import SourceFile, Function, is_python, is_structural
 
 _DECISION = re.compile(
     r"(?<![\w.])(?:if|else\s+if|elif|for|foreach|while|case|catch|except|when|&&|\|\||\?\?|and\b|or\b)"
@@ -130,73 +130,91 @@ _MAGIC = re.compile(r"(?<![\w.\"'])(?!0|1|2|10|100|1000)(\d{2,})(?![\w.\"'])")
 _CONST_CTX = re.compile(r"(?i)(?:final|const|static|#define|enum|version|port|timeout|http|status)")
 
 
-def check_file(sf: SourceFile, cfg) -> List[Finding]:
-    findings: List[Finding] = []
-    t = cfg.thresholds
+_INDENT_SCAN_LINES = 400          # lignes examinees pour detecter une indentation mixte
+_MAX_MAGIC_NUMBERS_PER_FILE = 5   # au-dela, le fichier est signale ailleurs : inutile d'inonder le rapport
+_EVIDENCE_WIDTH = 120
+_MAGIC_EXCLUDED_CONTEXT = re.compile(r"(?i)(?:line|version|\.\d|uuid|sql|select)")
 
-    if sf.nb_lines > t["file_lines"]:
+
+def _file_findings(sf: SourceFile, thresholds) -> List[Finding]:
+    """Constats portant sur le fichier entier : taille et indentation."""
+    findings: List[Finding] = []
+    if sf.nb_lines > thresholds["file_lines"]:
         findings.append(Finding(
             rule="CPX.LARGE_FILE", category=CAT_COMPLEXITY, severity=MINOR,
             message="%s fait %d lignes (seuil %d) : le fichier porte probablement plusieurs responsabilites."
-                    % (sf.path, sf.nb_lines, t["file_lines"]),
+                    % (sf.path, sf.nb_lines, thresholds["file_lines"]),
             fix="Extraire les responsabilites secondaires dans des classes ou modules dedies.",
             file=sf.path, line=1,
         ))
-
-    has_tab = any("\t" in l for l in sf.lines[:400])
-    has_space_indent = any(l.startswith("    ") for l in sf.lines[:400])
-    if has_tab and has_space_indent:
+    head = sf.lines[:_INDENT_SCAN_LINES]
+    if any("\t" in l for l in head) and any(l.startswith("    ") for l in head):
         findings.append(Finding(
             rule="CNV.MIXED_INDENT", category=CAT_CONVENTION, severity=MINOR,
             message="Indentation mixte tabulations / espaces dans le fichier.",
             fix="Aligner l'indentation sur celle du reste du depot (voir .editorconfig s'il existe).",
             file=sf.path, line=1,
         ))
+    return findings
 
+
+def _convention(sf: SourceFile, idx: int, rule: str, message: str, fix: str, evidence: str = "") -> Finding:
+    return Finding(rule=rule, category=CAT_CONVENTION, severity=MINOR, message=message, fix=fix,
+                   file=sf.path, line=idx, evidence=evidence)
+
+
+def _form_findings(sf: SourceFile, idx: int, raw: str, max_line_length: int) -> List[Finding]:
+    """Conventions de forme d'une ligne : longueur, import generique, code commente, espaces de fin."""
+    findings: List[Finding] = []
+    shown = raw.strip()[:_EVIDENCE_WIDTH]
+    if len(raw) > max_line_length:
+        findings.append(_convention(
+            sf, idx, "CNV.LINE_LENGTH", "Ligne de %d caracteres (seuil %d)." % (len(raw), max_line_length),
+            "Couper la ligne ou extraire une variable intermediaire nommee.", shown))
+    if _IMPORT_WILDCARD.match(raw):
+        findings.append(_convention(
+            sf, idx, "CNV.WILDCARD_IMPORT",
+            "Import generique (*) : masque l'origine des symboles et provoque des collisions.",
+            "Importer explicitement les types utilises.", shown))
+    if _COMMENTED_CODE.match(raw):
+        findings.append(_convention(
+            sf, idx, "CNV.COMMENTED_CODE", "Code commente laisse en place.",
+            "Supprimer le code mort : l'historique git le conserve si besoin.", shown))
+    if raw.rstrip() != raw and raw.strip():
+        findings.append(_convention(
+            sf, idx, "CNV.TRAILING_WS", "Espaces en fin de ligne.",
+            "Supprimer les espaces de fin (la plupart des formateurs le font automatiquement)."))
+    return findings
+
+
+def _magic_number_finding(sf: SourceFile, idx: int, clean: str):
+    # Les valeurs d'un fichier de configuration (yaml, json, xml) sont des donnees, pas du code.
+    if sf.is_test or not is_structural(sf.path) or _CONST_CTX.search(clean):
+        return None
+    match = _MAGIC.search(clean)
+    if not match or match.group(1) in _POWERS or _MAGIC_EXCLUDED_CONTEXT.search(clean):
+        return None
+    return _convention(
+        sf, idx, "CNV.MAGIC_NUMBER", "Valeur numerique %s utilisee directement, sans nom." % match.group(1),
+        "Extraire la valeur dans une constante nommee qui explique ce qu'elle represente et son unite.",
+        clean.strip()[:_EVIDENCE_WIDTH])
+
+
+def check_file(sf: SourceFile, cfg) -> List[Finding]:
+    thresholds = cfg.thresholds
+    findings = _file_findings(sf, thresholds)
     magic_count = 0
     for idx, raw in enumerate(sf.lines, start=1):
         if not sf.is_changed(idx):
             continue
         clean = sf.clean_lines[idx - 1] if idx - 1 < len(sf.clean_lines) else ""
-        if len(raw) > t["line_length"]:
-            findings.append(Finding(
-                rule="CNV.LINE_LENGTH", category=CAT_CONVENTION, severity=MINOR,
-                message="Ligne de %d caracteres (seuil %d)." % (len(raw), t["line_length"]),
-                fix="Couper la ligne ou extraire une variable intermediaire nommee.",
-                file=sf.path, line=idx, evidence=raw.strip()[:120],
-            ))
-        if _IMPORT_WILDCARD.match(raw):
-            findings.append(Finding(
-                rule="CNV.WILDCARD_IMPORT", category=CAT_CONVENTION, severity=MINOR,
-                message="Import generique (*) : masque l'origine des symboles et provoque des collisions.",
-                fix="Importer explicitement les types utilises.",
-                file=sf.path, line=idx, evidence=raw.strip()[:120],
-            ))
-        if _COMMENTED_CODE.match(raw):
-            findings.append(Finding(
-                rule="CNV.COMMENTED_CODE", category=CAT_CONVENTION, severity=MINOR,
-                message="Code commente laisse en place.",
-                fix="Supprimer le code mort : l'historique git le conserve si besoin.",
-                file=sf.path, line=idx, evidence=raw.strip()[:120],
-            ))
-        if raw.rstrip() != raw and raw.strip():
-            findings.append(Finding(
-                rule="CNV.TRAILING_WS", category=CAT_CONVENTION, severity=MINOR,
-                message="Espaces en fin de ligne.",
-                fix="Supprimer les espaces de fin (la plupart des formateurs le font automatiquement).",
-                file=sf.path, line=idx,
-            ))
-        if magic_count < 5 and not sf.is_test and not _CONST_CTX.search(clean):
-            m = _MAGIC.search(clean)
-            if m and m.group(1) not in _POWERS and not re.search(
-                    r"(?i)(?:line|version|\.\d|uuid|sql|select)", clean):
-                magic_count += 1
-                findings.append(Finding(
-                    rule="CNV.MAGIC_NUMBER", category=CAT_CONVENTION, severity=MINOR,
-                    message="Valeur numerique %s utilisee directement, sans nom." % m.group(1),
-                    fix="Extraire la valeur dans une constante nommee qui explique ce qu'elle represente et son unite.",
-                    file=sf.path, line=idx, evidence=clean.strip()[:120],
-                ))
+        findings.extend(_form_findings(sf, idx, raw, thresholds["line_length"]))
+        if magic_count >= _MAX_MAGIC_NUMBERS_PER_FILE:
+            continue
+        magic = _magic_number_finding(sf, idx, clean)
+        if magic:
+            findings.append(magic)
+            magic_count += 1
     return findings
 
 

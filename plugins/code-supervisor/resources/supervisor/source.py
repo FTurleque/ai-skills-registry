@@ -1,9 +1,16 @@
-"""Lecture du code source : langages, nettoyage, extraction des fonctions, diff git."""
+"""Lecture du code source : langages, nettoyage, extraction des fonctions, diff git.
+
+Appels a git : `run_git` lance `git` avec une liste d'arguments, sans shell, et chaque appelant place
+les chemins apres `--` : un nom de fichier du depot supervise ne peut ni ajouter une commande ni etre
+pris pour une option. Le constat « commande construite a partir de valeurs dynamiques » du superviseur
+sur `run_git` est un faux positif."""
 from __future__ import annotations
 
+import hashlib
 import os
 import re
 import subprocess
+import sys
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Set, Tuple
 
@@ -190,7 +197,7 @@ def run_git(args: List[str], cwd: str, timeout: int = 20) -> Tuple[int, str]:
         p = subprocess.run(["git"] + args, cwd=cwd, stdout=subprocess.PIPE,
                            stderr=subprocess.DEVNULL, timeout=timeout)
         return p.returncode, p.stdout.decode("utf-8", "replace")
-    except Exception:
+    except (OSError, subprocess.SubprocessError, ValueError):   # git absent, dossier inexistant, delai depasse
         return 1, ""
 
 
@@ -222,15 +229,53 @@ def git_changed_files(root: str) -> Tuple[Set[str], Set[str]]:
     return changed, new
 
 
+# Arbre vide de git : base d'un depot dont tous les commits datent de la session.
+EMPTY_TREE = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+
+
+def content_fingerprint(root: str, rel_path: str) -> Optional[str]:
+    """Empreinte du contenu d'un fichier, ou None s'il est illisible : ce qui a deja ete relu ne l'est pas deux fois."""
+    try:
+        with open(os.path.join(root, rel_path), "rb") as fh:
+            return hashlib.sha256(fh.read()).hexdigest()
+    except OSError:
+        return None
+
+
+def git_head(root: str) -> Optional[str]:
+    rc, out = run_git(["rev-parse", "--verify", "-q", "HEAD"], root)
+    return out.strip() if rc == 0 and out.strip() else None
+
+
+def git_is_ancestor(root: str, commit: str) -> bool:
+    """Vrai si `commit` existe et appartient a l'historique de HEAD (pas de reecriture entre-temps)."""
+    rc, _ = run_git(["merge-base", "--is-ancestor", commit, "HEAD"], root)
+    return rc == 0
+
+
+def git_files_since(root: str, base: str) -> Set[str]:
+    """Fichiers modifies par les commits faits depuis `base`."""
+    rc, out = run_git(["diff", "--name-only", "-z", "--diff-filter=ACMR", base, "HEAD"], root)
+    return {p for p in out.split("\0") if p} if rc == 0 else set()
+
+
+def git_commit_before(root: str, timestamp: str) -> Optional[str]:
+    """Dernier commit anterieur a `timestamp` (ISO 8601), ou None."""
+    rc, out = run_git(["rev-list", "-1", "--before=%s" % timestamp, "HEAD"], root)
+    return out.strip() if rc == 0 and out.strip() else None
+
+
 _HUNK = re.compile(r"^@@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? @@")
 
 
-def git_changed_lines(root: str, paths: List[str]) -> Dict[str, Set[int]]:
-    """Lignes ajoutees/modifiees par fichier, via git diff -U0 (index + worktree)."""
+def git_changed_lines(root: str, paths: List[str], base: Optional[str] = None) -> Dict[str, Set[int]]:
+    """Lignes ajoutees/modifiees par fichier, via git diff -U0 (index + worktree), ou depuis `base`."""
     result: Dict[str, Set[int]] = {}
     if not paths:
         return result
-    for extra in (["diff", "-U0", "--no-color", "--"], ["diff", "-U0", "--no-color", "--cached", "--"]):
+    commands = ([["diff", "-U0", "--no-color", base, "--"]] if base else
+                [["diff", "-U0", "--no-color", "--"], ["diff", "-U0", "--no-color", "--cached", "--"]])
+    for extra in commands:
         rc, out = run_git(extra + paths, root, timeout=30)
         if rc != 0:
             continue
@@ -269,6 +314,22 @@ def git_diff_text(root: str, paths: List[str], max_chars: int) -> str:
 
 # --------------------------------------------------------------------------- chargement
 
+def _read_text(abspath: str, max_bytes: int):
+    """Contenu texte d'un fichier, ou None s'il est trop gros, binaire ou illisible."""
+    try:
+        if os.path.getsize(abspath) > max_bytes:
+            return None
+        with open(abspath, "rb") as fh:
+            raw = fh.read()
+    except OSError as err:
+        # Fichier supprime entre-temps ou inaccessible : il n'est pas relu, mais on le dit.
+        sys.stderr.write("superviseur : %s illisible, ignore (%s)\n" % (abspath, err))
+        return None
+    if b"\0" in raw[:4096]:
+        return None
+    return raw.decode("utf-8", "replace")
+
+
 def load(root: str, rel_paths, changed_lines=None, new_files=None, max_bytes=600000) -> List[SourceFile]:
     changed_lines = changed_lines or {}
     new_files = new_files or set()
@@ -278,15 +339,8 @@ def load(root: str, rel_paths, changed_lines=None, new_files=None, max_bytes=600
         abspath = os.path.join(root, rel_norm)
         if not os.path.isfile(abspath):
             continue
-        try:
-            if os.path.getsize(abspath) > max_bytes:
-                continue
-            with open(abspath, "rb") as fh:
-                raw = fh.read()
-            if b"\0" in raw[:4096]:
-                continue
-            text = raw.decode("utf-8", "replace")
-        except Exception:
+        text = _read_text(abspath, max_bytes)
+        if text is None:
             continue
         lang = lang_of(rel_norm)
         if not lang:
@@ -344,6 +398,13 @@ _C_KEYWORDS_NOT_FUNC = {
     "yield", "await", "typeof", "instanceof", "in", "of", "and", "or", "not", "with",
     "elif", "except", "finally", "lambda", "match", "when", "require", "println",
 }
+# Methode Go : `func (s *Server) Name(` : le receveur precede le nom, et son type tient lieu de classe englobante.
+_GO_METHOD = re.compile(
+    r"^[ \t]*(?P<mods>func)\s*\((?P<receiver>[^)]*)\)\s*(?P<ret>)(?P<name>[A-Za-z_]\w*)\s*\("
+)
+# Corps-expression (Kotlin, Scala) : `= valeur` juste apres les parametres, avec un type de retour eventuel.
+# `= {` ouvre un corps a bloc (Scala) ; `=>` est traite a part.
+_EXPRESSION_BODY = re.compile(r"^\s*(?::[^={;]*)?=(?![=>])\s*(?=[^\s{])")
 _CLASS_DECL = re.compile(
     r"^[ \t]*(?:[\w@\[\]()., ]*\s)?(?:class|interface|enum|record|struct|trait|object)\s+([A-Za-z_$][\w$]*)"
 )
@@ -392,59 +453,88 @@ def extract_functions(sf: SourceFile) -> List[Function]:
     return []
 
 
+_BODY_SEARCH_WINDOW = 400   # caracteres examines apres la liste de parametres pour trouver `{`, `;` ou `=>`
+
+
+def _line_offsets(lines: List[str]) -> List[int]:
+    """Position, dans le texte joint par des sauts de ligne, du premier caractere de chaque ligne."""
+    offsets, pos = [], 0
+    for line in lines:
+        offsets.append(pos)
+        pos += len(line) + 1
+    return offsets
+
+
+def _function_from_signature(clean: List[str], text: str, offsets: List[int], i: int, match, owner: str) -> Optional[Function]:
+    """Fonction dont la signature (reconnue par `match`) commence a la ligne i, ou None : declaration sans corps."""
+    after = text[offsets[i] + match.end():]
+    parsed = _match_params(after)
+    if parsed is None:
+        return None
+    params, consumed = parsed
+    tail = after[consumed:consumed + _BODY_SEARCH_WINDOW]
+    # corps = accolade ouvrante avant tout ';'
+    brace, semi, arrow = tail.find("{"), tail.find(";"), tail.find("=>")
+    returns = (match.group("ret") or "").strip()
+    modifiers = (match.group("mods") or "").strip()
+    # Corps-expression : il n'a pas d'accolade a lui, celle qui suit est a une autre fonction. Un `;` sur la
+    # meme ligne dit autre chose (`= default;`, `= delete;`, `= 0;` en C++) : pas de corps.
+    ends_on_line = semi != -1 and "\n" not in tail[:semi]
+    if _EXPRESSION_BODY.match(tail) and not ends_on_line:
+        return Function(
+            name=match.group("name"), start=i + 1, end=i + 1, params=params,
+            body=[clean[i]], owner=owner, returns=returns, modifiers=modifiers,
+        )
+    if brace != -1 and (semi == -1 or brace < semi):
+        end_abs = _match_brace(text, offsets[i] + match.end() + consumed + brace)
+        start_line = i + 1
+        end_line = _line_of(offsets, end_abs) if end_abs else min(len(clean), i + 1)
+        return Function(
+            name=match.group("name"), start=start_line, end=end_line, params=params,
+            body=clean[start_line:end_line], owner=owner, returns=returns, modifiers=modifiers,
+        )
+    if arrow != -1 and (semi == -1 or arrow < semi):
+        return Function(
+            name=match.group("name"), start=i + 1, end=i + 1, params=params,
+            body=[clean[i]], owner=owner, returns=returns, modifiers=modifiers,
+        )
+    return None
+
+
+def _go_receiver_type(receiver: str) -> str:
+    """Type du receveur d'une methode Go (`s *Stack[T]` -> `Stack`), ou "" s'il n'y en a pas."""
+    names = re.findall(r"[A-Za-z_]\w*", re.sub(r"\[.*?\]", "", receiver))
+    return names[-1] if names else ""
+
+
+def _function_on_line(clean: List[str], text: str, offsets: List[int], i: int, owner: str) -> Optional[Function]:
+    go_method = _GO_METHOD.match(clean[i])
+    if go_method:
+        return _function_from_signature(clean, text, offsets, i, go_method, _go_receiver_type(go_method.group("receiver")) or owner)
+    match = _C_SIG.match(clean[i])
+    if not match or match.group("name") in _C_KEYWORDS_NOT_FUNC:
+        return None
+    return _function_from_signature(clean, text, offsets, i, match, owner)
+
+
 def _extract_c(sf: SourceFile) -> List[Function]:
     clean = sf.clean_lines
     text = "\n".join(clean)
-    offsets = []
-    pos = 0
-    for line in clean:
-        offsets.append(pos)
-        pos += len(line) + 1
+    offsets = _line_offsets(clean)
     functions: List[Function] = []
-    class_stack: List[Tuple[str, int]] = []   # (nom, profondeur d'accolade)
+    classes: List[Tuple[str, int]] = []   # (nom, profondeur d'accolade)
     depth = 0
-    i = 0
-    n = len(clean)
-    while i < n:
-        line = clean[i]
-        cm = _CLASS_DECL.match(line)
-        if cm:
-            class_stack.append((cm.group(1), depth))
-        m = _C_SIG.match(line)
-        if m and m.group("name") not in _C_KEYWORDS_NOT_FUNC and not cm:
-            after = text[offsets[i] + m.end():]
-            parsed = _match_params(after)
-            if parsed is not None:
-                params, consumed = parsed
-                tail = after[consumed:consumed + 400]
-                # corps = accolade ouvrante avant tout ';'
-                brace = tail.find("{")
-                semi = tail.find(";")
-                arrow = tail.find("=>")
-                if brace != -1 and (semi == -1 or brace < semi):
-                    body_start_abs = offsets[i] + m.end() + consumed + brace
-                    end_abs = _match_brace(text, body_start_abs)
-                    start_line = i + 1
-                    end_line = _line_of(offsets, end_abs) if end_abs else min(n, i + 1)
-                    functions.append(Function(
-                        name=m.group("name"), start=start_line, end=end_line,
-                        params=params, body=clean[start_line:end_line],
-                        owner=class_stack[-1][0] if class_stack else "",
-                        returns=(m.group("ret") or "").strip(),
-                        modifiers=(m.group("mods") or "").strip(),
-                    ))
-                    # on ne saute pas : les fonctions imbriquees restent detectables
-                elif arrow != -1 and (semi == -1 or arrow < semi):
-                    functions.append(Function(
-                        name=m.group("name"), start=i + 1, end=i + 1, params=params,
-                        body=[line], owner=class_stack[-1][0] if class_stack else "",
-                        returns=(m.group("ret") or "").strip(),
-                        modifiers=(m.group("mods") or "").strip(),
-                    ))
+    for i, line in enumerate(clean):
+        class_match = _CLASS_DECL.match(line)
+        if class_match:
+            classes.append((class_match.group(1), depth))
+        else:
+            function = _function_on_line(clean, text, offsets, i, classes[-1][0] if classes else "")
+            if function:
+                functions.append(function)   # on ne saute pas : les fonctions imbriquees restent detectables
         depth += line.count("{") - line.count("}")
-        while class_stack and depth <= class_stack[-1][1]:
-            class_stack.pop()
-        i += 1
+        while classes and depth <= classes[-1][1]:
+            classes.pop()
     return functions
 
 
@@ -508,12 +598,12 @@ def _extract_python(sf: SourceFile) -> List[Function]:
         for ci, cname in classes:
             if ci < indent:
                 owner = cname
-        ret = ""
+        return_type = ""
         sig_line = line
         if "->" in sig_line:
-            ret = sig_line.split("->")[-1].split(":")[0].strip()
+            return_type = sig_line.split("->")[-1].split(":")[0].strip()
         functions.append(Function(
             name=m.group("name"), start=i + 1, end=end, params=params,
-            body=clean[i + 1:end], owner=owner, returns=ret, modifiers="",
+            body=clean[i + 1:end], owner=owner, returns=return_type, modifiers="",
         ))
     return functions

@@ -5,6 +5,7 @@ import re
 from typing import List
 
 from model import CRITICAL, MAJOR, MINOR, CAT_SECURITY, Finding
+from line_rules import Line, LineRules, line_findings
 from source import SourceFile
 
 PLACEHOLDER = re.compile(
@@ -123,46 +124,6 @@ PATTERNS = [
 ]
 
 
-def check(sf: SourceFile) -> List[Finding]:
-    findings: List[Finding] = []
-    for idx, raw in enumerate(sf.lines, start=1):
-        if not sf.is_changed(idx):
-            continue
-        if len(raw) > 2000:
-            raw = raw[:2000]
-        clean = sf.clean_lines[idx - 1] if idx - 1 < len(sf.clean_lines) else ""
-        stripped = raw.strip()
-        if not stripped or stripped.startswith(("//", "#", "*", "/*")):
-            continue
-        for rule_id, langs, rx, sev, msg, fix in PATTERNS:
-            if langs and sf.lang not in langs:
-                continue
-            # Les regles "secret" se lisent sur la ligne brute (le litteral compte),
-            # les autres sur la ligne nettoyee (pour ignorer commentaires et chaines).
-            target = raw if rule_id in _RAW_RULES else clean
-            m = rx.search(target)
-            if not m:
-                continue
-            if rule_id in _SECRET_RULES and PLACEHOLDER.search(m.group(0)):
-                continue
-            if rule_id == "SEC.INSECURE_RANDOM" and not re.search(
-                    r"(?i)(token|secret|password|passwd|salt|nonce|otp|session|key|iv|uuid|id\b)", raw):
-                continue
-            if rule_id == "SEC.EVAL" and re.search(r"(?i)\b(?:safe_?eval|ast\.literal_eval)\b", raw):
-                continue
-            if rule_id == "SEC.HTTP_URL" and sf.is_test:
-                continue
-            severity = sev
-            if sf.is_test and sev == CRITICAL and rule_id not in ("SEC.AWS_KEY", "SEC.PRIVATE_KEY", "SEC.JWT",
-                                                                 "SEC.SLACK_GH_TOKEN", "SEC.CONNSTRING"):
-                severity = MAJOR     # code de test : on alerte sans bloquer la boucle
-            findings.append(Finding(
-                rule=rule_id, category=CAT_SECURITY, severity=severity, message=msg, fix=fix,
-                file=sf.path, line=idx, evidence=stripped[:200],
-            ))
-    return findings
-
-
 # Regles evaluees sur la ligne brute : le contenu des litteraux fait partie du signal.
 _RAW_RULES = {
     "SEC.AWS_KEY", "SEC.PRIVATE_KEY", "SEC.JWT", "SEC.SLACK_GH_TOKEN",
@@ -175,3 +136,54 @@ _SECRET_RULES = {
     "SEC.AWS_KEY", "SEC.PRIVATE_KEY", "SEC.JWT", "SEC.SLACK_GH_TOKEN",
     "SEC.HARDCODED_SECRET", "SEC.CONNSTRING",
 }
+# Secrets a format connu : meme en code de test, ils restent critiques.
+_KEEP_SEVERITY_IN_TESTS = ("SEC.AWS_KEY", "SEC.PRIVATE_KEY", "SEC.JWT", "SEC.SLACK_GH_TOKEN", "SEC.CONNSTRING")
+_COMMENT_PREFIXES = ("//", "#", "*", "/*")
+_MAX_LINE_CHARS = 2000        # au-dela, la ligne brute est tronquee (fichier minifie, donnees embarquees)
+# Un generateur pseudo-aleatoire ne pose probleme que s'il produit un secret : il lui faut un mot-cle voisin.
+_RANDOM_CONTEXT = re.compile(r"(?i)(token|secret|password|passwd|salt|nonce|otp|session|key|iv|uuid|id\b)")
+_SAFE_EVAL = re.compile(r"(?i)\b(?:safe_?eval|ast\.literal_eval)\b")
+
+
+def _is_false_match(sf: SourceFile, rule_id: str, match, raw: str) -> bool:
+    """Exceptions propres a certaines regles : une correspondance du motif qui n'est pas un constat."""
+    if rule_id in _SECRET_RULES and PLACEHOLDER.search(match.group(0)):
+        return True
+    if rule_id == "SEC.INSECURE_RANDOM":
+        return not _RANDOM_CONTEXT.search(raw)
+    if rule_id == "SEC.EVAL":
+        return bool(_SAFE_EVAL.search(raw))
+    if rule_id == "SEC.HTTP_URL":
+        return sf.is_test
+    return False
+
+
+def _severity(sf: SourceFile, rule_id: str, severity: str) -> str:
+    if sf.is_test and severity == CRITICAL and rule_id not in _KEEP_SEVERITY_IN_TESTS:
+        return MAJOR     # code de test : on alerte sans bloquer la boucle
+    return severity
+
+
+def _category(rule_id: str) -> str:
+    return CAT_SECURITY
+
+
+def _is_excluded(sf: SourceFile, rule_id: str, match, line: Line) -> bool:
+    return _is_false_match(sf, rule_id, match, line.raw)
+
+
+_LINE_RULES = LineRules(PATTERNS, _RAW_RULES, _category, _severity, _is_excluded)
+
+
+def check(sf: SourceFile) -> List[Finding]:
+    findings: List[Finding] = []
+    for idx, raw in enumerate(sf.lines, start=1):
+        if not sf.is_changed(idx):
+            continue
+        raw = raw[:_MAX_LINE_CHARS]
+        clean = sf.clean_lines[idx - 1] if idx - 1 < len(sf.clean_lines) else ""
+        stripped = raw.strip()
+        if not stripped or stripped.startswith(_COMMENT_PREFIXES):
+            continue
+        findings.extend(line_findings(_LINE_RULES, sf, Line(idx, raw, clean, stripped)))
+    return findings

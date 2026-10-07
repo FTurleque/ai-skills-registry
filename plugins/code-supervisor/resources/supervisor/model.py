@@ -11,6 +11,10 @@ MINOR = "MINOR"
 
 SEVERITY_ORDER = {CRITICAL: 0, MAJOR: 1, MINOR: 2}
 
+# Debut de la note du relecteur quand la revue par modele n'a pas pu avoir lieu : le verdict est alors
+# celui de l'analyse statique seule, et le rapport doit le dire.
+LLM_NOTE_PREFIX = "revue LLM"
+
 # Categories exposees a l'agent implementeur.
 CAT_SECURITY = "securite"
 CAT_BUG = "bug"
@@ -38,7 +42,7 @@ class Finding:
     def key(self) -> str:
         """Empreinte stable, utilisee pour la deduplication et l'anti-boucle."""
         raw = "%s|%s|%s|%s" % (self.rule, self.file, self.symbol or "", self.evidence[:120])
-        return hashlib.sha1(raw.encode("utf-8", "replace")).hexdigest()[:12]
+        return hashlib.sha256(raw.encode("utf-8", "replace")).hexdigest()[:12]
 
     def location(self) -> str:
         if self.line and self.end_line and self.end_line != self.line:

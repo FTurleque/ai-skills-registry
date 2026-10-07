@@ -36,7 +36,7 @@ Après tout ajout ou modification d'artefact : valider, régénérer `INDEX.md`,
 
 Le superviseur écrit ses rapports dans `docs/rapport-supervisor/` (jamais commité : dossier ignoré,
 y compris par son propre `.gitignore`). Rien de généré ne doit atterrir dans `.claude/`, qui ne
-contient que la configuration versionnée (`CLAUDE.md`, `settings.json`).
+contient que la configuration versionnée (`CLAUDE.md`, `settings.json`, `supervisor.config.json`).
 
 ## À ne pas faire
 

@@ -82,7 +82,7 @@ agent termine sa reponse
         v
 hook Stop / SubagentStop  -->  resources/supervisor.py
                                  |
-                                 |- perimetre : git status + fichiers ecrits par l'agent
+                                 |- perimetre : git status + commits depuis la derniere passe de la session
                                  |- lignes modifiees : git diff -U0
                                  |- couche 1 : analyse statique portable, sans dependance
                                  |- couche 2 : relecture par modele (claude -p, hooks desactives)
@@ -187,7 +187,23 @@ Depuis une session Claude Code :
 ## Reglages
 
 Fusion du plus general au plus specifique : valeurs du code, `supervisor.config.json` livre a cote
-du moteur, `~/.claude/supervisor.config.json`, puis `<projet>/.claude/supervisor.config.json`.
+du moteur, `~/.claude/supervisor.config.json`, puis `<projet>/.claude/supervisor.config.json`
+(ou `<projet>/.supervisor.json`).
+
+> **Securite.** Le depot supervise n'est pas une source de confiance : un projet clone peut ne pas
+> etre le votre. La configuration du **projet** ne peut donc pas fixer `external_tools`, `llm.cli`
+> ni `log_dir` (ils designent un programme a lancer ou un emplacement d'ecriture). Ces cles sont
+> ignorees, avec un avertissement sur la sortie d'erreur ; declarez-les dans
+> `~/.claude/supervisor.config.json` si c'est voulu. Tous les autres reglages restent surchargeables
+> projet par projet.
+>
+> **Pourquoi un shell pour `external_tools`.** La commande est la votre, ecrite dans votre configuration :
+> meme confiance que la commande du hook dans `settings.json`. Elle est lancee par un shell (`&&`, redirections
+> et variables fonctionnent), et le moteur ne change pas cela a dessein : sous Windows, `npx` et `mvn` sont des
+> scripts `.cmd` que `cmd.exe` interprete de toute facon, avec ou sans liste d'arguments (mesure : un nom
+> `a&ver` y execute `ver`). Ce qui vient du depot supervise, les noms de fichiers, est cite par le moteur ;
+> sous Windows, un nom contenant `"%^&|<>!` ou un caractere de controle n'est pas passe a l'outil, et
+> l'auto-test verifie de bout en bout qu'aucun nom de fichier n'execute de commande.
 
 | Cle | Effet |
 |---|---|
@@ -196,7 +212,7 @@ du moteur, `~/.claude/supervisor.config.json`, puis `<projet>/.claude/supervisor
 | `max_block_rounds` | nombre maximal de renvois pour un **meme** lot de problemes (3). Au-dela, avertissement sans blocage |
 | `thresholds` | tous les seuils : complexite, longueur, parametres, imbrication, taille du bloc duplique |
 | `llm.enabled`, `llm.model` | couche modele : la couper, ou changer de modele |
-| `external_tools` | outils du projet a appeler (ruff, eslint, checkstyle). **Vide par defaut** : rien ne s'execute sans declaration explicite, aucun build ni CI n'est declenche par surprise. Des exemples prets a copier sont dans le fichier |
+| `external_tools` | outils a appeler (ruff, eslint, checkstyle). **Vide par defaut** : rien ne s'execute sans declaration explicite, aucun build ni CI n'est declenche par surprise. **Honore uniquement depuis la configuration utilisateur ou celle du moteur, jamais depuis un projet.** Des exemples prets a copier sont dans le fichier |
 | `quiet_paths` | chemins ou le superviseur se tait |
 | `enabled` | `false` pour tout desactiver sans desinstaller |
 
@@ -213,6 +229,13 @@ blocages de Claude Code (8 par defaut).
 - **Pas de recursion.** Le relecteur est lance avec les hooks desactives et une variable de garde.
 - **Pas de jugement sur du code non touche.** Seules les lignes du diff sont evaluees, plus les
   fonctions qui les contiennent. Un fichier nouveau est lu en entier.
+- **Pas de relecture du deja relu.** Le superviseur retient, par session, le commit de la derniere
+  passe et l'empreinte du contenu des fichiers relus sans blocage : un fichier inchange depuis, commite
+  entre-temps ou non, n'est pas relu. Un fichier qui portait un point bloquant l'est a la passe suivante.
+  A la premiere passe d'une session, la base est le dernier commit anterieur au debut du transcript.
+- **Une revue par modele absente se voit.** Si `claude -p` echoue (session expiree, quota, modele refuse),
+  le message du CLI est repris dans le verdict, qui se dit « analyse statique seule » au lieu d'annoncer
+  une relecture complete. Pour une session expiree : `claude` puis `/login` dans un terminal.
 - **Pas de contournement.** Neutraliser un avertissement ou desactiver un test pour faire taire un
   controle est lui-meme signale comme un defaut.
 - **Budget borne.** 45 s d'analyse statique par defaut, 60 fichiers au plus, corpus de duplication
@@ -254,11 +277,14 @@ code-supervisor/
 ├── metadata.yaml                metadonnees du registre
 ├── README.md                    ce fichier
 ├── examples/example.md          un diff fautif, le verdict, le message a l'agent
+├── tests/                       tests de caracterisation du moteur (voir tests/README.md)
 └── resources/
-    ├── supervisor.py            point d'entree : hook, mode manuel, auto-test
+    ├── supervisor.py            point d'entree : place le moteur sur le chemin d'import et delegue
     ├── supervisor/              moteur
+    │   ├── runner.py            hook, mode manuel, auto-test, etat anti-boucle
     │   ├── model.py             constat, severites, deduplication
     │   ├── source.py            langages, nettoyage, extraction des fonctions, diff git
+    │   ├── line_rules.py        parcours par ligne commun aux regles de securite et de bugs
     │   ├── rules_security.py    secrets, injections, crypto, configuration dangereuse
     │   ├── rules_bugs.py        bugs probables, par ligne, par bloc, par fonction
     │   ├── rules_quality.py     complexite, taille, imbrication, conventions de forme

@@ -1,0 +1,33 @@
+kind: skill
+name: code-to-openspec
+displayName: Code to OpenSpec
+description: >-
+  Rétro-ingénierie d'une application existante à partir de son code, puis préparation de changements
+  OpenSpec traçables (constats, exigences, scénarios, tâches). Trois modes : audit global, analyse
+  ciblée (bug, fonctionnalité, module) et reprise d'un audit déjà commencé. À utiliser quand on
+  demande d'analyser une application ou un module existant, de retrouver les spécifications d'une
+  fonctionnalité depuis le code, d'auditer avant un refactoring, d'identifier des problèmes pour
+  préparer leurs corrections, de comparer code, tests, documentation et spécifications, ou de
+  convertir des constats en changements OpenSpec. Distingue comportements observés, exigences
+  documentées ou proposées, défauts confirmés et risques potentiels. Ne modifie pas le code de
+  production sauf demande explicite d'implémentation.
+version: 1.0.0
+status: experimental
+category: development
+tags:
+  - reverse-engineering
+  - openspec
+  - audit
+  - specification
+  - spec-driven-development
+  - brownfield
+compatibility:
+  - claude-code
+  - claude-desktop
+requires:
+  - git (facultatif)
+  - openspec CLI 1.x (facultatif)
+  - python>=3.8 (script facultatif)
+authors:
+  - Fabrice Turleque
+license: MIT

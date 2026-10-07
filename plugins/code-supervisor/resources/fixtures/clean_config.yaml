@@ -1,0 +1,4 @@
+# Fixture : aucune de ces lignes ne doit declencher BUG.SUPPRESS ni CNV.MAGIC_NUMBER.
+rules:
+  # - Garder les propositions sous 500 mots
+  - Ne jamais ajouter de suppression d'avertissement (# noqa, @SuppressWarnings).
