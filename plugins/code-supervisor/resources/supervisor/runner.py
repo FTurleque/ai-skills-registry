@@ -416,6 +416,7 @@ def _quoting_problems() -> list:
 # Noms de fichiers du depot supervise, du plus banal au plus hostile.
 _HOSTILE_NAMES = ("plain.py", "mon fichier.py", "a&b.py", "x$(touch pwned).py", "y`touch pwned`.py",
                   "z;touch pwned.py", "$HOME.py", "q'r.py")
+_RECORDER_TIMEOUT_SECONDS = 30
 _RECORDER = ("import json, sys\n"
              "with open(sys.argv[1], 'w', encoding='utf-8') as out:\n"
              "    json.dump(sys.argv[2:], out)\n")
@@ -432,7 +433,7 @@ def _external_tool_problems() -> list:
         if None in quoted:
             return []        # un chemin de travail que cmd.exe ne sait pas citer : rien a verifier ici
         tool = {"name": "recorder", "command": "%s {files}" % " ".join(quoted),
-                "extensions": [".py"], "timeout_seconds": 30}
+                "extensions": [".py"], "timeout_seconds": _RECORDER_TIMEOUT_SECONDS}
         cfg = Config(dict(json.loads(json.dumps(DEFAULTS)), external_tools=[tool]))
         files = [types.SimpleNamespace(path=name) for name in _HOSTILE_NAMES]
         with contextlib.redirect_stderr(io.StringIO()):     # les noms refuses sont signales sur stderr
