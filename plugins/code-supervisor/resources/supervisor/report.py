@@ -4,7 +4,7 @@ from __future__ import annotations
 import datetime
 from typing import List
 
-from model import CRITICAL, MAJOR, MINOR, CAT_SECURITY, Finding, sort_findings
+from model import CRITICAL, LLM_NOTE_PREFIX, MAJOR, MINOR, CAT_SECURITY, Finding, sort_findings
 
 CATEGORY_LABEL = {
     "securite": "Securite",
@@ -14,6 +14,11 @@ CATEGORY_LABEL = {
     "nommage": "Nommage",
     "convention": "Conventions",
 }
+
+
+def static_only(verdict: str) -> bool:
+    """Vrai quand la revue par modele n'a pas eu lieu : seul le verdict de l'analyse statique existe."""
+    return bool(verdict) and verdict.startswith(LLM_NOTE_PREFIX)
 
 
 def _render(findings: List[Finding], limit: int) -> str:
@@ -61,8 +66,10 @@ def block_message(blockers: List[Finding], others: List[Finding], verdict: str, 
 
 
 def warn_message(findings: List[Finding], verdict: str, report_path: str, limit: int) -> str:
+    headline = ("SUPERVISEUR DE CODE — analyse statique seule, aucun probleme bloquant. "
+                if static_only(verdict) else "SUPERVISEUR DE CODE — aucun probleme bloquant. ")
     out = [
-        "SUPERVISEUR DE CODE — aucun probleme bloquant. %d point(s) de qualite releve(s) :" % len(findings),
+        headline + "%d point(s) de qualite releve(s) :" % len(findings),
         "",
         _render(findings, limit),
     ]
@@ -72,13 +79,15 @@ def warn_message(findings: List[Finding], verdict: str, report_path: str, limit:
     return "\n".join(out)
 
 
-def user_summary(counts: dict, blocked: bool, nb_files: int) -> str:
+def user_summary(counts: dict, blocked: bool, nb_files: int, verdict: str = "") -> str:
     parts = []
     for sev in (CRITICAL, MAJOR, MINOR):
         if counts.get(sev):
             parts.append("%d %s" % (counts[sev], sev.lower()))
     detail = ", ".join(parts) if parts else "rien a signaler"
     state = "agent renvoye en correction" if blocked else "pas de blocage"
+    if static_only(verdict):
+        state += ", analyse statique seule : %s" % verdict[:240]
     return "Superviseur de code : %d fichier(s) relu(s), %s — %s." % (nb_files, detail, state)
 
 
@@ -91,7 +100,8 @@ def full_report(findings: List[Finding], files, counts: dict, verdict: str,
         "- Date : %s" % now,
         "- Session : %s (passe %d)" % (session_id, round_no),
         "- Fichiers relus : %d" % len(files),
-        "- Verdict : %s" % ("BLOQUANT" if blocked else "non bloquant"),
+        "- Verdict : %s%s" % ("BLOQUANT" if blocked else "non bloquant",
+                            " (analyse statique seule)" if static_only(verdict) else ""),
         "- Comptage : %d CRITICAL, %d MAJOR, %d MINOR" % (
             counts.get(CRITICAL, 0), counts.get(MAJOR, 0), counts.get(MINOR, 0)),
         "",

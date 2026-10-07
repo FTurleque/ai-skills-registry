@@ -9,6 +9,31 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Corrigé — `code-supervisor` 1.2.0 : périmètre, revue par modèle muette et faux positifs
+
+Constats faits en relisant les rapports d'une longue session : le même lot de constats revenait à chaque tour.
+
+- **Périmètre.** Les fichiers lus dans le transcript (quatre mille dernières lignes) étaient relus en entier à
+  chaque passe, même déjà commités et inchangés : le rapport portait sur toute la session, pas sur le tour.
+  Dans un dépôt git, ils ne comptent plus ; la base est le commit de la dernière passe (ou, à la première, le
+  dernier commit antérieur au début du transcript), et un fichier dont le contenu a déjà été relu sans blocage
+  n'est pas relu. Un fichier qui portait un point bloquant l'est de nouveau (l'anti-boucle est inchangé).
+- **Revue par modèle muette.** Quand `claude -p` répondait `is_error` (par exemple « OAuth session expired »),
+  le verdict disait « sans résultat exploitable » et le message annonçait « aucun problème bloquant » comme si
+  la relecture avait eu lieu. La cause est maintenant reprise telle quelle, et le verdict dit « analyse
+  statique seule ».
+- **`BUG.CATCH_SILENT_RETURN`.** N'est plus signalé pour un `catch` qui fait autre chose que sortir (il compte,
+  enregistre ou lit la cause), qui porte un commentaire d'au moins 25 caractères, ou qui renvoie un texte.
+- **`BUG.THREAD_SLEEP`.** Un `sleep` dans une boucle bornée par une échéance (`deadline`, `timeout`, `nanoTime`…)
+  est le polling que la règle recommande : il n'est plus signalé.
+- **`NAM.VAGUE_VARIABLE` et `NAM.VAGUE_PARAM`.** `temp` et `tmp` ne sont plus signalés quand ils nomment un
+  `@TempDir`.
+- **`DUP.BLOCK`.** Les déclarations de champs de même forme (`private final X y;`) ne comptent plus comme du code
+  dupliqué.
+- Tests : 6 scénarios de hook (périmètre, passes successives, revue en échec), 5 fichiers de corpus et 1 scénario de
+  duplication ajoutés ; la référence passe de 24 à 30 entrées de hook et de 582 à 621 entrées de règles. Rejoués contre le moteur
+  1.1.0, ils échouent (14 entrées de règles, 5 de hook) : ils exercent bien les changements.
+
 ### Ajouté — skill `code-to-openspec` 1.0.0 (expérimental)
 
 Skill de rétro-ingénierie : analyse une application existante à partir de son code et prépare des changements

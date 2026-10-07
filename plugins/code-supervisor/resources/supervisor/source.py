@@ -6,6 +6,7 @@ pris pour une option. Le constat « commande construite a partir de valeurs dyna
 sur `run_git` est un faux positif."""
 from __future__ import annotations
 
+import hashlib
 import os
 import re
 import subprocess
@@ -228,15 +229,53 @@ def git_changed_files(root: str) -> Tuple[Set[str], Set[str]]:
     return changed, new
 
 
+# Arbre vide de git : base d'un depot dont tous les commits datent de la session.
+EMPTY_TREE = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+
+
+def content_fingerprint(root: str, rel_path: str) -> Optional[str]:
+    """Empreinte du contenu d'un fichier, ou None s'il est illisible : ce qui a deja ete relu ne l'est pas deux fois."""
+    try:
+        with open(os.path.join(root, rel_path), "rb") as fh:
+            return hashlib.sha256(fh.read()).hexdigest()
+    except OSError:
+        return None
+
+
+def git_head(root: str) -> Optional[str]:
+    rc, out = run_git(["rev-parse", "--verify", "-q", "HEAD"], root)
+    return out.strip() if rc == 0 and out.strip() else None
+
+
+def git_is_ancestor(root: str, commit: str) -> bool:
+    """Vrai si `commit` existe et appartient a l'historique de HEAD (pas de reecriture entre-temps)."""
+    rc, _ = run_git(["merge-base", "--is-ancestor", commit, "HEAD"], root)
+    return rc == 0
+
+
+def git_files_since(root: str, base: str) -> Set[str]:
+    """Fichiers modifies par les commits faits depuis `base`."""
+    rc, out = run_git(["diff", "--name-only", "-z", "--diff-filter=ACMR", base, "HEAD"], root)
+    return {p for p in out.split("\0") if p} if rc == 0 else set()
+
+
+def git_commit_before(root: str, timestamp: str) -> Optional[str]:
+    """Dernier commit anterieur a `timestamp` (ISO 8601), ou None."""
+    rc, out = run_git(["rev-list", "-1", "--before=%s" % timestamp, "HEAD"], root)
+    return out.strip() if rc == 0 and out.strip() else None
+
+
 _HUNK = re.compile(r"^@@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? @@")
 
 
-def git_changed_lines(root: str, paths: List[str]) -> Dict[str, Set[int]]:
-    """Lignes ajoutees/modifiees par fichier, via git diff -U0 (index + worktree)."""
+def git_changed_lines(root: str, paths: List[str], base: Optional[str] = None) -> Dict[str, Set[int]]:
+    """Lignes ajoutees/modifiees par fichier, via git diff -U0 (index + worktree), ou depuis `base`."""
     result: Dict[str, Set[int]] = {}
     if not paths:
         return result
-    for extra in (["diff", "-U0", "--no-color", "--"], ["diff", "-U0", "--no-color", "--cached", "--"]):
+    commands = ([["diff", "-U0", "--no-color", base, "--"]] if base else
+                [["diff", "-U0", "--no-color", "--"], ["diff", "-U0", "--no-color", "--cached", "--"]])
+    for extra in commands:
         rc, out = run_git(extra + paths, root, timeout=30)
         if rc != 0:
             continue

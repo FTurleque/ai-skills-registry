@@ -23,9 +23,9 @@ Aucune dépendance en dehors de Python et de `git`. La CI les rejoue sur Linux.
 | `rules` | toutes les règles de détection sur `corpus/` : par ligne, par bloc, par fichier, sécurité, nommage, imports, complexité et bugs par fonction, extraction des fonctions, duplication | `golden/rules.json` |
 | `install` | l'installeur `install.py` : installation, réinstallation, désinstallation, dans un dossier de configuration jetable | `golden/install_scenarios.json` |
 
-**`hook`** (24 entrées) : tours de blocage puis libération de l'empreinte anti-boucle, autre session,
+**`hook`** (30 entrées) : tours de blocage puis libération de l'empreinte anti-boucle, autre session,
 événement `SubagentStop`, `stop_hook_active`, `SUPERVISOR_ACTIVE`, agent superviseur, entrée invalide,
-transcript avec lignes corrompues, état corrompu, dossier de journal imposé, chemin accentué, `--check`
+transcript avec lignes corrompues, périmètre (fichier commité et inchangé, commit depuis le début de session, passes successives), revue par modèle en échec, état corrompu, dossier de journal imposé, chemin accentué, `--check`
 avec ou sans chemin, `--self-test`, et l'état anti-boucle persisté. La revue par modèle est coupée.
 
 **`install`** (22 entrées) : installation neuve, de projet (`--project`), réinstallation, mise à jour d'un ancien
@@ -37,7 +37,7 @@ ont aussi leur scénario. L'installeur tourne avec un `HOME` et un `USERPROFILE`
 ignorerait `CLAUDE_CONFIG_DIR` écrirait là, pas dans le `~/.claude` de la personne qui lance les tests. La suite
 est ignorée quand `install.py` n'est pas à côté du moteur testé (cas de `--script ~/.claude/hooks/supervisor.py`).
 
-**`rules`** (582 entrées), trois familles :
+**`rules`** (621 entrées), trois familles :
 
 - `<config>|<sélection>|<fichier>` : `check_lines`, `check_blocks` et `check_file`, avec deux jeux de seuils
   (défauts et seuils bas) et deux sélections de lignes modifiées (toutes, une sur sept : `is_changed`

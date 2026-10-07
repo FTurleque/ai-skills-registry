@@ -17,6 +17,10 @@ _NOISE = re.compile(r"^[\s{}();,\]\[]*$")
 # Entetes, imports et annotations : identiques partout, sans valeur pour la duplication.
 _HEADER = re.compile(r"^\s*(?:package|import|using|#include|from\s+[\w.]+\s+import|@[A-Z]\w*|"
                      r"public\s+(?:final\s+)?(?:class|interface|enum|record)|namespace)\b")
+# Declaration de champ seule (`private final X y;`) : de la forme, sans logique. Deux classes qui declarent des
+# champs de meme forme ne se dupliquent pas.
+_FIELD_DECLARATION = re.compile(
+    r"^(?:(?:public|private|protected|static|final|volatile|transient)\s+)+[\w<>\[\],.? ]+\s+v;?$")
 _KEYWORDS = {
     "if", "else", "for", "while", "return", "new", "public", "private", "protected",
     "static", "final", "void", "try", "catch", "finally", "throw", "throws", "class",
@@ -37,7 +41,7 @@ def normalize(line: str) -> str:
         return w if w.lower() in _KEYWORDS else "v"
     s = _IDENT.sub(repl, s)
     s = _WS.sub(" ", s)
-    return s
+    return "" if _FIELD_DECLARATION.match(s) else s
 
 
 def fingerprints(sf: SourceFile, window: int) -> List[Tuple[str, int, int]]:

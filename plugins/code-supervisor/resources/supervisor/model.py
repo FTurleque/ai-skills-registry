@@ -11,6 +11,10 @@ MINOR = "MINOR"
 
 SEVERITY_ORDER = {CRITICAL: 0, MAJOR: 1, MINOR: 2}
 
+# Debut de la note du relecteur quand la revue par modele n'a pas pu avoir lieu : le verdict est alors
+# celui de l'analyse statique seule, et le rapport doit le dire.
+LLM_NOTE_PREFIX = "revue LLM"
+
 # Categories exposees a l'agent implementeur.
 CAT_SECURITY = "securite"
 CAT_BUG = "bug"

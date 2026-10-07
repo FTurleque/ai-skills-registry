@@ -152,6 +152,14 @@ def _check_variable(out: _Collector, name: str, idx: int, in_loop: bool) -> None
         _check_numbered(out, name, idx)
 
 
+_TEMP_DIR_NAMES = frozenset({"temp", "tmp"})
+
+
+def _declared_as_temp_dir(declaration: str, name: str) -> bool:
+    """`@TempDir Path temp` : le nom courant du dossier temporaire d'un test, pas une variable fourre-tout."""
+    return name.lower() in _TEMP_DIR_NAMES and "@TempDir" in declaration
+
+
 def _check_variables(sf: SourceFile, out: _Collector) -> None:
     for idx, clean in enumerate(sf.clean_lines, start=1):
         if not sf.is_changed(idx):
@@ -160,8 +168,10 @@ def _check_variables(sf: SourceFile, out: _Collector) -> None:
         if not stripped or stripped.startswith(_SKIPPED_LINE_PREFIXES):
             continue
         in_loop = bool(_LOOP_START.match(stripped))
+        annotated = " ".join(sf.clean_lines[max(0, idx - 2):idx])      # l'annotation peut preceder la ligne
         for name in _declared_names(sf, clean):
-            _check_variable(out, name, idx, in_loop)
+            if not _declared_as_temp_dir(annotated, name):
+                _check_variable(out, name, idx, in_loop)
 
 
 # ----------------------------------------------------------------------- fonctions
@@ -221,7 +231,7 @@ def _parameter_name(declaration: str) -> str:
 def _check_parameters(out: _Collector, fn: Function) -> None:
     for declaration in fn.params:
         name = _parameter_name(declaration)
-        if _IDENTIFIER.match(name or "") and _is_vague(name):
+        if _IDENTIFIER.match(name or "") and _is_vague(name) and not _declared_as_temp_dir(declaration, name):
             out.add("NAM.VAGUE_PARAM", MINOR, name, fn.start,
                     "Le parametre `%s` de `%s` ne dit pas ce qu'il recoit." % (name, fn.qualified),
                     "Nommer le parametre d'apres la donnee attendue.", fn.qualified)
