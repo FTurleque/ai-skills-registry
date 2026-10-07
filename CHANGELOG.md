@@ -9,6 +9,19 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — `code-supervisor` passe en 1.1.0 (clôture du ticket #11)
+
+Version mineure : le comportement de `external_tools` change (la configuration d'un projet ne peut plus
+déclarer de commande, de CLI de revue ni de dossier de journal, voir « Sécurité » plus bas). Elle regroupe
+aussi les corrections d'encodage, de quoting et de règles, le découpage des fonctions complexes et les tests
+de caractérisation. Un moteur déjà installé doit être réinstallé (`install.py`).
+
+Restent ouverts à dessein : `shell=True` dans `engine.run_external_tools` (nécessaire pour `npx` ou `mvn`,
+quoting sûr), la structure commune de `rules_bugs._line_findings` et `rules_security._line_findings`, le
+faux positif documenté de `source.run_git`, les défauts d'extraction figés par les références (fonctions
+Kotlin à corps d'expression, receveur de méthode Go), `/ liste.size()` non signalé par `BUG.DIV_ZERO`, et les
+points MINOR de style.
+
 ### Modifié — `rules_duplication.check` et `_corpus_files` découpées (ticket #11)
 
 `check` (complexité 22) devient `_target_files`, `_duplicated_pair`, `_duplicate_finding`, `_report` et un
