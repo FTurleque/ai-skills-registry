@@ -68,15 +68,35 @@ def copy_tree(dest: str) -> None:
         say("  configuration existante conservee : %s" % config_dest)
 
 
+def _refuse_settings(path: str, reason) -> None:
+    say("  ATTENTION : %s illisible (%s). Rien n'a ete modifie." % (path, reason))
+    raise SystemExit(2)
+
+
+def _settings_problem(settings) -> str:
+    """Ce qui empeche d'ajouter ou de retirer nos hooks dans ce contenu, ou "" s'il convient."""
+    if not isinstance(settings, dict):
+        return "ce n'est pas un objet JSON"
+    hooks = settings.get("hooks", {})
+    if not isinstance(hooks, dict):
+        return "la cle hooks n'est pas un objet"
+    if any(not isinstance(hooks.get(event, []), list) for event in HOOK_EVENTS):
+        return "un evenement de hooks n'est pas une liste"
+    return ""
+
+
 def load_settings(path: str) -> dict:
     if not os.path.isfile(path):
         return {}
     try:
         with open(path, "r", encoding="utf-8") as fh:
-            return json.load(fh)
-    except Exception as exc:
-        say("  ATTENTION : %s illisible (%s). Rien n'a ete modifie." % (path, exc))
-        raise SystemExit(2)
+            settings = json.load(fh)
+    except (OSError, ValueError) as exc:
+        _refuse_settings(path, exc)
+    problem = _settings_problem(settings)
+    if problem:
+        _refuse_settings(path, problem)
+    return settings
 
 
 def save_settings(path: str, settings: dict) -> None:
@@ -95,7 +115,7 @@ def hook_command(dest: str, python: str) -> str:
 
 
 def _is_ours(handler) -> bool:
-    return MARKER in str(handler.get("command", ""))
+    return isinstance(handler, dict) and MARKER in str(handler.get("command", ""))
 
 
 def _handlers(groups) -> list:
@@ -103,11 +123,10 @@ def _handlers(groups) -> list:
 
 
 def _refresh_handlers(groups, command: str) -> None:
-    for group in groups:
-        for handler in (group.get("hooks") or []):
-            if _is_ours(handler):
-                handler["command"] = command
-                handler["timeout"] = HOOK_TIMEOUT_SECONDS
+    for group in (g for g in groups if isinstance(g, dict)):
+        for handler in (h for h in (group.get("hooks") or []) if _is_ours(h)):
+            handler["command"] = command
+            handler["timeout"] = HOOK_TIMEOUT_SECONDS
 
 
 def _merge_event(hooks: dict, event: str, command: str) -> None:
@@ -126,16 +145,28 @@ def merge_hooks(settings: dict, command: str) -> None:
         _merge_event(hooks, event, command)
 
 
+def _strip_group(group):
+    """(groupe a conserver ou None, vrai si un de nos handlers en a ete retire). Ce qui n'est pas a nous reste."""
+    if not isinstance(group, dict):
+        return group, False
+    handlers = group.get("hooks") or []
+    remaining = [h for h in handlers if not _is_ours(h)]
+    if len(remaining) == len(handlers):
+        return group, False
+    if not remaining:
+        return None, True
+    group["hooks"] = remaining
+    return group, True
+
+
 def _strip_event(hooks: dict, event: str) -> bool:
-    """Retire nos handlers de l'evenement ; vrai si un groupe ou l'evenement entier a disparu."""
+    """Retire nos handlers de l'evenement ; vrai si le contenu de `hooks` a change."""
     kept, changed = [], False
     for group in hooks.get(event) or []:
-        handlers = [h for h in (group.get("hooks") or []) if not _is_ours(h)]
-        if handlers:
-            group["hooks"] = handlers
+        group, touched = _strip_group(group)
+        changed = changed or touched
+        if group is not None:
             kept.append(group)
-        else:
-            changed = True
     if kept:
         hooks[event] = kept
     elif event in hooks:
@@ -182,10 +213,10 @@ def uninstall(dest: str) -> int:
 
 
 def _self_test_report(script: str) -> tuple:
-    """(code de retour, fin de la sortie de l'auto-test du moteur installe, en ASCII)."""
+    """(code de retour, fin de la sortie de l'auto-test du moteur installe)."""
     command = [sys.executable, script, "--self-test"]
     proc = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=SELF_TEST_TIMEOUT_SECONDS)
-    out = proc.stdout.decode("utf-8", "replace").encode("ascii", "replace").decode("ascii")
+    out = proc.stdout.decode("utf-8", "replace")
     tail = out.strip().splitlines()[-SELF_TEST_TAIL_LINES:]
     indented = ["  " + line for line in tail]
     return proc.returncode, "\n".join(indented)
@@ -222,9 +253,9 @@ def install(dest: str) -> int:
     say("Installation du superviseur de code")
     say("  cible        : %s" % dest)
     say("  interpreteur : %s" % python)
+    settings = load_settings(settings_path)     # avant toute copie : s'il est refuse, rien n'est modifie
     os.makedirs(dest, exist_ok=True)
     copy_tree(dest)
-    settings = load_settings(settings_path)
     merge_hooks(settings, hook_command(dest, python))
     save_settings(settings_path, settings)
     say("  settings.json ecrit : %s" % settings_path)
@@ -236,6 +267,9 @@ def install(dest: str) -> int:
 
 
 def main(argv) -> int:
+    # Une console qui ne sait pas afficher un caractere (cp1252, ASCII) montre « ? » au lieu de faire echouer l'installation.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(errors="replace")
     dest = target_dir(argv)
     return uninstall(dest) if "--uninstall" in argv else install(dest)
 

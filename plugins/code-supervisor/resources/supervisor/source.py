@@ -196,7 +196,7 @@ def run_git(args: List[str], cwd: str, timeout: int = 20) -> Tuple[int, str]:
         p = subprocess.run(["git"] + args, cwd=cwd, stdout=subprocess.PIPE,
                            stderr=subprocess.DEVNULL, timeout=timeout)
         return p.returncode, p.stdout.decode("utf-8", "replace")
-    except Exception:
+    except (OSError, subprocess.SubprocessError, ValueError):   # git absent, dossier inexistant, delai depasse
         return 1, ""
 
 

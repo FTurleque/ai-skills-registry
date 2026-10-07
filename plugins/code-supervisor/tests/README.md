@@ -8,24 +8,34 @@ fait échouer le test ; une sortie qui bouge volontairement se valide en régén
 
 ```bash
 python plugins/code-supervisor/tests/run_tests.py                # compare le moteur aux références
-python plugins/code-supervisor/tests/run_tests.py --only rules   # une seule suite : hook ou rules
+python plugins/code-supervisor/tests/run_tests.py --only rules   # une seule suite : hook, rules ou install
 python plugins/code-supervisor/tests/run_tests.py --update       # régénère golden/ après un changement voulu
 python plugins/code-supervisor/tests/run_tests.py --script ~/.claude/hooks/supervisor.py   # moteur installé
 ```
 
 Aucune dépendance en dehors de Python et de `git`. La CI les rejoue sur Linux.
 
-## Deux suites
+## Trois suites
 
 | Suite | Ce qu'elle exerce | Référence |
 |---|---|---|
 | `hook` | le hook de bout en bout : charge utile sur stdin, sortie sur stdout, dans des dépôts git jetables | `golden/hook_scenarios.json` |
 | `rules` | toutes les règles de détection sur `corpus/` : par ligne, par bloc, par fichier, sécurité, nommage, imports, complexité et bugs par fonction, extraction des fonctions, duplication | `golden/rules.json` |
+| `install` | l'installeur `install.py` : installation, réinstallation, désinstallation, dans un dossier de configuration jetable | `golden/install_scenarios.json` |
 
 **`hook`** (24 entrées) : tours de blocage puis libération de l'empreinte anti-boucle, autre session,
 événement `SubagentStop`, `stop_hook_active`, `SUPERVISOR_ACTIVE`, agent superviseur, entrée invalide,
 transcript avec lignes corrompues, état corrompu, dossier de journal imposé, chemin accentué, `--check`
 avec ou sans chemin, `--self-test`, et l'état anti-boucle persisté. La revue par modèle est coupée.
+
+**`install`** (22 entrées) : installation neuve, de projet (`--project`), réinstallation, mise à jour d'un ancien
+hook, désinstallation (après installation, sans rien installer, avec un groupe partagé avec un autre hook), et
+réglages hostiles : JSON illisible, fichier qui n'est pas un objet, `hooks` ou un événement mal formé, groupes et
+handlers qui ne sont pas des objets. Chaque entrée relève le code de sortie, la sortie, le `settings.json` obtenu,
+sa sauvegarde et la présence des fichiers installés. Une console ASCII stricte et un moteur dont l'auto-test échoue
+ont aussi leur scénario. L'installeur tourne avec un `HOME` et un `USERPROFILE` jetables : une régression qui
+ignorerait `CLAUDE_CONFIG_DIR` écrirait là, pas dans le `~/.claude` de la personne qui lance les tests. La suite
+est ignorée quand `install.py` n'est pas à côté du moteur testé (cas de `--script ~/.claude/hooks/supervisor.py`).
 
 **`rules`** (582 entrées), trois familles :
 

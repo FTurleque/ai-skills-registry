@@ -18,7 +18,7 @@ import llm
 import report as report_mod
 from config import DEFAULTS, Config, load_config
 from model import sort_findings
-from source import git_changed_lines, git_root, load
+from source import git_changed_lines, git_root, load, run_git
 
 # Dossier de `supervisor.py` : configuration livree a cote du script et fixtures de l'auto-test.
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -451,6 +451,18 @@ def _external_tool_problems() -> list:
         return problems
 
 
+def _failure_handling_problems() -> list:
+    """Les pannes attendues (git ou dossier absent, chemin qui n'en est pas un) ne font pas echouer l'analyse."""
+    problems = []
+    with tempfile.TemporaryDirectory() as work:
+        if run_git(["status"], os.path.join(work, "absent")) != (1, ""):
+            problems.append("run_git ne renvoie pas (1, '') pour un dossier absent")
+        for bad_path in (None, 5):
+            if engine._relativize(work, bad_path) is not None:
+                problems.append("un chemin %r est pris pour un fichier du projet" % (bad_path,))
+    return problems
+
+
 def self_test() -> int:
     fixtures = _fixtures_dir()
     if not fixtures:
@@ -473,6 +485,7 @@ def self_test() -> int:
     for label, check in (("configuration de projet", _project_config_problems),
                          ("quoting des fichiers", _quoting_problems),
                          ("outils externes", _external_tool_problems),
+                         ("pannes attendues", _failure_handling_problems),
                          ("encodage", _encoding_problems)):
         problems = check()
         if problems:

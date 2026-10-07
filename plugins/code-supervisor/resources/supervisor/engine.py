@@ -49,7 +49,7 @@ def _relativize(root: str, path: str):
         if not p.lower().startswith(r.lower()):
             return None
         return os.path.relpath(p, r).replace("\\", "/")
-    except Exception:
+    except (OSError, TypeError, ValueError):     # chemin qui n'en est pas un, ou sur un autre lecteur
         return None
 
 
