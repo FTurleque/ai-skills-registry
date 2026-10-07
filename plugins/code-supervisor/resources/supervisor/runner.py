@@ -11,6 +11,7 @@ import os
 import sys
 import tempfile
 import time
+import types
 
 import engine
 import llm
@@ -412,6 +413,43 @@ def _quoting_problems() -> list:
     return problems
 
 
+# Noms de fichiers du depot supervise, du plus banal au plus hostile.
+_HOSTILE_NAMES = ("plain.py", "mon fichier.py", "a&b.py", "x$(touch pwned).py", "y`touch pwned`.py",
+                  "z;touch pwned.py", "$HOME.py", "q'r.py")
+_RECORDER = ("import json, sys\n"
+             "with open(sys.argv[1], 'w', encoding='utf-8') as out:\n"
+             "    json.dump(sys.argv[2:], out)\n")
+
+
+def _external_tool_problems() -> list:
+    """Un nom de fichier du depot supervise arrive intact au programme lance, ou n'est pas lance, et
+    n'execute jamais rien : c'est ce qui rend acceptable le shell de `run_external_tools`."""
+    with tempfile.TemporaryDirectory() as work:
+        recorder, record = os.path.join(work, "recorder.py"), os.path.join(work, "record.json")
+        with open(recorder, "w", encoding="utf-8") as handle:
+            handle.write(_RECORDER)
+        quoted = [engine.quote_path(path) for path in (sys.executable, recorder, record)]
+        if None in quoted:
+            return []        # un chemin de travail que cmd.exe ne sait pas citer : rien a verifier ici
+        tool = {"name": "recorder", "command": "%s {files}" % " ".join(quoted),
+                "extensions": [".py"], "timeout_seconds": 30}
+        cfg = Config(dict(json.loads(json.dumps(DEFAULTS)), external_tools=[tool]))
+        files = [types.SimpleNamespace(path=name) for name in _HOSTILE_NAMES]
+        with contextlib.redirect_stderr(io.StringIO()):     # les noms refuses sont signales sur stderr
+            engine.run_external_tools(work, files, cfg)
+        if not os.path.exists(record):
+            return ["l'outil de controle n'a pas ete lance"]
+        with open(record, encoding="utf-8") as handle:
+            received = json.load(handle)
+        accepted = [name for name in _HOSTILE_NAMES if engine.quote_path(name) is not None]
+        problems = []
+        if received != accepted:
+            problems.append("arguments recus %r au lieu de %r" % (received, accepted))
+        if any(name.startswith("pwned") for name in os.listdir(work)):
+            problems.append("un nom de fichier a execute une commande")
+        return problems
+
+
 def self_test() -> int:
     fixtures = _fixtures_dir()
     if not fixtures:
@@ -433,6 +471,7 @@ def self_test() -> int:
         return 1
     for label, check in (("configuration de projet", _project_config_problems),
                          ("quoting des fichiers", _quoting_problems),
+                         ("outils externes", _external_tool_problems),
                          ("encodage", _encoding_problems)):
         problems = check()
         if problems:

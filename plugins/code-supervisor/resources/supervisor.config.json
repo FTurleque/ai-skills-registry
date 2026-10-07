@@ -34,7 +34,7 @@
     "convention_files": ["CLAUDE.md", "CONTRIBUTING.md", "AGENTS.md", ".editorconfig"]
   },
 
-  "_external_tools_doc": "Outillage a appeler. Vide par defaut : rien n'est execute sans declaration explicite, pour ne jamais declencher un build ou une CI par surprise. Honore uniquement ici ou dans ~/.claude/supervisor.config.json, jamais depuis un fichier de projet. {files} est remplace par la liste des fichiers modifies.",
+  "_external_tools_doc": "Outillage a appeler. Vide par defaut : rien n'est execute sans declaration explicite, pour ne jamais declencher un build ou une CI par surprise. Honore uniquement ici ou dans ~/.claude/supervisor.config.json, jamais depuis un fichier de projet. {files} est remplace par la liste des fichiers modifies, cites pour le shell (sous Windows, un nom contenant \" % ^ & | < > ! n'est pas transmis). La commande est lancee par un shell : && et les redirections fonctionnent.",
   "external_tools": [],
 
   "_external_tools_exemples": [

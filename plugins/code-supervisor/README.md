@@ -196,6 +196,14 @@ du moteur, `~/.claude/supervisor.config.json`, puis `<projet>/.claude/supervisor
 > ignorees, avec un avertissement sur la sortie d'erreur ; declarez-les dans
 > `~/.claude/supervisor.config.json` si c'est voulu. Tous les autres reglages restent surchargeables
 > projet par projet.
+>
+> **Pourquoi un shell pour `external_tools`.** La commande est la votre, ecrite dans votre configuration :
+> meme confiance que la commande du hook dans `settings.json`. Elle est lancee par un shell (`&&`, redirections
+> et variables fonctionnent), et le moteur ne change pas cela a dessein : sous Windows, `npx` et `mvn` sont des
+> scripts `.cmd` que `cmd.exe` interprete de toute facon, avec ou sans liste d'arguments (mesure : un nom
+> `a&ver` y execute `ver`). Ce qui vient du depot supervise, les noms de fichiers, est cite par le moteur ;
+> sous Windows, un nom contenant `"%^&|<>!` ou un caractere de controle n'est pas passe a l'outil, et
+> l'auto-test verifie de bout en bout qu'aucun nom de fichier n'execute de commande.
 
 | Cle | Effet |
 |---|---|

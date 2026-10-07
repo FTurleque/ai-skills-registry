@@ -118,7 +118,16 @@ def _quote_files(tool_name: str, paths: List[str]) -> List[str]:
 
 def run_external_tools(root: str, files: List[SourceFile], cfg) -> List[Finding]:
     """Outils du projet declares explicitement dans la configuration.
-    Aucun outil n'est lance si la liste est vide (cas par defaut)."""
+    Aucun outil n'est lance si la liste est vide (cas par defaut).
+
+    La commande passe par un shell (`shell=True`), a dessein. Elle est ecrite par l'utilisateur dans sa
+    propre configuration : c'est la meme confiance que la commande du hook dans settings.json. Une liste
+    d'arguments sans shell n'aiderait pas ici : sous Windows, `npx` et `mvn` sont des scripts `.cmd`,
+    que cmd.exe interprete de la meme facon (un nom `a&ver` y executerait `ver`, `%COMSPEC%` y serait
+    developpe), et on perdrait `&&`, les redirections et les variables des commandes declarees. Ce qui
+    vient du depot supervise, les noms de fichiers, ne passe que par `quote_path`, dont l'auto-test
+    verifie de bout en bout (`_external_tool_problems`) qu'aucun nom n'execute quoi que ce soit.
+    Le constat « appel systeme avec shell=True » du superviseur sur cette ligne est donc connu et accepte."""
     out: List[Finding] = []
     tools = cfg.get("external_tools") or []
     if not tools:

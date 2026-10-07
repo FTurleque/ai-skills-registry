@@ -9,6 +9,26 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — `shell=True` des `external_tools` conservé, décision documentée et vérifiée (ticket #26)
+
+Décision : **on garde le shell**. La commande est écrite par l'utilisateur dans sa propre configuration (même
+confiance que le hook de `settings.json`), et une liste d'arguments n'apporterait rien là où le risque existe.
+Mesuré sous Windows avec un script `.cmd` inoffensif : `npx` et `mvn`, les exemples du README, sont des scripts
+`.cmd` que `cmd.exe` interprète même sans shell. Un nom de fichier `a&ver` y exécute `ver`, `%COMSPEC%` y est
+développé, un guillemet dans le nom casse la ligne. Le rejet des noms dangereux de `quote_path` reste donc
+nécessaire dans les deux cas, et passer en liste aurait supprimé `&&`, les redirections et les variables des
+commandes déjà déclarées, sans rien gagner.
+
+À la place d'un argument d'autorité, un contrôle exécutable : l'auto-test lance `run_external_tools` avec huit
+noms de fichiers (espace, `&`, `$(…)`, accent grave, `;`, `$HOME`, apostrophe) vers un programme qui enregistre
+ses arguments, et exige que les noms acceptés arrivent intacts, que les noms refusés ne soient pas lancés et
+qu'aucune commande ne s'exécute. Sous Windows, sept noms arrivent intacts et `a&b.py` est refusé. Une
+mutation qui cesse de citer les noms (`a&b.py` exécute `b.py`) est détectée par ce contrôle seul ; le contrôle
+existant sur `quote_path` ne la voyait pas. Le constat « appel système avec `shell=True` » du superviseur reste
+affiché : il est maintenant documenté dans `engine.run_external_tools`, dans le README et dans
+`supervisor.config.json`. Aucun changement de comportement du moteur. Un moteur déjà installé doit être
+réinstallé pour profiter du contrôle.
+
 ### Corrigé — extraction des fonctions Kotlin, Scala et Go, et `BUG.DIV_ZERO` (ticket #28)
 
 - **Corps-expression** (`fun twice(x: Int) = x * 2` en Kotlin, `def inline(x: Int) = x + 1` en Scala) : la
