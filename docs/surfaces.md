@@ -62,6 +62,7 @@ artefact déclare cette surface quand il ne suppose rien de l'environnement d'ex
 |----------|------|:-------------:|:----------------:|:-----------:|:------------:|
 | `java-code-review` | skill | ✅ | ✅ | ✅ | ✅ |
 | `generate-windows-exe` | skill | ✅ | ✅ | ❌ | ❌ |
+| `code-to-openspec` | skill | ✅ | ✅ | ❌ | ❌ |
 | `code-supervisor` | plugin | ✅ | ✅ | ❌ | ❌ |
 
 **Légende**
