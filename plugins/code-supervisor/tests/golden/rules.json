@@ -9,7 +9,17 @@
   "file": [],
   "lines": []
  },
+ "defaut|tout|cpp/Special.cpp": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|cs/Arrow.cs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|cs/MultilineArrow.cs": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -25,6 +35,11 @@
   "lines": []
  },
  "defaut|tout|go/main.go": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|tout|go/methods.go": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -239,6 +254,23 @@
  "defaut|tout|java/CrossRoot.java": {
   "blocks": [],
   "file": [],
+  "lines": []
+ },
+ "defaut|tout|java/Division.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// return 100 / items.length;",
+    null
+   ]
+  ],
   "lines": []
  },
  "defaut|tout|java/DuplicateA.java": {
@@ -1799,6 +1831,11 @@
    ]
   ]
  },
+ "defaut|tout|js/division_guards.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|js/dup/CrossRef.js": {
   "blocks": [],
   "file": [],
@@ -2008,6 +2045,11 @@
     null
    ]
   ]
+ },
+ "defaut|tout|kt/ExpressionBodies.kt": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|tout|kt/Funs.kt": {
   "blocks": [],
@@ -2257,6 +2299,11 @@
     null
    ]
   ]
+ },
+ "defaut|tout|py/division_guards.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|tout|py/long_lines.py": {
   "blocks": [],
@@ -3065,6 +3112,11 @@
   "file": [],
   "lines": []
  },
+ "defaut|tout|scala/Blocks.scala": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|tout|top_level.py": {
   "blocks": [],
   "file": [],
@@ -3090,7 +3142,17 @@
   "file": [],
   "lines": []
  },
+ "defaut|un_sur_sept|cpp/Special.cpp": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|un_sur_sept|cs/Arrow.cs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|cs/MultilineArrow.cs": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -3106,6 +3168,11 @@
   "lines": []
  },
  "defaut|un_sur_sept|go/main.go": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|go/methods.go": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -3274,6 +3341,23 @@
  "defaut|un_sur_sept|java/CrossRoot.java": {
   "blocks": [],
   "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|java/Division.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// return 100 / items.length;",
+    null
+   ]
+  ],
   "lines": []
  },
  "defaut|un_sur_sept|java/DuplicateA.java": {
@@ -4448,6 +4532,11 @@
    ]
   ]
  },
+ "defaut|un_sur_sept|js/division_guards.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "defaut|un_sur_sept|js/dup/CrossRef.js": {
   "blocks": [],
   "file": [],
@@ -4601,6 +4690,11 @@
     null
    ]
   ]
+ },
+ "defaut|un_sur_sept|kt/ExpressionBodies.kt": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|un_sur_sept|kt/Funs.kt": {
   "blocks": [],
@@ -4782,6 +4876,11 @@
     null
    ]
   ]
+ },
+ "defaut|un_sur_sept|py/division_guards.py": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "defaut|un_sur_sept|py/long_lines.py": {
   "blocks": [],
@@ -5396,6 +5495,11 @@
   "lines": []
  },
  "defaut|un_sur_sept|rs/lib.rs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "defaut|un_sur_sept|scala/Blocks.scala": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -6195,6 +6299,28 @@
   "naming": [],
   "security": []
  },
+ "extra|defaut|cpp/Special.cpp": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Widget.draw",
+    7,
+    9,
+    [
+     "int width"
+    ],
+    "Widget",
+    "void",
+    "",
+    2,
+    "f6ba9bcc"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|cs/Arrow.cs": {
   "function_bugs": [],
   "function_quality": [],
@@ -6248,6 +6374,52 @@
     "public override",
     0,
     "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|cs/MultilineArrow.cs": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Shapes.Origin",
+    2,
+    5,
+    [],
+    "Shapes",
+    "Point",
+    "public",
+    3,
+    "a78abe59"
+   ],
+   [
+    "Shapes.Twice",
+    7,
+    7,
+    [
+     "int x"
+    ],
+    "Shapes",
+    "int",
+    "public",
+    0,
+    "caa47dea"
+   ],
+   [
+    "Shapes.Thrice",
+    10,
+    10,
+    [
+     "int x"
+    ],
+    "Shapes",
+    "int",
+    "public",
+    0,
+    "eaf15cab"
    ]
   ],
   "imports": [],
@@ -6401,21 +6573,104 @@
     "80c1b8c6"
    ],
    [
-    "func",
+    "Server.Name",
     7,
     9,
     [
-     "s *Server"
+     "prefix string"
     ],
+    "Server",
     "",
-    "",
-    "",
+    "func",
     2,
     "db7f681a"
    ]
   ],
   "imports": [],
   "naming": [],
+  "security": []
+ },
+ "extra|defaut|go/methods.go": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Stack.Push",
+    5,
+    7,
+    [
+     "item T"
+    ],
+    "Stack",
+    "",
+    "func",
+    2,
+    "88c248fe"
+   ],
+   [
+    "Stack.Size",
+    9,
+    11,
+    [],
+    "Stack",
+    "",
+    "func",
+    2,
+    "d74f9690"
+   ],
+   [
+    "Server.Handle",
+    13,
+    18,
+    [
+     "request string",
+     "retries int"
+    ],
+    "Server",
+    "",
+    "func",
+    5,
+    "6a3dd4b5"
+   ],
+   [
+    "helper",
+    20,
+    22,
+    [
+     "value int"
+    ],
+    "",
+    "",
+    "func",
+    2,
+    "82bf68ef"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.VAGUE_VERB",
+    "MAJOR",
+    "nommage",
+    13,
+    0,
+    "La methode `Server.Handle` utilise un verbe passe-partout.",
+    "e7e5486f",
+    "func (s Server) Handle(request string, retries int) (string, error) {",
+    "Server.Handle"
+   ],
+   [
+    "NAM.VAGUE_METHOD",
+    "MAJOR",
+    "nommage",
+    20,
+    0,
+    "La methode `helper` a un nom qui ne decrit pas son effet.",
+    "f6dd48f9",
+    "func helper(value int) int {",
+    "helper"
+   ]
+  ],
   "security": []
  },
  "extra|defaut|java/.gradle/UniqueDirCopy.java": {
@@ -6928,6 +7183,164 @@
     "",
     7,
     "06d89f2c"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|java/Division.java": {
+  "function_bugs": [
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    2,
+    4,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int byReceiverSize(java.util.List<Integer> values) {",
+    "Division.byReceiverSize"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    6,
+    8,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int byLength(int[] items) {",
+    "Division.byLength"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    10,
+    12,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int byMethodLength(String text) {",
+    "Division.byMethodLength"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    14,
+    16,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int byChainedCount(Stats stats) {",
+    "Division.byChainedCount"
+   ]
+  ],
+  "function_quality": [],
+  "functions": [
+   [
+    "Division.byReceiverSize",
+    2,
+    4,
+    [
+     "java.util.List<Integer> values"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "8be5956b"
+   ],
+   [
+    "Division.byLength",
+    6,
+    8,
+    [
+     "int[] items"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "a9b919fd"
+   ],
+   [
+    "Division.byMethodLength",
+    10,
+    12,
+    [
+     "String text"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "7e16f7f8"
+   ],
+   [
+    "Division.byChainedCount",
+    14,
+    16,
+    [
+     "Stats stats"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "6363c243"
+   ],
+   [
+    "Division.guardedReceiver",
+    18,
+    23,
+    [
+     "java.util.List<Integer> values"
+    ],
+    "Division",
+    "int",
+    "public",
+    5,
+    "fbdeaab6"
+   ],
+   [
+    "Division.notADivisor",
+    25,
+    27,
+    [
+     "int[] items"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "35c17e07"
+   ],
+   [
+    "Division.otherNames",
+    29,
+    31,
+    [
+     "Config config"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "5ed0a6ab"
+   ],
+   [
+    "Division.commentedOut",
+    33,
+    36,
+    [
+     "int[] items"
+    ],
+    "Division",
+    "int",
+    "public",
+    3,
+    "b521be95"
    ]
   ],
   "imports": [],
@@ -8726,6 +9139,94 @@
   ],
   "security": []
  },
+ "extra|defaut|js/division_guards.js": {
+  "function_bugs": [
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    13,
+    15,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "function meanUnchecked(items) {",
+    "meanUnchecked"
+   ]
+  ],
+  "function_quality": [],
+  "functions": [
+   [
+    "mean",
+    1,
+    6,
+    [
+     "items"
+    ],
+    "",
+    "function",
+    "",
+    5,
+    "64f2847e"
+   ],
+   [
+    "meanEarlyReturn",
+    8,
+    11,
+    [
+     "items"
+    ],
+    "",
+    "function",
+    "",
+    3,
+    "399ea5b3"
+   ],
+   [
+    "meanUnchecked",
+    13,
+    15,
+    [
+     "items"
+    ],
+    "",
+    "function",
+    "",
+    2,
+    "7ecffd22"
+   ],
+   [
+    "meanAndReady",
+    17,
+    22,
+    [
+     "items",
+     "ready"
+    ],
+    "",
+    "function",
+    "",
+    5,
+    "411bada8"
+   ],
+   [
+    "meanOrDone",
+    24,
+    27,
+    [
+     "items",
+     "done"
+    ],
+    "",
+    "function",
+    "",
+    3,
+    "5fad2c84"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|js/dup/CrossRef.js": {
   "function_bugs": [],
   "function_quality": [],
@@ -9047,6 +9548,91 @@
   ],
   "security": []
  },
+ "extra|defaut|kt/ExpressionBodies.kt": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Counter.double",
+    2,
+    2,
+    [
+     "x: Int"
+    ],
+    "Counter",
+    "",
+    "fun",
+    0,
+    "1429e2de"
+   ],
+   [
+    "Counter.describe",
+    3,
+    3,
+    [
+     "x: Int"
+    ],
+    "Counter",
+    "",
+    "fun",
+    0,
+    "7d4f685d"
+   ],
+   [
+    "Counter.pick",
+    4,
+    4,
+    [
+     "x: Int"
+    ],
+    "Counter",
+    "",
+    "fun",
+    0,
+    "d984497c"
+   ],
+   [
+    "Counter.reset",
+    5,
+    8,
+    [],
+    "Counter",
+    "",
+    "fun",
+    3,
+    "04c9afca"
+   ],
+   [
+    "last",
+    11,
+    11,
+    [
+     "x: Int"
+    ],
+    "",
+    "",
+    "fun",
+    0,
+    "762186a3"
+   ],
+   [
+    "withSemicolonLater",
+    13,
+    13,
+    [
+     "x: Int"
+    ],
+    "",
+    "",
+    "fun",
+    0,
+    "278387fc"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|kt/Funs.kt": {
   "function_bugs": [],
   "function_quality": [],
@@ -9067,15 +9653,15 @@
    [
     "Greeter.twice",
     5,
-    6,
+    5,
     [
      "x: Int"
     ],
     "Greeter",
     "",
     "private fun",
-    1,
-    "80ef4a81"
+    0,
+    "93ecd576"
    ],
    [
     "Greeter.load",
@@ -9266,6 +9852,235 @@
     "",
     1,
     "760e14b8"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|defaut|py/division_guards.py": {
+  "function_bugs": [
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    11,
+    13,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def bare_unguarded(values):",
+    "bare_unguarded"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    35,
+    36,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def unguarded(self):",
+    "Stats.unguarded"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    38,
+    41,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def guard_on_another_name(self):",
+    "Stats.guard_on_another_name"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    43,
+    46,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def guard_on_a_longer_name(self):",
+    "Stats.guard_on_a_longer_name"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    70,
+    73,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def one_divisor_guarded_the_other_not(self):",
+    "Stats.one_divisor_guarded_the_other_not"
+   ]
+  ],
+  "function_quality": [],
+  "functions": [
+   [
+    "bare_guarded",
+    4,
+    8,
+    [
+     "values"
+    ],
+    "",
+    "",
+    "",
+    4,
+    "2ca6bc5a"
+   ],
+   [
+    "bare_unguarded",
+    11,
+    13,
+    [
+     "values"
+    ],
+    "",
+    "",
+    "",
+    2,
+    "d6e8ae1a"
+   ],
+   [
+    "Stats.__init__",
+    17,
+    20,
+    [
+     "size",
+     "count",
+     "total"
+    ],
+    "Stats",
+    "",
+    "",
+    3,
+    "e337f613"
+   ],
+   [
+    "Stats.guarded",
+    22,
+    25,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "420641ba"
+   ],
+   [
+    "Stats.guarded_by_negation",
+    27,
+    30,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "cda76269"
+   ],
+   [
+    "Stats.guarded_by_conditional",
+    32,
+    33,
+    [],
+    "Stats",
+    "",
+    "",
+    1,
+    "3939f664"
+   ],
+   [
+    "Stats.unguarded",
+    35,
+    36,
+    [],
+    "Stats",
+    "",
+    "",
+    1,
+    "c0f146bf"
+   ],
+   [
+    "Stats.guard_on_another_name",
+    38,
+    41,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "211f5d92"
+   ],
+   [
+    "Stats.guard_on_a_longer_name",
+    43,
+    46,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "4329d79f"
+   ],
+   [
+    "Stats.guarded_with_and",
+    48,
+    51,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "5fd0b5a0"
+   ],
+   [
+    "Stats.guarded_with_or",
+    53,
+    56,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "1b42e510"
+   ],
+   [
+    "Stats.guarded_in_elif",
+    58,
+    63,
+    [
+     "mode"
+    ],
+    "Stats",
+    "",
+    "",
+    5,
+    "7c9efab2"
+   ],
+   [
+    "Stats.guarded_in_while",
+    65,
+    68,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "777016e5"
+   ],
+   [
+    "Stats.one_divisor_guarded_the_other_not",
+    70,
+    73,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "4571a975"
    ]
   ],
   "imports": [],
@@ -10238,6 +11053,54 @@
   "naming": [],
   "security": []
  },
+ "extra|defaut|scala/Blocks.scala": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Blocks.compute",
+    2,
+    5,
+    [
+     "x: Int"
+    ],
+    "Blocks",
+    "",
+    "def",
+    3,
+    "ca5f93b4"
+   ],
+   [
+    "Blocks.inline",
+    7,
+    7,
+    [
+     "x: Int"
+    ],
+    "Blocks",
+    "",
+    "def",
+    0,
+    "71bd94c9"
+   ],
+   [
+    "Blocks.pad",
+    9,
+    11,
+    [
+     "x: Int"
+    ],
+    "Blocks",
+    "",
+    "def",
+    2,
+    "87595155"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|defaut|top_level.py": {
   "function_bugs": [],
   "function_quality": [],
@@ -10349,6 +11212,28 @@
   "naming": [],
   "security": []
  },
+ "extra|seuils_fonctions|cpp/Special.cpp": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Widget.draw",
+    7,
+    9,
+    [
+     "int width"
+    ],
+    "Widget",
+    "void",
+    "",
+    2,
+    "f6ba9bcc"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|cs/Arrow.cs": {
   "function_bugs": [],
   "function_quality": [],
@@ -10402,6 +11287,52 @@
     "public override",
     0,
     "e3b0c442"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|cs/MultilineArrow.cs": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Shapes.Origin",
+    2,
+    5,
+    [],
+    "Shapes",
+    "Point",
+    "public",
+    3,
+    "a78abe59"
+   ],
+   [
+    "Shapes.Twice",
+    7,
+    7,
+    [
+     "int x"
+    ],
+    "Shapes",
+    "int",
+    "public",
+    0,
+    "caa47dea"
+   ],
+   [
+    "Shapes.Thrice",
+    10,
+    10,
+    [
+     "int x"
+    ],
+    "Shapes",
+    "int",
+    "public",
+    0,
+    "eaf15cab"
    ]
   ],
   "imports": [],
@@ -10555,21 +11486,104 @@
     "80c1b8c6"
    ],
    [
-    "func",
+    "Server.Name",
     7,
     9,
     [
-     "s *Server"
+     "prefix string"
     ],
+    "Server",
     "",
-    "",
-    "",
+    "func",
     2,
     "db7f681a"
    ]
   ],
   "imports": [],
   "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|go/methods.go": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Stack.Push",
+    5,
+    7,
+    [
+     "item T"
+    ],
+    "Stack",
+    "",
+    "func",
+    2,
+    "88c248fe"
+   ],
+   [
+    "Stack.Size",
+    9,
+    11,
+    [],
+    "Stack",
+    "",
+    "func",
+    2,
+    "d74f9690"
+   ],
+   [
+    "Server.Handle",
+    13,
+    18,
+    [
+     "request string",
+     "retries int"
+    ],
+    "Server",
+    "",
+    "func",
+    5,
+    "6a3dd4b5"
+   ],
+   [
+    "helper",
+    20,
+    22,
+    [
+     "value int"
+    ],
+    "",
+    "",
+    "func",
+    2,
+    "82bf68ef"
+   ]
+  ],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.VAGUE_VERB",
+    "MAJOR",
+    "nommage",
+    13,
+    0,
+    "La methode `Server.Handle` utilise un verbe passe-partout.",
+    "e7e5486f",
+    "func (s Server) Handle(request string, retries int) (string, error) {",
+    "Server.Handle"
+   ],
+   [
+    "NAM.VAGUE_METHOD",
+    "MAJOR",
+    "nommage",
+    20,
+    0,
+    "La methode `helper` a un nom qui ne decrit pas son effet.",
+    "f6dd48f9",
+    "func helper(value int) int {",
+    "helper"
+   ]
+  ],
   "security": []
  },
  "extra|seuils_fonctions|java/.gradle/UniqueDirCopy.java": {
@@ -11250,6 +12264,164 @@
     "",
     7,
     "06d89f2c"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|java/Division.java": {
+  "function_bugs": [
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    2,
+    4,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int byReceiverSize(java.util.List<Integer> values) {",
+    "Division.byReceiverSize"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    6,
+    8,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int byLength(int[] items) {",
+    "Division.byLength"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    10,
+    12,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int byMethodLength(String text) {",
+    "Division.byMethodLength"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    14,
+    16,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int byChainedCount(Stats stats) {",
+    "Division.byChainedCount"
+   ]
+  ],
+  "function_quality": [],
+  "functions": [
+   [
+    "Division.byReceiverSize",
+    2,
+    4,
+    [
+     "java.util.List<Integer> values"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "8be5956b"
+   ],
+   [
+    "Division.byLength",
+    6,
+    8,
+    [
+     "int[] items"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "a9b919fd"
+   ],
+   [
+    "Division.byMethodLength",
+    10,
+    12,
+    [
+     "String text"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "7e16f7f8"
+   ],
+   [
+    "Division.byChainedCount",
+    14,
+    16,
+    [
+     "Stats stats"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "6363c243"
+   ],
+   [
+    "Division.guardedReceiver",
+    18,
+    23,
+    [
+     "java.util.List<Integer> values"
+    ],
+    "Division",
+    "int",
+    "public",
+    5,
+    "fbdeaab6"
+   ],
+   [
+    "Division.notADivisor",
+    25,
+    27,
+    [
+     "int[] items"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "35c17e07"
+   ],
+   [
+    "Division.otherNames",
+    29,
+    31,
+    [
+     "Config config"
+    ],
+    "Division",
+    "int",
+    "public",
+    2,
+    "5ed0a6ab"
+   ],
+   [
+    "Division.commentedOut",
+    33,
+    36,
+    [
+     "int[] items"
+    ],
+    "Division",
+    "int",
+    "public",
+    3,
+    "b521be95"
    ]
   ],
   "imports": [],
@@ -13546,6 +14718,139 @@
   ],
   "security": []
  },
+ "extra|seuils_fonctions|js/division_guards.js": {
+  "function_bugs": [
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    13,
+    15,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "function meanUnchecked(items) {",
+    "meanUnchecked"
+   ]
+  ],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    17,
+    22,
+    "meanAndReady a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "function meanAndReady(items, ready) {",
+    "meanAndReady"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    18,
+    0,
+    "Condition composee de 1 operateurs booleens dans meanAndReady.",
+    "002d039a",
+    "if (items.length && ready) {",
+    "meanAndReady"
+   ],
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    24,
+    27,
+    "meanOrDone a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "function meanOrDone(items, done) {",
+    "meanOrDone"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    25,
+    0,
+    "Condition composee de 1 operateurs booleens dans meanOrDone.",
+    "002d039a",
+    "if (!items.length || done) return 0;",
+    "meanOrDone"
+   ]
+  ],
+  "functions": [
+   [
+    "mean",
+    1,
+    6,
+    [
+     "items"
+    ],
+    "",
+    "function",
+    "",
+    5,
+    "64f2847e"
+   ],
+   [
+    "meanEarlyReturn",
+    8,
+    11,
+    [
+     "items"
+    ],
+    "",
+    "function",
+    "",
+    3,
+    "399ea5b3"
+   ],
+   [
+    "meanUnchecked",
+    13,
+    15,
+    [
+     "items"
+    ],
+    "",
+    "function",
+    "",
+    2,
+    "7ecffd22"
+   ],
+   [
+    "meanAndReady",
+    17,
+    22,
+    [
+     "items",
+     "ready"
+    ],
+    "",
+    "function",
+    "",
+    5,
+    "411bada8"
+   ],
+   [
+    "meanOrDone",
+    24,
+    27,
+    [
+     "items",
+     "done"
+    ],
+    "",
+    "function",
+    "",
+    3,
+    "5fad2c84"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|js/dup/CrossRef.js": {
   "function_bugs": [],
   "function_quality": [
@@ -13961,6 +15266,91 @@
   ],
   "security": []
  },
+ "extra|seuils_fonctions|kt/ExpressionBodies.kt": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Counter.double",
+    2,
+    2,
+    [
+     "x: Int"
+    ],
+    "Counter",
+    "",
+    "fun",
+    0,
+    "1429e2de"
+   ],
+   [
+    "Counter.describe",
+    3,
+    3,
+    [
+     "x: Int"
+    ],
+    "Counter",
+    "",
+    "fun",
+    0,
+    "7d4f685d"
+   ],
+   [
+    "Counter.pick",
+    4,
+    4,
+    [
+     "x: Int"
+    ],
+    "Counter",
+    "",
+    "fun",
+    0,
+    "d984497c"
+   ],
+   [
+    "Counter.reset",
+    5,
+    8,
+    [],
+    "Counter",
+    "",
+    "fun",
+    3,
+    "04c9afca"
+   ],
+   [
+    "last",
+    11,
+    11,
+    [
+     "x: Int"
+    ],
+    "",
+    "",
+    "fun",
+    0,
+    "762186a3"
+   ],
+   [
+    "withSemicolonLater",
+    13,
+    13,
+    [
+     "x: Int"
+    ],
+    "",
+    "",
+    "fun",
+    0,
+    "278387fc"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|kt/Funs.kt": {
   "function_bugs": [],
   "function_quality": [],
@@ -13981,15 +15371,15 @@
    [
     "Greeter.twice",
     5,
-    6,
+    5,
     [
      "x: Int"
     ],
     "Greeter",
     "",
     "private fun",
-    1,
-    "80ef4a81"
+    0,
+    "93ecd576"
    ],
    [
     "Greeter.load",
@@ -14305,6 +15695,302 @@
     "",
     1,
     "760e14b8"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "extra|seuils_fonctions|py/division_guards.py": {
+  "function_bugs": [
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    11,
+    13,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def bare_unguarded(values):",
+    "bare_unguarded"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    35,
+    36,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def unguarded(self):",
+    "Stats.unguarded"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    38,
+    41,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def guard_on_another_name(self):",
+    "Stats.guard_on_another_name"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    43,
+    46,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def guard_on_a_longer_name(self):",
+    "Stats.guard_on_a_longer_name"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    70,
+    73,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def one_divisor_guarded_the_other_not(self):",
+    "Stats.one_divisor_guarded_the_other_not"
+   ]
+  ],
+  "function_quality": [
+   [
+    "CPX.TOO_MANY_PARAMS",
+    "MINOR",
+    "complexite",
+    17,
+    20,
+    "Stats.__init__ prend 3 parametres (seuil 2).",
+    "714e54b3",
+    "def __init__(self, size, count, total):",
+    "Stats.__init__"
+   ],
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    48,
+    51,
+    "Stats.guarded_with_and a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "def guarded_with_and(self):",
+    "Stats.guarded_with_and"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    49,
+    0,
+    "Condition composee de 1 operateurs booleens dans Stats.guarded_with_and.",
+    "002d039a",
+    "if self.count and self.size:",
+    "Stats.guarded_with_and"
+   ],
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    53,
+    56,
+    "Stats.guarded_with_or a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "def guarded_with_or(self):",
+    "Stats.guarded_with_or"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    54,
+    0,
+    "Condition composee de 1 operateurs booleens dans Stats.guarded_with_or.",
+    "002d039a",
+    "if not self.count or self.size < 0:",
+    "Stats.guarded_with_or"
+   ],
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    58,
+    63,
+    "Stats.guarded_in_elif a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "def guarded_in_elif(self, mode):",
+    "Stats.guarded_in_elif"
+   ]
+  ],
+  "functions": [
+   [
+    "bare_guarded",
+    4,
+    8,
+    [
+     "values"
+    ],
+    "",
+    "",
+    "",
+    4,
+    "2ca6bc5a"
+   ],
+   [
+    "bare_unguarded",
+    11,
+    13,
+    [
+     "values"
+    ],
+    "",
+    "",
+    "",
+    2,
+    "d6e8ae1a"
+   ],
+   [
+    "Stats.__init__",
+    17,
+    20,
+    [
+     "size",
+     "count",
+     "total"
+    ],
+    "Stats",
+    "",
+    "",
+    3,
+    "e337f613"
+   ],
+   [
+    "Stats.guarded",
+    22,
+    25,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "420641ba"
+   ],
+   [
+    "Stats.guarded_by_negation",
+    27,
+    30,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "cda76269"
+   ],
+   [
+    "Stats.guarded_by_conditional",
+    32,
+    33,
+    [],
+    "Stats",
+    "",
+    "",
+    1,
+    "3939f664"
+   ],
+   [
+    "Stats.unguarded",
+    35,
+    36,
+    [],
+    "Stats",
+    "",
+    "",
+    1,
+    "c0f146bf"
+   ],
+   [
+    "Stats.guard_on_another_name",
+    38,
+    41,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "211f5d92"
+   ],
+   [
+    "Stats.guard_on_a_longer_name",
+    43,
+    46,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "4329d79f"
+   ],
+   [
+    "Stats.guarded_with_and",
+    48,
+    51,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "5fd0b5a0"
+   ],
+   [
+    "Stats.guarded_with_or",
+    53,
+    56,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "1b42e510"
+   ],
+   [
+    "Stats.guarded_in_elif",
+    58,
+    63,
+    [
+     "mode"
+    ],
+    "Stats",
+    "",
+    "",
+    5,
+    "7c9efab2"
+   ],
+   [
+    "Stats.guarded_in_while",
+    65,
+    68,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "777016e5"
+   ],
+   [
+    "Stats.one_divisor_guarded_the_other_not",
+    70,
+    73,
+    [],
+    "Stats",
+    "",
+    "",
+    3,
+    "4571a975"
    ]
   ],
   "imports": [],
@@ -15392,6 +17078,54 @@
   "naming": [],
   "security": []
  },
+ "extra|seuils_fonctions|scala/Blocks.scala": {
+  "function_bugs": [],
+  "function_quality": [],
+  "functions": [
+   [
+    "Blocks.compute",
+    2,
+    5,
+    [
+     "x: Int"
+    ],
+    "Blocks",
+    "",
+    "def",
+    3,
+    "ca5f93b4"
+   ],
+   [
+    "Blocks.inline",
+    7,
+    7,
+    [
+     "x: Int"
+    ],
+    "Blocks",
+    "",
+    "def",
+    0,
+    "71bd94c9"
+   ],
+   [
+    "Blocks.pad",
+    9,
+    11,
+    [
+     "x: Int"
+    ],
+    "Blocks",
+    "",
+    "def",
+    2,
+    "87595155"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "extra|seuils_fonctions|top_level.py": {
   "function_bugs": [],
   "function_quality": [],
@@ -15523,7 +17257,21 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|cpp/Special.cpp": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|cs/Arrow.cs": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|cs/MultilineArrow.cs": {
   "function_bugs": [],
   "function_quality": [],
   "imports": [],
@@ -15595,6 +17343,36 @@
   "function_quality": [],
   "imports": [],
   "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|go/methods.go": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [
+   [
+    "NAM.VAGUE_VERB",
+    "MAJOR",
+    "nommage",
+    13,
+    0,
+    "La methode `Server.Handle` utilise un verbe passe-partout.",
+    "e7e5486f",
+    "func (s Server) Handle(request string, retries int) (string, error) {",
+    "Server.Handle"
+   ],
+   [
+    "NAM.VAGUE_METHOD",
+    "MAJOR",
+    "nommage",
+    20,
+    0,
+    "La methode `helper` a un nom qui ne decrit pas son effet.",
+    "f6dd48f9",
+    "func helper(value int) int {",
+    "helper"
+   ]
+  ],
   "security": []
  },
  "partial|seuils_fonctions|java/.gradle/UniqueDirCopy.java": {
@@ -15927,6 +17705,36 @@
     "CrossRoot.clamp"
    ]
   ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|java/Division.java": {
+  "function_bugs": [
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    6,
+    8,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int byLength(int[] items) {",
+    "Division.byLength"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    14,
+    16,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "public int byChainedCount(Stats stats) {",
+    "Division.byChainedCount"
+   ]
+  ],
+  "function_quality": [],
   "imports": [],
   "naming": [],
   "security": []
@@ -17237,6 +19045,48 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|js/division_guards.js": {
+  "function_bugs": [
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    13,
+    15,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "function meanUnchecked(items) {",
+    "meanUnchecked"
+   ]
+  ],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    17,
+    22,
+    "meanAndReady a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "function meanAndReady(items, ready) {",
+    "meanAndReady"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    18,
+    0,
+    "Condition composee de 1 operateurs booleens dans meanAndReady.",
+    "002d039a",
+    "if (items.length && ready) {",
+    "meanAndReady"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|js/dup/CrossRef.js": {
   "function_bugs": [],
   "function_quality": [
@@ -17466,6 +19316,13 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|kt/ExpressionBodies.kt": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|kt/Funs.kt": {
   "function_bugs": [],
   "function_quality": [],
@@ -17660,6 +19517,70 @@
     "38f77482",
     "def f(x):",
     "f"
+   ]
+  ],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
+ "partial|seuils_fonctions|py/division_guards.py": {
+  "function_bugs": [
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    35,
+    36,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def unguarded(self):",
+    "Stats.unguarded"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    43,
+    46,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def guard_on_a_longer_name(self):",
+    "Stats.guard_on_a_longer_name"
+   ],
+   [
+    "BUG.DIV_ZERO",
+    "MAJOR",
+    "bug",
+    70,
+    73,
+    "Division par une valeur qui peut valoir zero, sans garde.",
+    "0e1c79b0",
+    "def one_divisor_guarded_the_other_not(self):",
+    "Stats.one_divisor_guarded_the_other_not"
+   ]
+  ],
+  "function_quality": [
+   [
+    "CPX.CYCLOMATIC",
+    "MINOR",
+    "complexite",
+    48,
+    51,
+    "Stats.guarded_with_and a une complexite cyclomatique de 3 (seuil souhaite 2).",
+    "3fbcf346",
+    "def guarded_with_and(self):",
+    "Stats.guarded_with_and"
+   ],
+   [
+    "CPX.CONDITION",
+    "MINOR",
+    "complexite",
+    49,
+    0,
+    "Condition composee de 1 operateurs booleens dans Stats.guarded_with_and.",
+    "002d039a",
+    "if self.count and self.size:",
+    "Stats.guarded_with_and"
    ]
   ],
   "imports": [],
@@ -18288,6 +20209,13 @@
   "naming": [],
   "security": []
  },
+ "partial|seuils_fonctions|scala/Blocks.scala": {
+  "function_bugs": [],
+  "function_quality": [],
+  "imports": [],
+  "naming": [],
+  "security": []
+ },
  "partial|seuils_fonctions|top_level.py": {
   "function_bugs": [],
   "function_quality": [],
@@ -18365,7 +20293,17 @@
   "file": [],
   "lines": []
  },
+ "seuils_bas|tout|cpp/Special.cpp": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|cs/Arrow.cs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|cs/MultilineArrow.cs": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -18429,6 +20367,23 @@
  "seuils_bas|tout|go/main.go": {
   "blocks": [],
   "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|go/methods.go": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    13,
+    0,
+    "Ligne de 69 caracteres (seuil 60).",
+    "b875b8b0",
+    "func (s Server) Handle(request string, retries int) (string, error) {",
+    null
+   ]
+  ],
   "lines": []
  },
  "seuils_bas|tout|java/.gradle/UniqueDirCopy.java": {
@@ -18687,6 +20642,56 @@
  "seuils_bas|tout|java/CrossRoot.java": {
   "blocks": [],
   "file": [],
+  "lines": []
+ },
+ "seuils_bas|tout|java/Division.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Ligne de 63 caracteres (seuil 60).",
+    "b875b8b0",
+    "public int byReceiverSize(java.util.List<Integer> values) {",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    18,
+    0,
+    "Ligne de 64 caracteres (seuil 60).",
+    "b875b8b0",
+    "public int guardedReceiver(java.util.List<Integer> values) {",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    30,
+    0,
+    "Ligne de 61 caracteres (seuil 60).",
+    "b875b8b0",
+    "return 100 / config.sizeLimit + 100 / config.counter;",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// return 100 / items.length;",
+    null
+   ]
+  ],
   "lines": []
  },
  "seuils_bas|tout|java/DuplicateA.java": {
@@ -20502,6 +22507,11 @@
    ]
   ]
  },
+ "seuils_bas|tout|js/division_guards.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|js/dup/CrossRef.js": {
   "blocks": [],
   "file": [],
@@ -20735,6 +22745,11 @@
     null
    ]
   ]
+ },
+ "seuils_bas|tout|kt/ExpressionBodies.kt": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|tout|kt/Funs.kt": {
   "blocks": [],
@@ -21006,6 +23021,34 @@
     null
    ]
   ]
+ },
+ "seuils_bas|tout|py/division_guards.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 105 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : divisions par un compteur, avec ou sans test de valeur sur ce compteur.\"\"\"",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    72,
+    0,
+    "Ligne de 66 caracteres (seuil 60).",
+    "b875b8b0",
+    "return self.size / self.count + self.size / self.total",
+    null
+   ]
+  ],
+  "lines": []
  },
  "seuils_bas|tout|py/long_lines.py": {
   "blocks": [],
@@ -22004,6 +24047,11 @@
   "file": [],
   "lines": []
  },
+ "seuils_bas|tout|scala/Blocks.scala": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|tout|top_level.py": {
   "blocks": [],
   "file": [
@@ -22109,7 +24157,17 @@
   "file": [],
   "lines": []
  },
+ "seuils_bas|un_sur_sept|cpp/Special.cpp": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|un_sur_sept|cs/Arrow.cs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|cs/MultilineArrow.cs": {
   "blocks": [],
   "file": [],
   "lines": []
@@ -22151,6 +24209,23 @@
  "seuils_bas|un_sur_sept|go/main.go": {
   "blocks": [],
   "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|go/methods.go": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    13,
+    0,
+    "Ligne de 69 caracteres (seuil 60).",
+    "b875b8b0",
+    "func (s Server) Handle(request string, retries int) (string, error) {",
+    null
+   ]
+  ],
   "lines": []
  },
  "seuils_bas|un_sur_sept|java/.gradle/UniqueDirCopy.java": {
@@ -22363,6 +24438,45 @@
  "seuils_bas|un_sur_sept|java/CrossRoot.java": {
   "blocks": [],
   "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|java/Division.java": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    2,
+    0,
+    "Ligne de 63 caracteres (seuil 60).",
+    "b875b8b0",
+    "public int byReceiverSize(java.util.List<Integer> values) {",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    30,
+    0,
+    "Ligne de 61 caracteres (seuil 60).",
+    "b875b8b0",
+    "return 100 / config.sizeLimit + 100 / config.counter;",
+    null
+   ],
+   [
+    "CNV.COMMENTED_CODE",
+    "MINOR",
+    "convention",
+    34,
+    0,
+    "Code commente laisse en place.",
+    "61ff1a9b",
+    "// return 100 / items.length;",
+    null
+   ]
+  ],
   "lines": []
  },
  "seuils_bas|un_sur_sept|java/DuplicateA.java": {
@@ -23781,6 +25895,11 @@
    ]
   ]
  },
+ "seuils_bas|un_sur_sept|js/division_guards.js": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
  "seuils_bas|un_sur_sept|js/dup/CrossRef.js": {
   "blocks": [],
   "file": [],
@@ -23946,6 +26065,11 @@
     null
    ]
   ]
+ },
+ "seuils_bas|un_sur_sept|kt/ExpressionBodies.kt": {
+  "blocks": [],
+  "file": [],
+  "lines": []
  },
  "seuils_bas|un_sur_sept|kt/Funs.kt": {
   "blocks": [],
@@ -24127,6 +26251,34 @@
     null
    ]
   ]
+ },
+ "seuils_bas|un_sur_sept|py/division_guards.py": {
+  "blocks": [],
+  "file": [
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    1,
+    0,
+    "Ligne de 105 caracteres (seuil 60).",
+    "b875b8b0",
+    "\"\"\"Corpus de caracterisation : divisions par un compteur, avec ou sans test de valeur sur ce compteur.\"\"\"",
+    null
+   ],
+   [
+    "CNV.LINE_LENGTH",
+    "MINOR",
+    "convention",
+    72,
+    0,
+    "Ligne de 66 caracteres (seuil 60).",
+    "b875b8b0",
+    "return self.size / self.count + self.size / self.total",
+    null
+   ]
+  ],
+  "lines": []
  },
  "seuils_bas|un_sur_sept|py/long_lines.py": {
   "blocks": [],
@@ -24888,6 +27040,11 @@
   "lines": []
  },
  "seuils_bas|un_sur_sept|rs/lib.rs": {
+  "blocks": [],
+  "file": [],
+  "lines": []
+ },
+ "seuils_bas|un_sur_sept|scala/Blocks.scala": {
   "blocks": [],
   "file": [],
   "lines": []

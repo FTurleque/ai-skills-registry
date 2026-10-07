@@ -82,6 +82,10 @@ _PYTHON_COMMENT_OR_MAIN = re.compile(r"^\s*(?:#|if\s+__name__)")
 _PYTHON_PRINT = re.compile(r"(?<![\w.])print\s*\(")
 _EMPTY_STRING_COMPARISON = re.compile(r"(?:\"\"|'')\s*[!=]=")
 _ENTRY_POINT_SUFFIXES = ("Main.java", "__main__.py")
+# Division par une taille ou un compteur, nu (`/ count`) ou porte par un objet (`/ values.size()`, `/ a.b.length`).
+_DIVISION_BY_COUNT = re.compile(
+    r"(?<![/*])/\s*(?P<divisor>(?:[\w$]+(?:\(\))?\s*\.\s*)*(?:size\(\)|(?:length|count|total|n)\b))")
+_ZERO_GUARD = re.compile(r"(?:==\s*0|!=\s*0|>\s*0|isEmpty|> 0)")
 
 
 def _skip_stdout(sf, line, rx) -> bool:
@@ -298,6 +302,20 @@ def _is_empty_body(body) -> bool:
     return all((not b) or b in ("{", "}") for b in body)
 
 
+def _is_tested_for_value(body: str, divisor: str) -> bool:
+    """Vrai si le diviseur lui-meme est teste comme valeur : `if n:`, `if (!xs.length)`, `a / n if n else 0`."""
+    name = re.escape(re.sub(r"\s+", "", divisor))
+    return bool(re.search(
+        r"\b(?:if|elif|while)\b\s*\(?\s*(?:not\s+|!\s*)?%s\s*(?:\)|:|\band\b|\bor\b|\belse\b|&&|\|\|)" % name, body))
+
+
+def _is_unguarded_division(body: str) -> bool:
+    """Division par une taille ou un compteur, sans aucune garde dans la fonction."""
+    if _ZERO_GUARD.search(body):
+        return False
+    return any(not _is_tested_for_value(body, m.group("divisor")) for m in _DIVISION_BY_COUNT.finditer(body))
+
+
 def check_function_bugs(sf: SourceFile, functions: List[Function]) -> List[Finding]:
     findings: List[Finding] = []
     for fn in functions:
@@ -327,8 +345,7 @@ def check_function_bugs(sf: SourceFile, functions: List[Function]) -> List[Findi
                     evidence=sf.snippet(fn.start),
                 ))
         # division entiere ou division par une variable sans garde
-        if re.search(r"(?<![/*])/\s*(?:size\(\)|(?:length|count|total|n)\b)", body) and \
-                not re.search(r"(?:==\s*0|!=\s*0|>\s*0|isEmpty|> 0)", body):
+        if _is_unguarded_division(body):
             findings.append(Finding(
                 rule="BUG.DIV_ZERO", category=CAT_BUG, severity=MAJOR,
                 message="Division par une valeur qui peut valoir zero, sans garde.",

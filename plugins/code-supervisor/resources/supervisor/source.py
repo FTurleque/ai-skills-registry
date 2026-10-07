@@ -359,6 +359,13 @@ _C_KEYWORDS_NOT_FUNC = {
     "yield", "await", "typeof", "instanceof", "in", "of", "and", "or", "not", "with",
     "elif", "except", "finally", "lambda", "match", "when", "require", "println",
 }
+# Methode Go : `func (s *Server) Name(` : le receveur precede le nom, et son type tient lieu de classe englobante.
+_GO_METHOD = re.compile(
+    r"^[ \t]*(?P<mods>func)\s*\((?P<receiver>[^)]*)\)\s*(?P<ret>)(?P<name>[A-Za-z_]\w*)\s*\("
+)
+# Corps-expression (Kotlin, Scala) : `= valeur` juste apres les parametres, avec un type de retour eventuel.
+# `= {` ouvre un corps a bloc (Scala) ; `=>` est traite a part.
+_EXPRESSION_BODY = re.compile(r"^\s*(?::[^={;]*)?=(?![=>])\s*(?=[^\s{])")
 _CLASS_DECL = re.compile(
     r"^[ \t]*(?:[\w@\[\]()., ]*\s)?(?:class|interface|enum|record|struct|trait|object)\s+([A-Za-z_$][\w$]*)"
 )
@@ -431,6 +438,14 @@ def _function_from_signature(clean: List[str], text: str, offsets: List[int], i:
     brace, semi, arrow = tail.find("{"), tail.find(";"), tail.find("=>")
     returns = (match.group("ret") or "").strip()
     modifiers = (match.group("mods") or "").strip()
+    # Corps-expression : il n'a pas d'accolade a lui, celle qui suit est a une autre fonction. Un `;` sur la
+    # meme ligne dit autre chose (`= default;`, `= delete;`, `= 0;` en C++) : pas de corps.
+    ends_on_line = semi != -1 and "\n" not in tail[:semi]
+    if _EXPRESSION_BODY.match(tail) and not ends_on_line:
+        return Function(
+            name=match.group("name"), start=i + 1, end=i + 1, params=params,
+            body=[clean[i]], owner=owner, returns=returns, modifiers=modifiers,
+        )
     if brace != -1 and (semi == -1 or brace < semi):
         end_abs = _match_brace(text, offsets[i] + match.end() + consumed + brace)
         start_line = i + 1
@@ -447,7 +462,16 @@ def _function_from_signature(clean: List[str], text: str, offsets: List[int], i:
     return None
 
 
+def _go_receiver_type(receiver: str) -> str:
+    """Type du receveur d'une methode Go (`s *Stack[T]` -> `Stack`), ou "" s'il n'y en a pas."""
+    names = re.findall(r"[A-Za-z_]\w*", re.sub(r"\[.*?\]", "", receiver))
+    return names[-1] if names else ""
+
+
 def _function_on_line(clean: List[str], text: str, offsets: List[int], i: int, owner: str) -> Optional[Function]:
+    go_method = _GO_METHOD.match(clean[i])
+    if go_method:
+        return _function_from_signature(clean, text, offsets, i, go_method, _go_receiver_type(go_method.group("receiver")) or owner)
     match = _C_SIG.match(clean[i])
     if not match or match.group("name") in _C_KEYWORDS_NOT_FUNC:
         return None

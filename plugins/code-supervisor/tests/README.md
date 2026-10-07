@@ -27,7 +27,7 @@ Aucune dépendance en dehors de Python et de `git`. La CI les rejoue sur Linux.
 transcript avec lignes corrompues, état corrompu, dossier de journal imposé, chemin accentué, `--check`
 avec ou sans chemin, `--self-test`, et l'état anti-boucle persisté. La revue par modèle est coupée.
 
-**`rules`** (526 entrées), trois familles :
+**`rules`** (582 entrées), trois familles :
 
 - `<config>|<sélection>|<fichier>` : `check_lines`, `check_blocks` et `check_file`, avec deux jeux de seuils
   (défauts et seuils bas) et deux sélections de lignes modifiées (toutes, une sur sept : `is_changed`
@@ -99,7 +99,13 @@ commentaire de `catch` passait inaperçue tant qu'aucun commentaire ne faisait 2
   qu'une borne de mot ne peut pas suivre une parenthèse fermante. Le corpus contenait `divisionBySize` : la
   correction de la règle s'est vue dans le diff de la référence, qui ne gagne que cette ligne. C'est la
   méthode à suivre pour tout défaut trouvé : un cas de corpus d'abord, la correction ensuite.
-- L'extraction des fonctions des langages à accolades (`source._extract_c`) figure dans la référence, défauts compris : une fonction à corps d'expression sans accolades (`fun twice(x: Int) = x * 2` en Kotlin) adopte l'accolade de la fonction suivante, et le receveur d'une méthode Go (`func (s *Server) Name()`) est lu comme une fonction nommée `func`. Les corriger se verra dans le diff de la référence.
+- L'extraction des fonctions des langages à accolades (`source._extract_c`) figure dans la référence, défauts
+  compris. Un corps-expression écrit sur plusieurs lignes (`fun total() = a +` puis `b` en Kotlin) n'est compté
+  que sur sa première ligne : sa fin ne se devine pas sans analyser l'expression. Les corriger se verra dans
+  le diff de la référence.
+- `BUG.DIV_ZERO` ne regarde que les diviseurs nommés `size()`, `length`, `count`, `total` ou `n`, nus ou portés
+  par un objet, et reconnaît comme garde un test de valeur sur le diviseur lui-même (`if n:`, `if (!xs.length)`).
+  Un test sur une autre variable, ou une garde dans une autre fonction, ne compte pas.
 - La couverture porte sur le déclenchement des règles et la stabilité de leur sortie, pas sur leur
   justesse : un faux positif figé dans la référence n'est pas détecté.
 - La revue par modèle (`llm.py`) n'est pas exercée : elle suppose le CLI `claude` authentifié.
