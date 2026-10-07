@@ -9,6 +9,39 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Modifié — `install.py` découpé, testé et corrigé (ticket #29)
+
+`install.py` n'avait aucun test alors qu'il écrit dans le `settings.json` de l'utilisateur. Une suite de 22
+scénarios (`tests/install_scenarios.py`, référence `golden/install_scenarios.json`) le couvre maintenant :
+installation neuve, de projet, réinstallation, ancien hook, désinstallation, et réglages hostiles. Écrite
+d'abord, référencée avec l'ancien installeur, elle a révélé des défauts réels :
+
+- **Désinstallation incomplète** : quand notre hook partageait un groupe avec un autre hook, `remove_hooks` ne
+  signalait aucun changement. Les fichiers étaient supprimés, mais `settings.json` gardait un hook vers un
+  script qui n'existe plus. Le hook est maintenant retiré, et le groupe garde les autres.
+- **Plantages sur des réglages mal formés** : un `settings.json` qui n'est pas un objet, un événement qui n'est
+  pas une liste ou un groupe qui n'est pas un objet faisaient échouer l'installation ou la désinstallation avec
+  un `AttributeError`. Les deux premiers sont refusés proprement (code 2, message), les groupes et handlers
+  étrangers sont laissés tels quels.
+- **« Rien n'a été modifié » était faux** : l'installeur copiait tous les fichiers avant de lire `settings.json`.
+  Il le lit maintenant d'abord ; un fichier refusé ne laisse plus rien derrière lui.
+- **Un groupe vide qui n'était pas à nous** était supprimé par la désinstallation : il est maintenant laissé.
+- **Console** : l'auto-test s'affichait `OK ? toutes…` (le tiret long était remplacé par un « ? » même quand
+  la console sait l'afficher). La sortie remplace désormais seulement ce qu'elle ne sait pas afficher.
+
+Le découpage lui-même (`merge_hooks`, `remove_hooks`, `main` en fonctions courtes, un point de sortie `say`,
+`HOOK_TIMEOUT_SECONDS`, des noms explicites) a été validé d'abord à référence identique, puis les corrections
+ci-dessus dans un second temps, avec le diff de la référence relu : 17 scénarios sur 22 changent, tous
+attendus. `install.py` passe de 27 constats du superviseur à 0.
+
+Par mutation, 39 modifications de l'installeur sur 40 sont détectées ; la dernière (copier tous les fichiers du
+moteur et non les seuls `.py`) ne change rien sur un arbre sans `__pycache__`. Les `except Exception` de
+`run_git` et de `_relativize` sont restreints aux pannes attendues, avec un contrôle de l'auto-test.
+
+Un incident à retenir : une première série de mutations a fait viser le vrai `~/.claude` à l'installeur (la
+mutation ignorait `CLAUDE_CONFIG_DIR`) et les scénarios de désinstallation ont supprimé l'installation de la
+personne qui lançait les tests. L'installeur tourne désormais avec un `HOME` et un `USERPROFILE` jetables.
+
 ### Modifié — `shell=True` des `external_tools` conservé, décision documentée et vérifiée (ticket #26)
 
 Décision : **on garde le shell**. La commande est écrite par l'utilisateur dans sa propre configuration (même

@@ -3,11 +3,11 @@
 
   python tests/run_tests.py                  compare le moteur aux references de golden/
   python tests/run_tests.py --update         regenere les references (apres un changement voulu)
-  python tests/run_tests.py --only rules     une seule suite : `hook` ou `rules`
+  python tests/run_tests.py --only rules     une seule suite : `hook`, `rules` ou `install`
   python tests/run_tests.py --script ~/.claude/hooks/supervisor.py    teste un moteur installe
 
-Deux suites : les scenarios de bout en bout du hook, et toutes les regles de detection
-sur un corpus statique. Elles servent de filet de securite aux refactorisations : une sortie qui
+Trois suites : les scenarios de bout en bout du hook, toutes les regles de detection sur un corpus
+statique, et les scenarios de l'installeur. Elles servent de filet de securite aux refactorisations : une sortie qui
 change sans qu'on l'ait voulu fait echouer le test."""
 from __future__ import annotations
 
@@ -20,6 +20,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 import hook_scenarios
+import install_scenarios
 import rules_corpus
 
 DEFAULT_SCRIPT = os.path.join(os.path.dirname(HERE), "resources", "supervisor.py")
@@ -89,7 +90,12 @@ def _suite_rules(script: str) -> dict:
     return result
 
 
-SUITES = {"hook": ("hook_scenarios", _suite_hook), "rules": ("rules", _suite_rules)}
+def _suite_install(script: str):
+    return install_scenarios.run(script)
+
+
+SUITES = {"hook": ("hook_scenarios", _suite_hook), "rules": ("rules", _suite_rules),
+          "install": ("install_scenarios", _suite_install)}
 
 
 def main(argv) -> int:
@@ -108,6 +114,9 @@ def main(argv) -> int:
             continue
         print("[%s]" % key)
         actual = suite(script)
+        if actual is None:
+            print("  ignoree : pas d'install.py a cote de %s" % script)
+            continue
         if args.update:
             _save(golden_name, actual)
             print("  reference golden/%s.json ecrite (%d entrees)" % (golden_name, len(actual)))

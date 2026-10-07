@@ -1,0 +1,1033 @@
+{
+ "ancien_hook_mis_a_jour": {
+  "backup": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       },
+       {
+        "command": "<python> \"/ancien/dossier/hooks/supervisor.py\"",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "present": {
+   "agents/code-supervisor.md": true,
+   "hooks/fixtures": true,
+   "hooks/supervisor.py": true,
+   "hooks/supervisor/runner.py": true,
+   "settings.json": true,
+   "settings.json.bak": true,
+   "supervisor.config.json": true
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       },
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration creee : <work>/cfg/supervisor.config.json\n  hook Stop deja present, mis a jour.\n  hook SubagentStop ajoute.\n  sauvegarde de l'ancien fichier : <work>/cfg/settings.json.bak\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  OK — toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   }
+  ]
+ },
+ "cle_hooks_pas_un_objet": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": false
+  },
+  "settings": {
+   "hooks": [
+    "x"
+   ]
+  },
+  "steps": [
+   {
+    "exit": 2,
+    "last_line": "ATTENTION : <work>/cfg/settings.json illisible (la cle hooks n'est pas un objet). Rien n'a ete modifie.",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  ATTENTION : <work>/cfg/settings.json illisible (la cle hooks n'est pas un objet). Rien n'a ete modifie."
+   }
+  ]
+ },
+ "console_ascii": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": true,
+   "hooks/fixtures": true,
+   "hooks/supervisor.py": true,
+   "hooks/supervisor/runner.py": true,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": true
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration creee : <work>/cfg/supervisor.config.json\n  hook Stop ajoute.\n  hook SubagentStop ajoute.\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  OK ? toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   }
+  ]
+ },
+ "desinstallation_apres_installation": {
+  "backup": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     },
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": true,
+   "supervisor.config.json": true
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration creee : <work>/cfg/supervisor.config.json\n  hook Stop ajoute.\n  hook SubagentStop ajoute.\n  sauvegarde de l'ancien fichier : <work>/cfg/settings.json.bak\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  OK — toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   },
+   {
+    "exit": 0,
+    "last_line": "fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves.",
+    "output": "Desinstallation depuis <work>/cfg\n  sauvegarde de l'ancien fichier : <work>/cfg/settings.json.bak\n  hooks retires de <work>/cfg/settings.json\n  fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves."
+   }
+  ]
+ },
+ "desinstallation_groupe_partage": {
+  "backup": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       },
+       {
+        "command": "<python> \"/ancien/dossier/hooks/supervisor.py\"",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": true,
+   "supervisor.config.json": false
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves.",
+    "output": "Desinstallation depuis <work>/cfg\n  sauvegarde de l'ancien fichier : <work>/cfg/settings.json.bak\n  hooks retires de <work>/cfg/settings.json\n  fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves."
+   }
+  ]
+ },
+ "desinstallation_groupe_qui_n_est_pas_un_objet": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": false
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     "texte"
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves.",
+    "output": "Desinstallation depuis <work>/cfg\n  fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves."
+   }
+  ]
+ },
+ "desinstallation_groupe_vide_qui_n_est_pas_a_nous": {
+  "backup": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [],
+      "matcher": "x"
+     },
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       },
+       {
+        "command": "<python> \"/ancien/dossier/hooks/supervisor.py\"",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": true,
+   "supervisor.config.json": false
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [],
+      "matcher": "x"
+     },
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves.",
+    "output": "Desinstallation depuis <work>/cfg\n  sauvegarde de l'ancien fichier : <work>/cfg/settings.json.bak\n  hooks retires de <work>/cfg/settings.json\n  fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves."
+   }
+  ]
+ },
+ "desinstallation_handler_qui_n_est_pas_un_objet": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": false
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       "texte"
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves.",
+    "output": "Desinstallation depuis <work>/cfg\n  fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves."
+   }
+  ]
+ },
+ "desinstallation_hooks_seuls": {
+  "backup": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": true,
+   "supervisor.config.json": true
+  },
+  "settings": {},
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration creee : <work>/cfg/supervisor.config.json\n  hook Stop ajoute.\n  hook SubagentStop ajoute.\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  OK — toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   },
+   {
+    "exit": 0,
+    "last_line": "fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves.",
+    "output": "Desinstallation depuis <work>/cfg\n  sauvegarde de l'ancien fichier : <work>/cfg/settings.json.bak\n  hooks retires de <work>/cfg/settings.json\n  fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves."
+   }
+  ]
+ },
+ "desinstallation_reglages_illisibles": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": false
+  },
+  "settings": {
+   "texte": "{ pas du json"
+  },
+  "steps": [
+   {
+    "exit": 2,
+    "last_line": "ATTENTION : <work>/cfg/settings.json illisible (Expecting property name enclosed in double quotes: line 1 column 3 (char 2)). Rien n'a ete modifie.",
+    "output": "Desinstallation depuis <work>/cfg\n  ATTENTION : <work>/cfg/settings.json illisible (Expecting property name enclosed in double quotes: line 1 column 3 (char 2)). Rien n'a ete modifie."
+   }
+  ]
+ },
+ "desinstallation_sans_nos_hooks": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": false
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves.",
+    "output": "Desinstallation depuis <work>/cfg\n  fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves."
+   }
+  ]
+ },
+ "desinstallation_sans_rien": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": false,
+   "settings.json.bak": false,
+   "supervisor.config.json": false
+  },
+  "settings": null,
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves.",
+    "output": "Desinstallation depuis <work>/cfg\n  fichiers supprimes. La configuration supervisor.config.json et les rapports sont conserves."
+   }
+  ]
+ },
+ "evenement_pas_une_liste": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": false
+  },
+  "settings": {
+   "hooks": {
+    "Stop": "x"
+   }
+  },
+  "steps": [
+   {
+    "exit": 2,
+    "last_line": "ATTENTION : <work>/cfg/settings.json illisible (un evenement de hooks n'est pas une liste). Rien n'a ete modifie.",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  ATTENTION : <work>/cfg/settings.json illisible (un evenement de hooks n'est pas une liste). Rien n'a ete modifie."
+   }
+  ]
+ },
+ "groupe_qui_n_est_pas_un_objet": {
+  "backup": {
+   "hooks": {
+    "Stop": [
+     "texte",
+     3
+    ]
+   }
+  },
+  "present": {
+   "agents/code-supervisor.md": true,
+   "hooks/fixtures": true,
+   "hooks/supervisor.py": true,
+   "hooks/supervisor/runner.py": true,
+   "settings.json": true,
+   "settings.json.bak": true,
+   "supervisor.config.json": true
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     "texte",
+     3,
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration creee : <work>/cfg/supervisor.config.json\n  hook Stop ajoute.\n  hook SubagentStop ajoute.\n  sauvegarde de l'ancien fichier : <work>/cfg/settings.json.bak\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  OK — toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   }
+  ]
+ },
+ "handler_qui_n_est_pas_un_objet": {
+  "backup": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       "texte",
+       {
+        "command": "<python> \"/ancien/dossier/hooks/supervisor.py\"",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "present": {
+   "agents/code-supervisor.md": true,
+   "hooks/fixtures": true,
+   "hooks/supervisor.py": true,
+   "hooks/supervisor/runner.py": true,
+   "settings.json": true,
+   "settings.json.bak": true,
+   "supervisor.config.json": true
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       "texte",
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration creee : <work>/cfg/supervisor.config.json\n  hook Stop deja present, mis a jour.\n  hook SubagentStop ajoute.\n  sauvegarde de l'ancien fichier : <work>/cfg/settings.json.bak\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  OK — toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   }
+  ]
+ },
+ "installation_de_projet": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": true,
+   "hooks/fixtures": true,
+   "hooks/supervisor.py": true,
+   "hooks/supervisor/runner.py": true,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": true
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/projet/.claude/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/projet/.claude/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/projet/.claude\n  interpreteur : <python>\n  configuration creee : <work>/projet/.claude/supervisor.config.json\n  hook Stop ajoute.\n  hook SubagentStop ajoute.\n  settings.json ecrit : <work>/projet/.claude/settings.json\n\nVerification du moteur :\n  OK — toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/projet/.claude/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/projet/.claude/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/projet/.claude/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   }
+  ]
+ },
+ "installation_neuve": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": true,
+   "hooks/fixtures": true,
+   "hooks/supervisor.py": true,
+   "hooks/supervisor/runner.py": true,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": true
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration creee : <work>/cfg/supervisor.config.json\n  hook Stop ajoute.\n  hook SubagentStop ajoute.\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  OK — toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   }
+  ]
+ },
+ "moteur_casse": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": true,
+   "hooks/fixtures": true,
+   "hooks/supervisor.py": true,
+   "hooks/supervisor/runner.py": true,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": true
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration creee : <work>/cfg/supervisor.config.json\n  hook Stop ajoute.\n  hook SubagentStop ajoute.\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  ECHEC de l'auto-test : le superviseur est installe mais a verifier.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   }
+  ]
+ },
+ "reglages_et_autres_hooks_conserves": {
+  "backup": {
+   "hooks": {
+    "PreToolUse": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": "Bash"
+     }
+    ],
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   },
+   "model": "opus"
+  },
+  "present": {
+   "agents/code-supervisor.md": true,
+   "hooks/fixtures": true,
+   "hooks/supervisor.py": true,
+   "hooks/supervisor/runner.py": true,
+   "settings.json": true,
+   "settings.json.bak": true,
+   "supervisor.config.json": true
+  },
+  "settings": {
+   "hooks": {
+    "PreToolUse": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": "Bash"
+     }
+    ],
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "echo autre-hook",
+        "timeout": 5,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     },
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   },
+   "model": "opus"
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration creee : <work>/cfg/supervisor.config.json\n  hook Stop ajoute.\n  hook SubagentStop ajoute.\n  sauvegarde de l'ancien fichier : <work>/cfg/settings.json.bak\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  OK — toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   }
+  ]
+ },
+ "reglages_illisibles": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": false
+  },
+  "settings": {
+   "texte": "{ pas du json"
+  },
+  "steps": [
+   {
+    "exit": 2,
+    "last_line": "ATTENTION : <work>/cfg/settings.json illisible (Expecting property name enclosed in double quotes: line 1 column 3 (char 2)). Rien n'a ete modifie.",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  ATTENTION : <work>/cfg/settings.json illisible (Expecting property name enclosed in double quotes: line 1 column 3 (char 2)). Rien n'a ete modifie."
+   }
+  ]
+ },
+ "reglages_pas_un_objet": {
+  "backup": null,
+  "present": {
+   "agents/code-supervisor.md": false,
+   "hooks/fixtures": false,
+   "hooks/supervisor.py": false,
+   "hooks/supervisor/runner.py": false,
+   "settings.json": true,
+   "settings.json.bak": false,
+   "supervisor.config.json": false
+  },
+  "settings": [
+   1,
+   2
+  ],
+  "steps": [
+   {
+    "exit": 2,
+    "last_line": "ATTENTION : <work>/cfg/settings.json illisible (ce n'est pas un objet JSON). Rien n'a ete modifie.",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  ATTENTION : <work>/cfg/settings.json illisible (ce n'est pas un objet JSON). Rien n'a ete modifie."
+   }
+  ]
+ },
+ "reinstallation": {
+  "backup": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "present": {
+   "agents/code-supervisor.md": true,
+   "hooks/fixtures": true,
+   "hooks/supervisor.py": true,
+   "hooks/supervisor/runner.py": true,
+   "settings.json": true,
+   "settings.json.bak": true,
+   "supervisor.config.json": true
+  },
+  "settings": {
+   "hooks": {
+    "Stop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ],
+    "SubagentStop": [
+     {
+      "hooks": [
+       {
+        "command": "<python> \"<work>/cfg/hooks/supervisor.py\"",
+        "timeout": 300,
+        "type": "command"
+       }
+      ],
+      "matcher": ""
+     }
+    ]
+   }
+  },
+  "steps": [
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration creee : <work>/cfg/supervisor.config.json\n  hook Stop ajoute.\n  hook SubagentStop ajoute.\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  OK — toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   },
+   {
+    "exit": 0,
+    "last_line": "Rapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)",
+    "output": "Installation du superviseur de code\n  cible        : <work>/cfg\n  interpreteur : <python>\n  configuration existante conservee : <work>/cfg/supervisor.config.json\n  hook Stop deja present, mis a jour.\n  hook SubagentStop deja present, mis a jour.\n  sauvegarde de l'ancien fichier : <work>/cfg/settings.json.bak\n  settings.json ecrit : <work>/cfg/settings.json\n\nVerification du moteur :\n  OK — toutes les regles attendues se declenchent.\nTermine. Le superviseur se declenche a la fin de chaque reponse d'agent, dans tous les projets.\n\nPour l'utiliser a la main :\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check            relecture des fichiers modifies\n  <python> \"<work>/cfg/hooks/supervisor.py\" --check --llm      idem, avec la relecture par modele\n  @code-supervisor                                 depuis une session Claude Code\n\nReglages : <work>/cfg/supervisor.config.json\nRapports : <projet>/docs/rapport-supervisor/ (ignore par git, jamais commite)"
+   }
+  ]
+ }
+}
