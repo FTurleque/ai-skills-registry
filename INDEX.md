@@ -8,7 +8,7 @@ Catalogue de tous les artefacts du depot, par type.
 
 | Type | Nombre |
 |------|-------:|
-| Skills | 3 |
+| Skills | 4 |
 | Plugins | 1 |
 | Sous-agents | 0 |
 | Commandes | 0 |
@@ -16,12 +16,13 @@ Catalogue de tous les artefacts du depot, par type.
 | Instructions de projet | 0 |
 | Serveurs MCP | 0 |
 | Styles de sortie | 0 |
-| **Total** | **4** |
+| **Total** | **5** |
 
 ## Skills
 
 | Artefact | Description | Version | Statut | Surfaces |
 |----------|-------------|---------|--------|----------|
+| [`audit-application`](skills/development/audit-application) | Audit de code complet d'une application (architecture, qualité, sécurité, tests, performance, dépendances, CI/CD) produisant un rapport versionné dans le dép... | 1.0.0 | experimental | Code, Desktop |
 | [`code-to-openspec`](skills/development/code-to-openspec) | Rétro-ingénierie d'une application existante à partir de son code, puis préparation de changements OpenSpec traçables (constats, exigences, scénarios, tâches... | 1.0.0 | experimental | Code, Desktop |
 | [`generate-windows-exe`](skills/development/generate-windows-exe) | Empaquette une application en executable Windows (.exe) via Inno Setup ou jpackage, avec un driver reproductible. | 1.1.0 | stable | Code, Desktop |
 | [`java-code-review`](skills/development/java-code-review) | Analyse du code Java afin d'identifier les défauts, risques et améliorations possibles. | 1.1.0 | stable | Code, Desktop, claude.ai, API |

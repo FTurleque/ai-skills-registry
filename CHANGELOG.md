@@ -9,6 +9,15 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Ajouté — skill `audit-application` 1.0.0 (expérimental)
+
+Skill d'audit de code complet d'une application : six axes (architecture, qualité, sécurité, tests, performance,
+dépendances et exploitation) audités en parallèle, un rapport versionné sous `docs/audit/<date>/`, un découpage
+des corrections en sprints dont l'ordre est vérifié par script, et un artefact de synthèse (notes par axe,
+diagramme d'architecture, feuille de route des sprints, tableau filtrable). Trois profils : complet, sécurité,
+rapide. Ne modifie pas le code applicatif pendant l'audit ; n'utilise pas de serveur d'indexation de code tiers
+sauf demande explicite. Surfaces déclarées : `claude-code` et `claude-desktop`.
+
 ### Corrigé — `code-supervisor` 1.2.0 : périmètre, revue par modèle muette et faux positifs
 
 Constats faits en relisant les rapports d'une longue session : le même lot de constats revenait à chaque tour.
