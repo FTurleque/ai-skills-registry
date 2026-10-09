@@ -1,0 +1,22 @@
+kind: skill
+name: audit-application
+displayName: Audit d'application
+description: "Audit de code complet d'une application (architecture, qualité, sécurité, tests, performance, dépendances, CI/CD) produisant un rapport versionné dans le dépôt, un découpage en sprints ordonnés par dépendance, et un artefact de synthèse. Utiliser pour « audit de code », « audite cette app », « revue technique complète », « état de santé du code »."
+version: 1.0.0
+status: experimental
+category: development
+tags:
+  - audit
+  - code-review
+  - security
+  - architecture
+  - technical-debt
+  - sprint-planning
+compatibility:
+  - claude-code
+  - claude-desktop
+requires:
+  - git (facultatif)
+authors:
+  - Fabrice Turleque
+license: MIT
