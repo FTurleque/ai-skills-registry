@@ -37,6 +37,7 @@ sous-agent livré par un plugin n'a rien à faire dans `agents/`.
 
 ```text
 ai-toolkit-registry/
+├── .archgate/        → décisions d'architecture (ADR) du dépôt
 ├── .claude-plugin/   → déclaration des plugins du dépôt (marketplace)
 ├── agents/           → sous-agents autonomes
 ├── commands/         → commandes slash
@@ -93,6 +94,7 @@ ci-dessous.
 | `refactoring/` | restructuration et amélioration de code existant |
 | `testing/` | tests, couverture, qualité |
 | `analysis/` | analyse de code, d'architecture, de données |
+| `architecture/` | décisions d'architecture : ADR, leur audit, leur rédaction, leur contrôle |
 
 Une catégorie sans artefact n'existe pas dans l'arborescence : git ne versionne pas les dossiers
 vides, et un `.gitkeep` par catégorie éventuelle serait du bruit. On crée la catégorie avec son
@@ -135,6 +137,25 @@ garantit que les fichiers obligatoires existent et que les métadonnées sont co
 `validate.py` et `generate_index.py`. Ce qu'ils vérifient et produisent est décrit dans
 [`tools/README.md`](../tools/README.md). Ils n'ont besoin que de PyYAML, et utilisent `jsonschema`
 s'il est disponible.
+
+---
+
+## Décisions d'architecture
+
+Les raisons des règles structurantes de ce dépôt sont consignées en ADR dans `.archgate/adrs/`, seul
+emplacement éditable. Ce tableau n'en est que l'index ; ce document garde la description, l'ADR garde
+le pourquoi et les conséquences.
+
+| Identifiant | Titre | Statut | ADR |
+|-------------|-------|--------|-----|
+| ARCH-001 | Ranger les artefacts par mécanisme, pas par sujet | Acceptée | [ARCH-001](../.archgate/adrs/ARCH-001-storage-by-mechanism.md) |
+| ARCH-002 | Un schéma de métadonnées unique et fermé, une seule source par artefact | Acceptée | [ARCH-002](../.archgate/adrs/ARCH-002-single-metadata-schema.md) |
+| GEN-001 | Ne cibler que Claude, sur des surfaces déclarées et vérifiées | Acceptée | [GEN-001](../.archgate/adrs/GEN-001-claude-only-declared-surfaces.md) |
+
+Un ADR ne se crée que pour une décision durable, coûteuse à inverser et non déjà couverte : la
+politique est dans `skills/architecture/adr-policy/resources/policy.md`. Les ADR portent le format
+d'Archgate CLI, mais aucun n'a de règle exécutable : leurs contraintes sont vérifiées par
+`tools/validate.py`.
 
 ---
 

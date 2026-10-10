@@ -1,0 +1,34 @@
+kind: skill
+name: adr-author
+displayName: Rédaction d'ADR
+description: >-
+  Décide si un ADR (Architecture Decision Record) est justifié, puis crée ou améliore le bon
+  document, à partir d'un besoin, d'un changement OpenSpec ou d'une décision existante. Commence
+  toujours par un filtre de pertinence et peut conclure « Aucun nouvel ADR nécessaire ». Selon le
+  cas : référence un ADR existant, clarifie un texte sans changer la décision, propose un nouvel
+  ADR en brouillon, propose le remplacement explicite d'une décision acceptée, ou oriente vers une
+  documentation, une convention ou une tâche. À utiliser pour « faut-il un ADR pour… », « rédige
+  un ADR », « documente cette décision d'architecture », « améliore cet ADR », ou pour la revue
+  d'impact architectural d'un changement OpenSpec. N'accepte ni ne remplace jamais une décision
+  sans validation humaine.
+version: 1.0.0
+status: experimental
+category: architecture
+tags:
+  - adr
+  - architecture
+  - decision-record
+  - arc42
+  - openspec
+  - archgate
+compatibility:
+  - claude-code
+requires:
+  - adr-policy (skill voisin, obligatoire)
+  - git (facultatif)
+  - python>=3.8 (facultatif)
+  - archgate CLI (facultatif)
+  - openspec CLI (facultatif)
+authors:
+  - Fabrice Turleque
+license: MIT
