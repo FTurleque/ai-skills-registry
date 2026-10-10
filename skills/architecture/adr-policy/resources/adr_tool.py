@@ -61,10 +61,13 @@ def posix(path):
 
 def read_text(root, rel):
     """Lit un fichier du projet. Un chemin qui sort de la racine (lien symbolique, `..`) est refuse."""
-    path = os.path.join(os.path.realpath(root), rel)
-    if not is_inside(root, path):
+    # Le controle reste ecrit ici, juste avant l'ouverture : c'est sous cette forme que l'analyse
+    # statique le reconnait comme une garde contre la traversee de chemin.
+    base = os.path.realpath(root)
+    path = os.path.realpath(os.path.join(base, rel))
+    if os.path.commonpath([base, path]) != base:
         raise ValueError("chemin hors du projet : %s" % rel)
-    with open(os.path.realpath(path), "r", encoding="utf-8", errors="replace") as handle:
+    with open(path, "r", encoding="utf-8", errors="replace") as handle:
         return handle.read()
 
 
