@@ -38,7 +38,8 @@ STATUS_WORDS = [
     ("accepted", r"accept|approved|approuv|valid[ée]|adopt"),
     ("proposed", r"propos|draft|brouillon|en discussion|pending|en attente|rfc"),
 ]
-STATUS_HEADING = re.compile(r"^#{1,6}\s*(status|statut|[ée]tat)\s*$", re.I)
+SUPERSEDED_BY = re.compile(r"superseded[ \t]+by\b|remplac[ée]e?s?[ \t]+par\b")
+STATUS_HEADING =re.compile(r"^#{1,6}\s*(status|statut|[ée]tat)\s*$", re.I)
 STATUS_COLUMN = re.compile(r"^\W*(status|statut|[ée]tat)\W*$", re.I)
 STATUS_INLINE = re.compile(r"^\W*(?:status|statut|[ée]tat)[^\w:=]*[:=](.*)$", re.I)
 STATUS_BOLD = re.compile(r"\*\*[ \t]*(?:status|statut)[ \t]*:([^*]+)\*\*", re.I)
@@ -144,6 +145,9 @@ def normalize_status(raw):
     # Le premier mot de statut rencontre l'emporte : "Proposee, remplacerait X une fois acceptee"
     # est une proposition. A position egale, l'ordre de STATUS_WORDS departage.
     text = str(raw).lower()
+    # Exception : "accepte, remplace par X" dit sans ambiguite que le document est remplace.
+    if SUPERSEDED_BY.search(text):
+        return "superseded"
     found = []
     for rank, (label, pattern) in enumerate(STATUS_WORDS):
         match = re.search(pattern, text, re.M)

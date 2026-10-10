@@ -144,6 +144,8 @@ class AdrToolTest(unittest.TestCase):
         self.assertEqual(adr_tool.normalize_status("Superseded by ADR-0007"), "superseded")
         self.assertEqual(adr_tool.normalize_status("Remplacé par DATA-002"), "superseded")
         self.assertEqual(adr_tool.normalize_status("Remplacée"), "superseded")
+        self.assertEqual(adr_tool.normalize_status("Accepted (superseded by ADR-0007)"), "superseded")
+        self.assertEqual(adr_tool.normalize_status("Acceptée, remplacée par DATA-002"), "superseded")
 
     def test_index_status_is_read_from_the_status_column_only(self):
         write(self.root, "docs/adr/0003-use-postgres.md", NYGARD_ADR)
