@@ -25,8 +25,7 @@ ADR_DIRS = {
     "adr", "adrs", "decisions", "decision-records", "architecture-decisions",
     "architecture-decision-records", "architectural-decisions",
 }
-NOT_AN_ADR = re.compile(r"^(readme|index|template.*|.*[-_.]template|0000[-_].*)\.md$", re.I)
-ADR_FILENAME = re.compile(r"^adr[-_ ]?\d+.*\.md$", re.I)
+ADR_FILENAME = re.compile(r"^adr[-_ ]?\d", re.I)
 NUMBERED = re.compile(r"^(\d{1,4})[-_ ]")
 ARCHGATE_ID = re.compile(r"^([A-Z][A-Z0-9]*-\d{3,})[-_.]")
 
@@ -41,11 +40,14 @@ STATUS_WORDS = [
 ]
 STATUS_HEADING = re.compile(r"^#{1,6}\s*(status|statut|[ée]tat)\s*$", re.I)
 STATUS_COLUMN = re.compile(r"^\W*(status|statut|[ée]tat)\W*$", re.I)
-STATUS_INLINE = re.compile(r"^\W*(status|statut|[ée]tat)\W*\s*[:=]\s*(.+)$", re.I)
+STATUS_INLINE = re.compile(r"^\W*(?:status|statut|[ée]tat)[^\w:=]*[:=](.*)$", re.I)
+STATUS_BOLD = re.compile(r"\*\*[ \t]*(?:status|statut)[ \t]*:([^*]+)\*\*", re.I)
+FRONT_MATTER_PAIR = re.compile(r"^([A-Za-z_][\w-]*)[ \t]*:(.*)$")
+TITLE_NUMBER = re.compile(r"^(?:adr[-_ ]?)?\d+[ \t]*[.:)-]", re.I)
 LINK = re.compile(r"(?<!\!)\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
-SECTION9_HEADING = re.compile(
-    r"^#{1,6}\s*(?:9|09)\b[.)]?\s+.*(d[ée]cision|decision|entscheidung)", re.I | re.M)
-SECTION9_FILE = re.compile(r"(^|[-_/])0?9[-_].*(decision|d[ée]cision|entscheidung)", re.I)
+SECTION9_HEADING = re.compile(r"^#{1,6}[ \t]*0?9\b[.)]?[ \t]")
+SECTION9_FILE = re.compile(r"(?:^|[-_/])0?9[-_]")
+DECISION_WORD = re.compile(r"d[ée]cision|entscheidung", re.I)
 STOP_WORDS = {
     "the", "a", "an", "of", "for", "to", "use", "using", "le", "la", "les", "de", "des", "du",
     "un", "une", "et", "en", "pour", "utiliser", "avec", "adr",
@@ -56,9 +58,25 @@ def posix(path):
     return path.replace(os.sep, "/")
 
 
-def read_text(path):
+def read_text(root, rel):
+    """Lit un fichier du projet. Un chemin qui sort de la racine (lien symbolique, `..`) est refuse."""
+    base = os.path.realpath(root)
+    path = os.path.realpath(os.path.join(base, rel))
+    if os.path.commonpath([base, path]) != base:
+        raise ValueError("chemin hors du projet : %s" % rel)
     with open(path, "r", encoding="utf-8", errors="replace") as handle:
         return handle.read()
+
+
+def is_not_an_adr(name):
+    stem = os.path.splitext(name)[0].lower()
+    return (stem in ("readme", "index") or stem.startswith(("template", "0000-", "0000_"))
+            or stem.endswith(("-template", "_template", ".template")))
+
+
+def has_section9_heading(text):
+    return any(SECTION9_HEADING.match(line) and DECISION_WORD.search(line)
+               for line in text.splitlines())
 
 
 def walk_markdown(root):
@@ -74,27 +92,32 @@ def parse_front_matter(text):
     lines = text.splitlines()
     if not lines or lines[0].strip() != "---":
         return {}, text
-    meta, key, end = {}, None, None
+    meta, key = {}, None
     for index, line in enumerate(lines[1:], start=1):
         if line.strip() == "---":
-            end = index
-            break
-        item = re.match(r"^\s+-\s+(.*)$", line)
-        if item and key:
-            if not isinstance(meta.get(key), list):
-                meta[key] = []
-            meta[key].append(scalar(item.group(1)))
-            continue
-        pair = re.match(r"^([A-Za-z_][\w-]*)\s*:\s*(.*)$", line)
-        if pair:
-            key, raw = pair.group(1), pair.group(2).strip()
-            if raw.startswith("[") and raw.endswith("]"):
-                meta[key] = [scalar(part) for part in raw[1:-1].split(",") if part.strip()]
-            else:
-                meta[key] = scalar(raw) if raw else ""
-    if end is None:
-        return {}, text
-    return meta, "\n".join(lines[end + 1:])
+            return meta, "
+".join(lines[index + 1:])
+        key = read_front_matter_line(meta, key, line)
+    return {}, text
+
+
+def read_front_matter_line(meta, key, line):
+    """Range une ligne dans `meta` et retourne la cle courante (celle des elements de liste)."""
+    stripped = line.strip()
+    if key and line[:1] in (" ", "	") and stripped.startswith("- "):
+        if not isinstance(meta.get(key), list):
+            meta[key] = []
+        meta[key].append(scalar(stripped[2:]))
+        return key
+    pair = FRONT_MATTER_PAIR.match(line)
+    if not pair:
+        return key
+    key, raw = pair.group(1), pair.group(2).strip()
+    if raw.startswith("[") and raw.endswith("]"):
+        meta[key] = [scalar(part) for part in raw[1:-1].split(",") if part.strip()]
+    else:
+        meta[key] = scalar(raw) if raw else ""
+    return key
 
 
 def scalar(raw):
@@ -120,22 +143,29 @@ def normalize_status(raw):
     return min(found)[2] if found else "unknown"
 
 
+def status_under_heading(lines):
+    for following in lines:
+        if following.strip().startswith("#"):
+            return ""
+        if following.strip():
+            return following.strip().strip("*_ ")
+    return ""
+
+
 def declared_status(meta, body):
     if meta.get("status"):
         return str(meta["status"])
     lines = body.splitlines()
     for index, line in enumerate(lines):
         if STATUS_HEADING.match(line.strip()):
-            for following in lines[index + 1:]:
-                if following.strip().startswith("#"):
-                    break
-                if following.strip():
-                    return following.strip().strip("*_ ")
+            found = status_under_heading(lines[index + 1:])
+            if found:
+                return found
         inline = STATUS_INLINE.match(line.strip())
-        if inline:
-            return inline.group(2).strip().strip("*_ .")
+        if inline and inline.group(1).strip():
+            return inline.group(1).strip().strip("*_ .")
     # Statut porte par une phrase en gras, forme courante quand le schema n'a pas de champ.
-    bold = re.search(r"\*\*\s*(?:status|statut)\s*:\s*([^*]+)\*\*", body, re.I)
+    bold = STATUS_BOLD.search(body)
     return bold.group(1).strip() if bold else ""
 
 
@@ -143,10 +173,15 @@ def title_of(meta, body, fallback):
     if meta.get("title"):
         return str(meta["title"])
     for line in body.splitlines():
-        heading = re.match(r"^#\s+(.*)$", line)
-        if heading:
-            return re.sub(r"^(?:adr[-_ ]?)?\d+\s*[.:)-]\s*", "", heading.group(1).strip(), flags=re.I)
+        if line.startswith("# "):
+            return TITLE_NUMBER.sub("", line[2:].strip(), count=1).strip()
     return fallback
+
+
+def format_of(meta):
+    if {"id", "domain", "rules"} <= set(meta):
+        return "archgate"
+    return "front-matter" if meta else "markdown"
 
 
 def identifier_of(meta, filename):
@@ -167,7 +202,7 @@ def is_adr_candidate(root, path):
     rel = posix(os.path.relpath(path, root))
     name = os.path.basename(path)
     parent = os.path.basename(os.path.dirname(path)).lower()
-    if NOT_AN_ADR.match(name):
+    if is_not_an_adr(name):
         return False
     if "/.archgate/adrs/" in "/" + rel:
         return True
@@ -181,10 +216,9 @@ def collect_adrs(root):
     for path in walk_markdown(root):
         if not is_adr_candidate(root, path):
             continue
-        text = read_text(path)
-        meta, body = parse_front_matter(text)
-        name = os.path.basename(path)
         rel = posix(os.path.relpath(path, root))
+        meta, body = parse_front_matter(read_text(root, rel))
+        name = os.path.basename(path)
         raw_status = declared_status(meta, body)
         rules_file = os.path.splitext(path)[0] + ".rules.ts"
         adrs.append({
@@ -194,8 +228,7 @@ def collect_adrs(root):
             "title": title_of(meta, body, os.path.splitext(name)[0]),
             "status_declared": raw_status,
             "status": normalize_status(raw_status),
-            "format": "archgate" if {"id", "domain", "rules"} <= set(meta) else (
-                "front-matter" if meta else "markdown"),
+            "format": format_of(meta),
             "rules": meta.get("rules") if isinstance(meta.get("rules"), bool) else None,
             "files": meta.get("files") if isinstance(meta.get("files"), list) else None,
             "rules_file": os.path.isfile(rules_file),
@@ -212,9 +245,8 @@ def collect_arc42(root):
             continue
         # Un dossier arc42, pas un fichier qui en parle : seuls les noms de dossiers comptent.
         in_arc42 = any("arc42" in part.lower() for part in rel.split("/")[:-1])
-        text = read_text(path)
-        has_index = bool(SECTION9_HEADING.search(text)) or (
-            in_arc42 and bool(SECTION9_FILE.search(rel)))
+        has_index = has_section9_heading(read_text(root, rel)) or (
+            in_arc42 and bool(SECTION9_FILE.search(rel)) and bool(DECISION_WORD.search(rel)))
         if in_arc42 or has_index:
             documents.append(rel)
         if has_index:
@@ -231,7 +263,7 @@ def broken_links(root, rel):
     findings = []
     base = os.path.dirname(os.path.join(root, rel))
     fenced = False
-    for number, line in enumerate(read_text(os.path.join(root, rel)).splitlines(), start=1):
+    for number, line in enumerate(read_text(root, rel).splitlines(), start=1):
         # Un lien dans un bloc de code ou entre accents graves est un exemple, pas une reference.
         if line.lstrip().startswith(("```", "~~~")):
             fenced = not fenced
@@ -345,7 +377,7 @@ def indexed_statuses(text, pattern):
 def index_findings(root, index_files, adrs):
     findings = []
     for rel in index_files:
-        text = read_text(os.path.join(root, rel))
+        text = read_text(root, rel)
         for adr in adrs:
             findings.extend(index_entry_findings(rel, text, adr))
     return findings

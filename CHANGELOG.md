@@ -22,7 +22,7 @@ partagent. Nouvelle catégorie `skills/architecture/`.
 - **`adr-check`** : contrôle d'un changement ou audit global ; exécute les règles Archgate et les tests du
   projet ; sépare violation prouvée, suspicion et absence de contrôle ; liste ce qui n'a pas été exécuté.
 - **`adr-policy`** : politique, découverte du contexte, articulation arc42 / OpenSpec, usage d'Archgate CLI,
-  gabarits, et `adr_tool.py` (inventaire et contrôles de forme, 20 tests). Ni invocable ni déclenché : il
+  gabarits, et `adr_tool.py` (inventaire et contrôles de forme, 21 tests). Ni invocable ni déclenché : il
   est lu par les trois autres, qui doivent être installés à côté de lui.
 
 Indépendants du projet : aucun chemin, module ni technologie codés ; ils découvrent le contexte à chaque

@@ -48,7 +48,7 @@ python ~/.claude/skills/adr-policy/resources/adr_tool.py check --root . --json
 | `resources/templates/adr.md` | gabarit d'ADR, deux variantes, procédure de remplacement |
 | `resources/templates/reports.md` | restitutions des trois skills |
 | `resources/adr_tool.py` | inventaire et contrôles de forme |
-| `resources/tests/test_adr_tool.py` | 20 tests (`python -m unittest discover -s resources/tests`) |
+| `resources/tests/test_adr_tool.py` | 21 tests (`python -m unittest discover -s resources/tests`) |
 | `examples/` | comportement d'Archgate relevé par exécution |
 
 ## Limites

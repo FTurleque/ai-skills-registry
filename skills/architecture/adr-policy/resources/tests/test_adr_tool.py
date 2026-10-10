@@ -186,6 +186,14 @@ class AdrToolTest(unittest.TestCase):
         self.assertEqual(result["arc42"], [])
         self.assertEqual(result["findings"], [])
 
+    def test_reading_outside_the_project_root_is_refused(self):
+        write(self.root, "project/README.md", "# Projet\n")
+        write(self.root, "secret.md", "hors projet\n")
+        project = os.path.join(self.root, "project")
+        self.assertEqual(adr_tool.read_text(project, "README.md"), "# Projet\n")
+        with self.assertRaises(ValueError):
+            adr_tool.read_text(project, "../secret.md")
+
     def test_exit_codes(self):
         write(self.root, "docs/adr/0005-queue.md", "# 5. File de messages\n")
         self.assertEqual(adr_tool.main(["inventory", "--root", self.root, "--json"]), 0)
