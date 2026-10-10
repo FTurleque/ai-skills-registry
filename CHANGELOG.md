@@ -9,6 +9,14 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Ajouté — registre d'ADR du dépôt (`.archgate/adrs/`)
+
+Archgate CLI initialisé dans le dépôt, sans plugin. Trois décisions reprises de règles déjà en vigueur dans
+`docs/`, au statut **proposé** en attendant leur acceptation par le mainteneur : `ARCH-001` (rangement par
+mécanisme), `ARCH-002` (schéma de métadonnées unique et fermé), `GEN-001` (Claude seul, surfaces déclarées et
+vérifiées). Index dans `docs/architecture.md`. Aucune règle Archgate : les contraintes restent vérifiées par
+`tools/validate.py`, sans duplication. L'ADR d'exemple généré par `archgate init` n'a pas été conservé.
+
 ### Ajouté — skills `adr-audit`, `adr-author`, `adr-check` et `adr-policy` 1.0.0 (expérimentaux)
 
 Trois skills pour gérer les décisions d'architecture d'un projet, et un dossier de ressources qu'ils

@@ -34,12 +34,15 @@ Après tout ajout ou modification d'artefact : valider, régénérer `INDEX.md`,
 
 ## Décisions d'architecture
 
-Ce dépôt n'a pas de registre d'ADR ni de dossier arc42 : ses règles durables sont dans `docs/`
-(`architecture.md`, `conventions.md`). N'en créer un que sur décision explicite.
+Registre canonique : `.archgate/adrs/` (index dans `docs/architecture.md`). Pas de dossier arc42. Les
+règles d'usage restent dans `docs/` ; un ADR en porte les raisons et y renvoie, sans les recopier.
 
+- Avant de toucher au rangement, au schéma ou aux surfaces, lire les ADR applicables.
 - Politique de pertinence et gabarits : `skills/architecture/adr-policy/resources/`.
 - Skills : `/adr-audit` (état des décisions), `/adr-author` (faut-il un ADR ?), `/adr-check` (contrôle).
-- Contrôles d'ici : `python tools/validate.py` ; `archgate check` n'a aucune règle à exécuter.
+- Un ADR passe à « accepté », ou est remplacé, sur validation du mainteneur seulement.
+- Contrôles : `python tools/validate.py`. Aucun ADR n'a de règle Archgate : `archgate check` vert
+  (`total: 0`) ne prouve rien ici.
 
 ## Rapports du superviseur
 
