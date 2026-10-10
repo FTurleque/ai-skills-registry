@@ -193,6 +193,8 @@ class AdrToolTest(unittest.TestCase):
         self.assertEqual(adr_tool.read_text(project, "README.md"), "# Projet\n")
         with self.assertRaises(ValueError):
             adr_tool.read_text(project, "../secret.md")
+        self.assertTrue(adr_tool.is_inside(project, os.path.join(project, "README.md")))
+        self.assertFalse(adr_tool.is_inside(project, os.path.join(self.root, "secret.md")))
 
     def test_exit_codes(self):
         write(self.root, "docs/adr/0005-queue.md", "# 5. File de messages\n")

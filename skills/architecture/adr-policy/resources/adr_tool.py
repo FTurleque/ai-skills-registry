@@ -60,12 +60,20 @@ def posix(path):
 
 def read_text(root, rel):
     """Lit un fichier du projet. Un chemin qui sort de la racine (lien symbolique, `..`) est refuse."""
-    base = os.path.realpath(root)
-    path = os.path.realpath(os.path.join(base, rel))
-    if os.path.commonpath([base, path]) != base:
+    path = os.path.join(os.path.realpath(root), rel)
+    if not is_inside(root, path):
         raise ValueError("chemin hors du projet : %s" % rel)
-    with open(path, "r", encoding="utf-8", errors="replace") as handle:
+    with open(os.path.realpath(path), "r", encoding="utf-8", errors="replace") as handle:
         return handle.read()
+
+
+def is_inside(root, path):
+    base = os.path.realpath(root)
+    try:
+        return os.path.commonpath([base, os.path.realpath(path)]) == base
+    except ValueError:
+        # Lecteurs differents sous Windows : forcement hors du projet.
+        return False
 
 
 def is_not_an_adr(name):
@@ -83,8 +91,10 @@ def walk_markdown(root):
     for current, dirs, files in os.walk(root):
         dirs[:] = sorted(d for d in dirs if d not in SKIP_DIRS)
         for name in sorted(files):
-            if name.lower().endswith(".md"):
-                yield os.path.join(current, name)
+            path = os.path.join(current, name)
+            # Un lien symbolique qui sort du projet est ignore, pas suivi.
+            if name.lower().endswith(".md") and is_inside(root, path):
+                yield path
 
 
 def parse_front_matter(text):
