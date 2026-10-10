@@ -18,7 +18,7 @@ Fait établi : la règle et ses raisons sont écrites dans [docs/architecture.md
 
 ## Decision
 
-**Statut : proposée (2026-10-10).** Reprise d'une règle déjà en vigueur dans `docs/architecture.md` ; son acceptation comme ADR attend la confirmation du mainteneur. Responsable : Fabrice Turleque.
+**Statut : acceptée (2026-10-10).** Reprise d'une règle déjà en vigueur dans `docs/architecture.md` ; acceptée comme ADR par le mainteneur le 2026-10-10. Responsable : Fabrice Turleque.
 
 - Le dossier de premier niveau d'un artefact MUST être celui de son mécanisme d'exécution : `skills/`, `plugins/`, `agents/`, `commands/`, `hooks/`, `instructions/`, `mcp/`, `output-styles/`.
 - Le champ `kind` MUST correspondre à ce dossier.

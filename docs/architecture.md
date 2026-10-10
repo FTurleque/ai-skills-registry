@@ -148,9 +148,9 @@ le pourquoi et les conséquences.
 
 | Identifiant | Titre | Statut | ADR |
 |-------------|-------|--------|-----|
-| ARCH-001 | Ranger les artefacts par mécanisme, pas par sujet | Proposée | [ARCH-001](../.archgate/adrs/ARCH-001-storage-by-mechanism.md) |
-| ARCH-002 | Un schéma de métadonnées unique et fermé, une seule source par artefact | Proposée | [ARCH-002](../.archgate/adrs/ARCH-002-single-metadata-schema.md) |
-| GEN-001 | Ne cibler que Claude, sur des surfaces déclarées et vérifiées | Proposée | [GEN-001](../.archgate/adrs/GEN-001-claude-only-declared-surfaces.md) |
+| ARCH-001 | Ranger les artefacts par mécanisme, pas par sujet | Acceptée | [ARCH-001](../.archgate/adrs/ARCH-001-storage-by-mechanism.md) |
+| ARCH-002 | Un schéma de métadonnées unique et fermé, une seule source par artefact | Acceptée | [ARCH-002](../.archgate/adrs/ARCH-002-single-metadata-schema.md) |
+| GEN-001 | Ne cibler que Claude, sur des surfaces déclarées et vérifiées | Acceptée | [GEN-001](../.archgate/adrs/GEN-001-claude-only-declared-surfaces.md) |
 
 Un ADR ne se crée que pour une décision durable, coûteuse à inverser et non déjà couverte : la
 politique est dans `skills/architecture/adr-policy/resources/policy.md`. Les ADR portent le format

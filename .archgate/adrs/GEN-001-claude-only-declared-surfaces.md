@@ -24,7 +24,7 @@ Ces règles sont entrées dans le dépôt avec le commit `3a04400` du 2026-10-02
 
 ## Decision
 
-**Statut : proposée (2026-10-10).** Reprise de règles déjà en vigueur ; son acceptation comme ADR attend la confirmation du mainteneur. Responsable : Fabrice Turleque.
+**Statut : acceptée (2026-10-10).** Reprise de règles déjà en vigueur ; acceptée comme ADR par le mainteneur le 2026-10-10. Responsable : Fabrice Turleque.
 
 - Le registre ne déclare, ne teste et ne documente que des surfaces Claude.
 - `compatibility` MUST ne contenir que les quatre surfaces de l'énumération du schéma.
