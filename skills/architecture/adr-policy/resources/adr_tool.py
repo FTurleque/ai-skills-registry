@@ -268,19 +268,24 @@ def identity_findings(adrs):
             "message": "ADR repartis dans %d emplacements : un seul doit etre editable"
                        % len(registries),
         })
-    for position, first in enumerate(adrs):
-        for second in adrs[position + 1:]:
-            if first["id"].lower() == second["id"].lower():
-                continue
-            left, right = title_tokens(first["title"]), title_tokens(second["title"])
-            if left and right and len(left & right) / float(len(left | right)) >= 0.5:
-                findings.append({
-                    "kind": "doublon-possible",
-                    "where": "%s, %s" % (first["path"], second["path"]),
-                    "message": "titres proches (`%s` / `%s`) : a comparer a la lecture"
-                               % (first["title"], second["title"]),
-                })
-    return findings
+    return findings + close_title_findings(adrs)
+
+
+def titles_are_close(first, second):
+    left, right = title_tokens(first["title"]), title_tokens(second["title"])
+    return bool(left and right) and len(left & right) / float(len(left | right)) >= 0.5
+
+
+def close_title_findings(adrs):
+    pairs = [(first, second) for position, first in enumerate(adrs)
+             for second in adrs[position + 1:]
+             if first["id"].lower() != second["id"].lower() and titles_are_close(first, second)]
+    return [{
+        "kind": "doublon-possible",
+        "where": "%s, %s" % (first["path"], second["path"]),
+        "message": "titres proches (`%s` / `%s`) : a comparer a la lecture"
+                   % (first["title"], second["title"]),
+    } for first, second in pairs]
 
 
 def metadata_findings(adrs):
@@ -342,22 +347,23 @@ def index_findings(root, index_files, adrs):
     for rel in index_files:
         text = read_text(os.path.join(root, rel))
         for adr in adrs:
-            pattern = r"(?<![\w-])%s(?![\w-])" % re.escape(adr["id"])
-            if not re.search(pattern, text) and os.path.basename(adr["path"]) not in text:
-                findings.append({
-                    "kind": "adr-absent-de-l-index", "where": rel,
-                    "message": "`%s` (%s) n'apparait pas dans l'index des decisions"
-                               % (adr["id"], adr["path"]),
-                })
-                continue
-            for indexed in indexed_statuses(text, pattern):
-                if "unknown" not in (indexed, adr["status"]) and indexed != adr["status"]:
-                    findings.append({
-                        "kind": "statut-divergent", "where": rel,
-                        "message": "`%s` : index `%s`, ADR `%s`"
-                                   % (adr["id"], indexed, adr["status"]),
-                    })
+            findings.extend(index_entry_findings(rel, text, adr))
     return findings
+
+
+def index_entry_findings(rel, text, adr):
+    pattern = r"(?<![\w-])%s(?![\w-])" % re.escape(adr["id"])
+    if not re.search(pattern, text) and os.path.basename(adr["path"]) not in text:
+        return [{
+            "kind": "adr-absent-de-l-index", "where": rel,
+            "message": "`%s` (%s) n'apparait pas dans l'index des decisions"
+                       % (adr["id"], adr["path"]),
+        }]
+    return [{
+        "kind": "statut-divergent", "where": rel,
+        "message": "`%s` : index `%s`, ADR `%s`" % (adr["id"], indexed, adr["status"]),
+    } for indexed in indexed_statuses(text, pattern)
+        if "unknown" not in (indexed, adr["status"]) and indexed != adr["status"]]
 
 
 def run_inventory(root):
