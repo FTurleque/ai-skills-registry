@@ -93,6 +93,7 @@ ci-dessous.
 | `refactoring/` | restructuration et amélioration de code existant |
 | `testing/` | tests, couverture, qualité |
 | `analysis/` | analyse de code, d'architecture, de données |
+| `architecture/` | décisions d'architecture : ADR, leur audit, leur rédaction, leur contrôle |
 
 Une catégorie sans artefact n'existe pas dans l'arborescence : git ne versionne pas les dossiers
 vides, et un `.gitkeep` par catégorie éventuelle serait du bruit. On crée la catégorie avec son

@@ -64,6 +64,10 @@ artefact déclare cette surface quand il ne suppose rien de l'environnement d'ex
 | `generate-windows-exe` | skill | ✅ | ✅ | ❌ | ❌ |
 | `code-to-openspec` | skill | ✅ | ✅ | ❌ | ❌ |
 | `audit-application` | skill | ✅ | ✅ | ❌ | ❌ |
+| `adr-audit` | skill | ✅ | ⬜ | ❌ | ❌ |
+| `adr-author` | skill | ✅ | ⬜ | ❌ | ❌ |
+| `adr-check` | skill | ✅ | ⬜ | ❌ | ❌ |
+| `adr-policy` | skill | ✅ | ⬜ | ❌ | ❌ |
 | `code-supervisor` | plugin | ✅ | ✅ | ❌ | ❌ |
 
 **Légende**

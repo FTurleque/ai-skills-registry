@@ -32,6 +32,15 @@ claude plugin validate ./plugins/<nom> --strict
 Après tout ajout ou modification d'artefact : valider, régénérer `INDEX.md`, mettre à jour
 `CHANGELOG.md`. La CI (`.github/workflows/validate.yml`) rejoue ces contrôles.
 
+## Décisions d'architecture
+
+Ce dépôt n'a pas de registre d'ADR ni de dossier arc42 : ses règles durables sont dans `docs/`
+(`architecture.md`, `conventions.md`). N'en créer un que sur décision explicite.
+
+- Politique de pertinence et gabarits : `skills/architecture/adr-policy/resources/`.
+- Skills : `/adr-audit` (état des décisions), `/adr-author` (faut-il un ADR ?), `/adr-check` (contrôle).
+- Contrôles d'ici : `python tools/validate.py` ; `archgate check` n'a aucune règle à exécuter.
+
 ## Rapports du superviseur
 
 Le superviseur écrit ses rapports dans `docs/rapport-supervisor/` (jamais commité : dossier ignoré,

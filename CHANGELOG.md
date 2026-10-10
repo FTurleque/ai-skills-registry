@@ -9,6 +9,33 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
+### Ajouté — skills `adr-audit`, `adr-author`, `adr-check` et `adr-policy` 1.0.0 (expérimentaux)
+
+Trois skills pour gérer les décisions d'architecture d'un projet, et un dossier de ressources qu'ils
+partagent. Nouvelle catégorie `skills/architecture/`.
+
+- **`adr-audit`** : inventaire de tous les ADR, statut déclaré contre réalité observée, doublons,
+  contradictions, références cassées, décisions non documentées proposées à confirmer, une recommandation
+  par document. Lecture seule par défaut.
+- **`adr-author`** : filtre de pertinence en trois questions avant toute rédaction ; cinq conclusions
+  possibles, dont « Aucun nouvel ADR nécessaire » ; une décision acceptée n'est jamais réécrite en silence.
+- **`adr-check`** : contrôle d'un changement ou audit global ; exécute les règles Archgate et les tests du
+  projet ; sépare violation prouvée, suspicion et absence de contrôle ; liste ce qui n'a pas été exécuté.
+- **`adr-policy`** : politique, découverte du contexte, articulation arc42 / OpenSpec, usage d'Archgate CLI,
+  gabarits, et `adr_tool.py` (inventaire et contrôles de forme, 20 tests). Ni invocable ni déclenché : il
+  est lu par les trois autres, qui doivent être installés à côté de lui.
+
+Indépendants du projet : aucun chemin, module ni technologie codés ; ils découvrent le contexte à chaque
+invocation et n'installent ni n'initialisent rien. Surface déclarée : `claude-code`.
+
+- Comportement d'Archgate CLI 0.59.0 relevé par exécution : un fichier modifié sans rapport avec le
+  périmètre d'un ADR suffit à ce que ses règles soient sautées (`pass: true`, `total: 0`, code 0), même si
+  une violation existe déjà. Le skill de contrôle compte les règles exécutées et fait l'audit global avec un
+  diff vide.
+- **Essayés seulement sur un petit projet de test jetable et sur ce dépôt** (qui n'a pas d'ADR), dans des
+  sessions Claude Code non interactives. Pas encore utilisés sur une application réelle ; ArchUnit et la
+  conclusion « clarification » n'ont pas été exercés.
+
 ### Ajouté — skill `audit-application` 1.0.0 (expérimental)
 
 Skill d'audit de code complet d'une application : six axes (architecture, qualité, sécurité, tests, performance,

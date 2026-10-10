@@ -1,0 +1,34 @@
+kind: skill
+name: adr-check
+displayName: Contrôle des ADR
+description: >-
+  Contrôle le respect des ADR (Architecture Decision Records) dans le code et la cohérence
+  documentaire. Deux modes : contrôle d'un changement (diff, branche, changement OpenSpec) et audit
+  global. Identifie les ADR applicables, exécute les règles Archgate réellement configurées et les
+  tests du projet (ArchUnit s'il existe), vérifie les liens et les vues arc42 touchées. Distingue
+  violation prouvée, suspicion issue de la revue et absence de contrôle ; liste les contrôles non
+  exécutés ; ne prend jamais une exécution sans règle pertinente pour une conformité. À utiliser
+  pour « vérifie que ce changement respecte nos ADR », « contrôle les décisions d'architecture »,
+  « lance archgate », avant une PR ou l'archivage d'un changement OpenSpec. Ne modifie ni les
+  décisions ni les contrôles.
+version: 1.0.0
+status: experimental
+category: architecture
+tags:
+  - adr
+  - architecture
+  - compliance
+  - archgate
+  - archunit
+  - arc42
+compatibility:
+  - claude-code
+requires:
+  - adr-policy (skill voisin, obligatoire)
+  - git (facultatif)
+  - python>=3.8 (facultatif)
+  - archgate CLI (facultatif)
+  - openspec CLI (facultatif)
+authors:
+  - Fabrice Turleque
+license: MIT
