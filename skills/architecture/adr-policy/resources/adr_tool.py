@@ -95,8 +95,7 @@ def parse_front_matter(text):
     meta, key = {}, None
     for index, line in enumerate(lines[1:], start=1):
         if line.strip() == "---":
-            return meta, "
-".join(lines[index + 1:])
+            return meta, "\n".join(lines[index + 1:])
         key = read_front_matter_line(meta, key, line)
     return {}, text
 
@@ -104,7 +103,7 @@ def parse_front_matter(text):
 def read_front_matter_line(meta, key, line):
     """Range une ligne dans `meta` et retourne la cle courante (celle des elements de liste)."""
     stripped = line.strip()
-    if key and line[:1] in (" ", "	") and stripped.startswith("- "):
+    if key and line[:1].isspace() and stripped.startswith("- "):
         if not isinstance(meta.get(key), list):
             meta[key] = []
         meta[key].append(scalar(stripped[2:]))
