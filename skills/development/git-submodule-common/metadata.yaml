@@ -1,0 +1,23 @@
+kind: skill
+name: git-submodule-common
+displayName: Sous-modules Git (module partagé)
+description: >-
+  Module Python partagé par les skills publish-git-submodule et install-git-submodule : exécution
+  de git sans shell, validation des chemins, branches et URL, authentification par jeton sans
+  secret persistant, écriture des fichiers gérés. Ne se déclenche pas seul et ne s'invoque pas : il
+  est importé par les scripts des deux autres skills, qui ne fonctionnent pas sans lui.
+version: 1.0.0
+status: experimental
+category: development
+tags:
+  - git
+  - submodule
+  - shared
+compatibility:
+  - claude-code
+requires:
+  - git>=2.38
+  - python>=3.8
+authors:
+  - Fabrice Turleque
+license: MIT

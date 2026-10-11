@@ -68,6 +68,9 @@ artefact déclare cette surface quand il ne suppose rien de l'environnement d'ex
 | `adr-author` | skill | ✅ | ⬜ | ❌ | ❌ |
 | `adr-check` | skill | ✅ | ⬜ | ❌ | ❌ |
 | `adr-policy` | skill | ✅ | ⬜ | ❌ | ❌ |
+| `publish-git-submodule` | skill | ✅ | ⬜ | ❌ | ❌ |
+| `install-git-submodule` | skill | ✅ | ⬜ | ❌ | ❌ |
+| `git-submodule-common` | skill | ✅ | ⬜ | ❌ | ❌ |
 | `code-supervisor` | plugin | ✅ | ✅ | ❌ | ❌ |
 
 **Légende**

@@ -1,0 +1,51 @@
+# Généré par le skill install-git-submodule à partir de .github/submodule-update.json.
+# Ne pas éditer : relancer le skill, ou `install.py render` depuis le skill installé.
+# Aucun appel à un modèle d'IA : git, Python et l'API GitHub seulement.
+#
+# Ce fichier doit exister sur la branche par défaut : `repository_dispatch` et `schedule` ne
+# déclenchent que les workflows qui s'y trouvent.
+name: submodule-update
+
+on:
+  # Envoyé par le dépôt source juste après sa publication, si ce dépôt y est inscrit.
+  repository_dispatch:
+    types: [submodule-updated]
+{{SCHEDULE_BLOCK}}
+  workflow_dispatch:
+    inputs:
+      path:
+        description: "Chemin d'un sous-module géré (vide : tous)"
+        type: string
+        default: ""
+
+permissions:
+{{PERMISSIONS}}
+
+# Une exécution à la fois. Chacune adopte la tête de branche du moment : un événement ancien ou
+# en double ne peut ni faire revenir en arrière ni créer un second commit.
+concurrency:
+  group: {{CONCURRENCY_GROUP}}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          ref: {{TARGET_BRANCH}}
+          # Aucun jeton laissé dans .git/config : les contrôles peuvent lire du contenu importé.
+          persist-credentials: false
+          submodules: false
+
+      # Les valeurs issues de l'événement passent par l'environnement, jamais par le texte du
+      # script : elles ne peuvent pas y injecter de commande.
+      - name: Mettre à jour les sous-modules gérés
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SUBMODULE_FETCH_TOKEN: ${{ secrets.SUBMODULE_FETCH_TOKEN }}
+          SUBMODULE_PUSH_TOKEN: ${{ secrets.SUBMODULE_PUSH_TOKEN }}
+          SUBMODULE_EVENT_PAYLOAD: ${{ toJSON(github.event.client_payload) }}
+          SUBMODULE_ONLY_PATH: ${{ inputs.path }}
+        run: python3 .github/submodule-sync/update.py run --push

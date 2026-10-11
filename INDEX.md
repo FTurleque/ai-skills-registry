@@ -8,7 +8,7 @@ Catalogue de tous les artefacts du depot, par type.
 
 | Type | Nombre |
 |------|-------:|
-| Skills | 8 |
+| Skills | 11 |
 | Plugins | 1 |
 | Sous-agents | 0 |
 | Commandes | 0 |
@@ -16,7 +16,7 @@ Catalogue de tous les artefacts du depot, par type.
 | Instructions de projet | 0 |
 | Serveurs MCP | 0 |
 | Styles de sortie | 0 |
-| **Total** | **9** |
+| **Total** | **12** |
 
 ## Skills
 
@@ -29,7 +29,10 @@ Catalogue de tous les artefacts du depot, par type.
 | [`audit-application`](skills/development/audit-application) | Audit de code complet d'une application (architecture, qualité, sécurité, tests, performance, dépendances, CI/CD) produisant un rapport versionné dans le dép... | 1.0.0 | experimental | Code, Desktop |
 | [`code-to-openspec`](skills/development/code-to-openspec) | Rétro-ingénierie d'une application existante à partir de son code, puis préparation de changements OpenSpec traçables (constats, exigences, scénarios, tâches... | 1.0.0 | experimental | Code, Desktop |
 | [`generate-windows-exe`](skills/development/generate-windows-exe) | Empaquette une application en executable Windows (.exe) via Inno Setup ou jpackage, avec un driver reproductible. | 1.1.0 | stable | Code, Desktop |
+| [`git-submodule-common`](skills/development/git-submodule-common) | Module Python partagé par les skills publish-git-submodule et install-git-submodule : exécution de git sans shell, validation des chemins, branches et URL, a... | 1.0.0 | experimental | Code |
+| [`install-git-submodule`](skills/development/install-git-submodule) | Installe dans le dépôt courant un sous-module Git qui suit une branche d'un autre dépôt (le dépôt entier, ou la branche d'export d'un dossier publiée par pub... | 1.0.0 | experimental | Code |
 | [`java-code-review`](skills/development/java-code-review) | Analyse du code Java afin d'identifier les défauts, risques et améliorations possibles. | 1.1.0 | stable | Code, Desktop, claude.ai, API |
+| [`publish-git-submodule`](skills/development/publish-git-submodule) | Prépare un dépôt entier, ou un seul de ses dossiers (.claude, docs, une bibliothèque), pour être installé comme sous-module Git dans d'autres dépôts, puis au... | 1.0.0 | experimental | Code |
 
 ## Plugins
 

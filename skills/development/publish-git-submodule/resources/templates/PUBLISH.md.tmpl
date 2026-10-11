@@ -1,0 +1,44 @@
+# Publication de sous-modules
+
+> Fichier généré par le skill `publish-git-submodule`. La configuration fait foi :
+> `.github/submodule-publish.json`.
+
+Ce dépôt publie du contenu destiné à être installé comme sous-module dans d'autres dépôts.
+
+| Publication | Source | Branche source | Branche à suivre | Extraction | Consommateurs notifiés |
+|---|---|---|---|---|---|
+{{PUBLICATIONS}}
+
+## Ce qui se passe après un push
+
+Le workflow `.github/workflows/submodule-publish.yml` s'exécute quand la branche source change. Pour
+un dossier, il republie son contenu à la racine de la branche d'export (jamais de `push --force` par
+défaut, aucun commit si rien n'a changé), puis envoie un événement `repository_dispatch` aux
+consommateurs inscrits. La branche source n'est jamais modifiée.
+
+Une branche d'export ne s'édite pas à la main : elle est dérivée, toute modification directe fait
+échouer la publication suivante.
+
+## Installer chez un consommateur
+
+{{INSTALL_COMMANDS}}
+
+## Notifier un consommateur
+
+```bash
+python3 .github/submodule-sync/publish.py register --name <publication> --consumer <propriétaire>/<dépôt> --commit
+```
+
+La notification exige le secret `SUBMODULE_DISPATCH_TOKEN` dans ce dépôt : un jeton à permissions
+fines, ou un jeton d'installation de GitHub App, avec « Contents: read and write » sur les seuls
+dépôts consommateurs. Sans lui, les consommateurs se mettent à jour à leur exécution planifiée.
+
+## Diagnostic
+
+```bash
+python3 .github/submodule-sync/publish.py status          # compare chaque export à sa source
+python3 .github/submodule-sync/publish.py run --all       # simulation : n'écrit rien sans --push
+```
+
+Désactiver : supprimer `.github/workflows/submodule-publish.yml`, ou passer `"auto": false` sur la
+publication puis régénérer. Les branches d'export déjà publiées restent utilisables telles quelles.

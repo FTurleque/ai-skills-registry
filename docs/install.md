@@ -53,11 +53,27 @@ ses sous-agents et de ses commandes. Le désinstaller les retire tous.
 | API / Agent SDK | pointer le chemin du dossier dans la configuration de l'agent |
 
 ```bash
+python tools/install_skill.py install java-code-review
+python tools/install_skill.py check java-code-review       # la copie correspond-elle au dépôt ?
+python tools/install_skill.py uninstall java-code-review
+```
+
+`install_skill.py` copie le dossier **entier** dans `~/.claude/skills/<nom>/` (ou
+`$CLAUDE_CONFIG_DIR/skills/`, ou `--dest`), sans lien symbolique. Le dépôt reste la source de
+vérité : après une modification, relancer `install` ; `check` échoue tant que la copie diffère. Une
+copie installée puis retouchée à la main n'est jamais écrasée sans sauvegarde : elle est d'abord
+recopiée dans `~/.claude/skills-backup/<nom>-<horodatage>/`.
+
+La copie manuelle reste possible, à condition de prendre le dossier entier — `SKILL.md` seul perd
+les `resources/` et les `examples/` auxquels il renvoie :
+
+```bash
 cp -r skills/development/java-code-review ~/.claude/skills/
 ```
 
-Copier le dossier **entier** : `SKILL.md` seul perd les `resources/` et les `examples/` auxquels il
-renvoie.
+Certains skills s'appuient sur un dossier de ressources voisin, à installer avec eux : `adr-policy`
+pour les skills `adr-*`, `git-submodule-common` pour `publish-git-submodule` et
+`install-git-submodule`, dont l'usage est décrit dans [git-submodule-sync.md](git-submodule-sync.md).
 
 ---
 

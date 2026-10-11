@@ -1,0 +1,32 @@
+kind: skill
+name: publish-git-submodule
+displayName: Publier une source de sous-module Git
+description: >-
+  Prépare un dépôt entier, ou un seul de ses dossiers (.claude, docs, une bibliothèque), pour être
+  installé comme sous-module Git dans d'autres dépôts, puis automatise sa republication. Pour un
+  dossier : extrait son contenu à la racine d'une branche d'export du même dépôt distant
+  (git subtree split), contrôle fichiers locaux, secrets et chemins personnels avant tout push,
+  et installe un workflow GitHub Actions qui republie après chaque push et notifie les dépôts
+  consommateurs, sans appel à un modèle d'IA. À invoquer explicitement : /publish-git-submodule
+  source=.claude branch=main export=submodule/claude auto=true. Le skill voisin
+  install-git-submodule fait l'autre moitié, côté dépôt destinataire.
+version: 1.0.0
+status: experimental
+category: development
+tags:
+  - git
+  - submodule
+  - subtree
+  - github-actions
+  - automation
+compatibility:
+  - claude-code
+requires:
+  - git-submodule-common (skill voisin, obligatoire)
+  - git>=2.38 avec git subtree
+  - python>=3.8
+  - dépôt distant GitHub (pour l'automatisation)
+  - gh CLI (facultatif)
+authors:
+  - Fabrice Turleque
+license: MIT

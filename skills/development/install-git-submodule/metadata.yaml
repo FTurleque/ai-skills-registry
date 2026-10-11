@@ -1,0 +1,32 @@
+kind: skill
+name: install-git-submodule
+displayName: Installer un sous-module Git mis à jour automatiquement
+description: >-
+  Installe dans le dépôt courant un sous-module Git qui suit une branche d'un autre dépôt (le
+  dépôt entier, ou la branche d'export d'un dossier publiée par publish-git-submodule), puis met
+  en place sa mise à jour automatique : script et workflow GitHub Actions déclenchés par événement
+  du producteur, par planification et à la main, qui avancent la référence, lancent les contrôles
+  du dépôt et poussent un commit limité à cette référence, sans appel à un modèle d'IA. Un dossier
+  cible déjà présent n'est jamais écrasé : il est comparé, sauvegardé, et toute divergence demande
+  une décision. À invoquer explicitement : /install-git-submodule url=<dépôt>
+  branch=submodule/claude target=.claude auto=true.
+version: 1.0.0
+status: experimental
+category: development
+tags:
+  - git
+  - submodule
+  - github-actions
+  - automation
+  - migration
+compatibility:
+  - claude-code
+requires:
+  - git-submodule-common (skill voisin, obligatoire)
+  - git>=2.38
+  - python>=3.8
+  - dépôt distant GitHub (pour l'automatisation)
+  - gh CLI (facultatif, requis par le mode pull request)
+authors:
+  - Fabrice Turleque
+license: MIT
