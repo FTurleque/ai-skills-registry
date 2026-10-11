@@ -611,9 +611,8 @@ def local_warnings(root: str, pub: dict) -> list:
     return notes
 
 
-def cmd_setup(args) -> int:
-    root = common.repo_root(os.getcwd())
-    cfg = load_config(root)
+def draft_publication(root: str, cfg: dict, args):
+    """Publication demandée, fusionnée avec celle qui existe déjà sous ce nom. Retourne (pub, existante)."""
     source = common.validate_rel_path(args.source, "source", allow_root=True)
     common.ensure_inside(root, source)
     whole = source == "."
@@ -622,83 +621,98 @@ def cmd_setup(args) -> int:
     if existing and existing["source"] != source:
         raise SyncError("la publication %r existe déjà pour %r : choisir un autre `name`"
                         % (name, existing["source"]), common.EXIT_USAGE)
-    remote = common.validate_remote(args.remote or (existing or {}).get("remote") or "origin")
+    known = existing or {}
+    remote = common.validate_remote(args.remote or known.get("remote") or "origin")
     remote_url(root, remote)
-    branch = args.branch or (existing or {}).get("branch") or common.default_branch(root, remote)
+    branch = args.branch or known.get("branch") or common.default_branch(root, remote)
     if not branch:
         raise SyncError("branche source indéterminée : préciser `branch=`", common.EXIT_USAGE)
-    draft = dict(existing or {}, name=name, source=source, branch=branch, remote=remote)
-    draft["export"] = None if whole else (args.export or draft.get("export") or "submodule/" + common.slugify(source))
+    draft = dict(known, name=name, source=source, branch=branch, remote=remote)
+    draft["export"] = None if whole else (args.export or known.get("export") or "submodule/" + common.slugify(source))
     for key, value in (("strategy", args.strategy), ("auto", args.auto), ("allow_force", args.allow_force)):
         if value is not None:
             draft[key] = value
     if args.exclude is not None:
         draft["exclude"] = [p for p in args.exclude if p]
-    draft["consumers"] = list(draft.get("consumers") or []) + list(args.consumer or [])
-    pub = normalize_publication(draft)
+    draft["consumers"] = list(known.get("consumers") or []) + list(args.consumer or [])
+    return normalize_publication(draft), existing
 
-    heads = remote_heads(root, remote)
-    if not whole:
-        export = pub["export"]
-        for other in cfg["publications"]:
-            if other["name"] != name and export in (other["export"], other["branch"]):
-                raise SyncError("la branche %s est déjà utilisée par la publication %r" % (export, other["name"]),
-                                common.EXIT_USAGE)
-        if export == common.default_branch(root, remote):
-            raise SyncError("la branche d'export ne peut pas être la branche par défaut (%s)" % export,
+
+def check_export_branch(root: str, cfg: dict, pub: dict, is_new: bool, force: bool) -> None:
+    """Refuse une branche d'export qui en gênerait une autre ou en écraserait une sans rapport."""
+    export, remote = pub["export"], pub["remote"]
+    for other in cfg["publications"]:
+        if other["name"] != pub["name"] and export in (other["export"], other["branch"]):
+            raise SyncError("la branche %s est déjà utilisée par la publication %r" % (export, other["name"]),
                             common.EXIT_USAGE)
-        clash = [h for h in heads if h != export and (h.startswith(export + "/") or export.startswith(h + "/"))]
-        if clash:
-            raise SyncError("la branche %s ne peut pas coexister avec la branche distante %s (git range "
-                            "les branches comme des fichiers)" % (export, clash[0]), common.EXIT_USAGE)
-        if export in heads and not existing and pub["strategy"] == "snapshot" and not args.force:
-            # Un instantané se pose en avance rapide sur n'importe quelle branche : sans cette garde,
-            # il remplacerait le contenu d'une branche de travail qui porte par hasard ce nom.
-            git(["fetch", "--no-tags", remote, "refs/heads/" + export], cwd=root)
-            if "Source-Path: " not in git_out(["log", "-1", "--format=%B", heads[export]], cwd=root):
-                raise SyncError(
-                    "la branche %s existe déjà sur %s et n'est pas un export de ce skill : un instantané "
-                    "y remplacerait tout son contenu. Choisir un autre `export`, ou confirmer avec "
-                    "force=true." % (export, remote), common.EXIT_DECISION)
+    if export == common.default_branch(root, remote):
+        raise SyncError("la branche d'export ne peut pas être la branche par défaut (%s)" % export,
+                        common.EXIT_USAGE)
+    heads = remote_heads(root, remote)
+    clash = [h for h in heads if h != export and (h.startswith(export + "/") or export.startswith(h + "/"))]
+    if clash:
+        raise SyncError("la branche %s ne peut pas coexister avec la branche distante %s (git range "
+                        "les branches comme des fichiers)" % (export, clash[0]), common.EXIT_USAGE)
+    if export in heads and is_new and pub["strategy"] == "snapshot" and not force:
+        # Un instantané se pose en avance rapide sur n'importe quelle branche : sans cette garde,
+        # il remplacerait le contenu d'une branche de travail qui porte par hasard ce nom.
+        git(["fetch", "--no-tags", remote, "refs/heads/" + export], cwd=root)
+        if "Source-Path: " not in git_out(["log", "-1", "--format=%B", heads[export]], cwd=root):
+            raise SyncError(
+                "la branche %s existe déjà sur %s et n'est pas un export de ce skill : un instantané "
+                "y remplacerait tout son contenu. Choisir un autre `export`, ou confirmer avec "
+                "force=true." % (export, remote), common.EXIT_DECISION)
 
-    publish = not (args.dry_run or args.no_publish)
-    result = publish_one(root, pub, push=publish, force=args.force, accept=args.accept_findings)
-    notes = local_warnings(root, pub)
-    report = {"root": root, "remote_url": remote_url(root, remote), "publication": pub, "result": result,
-              "warnings": notes, "install_command": install_command(root, pub), "dry_run": args.dry_run}
 
-    if not args.dry_run:
-        if existing:
-            cfg["publications"][cfg["publications"].index(existing)] = pub
-        else:
-            cfg["publications"].append(pub)
-        paths = write_managed_files(root, cfg, __file__)
-        report["files"] = paths
-        if args.commit:
-            report["commit"] = common.commit_paths(
-                root, paths, "ci(submodule): publier %s comme source de sous-module" %
-                ("le dépôt" if whole else pub["source"]))
-            if args.push and report["commit"]:
-                current = common.current_branch(root)
-                proc = git(["push", remote, "HEAD:refs/heads/%s" % current], cwd=root, check=False) if current else None
-                report["pushed"] = bool(proc and proc.returncode == 0)
-                if not report["pushed"]:
-                    notes.append("push de la configuration refusé ou impossible : %s"
-                                 % (proc.stderr.strip() if proc else "HEAD détaché"))
+def record_publication(root: str, cfg: dict, pub: dict, existing, args, report: dict) -> None:
+    """Inscrit la publication, écrit les fichiers gérés, puis commite et pousse si c'est demandé."""
+    if existing:
+        cfg["publications"][cfg["publications"].index(existing)] = pub
+    else:
+        cfg["publications"].append(pub)
+    report["files"] = write_managed_files(root, cfg, __file__)
+    if not args.commit:
+        return
+    subject = "le dépôt" if pub["source"] == "." else pub["source"]
+    report["commit"] = common.commit_paths(root, report["files"],
+                                           "ci(submodule): publier %s comme source de sous-module" % subject)
+    if args.push and report["commit"]:
+        refusal = common.push_current_branch(root, pub["remote"])
+        report["pushed"] = refusal is None
+        if refusal:
+            report["warnings"].append("push de la configuration refusé ou impossible : %s" % refusal)
 
-    log(describe_result(result))
-    for finding in result["findings"]:
+
+def print_setup_report(root: str, pub: dict, report: dict, as_json: bool) -> None:
+    log(describe_result(report["result"]))
+    for finding in report["result"]["findings"]:
         log(describe_finding(finding) + " (accepté)")
-    for note in notes:
+    for note in report["warnings"]:
         warn(note)
-    if not args.dry_run:
+    if not report["dry_run"]:
         log("Fichiers gérés : " + ", ".join(report["files"]))
         if pub["auto"] and common.current_branch(root) != pub["branch"]:
             warn("le workflow n'agira qu'une fois présent sur la branche source %s (et sur la branche "
                  "par défaut pour le déclenchement manuel)" % pub["branch"])
     log("Installation chez un consommateur : " + report["install_command"])
-    if args.json:
+    if as_json:
         log(json.dumps(report, ensure_ascii=False, indent=2))
+
+
+def cmd_setup(args) -> int:
+    root = common.repo_root(os.getcwd())
+    cfg = load_config(root)
+    pub, existing = draft_publication(root, cfg, args)
+    if pub["export"]:
+        check_export_branch(root, cfg, pub, existing is None, args.force)
+    publish = not (args.dry_run or args.no_publish)
+    result = publish_one(root, pub, push=publish, force=args.force, accept=args.accept_findings)
+    report = {"root": root, "remote_url": remote_url(root, pub["remote"]), "publication": pub,
+              "result": result, "warnings": local_warnings(root, pub),
+              "install_command": install_command(root, pub), "dry_run": args.dry_run}
+    if not args.dry_run:
+        record_publication(root, cfg, pub, existing, args, report)
+    print_setup_report(root, pub, report, args.json)
     return common.EXIT_OK
 
 

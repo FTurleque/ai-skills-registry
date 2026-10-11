@@ -73,13 +73,13 @@ def read_manifest(folder: str):
 
 
 def skill_version(folder: str) -> str:
-    try:
-        with open(os.path.join(folder, "metadata.yaml"), "r", encoding="utf-8") as fh:
-            for line in fh:
-                if line.startswith("version:"):
-                    return line.split(":", 1)[1].strip().strip("'\"")
-    except OSError:
-        pass
+    path = os.path.join(folder, "metadata.yaml")
+    if not os.path.isfile(path):
+        return "?"
+    with open(path, "r", encoding="utf-8") as fh:
+        for line in fh:
+            if line.startswith("version:"):
+                return line.split(":", 1)[1].strip().strip("'\"")
     return "?"
 
 

@@ -55,10 +55,9 @@ class SyncError(Exception):
 def setup_output() -> None:
     """La console Windows n'est pas en UTF-8 par défaut : ne jamais planter sur un accent."""
     for stream in (sys.stdout, sys.stderr):
-        try:
-            stream.reconfigure(encoding="utf-8", errors="replace")
-        except (AttributeError, ValueError):
-            pass
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None and not stream.closed:
+            reconfigure(encoding="utf-8", errors="replace")
 
 
 def log(message: str) -> None:
@@ -405,6 +404,15 @@ def commit_paths(root: str, paths, message: str):
         return None
     git(["commit", "-q", "-m", message, "--"] + existing, cwd=root, env=identity_env(root))
     return git_out(["rev-parse", "HEAD"], cwd=root)
+
+
+def push_current_branch(root: str, remote: str):
+    """Pousse la branche courante, sans forcer. Retourne None si c'est fait, sinon la raison du refus."""
+    branch = current_branch(root)
+    if not branch:
+        return "HEAD détaché"
+    proc = git(["push", remote, "HEAD:refs/heads/%s" % branch], cwd=root, check=False)
+    return None if proc.returncode == 0 else proc.stderr.strip()
 
 
 def run_main(main) -> int:

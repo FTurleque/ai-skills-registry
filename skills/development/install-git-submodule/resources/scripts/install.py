@@ -410,12 +410,10 @@ def cmd_apply(args) -> int:
             report["commit"] = common.commit_paths(
                 root, paths, "chore(submodule): installer %s (%s@%s)" % (target, url, branch))
             if args.push and report["commit"]:
-                current = common.current_branch(root)
-                remote = engine.load_config(root)["remote"]
-                proc = git(["push", remote, "HEAD:refs/heads/%s" % current], cwd=root, check=False) if current else None
-                report["pushed"] = bool(proc and proc.returncode == 0)
-                if not report["pushed"]:
-                    notes.append("push refusé ou impossible : %s" % (proc.stderr.strip() if proc else "HEAD détaché"))
+                refusal = common.push_current_branch(root, engine.load_config(root)["remote"])
+                report["pushed"] = refusal is None
+                if refusal:
+                    notes.append("push refusé ou impossible : %s" % refusal)
 
     log("%s : %s (%s@%s, tête %s)" % (target, report["action"], url, branch, tip[:12]))
     if report.get("backup"):
