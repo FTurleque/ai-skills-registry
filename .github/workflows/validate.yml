@@ -30,6 +30,14 @@ jobs:
       - name: Verifier que INDEX.md est a jour
         run: python tools/generate_index.py --check
 
+      - name: Auto-test de l'installateur de skills
+        run: python tools/install_skill.py --self-test
+
+      - name: Tests des skills de sous-modules (depots temporaires, remotes bare)
+        run: |
+          python -m unittest discover -s skills/development/publish-git-submodule/tests
+          python -m unittest discover -s skills/development/install-git-submodule/tests
+
       - name: Tests de caracterisation du superviseur de code
         run: python plugins/code-supervisor/tests/run_tests.py
 

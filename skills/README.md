@@ -33,7 +33,7 @@ améliorations » déclenche mieux que « Revue de code ».
 
 | Surface | Comment |
 |---------|---------|
-| Claude Code | copier le dossier dans `~/.claude/skills/<nom>/`, ou le livrer dans un plugin |
+| Claude Code | `python tools/install_skill.py install <nom>` (copie dans `~/.claude/skills/<nom>/`), ou le livrer dans un plugin |
 | Application de bureau | ajouter la skill dans les réglages, ou la fournir via un plugin |
 | claude.ai | téléverser le dossier dans les skills du compte ou du projet |
 | API / Agent SDK | pointer le chemin du dossier dans la configuration de l'agent |

@@ -1,6 +1,6 @@
 # Outils du dépôt
 
-Deux scripts, sans dépendance lourde : `pyyaml` est requis, `jsonschema` est utilisé s'il est
+Trois scripts, sans dépendance lourde : `pyyaml` est requis, `jsonschema` est utilisé s'il est
 présent et remplacé par une validation réduite sinon.
 
 ```bash
@@ -67,6 +67,24 @@ python tools/generate_index.py --check  # échoue si INDEX.md n'est pas à jour
 
 `INDEX.md` est entièrement regénéré : ne pas l'éditer à la main. Le script lit les métadonnées de
 chaque artefact et produit un tableau par type, avec description, version, statut et surfaces.
+
+---
+
+## `install_skill.py`
+
+```bash
+python tools/install_skill.py install <nom> [<nom>...]    # copie dans ~/.claude/skills/, ou met à jour
+python tools/install_skill.py check <nom> [<nom>...]      # code 1 si la copie diffère du dépôt
+python tools/install_skill.py uninstall <nom> [<nom>...]
+python tools/install_skill.py --self-test
+```
+
+Installe des skills du registre par copie du dossier entier, caches Python exclus. Un manifeste
+`.registry-install.json` déposé dans la copie retient la version, le commit du registre et
+l'empreinte de chaque fichier : c'est ce qui permet à `check` de distinguer une copie en retard sur
+le dépôt d'une copie retouchée à la main, et à `install` de sauvegarder la seconde dans
+`~/.claude/skills-backup/` avant de la remplacer. `--dest` change le dossier cible. Bibliothèque
+standard seulement.
 
 ---
 

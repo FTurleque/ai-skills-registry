@@ -53,8 +53,18 @@ claude plugin marketplace add FTurleque/ai-toolkit-registry
 claude plugin install code-supervisor@ai-toolkit-registry
 ```
 
+Les skills s'installent par copie, avec vérification de la copie contre le dépôt :
+
+```bash
+python tools/install_skill.py install publish-git-submodule install-git-submodule
+python tools/install_skill.py check publish-git-submodule install-git-submodule
+```
+
 Les autres types se copient à la main, chacun à son emplacement. La procédure complète, type par
 type et surface par surface, est dans [docs/install.md](docs/install.md).
+
+Ces deux skills-là partagent un dépôt ou un dossier entre plusieurs dépôts par sous-module, et le
+tiennent à jour par GitHub Actions : [docs/git-submodule-sync.md](docs/git-submodule-sync.md).
 
 ---
 
@@ -74,6 +84,7 @@ ai-toolkit-registry/
 │   ├── conventions.md          règles de nommage, de rédaction et d'hygiène
 │   ├── surfaces.md             surfaces Claude et matrice de compatibilité
 │   ├── install.md              comment consommer chaque type d'artefact
+│   ├── git-submodule-sync.md   partager un dépôt ou un dossier par sous-module
 │   └── contributing.md         processus de contribution détaillé
 ├── hooks/                      hooks autonomes (<nom>/)
 ├── instructions/               gabarits de contexte projet (<nom>/)
@@ -87,7 +98,8 @@ ai-toolkit-registry/
 ├── templates/                  un gabarit par type d'artefact
 ├── tools/
 │   ├── validate.py             validation du registre
-│   └── generate_index.py       génération d'INDEX.md
+│   ├── generate_index.py       génération d'INDEX.md
+│   └── install_skill.py        installation des skills dans ~/.claude/skills/
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── INDEX.md                    catalogue généré

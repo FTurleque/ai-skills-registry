@@ -134,8 +134,8 @@ garantit que les fichiers obligatoires existent et que les métadonnées sont co
 
 ## `tools/`
 
-`validate.py` et `generate_index.py`. Ce qu'ils vérifient et produisent est décrit dans
-[`tools/README.md`](../tools/README.md). Ils n'ont besoin que de PyYAML, et utilisent `jsonschema`
+`validate.py`, `generate_index.py` et `install_skill.py` (installation des skills par copie). Ce
+qu'ils vérifient et produisent est décrit dans [`tools/README.md`](../tools/README.md). Ils n'ont besoin que de PyYAML, et utilisent `jsonschema`
 s'il est disponible.
 
 ---

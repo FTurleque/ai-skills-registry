@@ -1,0 +1,41 @@
+# Généré par le skill publish-git-submodule à partir de .github/submodule-publish.json.
+# Ne pas éditer : relancer le skill, ou `python3 .github/submodule-sync/publish.py render` depuis
+# le skill installé. Aucun appel à un modèle d'IA : git, Python et l'API GitHub seulement.
+name: submodule-publish
+
+on:
+  push:
+    branches: [{{BRANCHES}}]
+{{PATHS_BLOCK}}
+  workflow_dispatch:
+    inputs:
+      notify:
+        description: "Notifier les consommateurs même si l'export n'a pas changé"
+        type: boolean
+        default: false
+
+permissions:
+  contents: {{CONTENTS_PERMISSION}}
+
+# Une seule publication à la fois par branche ; une exécution en attente n'est jamais annulée en
+# cours de route, et chacune republie le dernier commit de la branche, pas celui de son événement.
+concurrency:
+  group: submodule-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0
+
+      # Un push fait avec GITHUB_TOKEN ne déclenche aucun autre workflow : la publication et la
+      # notification des consommateurs se font donc dans la même exécution.
+      - name: Publier les exports et notifier les consommateurs
+        env:
+          SUBMODULE_DISPATCH_TOKEN: ${{ secrets.SUBMODULE_DISPATCH_TOKEN }}
+          SUBMODULE_NOTIFY_ALWAYS: ${{ inputs.notify }}
+        run: python3 .github/submodule-sync/publish.py run --all --push --notify
