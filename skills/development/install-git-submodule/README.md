@@ -29,15 +29,15 @@ L'autre moitié, côté dépôt source, est le skill
 | Claude Code, portée projet | `<projet>/.claude/skills/install-git-submodule/` | non vérifié |
 
 ```bash
-python tools/install_skill.py install publish-git-submodule install-git-submodule
+python tools/install_skill.py install git-submodule-common publish-git-submodule install-git-submodule
 ```
 
 ```bash
-python tools/install_skill.py check publish-git-submodule install-git-submodule
+python tools/install_skill.py check git-submodule-common publish-git-submodule install-git-submodule
 ```
 
-Les deux skills sont indépendants à l'usage ; les installer ensemble garde identique le module
-qu'ils partagent. Voir [docs/install.md](../../../docs/install.md).
+Le dossier `git-submodule-common` est **obligatoire** et s'installe à côté : il porte le module que
+les scripts importent. Les deux skills restent indépendants à l'usage. Voir [docs/install.md](../../../docs/install.md).
 
 Prérequis : `git` 2.38+, Python 3.8+. `gh` sert à lire la protection de branche et les exécutions ;
 il n'est obligatoire que pour le mode `pr`, où le workflow l'utilise (il est préinstallé sur les

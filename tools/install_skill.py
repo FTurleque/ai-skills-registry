@@ -23,6 +23,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import shutil
 import stat
 import subprocess
@@ -31,7 +32,24 @@ import tempfile
 import time
 
 MANIFEST = ".registry-install.json"
+SKILL_FILE = "SKILL.md"
 SKIP_DIRS = {"__pycache__", ".pytest_cache"}
+NAME = re.compile(r"^[a-z][a-z0-9]*(-[a-z0-9]+)*$")
+
+
+def inside(base: str, *parts: str) -> str:
+    """Chemin sous `base`, liens resolus ; refuse tout ce qui en sortirait."""
+    base = os.path.realpath(base)
+    path = os.path.realpath(os.path.join(base, *parts))
+    if os.path.commonpath([base, path]) != base:
+        raise SystemExit("chemin refuse, hors de %s : %s" % (base, os.path.join(*parts)))
+    return path
+
+
+def skill_name(value: str) -> str:
+    if not NAME.match(value):
+        raise SystemExit("nom de skill invalide : %r (kebab-case attendu)" % value)
+    return value
 
 
 def default_dest() -> str:
@@ -42,8 +60,8 @@ def default_dest() -> str:
 def find_skill(root: str, name: str) -> str:
     """Dossier source du skill : skills/<categorie>/<nom>/, reconnu a son SKILL.md."""
     base = os.path.join(root, "skills")
-    matches = [os.path.join(base, category, name) for category in sorted(os.listdir(base))
-               if os.path.isfile(os.path.join(base, category, name, "SKILL.md"))]
+    matches = [inside(base, category, name) for category in sorted(os.listdir(base))
+               if os.path.isfile(inside(base, category, name, SKILL_FILE))]
     if len(matches) != 1:
         raise SystemExit("skill introuvable dans le registre : %s" % name)
     return matches[0]
@@ -66,14 +84,14 @@ def hashes(folder: str) -> dict:
 
 def read_manifest(folder: str):
     try:
-        with open(os.path.join(folder, MANIFEST), "r", encoding="utf-8") as fh:
+        with open(inside(folder, MANIFEST), "r", encoding="utf-8") as fh:
             return json.load(fh)
     except (OSError, ValueError):
         return None
 
 
 def skill_version(folder: str) -> str:
-    path = os.path.join(folder, "metadata.yaml")
+    path = inside(folder, "metadata.yaml")
     if not os.path.isfile(path):
         return "?"
     with open(path, "r", encoding="utf-8") as fh:
@@ -101,9 +119,9 @@ def remove_tree(path: str) -> None:
 
 def copy_skill(source: str, target: str, files: dict) -> None:
     for rel in files:
-        destination = os.path.join(target, rel)
+        destination = inside(target, rel)
         os.makedirs(os.path.dirname(destination), exist_ok=True)
-        shutil.copy2(os.path.join(source, rel), destination)
+        shutil.copy2(inside(source, rel), destination)
 
 
 def locally_modified(target: str, installed: dict) -> bool:
@@ -122,14 +140,14 @@ def backup(dest: str, name: str, target: str) -> str:
 def write_manifest(root: str, source: str, target: str, name: str, files: dict) -> None:
     data = {"name": name, "version": skill_version(source), "source": "ai-toolkit-registry",
             "commit": registry_commit(root), "files": files}
-    with open(os.path.join(target, MANIFEST), "w", encoding="utf-8", newline="\n") as fh:
+    with open(inside(target, MANIFEST), "w", encoding="utf-8", newline="\n") as fh:
         json.dump(data, fh, indent=2, sort_keys=True)
         fh.write("\n")
 
 
 def install(root: str, dest: str, name: str) -> str:
     source = find_skill(root, name)
-    target = os.path.join(dest, name)
+    target = inside(dest, skill_name(name))
     wanted = hashes(source)
     note = ""
     if os.path.isdir(target):
@@ -148,7 +166,7 @@ def install(root: str, dest: str, name: str) -> str:
 def check(root: str, dest: str, name: str):
     """Retourne (a_jour, message)."""
     source = find_skill(root, name)
-    target = os.path.join(dest, name)
+    target = inside(dest, skill_name(name))
     if not os.path.isdir(target):
         return False, "%s : non installe dans %s" % (name, dest)
     wanted, installed = hashes(source), hashes(target)
@@ -165,7 +183,7 @@ def check(root: str, dest: str, name: str):
 
 
 def uninstall(dest: str, name: str) -> str:
-    target = os.path.join(dest, name)
+    target = inside(dest, skill_name(name))
     if not os.path.isdir(target):
         return "%s : non installe" % name
     note = ""
@@ -175,6 +193,15 @@ def uninstall(dest: str, name: str) -> str:
     return "%s : retire de %s%s" % (name, dest, note)
 
 
+def exits(action) -> bool:
+    """Vrai si l'action se termine par un refus (SystemExit)."""
+    try:
+        action()
+    except SystemExit:
+        return True
+    return False
+
+
 def self_test() -> int:
     """Installe, modifie, reinstalle et retire un skill factice dans un dossier temporaire."""
     base = tempfile.mkdtemp(prefix="install-skill-selftest-")
@@ -182,7 +209,7 @@ def self_test() -> int:
         root, dest = os.path.join(base, "registry"), os.path.join(base, "home", "skills")
         skill = os.path.join(root, "skills", "development", "demo")
         os.makedirs(os.path.join(skill, "resources", "__pycache__"))
-        for rel, text in (("SKILL.md", "---\nname: demo\n---\n"), ("metadata.yaml", "version: 1.2.3\n"),
+        for rel, text in ((SKILL_FILE, "---\nname: demo\n---\n"), ("metadata.yaml", "version: 1.2.3\n"),
                           ("resources/tool.py", "print('v1')\n"), ("resources/__pycache__/tool.pyc", "x")):
             with open(os.path.join(skill, rel), "w", encoding="utf-8") as fh:
                 fh.write(text)
@@ -193,6 +220,8 @@ def self_test() -> int:
                 failures.append(label)
 
         expect("non installe detecte", check(root, dest, "demo")[0] is False)
+        for unsafe in ("../demo", "demo/..", "..", "Demo", ""):
+            expect("nom dangereux refuse : %r" % unsafe, exits(lambda: uninstall(dest, unsafe)))
         install(root, dest, "demo")
         expect("copie identique apres installation", check(root, dest, "demo")[0])
         expect("caches non copies", not os.path.exists(os.path.join(dest, "demo", "resources", "__pycache__")))
@@ -202,13 +231,13 @@ def self_test() -> int:
         ok, message = check(root, dest, "demo")
         expect("retard sur le depot detecte", not ok and "en retard" in message)
         expect("mise a jour sans sauvegarde inutile", "sauvegardee" not in install(root, dest, "demo"))
-        with open(os.path.join(dest, "demo", "SKILL.md"), "a", encoding="utf-8") as fh:
+        with open(os.path.join(dest, "demo", SKILL_FILE), "a", encoding="utf-8") as fh:
             fh.write("retouche locale\n")
         ok, message = check(root, dest, "demo")
         expect("modification manuelle detectee", not ok and "modifiee a la main" in message)
         expect("copie modifiee sauvegardee avant remplacement", "sauvegardee" in install(root, dest, "demo"))
         saved = os.listdir(os.path.join(base, "home", "skills-backup"))
-        with open(os.path.join(base, "home", "skills-backup", saved[0], "SKILL.md"), encoding="utf-8") as fh:
+        with open(os.path.join(base, "home", "skills-backup", saved[0], SKILL_FILE), encoding="utf-8") as fh:
             expect("la sauvegarde contient la retouche", "retouche locale" in fh.read())
         expect("copie identique apres remplacement", check(root, dest, "demo")[0])
         uninstall(dest, "demo")
@@ -237,7 +266,7 @@ def main(argv) -> int:
     dest = os.path.abspath(args.dest or default_dest())
     root = os.path.abspath(args.root)
     code = 0
-    for name in args.names:
+    for name in map(skill_name, args.names):
         if args.action == "install":
             print(install(root, dest, name))
         elif args.action == "uninstall":

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Socle commun des scripts de synchronisation de sous-modules.
 
-Ce fichier est livré à l'identique par les skills `publish-git-submodule` et
-`install-git-submodule`, puis copié dans `.github/submodule-sync/` des dépôts qui les utilisent.
+Ce fichier existe en un seul exemplaire, dans le dossier `git-submodule-common` installé à côté des
+skills `publish-git-submodule` et `install-git-submodule`. Il est copié avec leurs scripts dans
+`.github/submodule-sync/` des dépôts qui les utilisent.
 Il ne porte que ce que les deux côtés partagent : exécution de git, validation des paramètres,
 authentification sans secret persistant, lecture et écriture des fichiers gérés.
 
@@ -354,6 +355,19 @@ def copy_file(src: str, dst: str) -> bool:
     with open(dst, "wb") as fh:
         fh.write(data)
     return True
+
+
+def copy_scripts(root: str, script_dir: str, names) -> list:
+    """Dépose dans `.github/submodule-sync/` les scripts d'un skill et ce module. Retourne leurs chemins."""
+    copied = []
+    for name in names:
+        folder = os.path.dirname(os.path.abspath(__file__)) if name == "submodule_common.py" else script_dir
+        source = os.path.join(folder, name)
+        destination = os.path.join(root, SYNC_DIR, name)
+        if os.path.normcase(os.path.abspath(destination)) != os.path.normcase(os.path.abspath(source)):
+            copy_file(source, destination)
+        copied.append("%s/%s" % (SYNC_DIR, name))
+    return copied
 
 
 def force_rmtree(path: str) -> None:

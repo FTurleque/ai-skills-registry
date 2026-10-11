@@ -12,6 +12,7 @@ SKILLS = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file_
 PUBLISH = os.path.join(SKILLS, "publish-git-submodule", "resources", "scripts", "publish.py")
 INSTALL = os.path.join(SKILLS, "install-git-submodule", "resources", "scripts", "install.py")
 UPDATE = os.path.join(SKILLS, "install-git-submodule", "resources", "scripts", "update.py")
+COMMON = os.path.join(SKILLS, "git-submodule-common", "resources", "scripts", "submodule_common.py")
 
 
 class Sandbox:

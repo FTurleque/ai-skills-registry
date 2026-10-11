@@ -71,8 +71,9 @@ les `resources/` et les `examples/` auxquels il renvoie :
 cp -r skills/development/java-code-review ~/.claude/skills/
 ```
 
-Les skills `publish-git-submodule` et `install-git-submodule` s'installent ensemble ; leur usage est
-décrit dans [git-submodule-sync.md](git-submodule-sync.md).
+Certains skills s'appuient sur un dossier de ressources voisin, à installer avec eux : `adr-policy`
+pour les skills `adr-*`, `git-submodule-common` pour `publish-git-submodule` et
+`install-git-submodule`, dont l'usage est décrit dans [git-submodule-sync.md](git-submodule-sync.md).
 
 ---
 

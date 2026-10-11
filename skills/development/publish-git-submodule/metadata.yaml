@@ -22,6 +22,7 @@ tags:
 compatibility:
   - claude-code
 requires:
+  - git-submodule-common (skill voisin, obligatoire)
   - git>=2.38 avec git subtree
   - python>=3.8
   - dépôt distant GitHub (pour l'automatisation)

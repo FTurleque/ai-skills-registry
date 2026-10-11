@@ -16,7 +16,7 @@ import threading
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from sandbox import PUBLISH, Sandbox
+from sandbox import COMMON, PUBLISH, Sandbox
 
 try:
     import yaml
@@ -310,8 +310,8 @@ class Notification(PublishCase):
 
 class StaticChecks(PublishCase):
     def test_scripts_compile(self):
-        for name in ("publish.py", "submodule_common.py"):
-            py_compile.compile(os.path.join(os.path.dirname(PUBLISH), name), doraise=True)
+        py_compile.compile(PUBLISH, doraise=True)
+        py_compile.compile(COMMON, doraise=True)
 
     @unittest.skipIf(yaml is None, "PyYAML absent")
     def test_generated_workflow_is_valid_yaml(self):

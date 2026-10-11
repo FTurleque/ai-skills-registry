@@ -29,15 +29,25 @@ import tempfile
 import urllib.error
 import urllib.request
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import submodule_common as common
-from submodule_common import SyncError, git, git_out, log, warn
+HERE = os.path.dirname(os.path.abspath(__file__))
+# Le module commun est à côté du script dans un dépôt (.github/submodule-sync/), et dans le dossier
+# voisin `git-submodule-common` quand le script tourne depuis le skill installé.
+SHARED = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(HERE))), "git-submodule-common",
+                      "resources", "scripts")
+sys.path[:0] = [HERE, SHARED]
+try:
+    import submodule_common as common
+except ImportError:
+    sys.exit("module commun introuvable : installer `git-submodule-common` à côté de ce skill "
+             "(python tools/install_skill.py install git-submodule-common)")
+SyncError, git, git_out, log, warn = common.SyncError, common.git, common.git_out, common.log, common.warn
 
 CONFIG_PATH = ".github/submodule-publish.json"
 WORKFLOW_PATH = ".github/workflows/submodule-publish.yml"
 DOC_PATH = common.SYNC_DIR + "/PUBLISH.md"
 SCRIPT_FILES = ("publish.py", "submodule_common.py")
 DISPATCH_TOKEN_ENV = "SUBMODULE_DISPATCH_TOKEN"
+HEADS = "refs/heads/"
 MAX_SCAN_BYTES = 1000000
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,62}$")
 KV_KEYS = {"source", "branch", "export", "name", "remote", "strategy", "exclude", "auto", "consumer",
@@ -53,7 +63,7 @@ NAME_RULES = [
 ENV_EXAMPLES = {".env.example", ".env.sample", ".env.template", ".env.dist"}
 SECRET_RULES = [
     ("aws-key", re.compile(r"\b(?:AKIA|ASIA)[0-9A-Z]{16}\b")),
-    ("github-token", re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})")),
+    ("github-token", re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_\w{20,})")),
     ("slack-token", re.compile(r"\bxox[baprs]-[A-Za-z0-9-]{10,}")),
     ("anthropic-key", re.compile(r"\bsk-ant-[A-Za-z0-9_-]{20,}")),
     ("private-key", re.compile(r"-----BEGIN (?:[A-Z]+ )?PRIVATE KEY-----")),
@@ -178,8 +188,8 @@ def remote_heads(root: str, remote: str) -> dict:
     heads = {}
     for line in proc.stdout.splitlines():
         sha, _, ref = line.partition("\t")
-        if ref.startswith("refs/heads/"):
-            heads[ref[len("refs/heads/"):]] = sha
+        if ref.startswith(HEADS):
+            heads[ref[len(HEADS):]] = sha
     return heads
 
 
@@ -426,7 +436,7 @@ def publish_one(root: str, pub: dict, push: bool, force: bool = False, accept: b
     result["files"] = check_source_tree(root, source_sha, pub["source"])
     previous = remote_heads(root, remote).get(pub["export"])
     if previous:
-        git(["fetch", "--no-tags", remote, "refs/heads/" + pub["export"]], cwd=root)
+        git(["fetch", "--no-tags", remote, HEADS + pub["export"]], cwd=root)
     if pub["strategy"] == "snapshot":
         new = snapshot_commit(root, source_sha, pub["source"], pub["exclude"], previous)
     else:
@@ -520,7 +530,7 @@ def notify(root: str, pub: dict, result: dict) -> list:
         except urllib.error.HTTPError as exc:
             failures.append("%s : HTTP %d (jeton sans accès « Contents: write » à ce dépôt, ou dépôt "
                             "introuvable)" % (consumer, exc.code))
-        except (urllib.error.URLError, OSError) as exc:
+        except OSError as exc:
             failures.append("%s : %s" % (consumer, exc))
     return failures
 
@@ -579,11 +589,7 @@ def write_managed_files(root: str, cfg: dict, script_file: str) -> list:
     here = os.path.dirname(os.path.abspath(script_file))
     paths = [CONFIG_PATH, DOC_PATH]
     save_config(root, cfg)
-    for name in SCRIPT_FILES:
-        rel = "%s/%s" % (common.SYNC_DIR, name)
-        if os.path.normcase(os.path.abspath(os.path.join(root, rel))) != os.path.normcase(os.path.join(here, name)):
-            common.copy_file(os.path.join(here, name), os.path.join(root, rel))
-        paths.append(rel)
+    paths += common.copy_scripts(root, here, SCRIPT_FILES)
     workflow = render_workflow(cfg, script_file)
     if workflow is not None:
         common.write_text(os.path.join(root, WORKFLOW_PATH), workflow)
@@ -598,7 +604,7 @@ def local_warnings(root: str, pub: dict) -> list:
     """Ce qui existe sur le poste mais ne sera pas publié : seul le remote fait foi."""
     notes = []
     scope = [] if pub["source"] == "." else ["--", pub["source"]]
-    local = git(["rev-parse", "-q", "--verify", "refs/heads/" + pub["branch"]], cwd=root, check=False)
+    local = git(["rev-parse", "-q", "--verify", HEADS + pub["branch"]], cwd=root, check=False)
     if local.returncode == 0:
         ahead = git_out(["rev-list", "--count", "refs/remotes/%s/%s..refs/heads/%s"
                          % (pub["remote"], pub["branch"], pub["branch"])] + scope, cwd=root)
@@ -656,7 +662,7 @@ def check_export_branch(root: str, cfg: dict, pub: dict, is_new: bool, force: bo
     if export in heads and is_new and pub["strategy"] == "snapshot" and not force:
         # Un instantané se pose en avance rapide sur n'importe quelle branche : sans cette garde,
         # il remplacerait le contenu d'une branche de travail qui porte par hasard ce nom.
-        git(["fetch", "--no-tags", remote, "refs/heads/" + export], cwd=root)
+        git(["fetch", "--no-tags", remote, HEADS + export], cwd=root)
         if "Source-Path: " not in git_out(["log", "-1", "--format=%B", heads[export]], cwd=root):
             raise SyncError(
                 "la branche %s existe déjà sur %s et n'est pas un export de ce skill : un instantané "

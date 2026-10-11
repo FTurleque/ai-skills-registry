@@ -28,15 +28,16 @@ L'autre moitié, côté dépôt destinataire, est le skill
 | Claude Code, portée projet | `<projet>/.claude/skills/publish-git-submodule/` | non vérifié |
 
 ```bash
-python tools/install_skill.py install publish-git-submodule install-git-submodule
+python tools/install_skill.py install git-submodule-common publish-git-submodule install-git-submodule
 ```
 
 ```bash
-python tools/install_skill.py check publish-git-submodule install-git-submodule
+python tools/install_skill.py check git-submodule-common publish-git-submodule install-git-submodule
 ```
 
-L'installateur copie le dossier entier, sauvegarde une installation antérieure modifiée, et `check`
-dit si la copie globale correspond au dépôt. Voir [docs/install.md](../../../docs/install.md).
+Le dossier `git-submodule-common` est **obligatoire** et s'installe à côté : il porte le module que
+les scripts importent. L'installateur copie chaque dossier entier, sauvegarde une installation
+antérieure modifiée, et `check` dit si la copie globale correspond au dépôt. Voir [docs/install.md](../../../docs/install.md).
 
 Prérequis : `git` avec `git subtree`, Python 3.8+. `gh` est utile pour poser le secret et lire les
 exécutions, pas obligatoire.

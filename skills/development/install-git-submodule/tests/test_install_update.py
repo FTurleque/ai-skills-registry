@@ -8,7 +8,6 @@ prouvent pas : les permissions GitHub, les secrets et l'exécution réelle des w
 """
 from __future__ import annotations
 
-import filecmp
 import glob
 import json
 import os
@@ -400,12 +399,16 @@ class Events(EndToEnd):
 
 
 class StaticChecks(EndToEnd):
-    def test_scripts_compile_and_the_shared_module_is_identical(self):
-        scripts = os.path.dirname(INSTALL)
-        for name in ("install.py", "update.py", "submodule_common.py"):
-            py_compile.compile(os.path.join(scripts, name), doraise=True)
-        self.assertTrue(filecmp.cmp(os.path.join(scripts, "submodule_common.py"),
-                                    os.path.join(os.path.dirname(PUBLISH), "submodule_common.py"), shallow=False))
+    def test_scripts_compile_and_installed_copies_run_on_their_own(self):
+        for name in ("install.py", "update.py"):
+            py_compile.compile(os.path.join(os.path.dirname(INSTALL), name), doraise=True)
+        # Dans un dépôt, les scripts copiés tournent sans le skill : le module commun est à côté.
+        self.install_claude()
+        sync = os.path.join(self.consumer, ".github", "submodule-sync")
+        self.assertEqual(sorted(os.listdir(sync)), ["UPDATE.md", "submodule_common.py", "update.py"])
+        proc = self.box.script(os.path.join(sync, "update.py"), self.consumer, "status")
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("à jour", proc.stdout)
 
     @unittest.skipIf(yaml is None, "PyYAML absent")
     def test_generated_workflow_is_valid_yaml(self):

@@ -19,18 +19,20 @@ chaque skill, pour rester disponible une fois le skill installé hors du registr
 ## Installation globale
 
 ```bash
-python tools/install_skill.py install publish-git-submodule install-git-submodule
+python tools/install_skill.py install git-submodule-common publish-git-submodule install-git-submodule
 ```
 
-Les skills sont copiés dans `~/.claude/skills/` (sous Windows : `%USERPROFILE%\.claude\skills\`). Le
-dépôt reste la source de vérité ; après une modification ici, relancer la même commande.
+Les trois dossiers sont copiés dans `~/.claude/skills/` (sous Windows :
+`%USERPROFILE%\.claude\skills\`). `git-submodule-common` n'est pas un skill qu'on invoque : c'est
+le module Python que les deux autres importent, en un seul exemplaire. Le dépôt reste la source de
+vérité ; après une modification ici, relancer la même commande.
 
 ```bash
-python tools/install_skill.py check publish-git-submodule install-git-submodule
+python tools/install_skill.py check git-submodule-common publish-git-submodule install-git-submodule
 ```
 
 ```bash
-python tools/install_skill.py uninstall publish-git-submodule install-git-submodule
+python tools/install_skill.py uninstall git-submodule-common publish-git-submodule install-git-submodule
 ```
 
 Détails : [install.md](install.md#skills).

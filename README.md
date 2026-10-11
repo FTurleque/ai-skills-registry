@@ -56,14 +56,14 @@ claude plugin install code-supervisor@ai-toolkit-registry
 Les skills s'installent par copie, avec vérification de la copie contre le dépôt :
 
 ```bash
-python tools/install_skill.py install publish-git-submodule install-git-submodule
-python tools/install_skill.py check publish-git-submodule install-git-submodule
+python tools/install_skill.py install git-submodule-common publish-git-submodule install-git-submodule
+python tools/install_skill.py check git-submodule-common publish-git-submodule install-git-submodule
 ```
 
 Les autres types se copient à la main, chacun à son emplacement. La procédure complète, type par
 type et surface par surface, est dans [docs/install.md](docs/install.md).
 
-Ces deux skills-là partagent un dépôt ou un dossier entre plusieurs dépôts par sous-module, et le
+Ces skills-là partagent un dépôt ou un dossier entre plusieurs dépôts par sous-module, et le
 tiennent à jour par GitHub Actions : [docs/git-submodule-sync.md](docs/git-submodule-sync.md).
 
 ---

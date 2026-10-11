@@ -23,6 +23,7 @@ tags:
 compatibility:
   - claude-code
 requires:
+  - git-submodule-common (skill voisin, obligatoire)
   - git>=2.38
   - python>=3.8
   - dépôt distant GitHub (pour l'automatisation)
@@ -45,6 +46,9 @@ ce qu'il fait passe par un script — ne jamais refaire ses étapes à la main a
 INSTALL = python "${CLAUDE_SKILL_DIR}/resources/scripts/install.py"    (python3 si python est absent)
 UPDATE  = python "${CLAUDE_SKILL_DIR}/resources/scripts/update.py"
 ```
+
+Les scripts importent le module du dossier voisin `git-submodule-common`, installé à côté de ce
+skill. S'il manque, ils s'arrêtent en le disant : le signaler à l'utilisateur, ne rien contourner.
 
 Arguments reçus : `$ARGUMENTS`
 

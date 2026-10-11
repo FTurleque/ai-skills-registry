@@ -9,7 +9,7 @@ et ce projet respecte le [Versionnement Sémantique](https://semver.org/lang/fr/
 
 ## [Non publié]
 
-### Ajouté — skills `publish-git-submodule` et `install-git-submodule` 1.0.0 (expérimentaux)
+### Ajouté — skills `publish-git-submodule`, `install-git-submodule` et `git-submodule-common` 1.0.0 (expérimentaux)
 
 Deux skills pour partager un dépôt entier ou un seul dossier (`.claude`, `docs`, une bibliothèque) entre
 plusieurs dépôts par sous-module Git, puis le tenir à jour sans intervention. Invocation explicite seulement
@@ -27,6 +27,8 @@ Actions, sans appel à un modèle. Vue d'ensemble : `docs/git-submodule-sync.md`
   événement, sur planification et à la main : la tête de branche fait foi (pas le SHA annoncé), aucun retour en
   arrière, contrôles du dépôt lancés sans jeton, commit limité à la référence, rebase sur push rejeté, mode
   `pr` pour une branche protégée.
+- **`git-submodule-common`** : le module Python que les deux skills importent, en un seul exemplaire, dans un
+  dossier voisin à installer avec eux (même principe que `adr-policy`). Ni invocable ni déclenché.
 - Quarante-deux tests sur dépôts temporaires et remotes bare locaux, rejoués par la CI sous Linux.
 - **Non observé sur GitHub** : les workflows sont des gabarits validés statiquement. Permissions, secrets,
   déclencheurs réels et fusion automatique restent à vérifier sur de vrais dépôts ; l'invocation `/…` dans
@@ -36,8 +38,9 @@ Actions, sans appel à un modèle. Vue d'ensemble : `docs/git-submodule-sync.md`
 
 Installe des skills du registre dans `~/.claude/skills/` par copie du dossier entier (`install`), vérifie
 qu'une copie correspond au dépôt (`check`) et la retire (`uninstall`). Un manifeste dans la copie distingue une
-copie en retard d'une copie retouchée à la main, sauvegardée avant tout remplacement. Remplace le `cp -r`
-jusque-là documenté, qui reste valable.
+copie en retard d'une copie retouchée à la main, sauvegardée avant tout remplacement. Un nom de skill est un
+identifiant en kebab-case, jamais un chemin : tout ce qui sortirait du dossier cible est refusé. Remplace le
+`cp -r` jusque-là documenté, qui reste valable.
 
 ### Ajouté — registre d'ADR du dépôt (`.archgate/adrs/`)
 

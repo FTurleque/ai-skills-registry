@@ -26,9 +26,18 @@ import re
 import subprocess
 import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import submodule_common as common
-from submodule_common import SyncError, git, git_out, log, warn
+HERE = os.path.dirname(os.path.abspath(__file__))
+# Le module commun est à côté du script dans un dépôt (.github/submodule-sync/), et dans le dossier
+# voisin `git-submodule-common` quand le script tourne depuis le skill installé.
+SHARED = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(HERE))), "git-submodule-common",
+                      "resources", "scripts")
+sys.path[:0] = [HERE, SHARED]
+try:
+    import submodule_common as common
+except ImportError:
+    sys.exit("module commun introuvable : installer `git-submodule-common` à côté de ce skill "
+             "(python tools/install_skill.py install git-submodule-common)")
+SyncError, git, git_out, log, warn = common.SyncError, common.git, common.git_out, common.log, common.warn
 
 CONFIG_PATH = ".github/submodule-update.json"
 WORKFLOW_PATH = ".github/workflows/submodule-update.yml"

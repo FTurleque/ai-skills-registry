@@ -23,14 +23,15 @@ import tempfile
 import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import submodule_common as common
 import update as engine
-from submodule_common import SyncError, git, git_out, log, warn
+common = engine.common
+SyncError, git, git_out, log, warn = common.SyncError, common.git, common.git_out, common.log, common.warn
 
 KV_KEYS = {"url", "branch", "target", "name", "auto", "schedule", "target-branch", "mode", "check",
            "migrate", "set-url", "set-branch", "allow-nested", "force-ignored", "commit", "push",
            "dry-run", "remote"}
 LIST_LIMIT = 40
+GITMODULES = ".gitmodules"
 
 
 # --------------------------------------------------------------------------- inspection
@@ -182,7 +183,7 @@ def restore_from_backup(root: str, target: str, backup: str) -> None:
 
 def add_submodule(root: str, args, url: str, branch: str, target: str) -> None:
     """`git submodule add`, annulé entièrement s'il échoue en route."""
-    gitmodules = os.path.join(root, ".gitmodules")
+    gitmodules = os.path.join(root, GITMODULES)
     before = None
     if os.path.isfile(gitmodules):
         with open(gitmodules, "rb") as fh:
@@ -204,7 +205,7 @@ def add_submodule(root: str, args, url: str, branch: str, target: str) -> None:
         common.force_rmtree(os.path.join(root, target))
         if not had_module_dir:
             common.force_rmtree(module_dir)
-        git(["reset", "-q", "HEAD", "--", ".gitmodules"], cwd=root, check=False)
+        git(["reset", "-q", "HEAD", "--", GITMODULES], cwd=root, check=False)
         if before is None:
             if os.path.isfile(gitmodules):
                 os.remove(gitmodules)
@@ -342,10 +343,7 @@ def write_managed_files(root: str, cfg: dict, script_file: str) -> list:
     here = os.path.dirname(os.path.abspath(script_file))
     common.dump_json(os.path.join(root, engine.CONFIG_PATH), cfg)
     paths = [engine.CONFIG_PATH, engine.WORKFLOW_PATH, engine.DOC_PATH]
-    for name in engine.SCRIPT_FILES:
-        rel = "%s/%s" % (common.SYNC_DIR, name)
-        common.copy_file(os.path.join(here, name), os.path.join(root, rel))
-        paths.append(rel)
+    paths += common.copy_scripts(root, here, engine.SCRIPT_FILES)
     common.write_text(os.path.join(root, engine.WORKFLOW_PATH), render_workflow(cfg, script_file))
     common.write_text(os.path.join(root, engine.DOC_PATH), render_doc(root, cfg, script_file))
     return paths
@@ -401,7 +399,7 @@ def cmd_apply(args) -> int:
         notes.append("URL SSH : le workflow la réécrit en HTTPS pour s'authentifier par jeton ; préférer "
                      "une URL https:// dans .gitmodules")
     if not args.dry_run:
-        paths = [".gitmodules", target]
+        paths = [GITMODULES, target]
         if args.auto:
             paths += configure_automation(root, args, target)
         report["files"] = paths
